@@ -652,6 +652,9 @@ endfunction
 " ------------------------------------------------------------
 function! OpenWhat()
     let testme = expand("<cfile>")
+    if testme =~ '^\~'
+        let testme = $HOME . substitute(testme, '^\~', "", "")
+    endif
     if isdirectory(testme)
         call CdMaik()
     else
