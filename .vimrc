@@ -349,13 +349,13 @@ function! CdCurBuf()
     if cwd ==# cth
         echo 'cwd already ' cth
     else
-        execute 'cd '.cth
+        execute 'cd ' . cth
         echo 'cwd changed to ' cth
     endif
 endfunction
 " ------------------------------------------------------------
-function! CdMaik()
-    cd <cfile>
+function! CdMaik(dir)
+    execute 'cd ' . a:dir
     call Maikallfiles()
 endfunction
 " ------------------------------------------------------------
@@ -656,7 +656,7 @@ function! OpenWhat()
         let testme = $HOME . substitute(testme, '^\~', "", "")
     endif
     if isdirectory(testme)
-        call CdMaik()
+        call CdMaik(testme)
     else
         execute 'e ' . testme
     endif
