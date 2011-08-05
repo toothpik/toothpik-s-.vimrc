@@ -1,0 +1,9 @@
+2011-Aug-05 10:01
+
+my first attempt at setting up github to make my .vimrc available to
+the world
+
+i don't use the menu bar or toolbar
+
+i don't build vim with any extra scripting languages, and i load as
+few plugins as possible
