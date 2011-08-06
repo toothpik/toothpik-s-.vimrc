@@ -87,13 +87,10 @@ syntax enable
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
-"    au BufLeave * let b:winview = winsaveview()
-"    au BufEnter * if exists('b:winview') | call winrestview(b:winview) | endif
 augroup END
 " ------------------------------------------------------------
+"  some scripts i don't need:
 let g:loaded_netrw = 1
-"let g:loaded_vimballPlugin = 1
-"  some scripts we don't need:
 let g:html_use_css = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_gzip = 1
@@ -101,6 +98,7 @@ let g:loaded_matchparen = 1
 let g:loaded_rrhelper = 1
 let g:loaded_tarPlugin = 1
 let g:loaded_zipPlugin = 1
+
 let g:no_mail_maps = 1
 let g:no_plugin_maps = 1
 let g:is_bash = 1
