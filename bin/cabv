@@ -1,0 +1,27 @@
+#!/bin/bash
+#  check and backup ~/.vimrc
+files=(~/.vim/backups/.vimrc_*)
+lb=${files[0]}
+for f in "${files[@]}"; do
+    if [[ $f -nt $lb ]]; then
+        lb=$f
+    fi
+done
+diff -q ~/.vimrc $lb
+if !(( $? ))
+then
+    echo "no difference between ~/.vimrc and $lb" | sed -f ~/fhp.sed
+    exit 0
+fi
+diff ~/.vimrc $lb
+echo 'creating backup:'
+cp -fv ~/.vimrc ~/.vim/backups/.vimrc_$(date '+%Y%m%d')
+echo 'uploading to web site'
+cd ~/toothpik-s-.vimrc
+cp -f ~/.vimrc .
+git add .vimrc
+echo 'enter a consise and relevant phrase for the commit message:'
+read cmmsg
+git commit -m "$cmmsg"
+echo 'about to push to github, get your pass-phrase ready'
+git push origin master
