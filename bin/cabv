@@ -1,6 +1,7 @@
 #!/bin/bash
 #  check and backup ~/.vimrc
 files=(~/.vim/backups/.vimrc_*)
+#  find last backup
 lb=${files[0]}
 for f in "${files[@]}"; do
     if [[ $f -nt $lb ]]; then
@@ -20,7 +21,7 @@ echo 'uploading to web site'
 cd ~/toothpik-s-.vimrc
 cp -f ~/.vimrc .
 git add .vimrc
-echo 'enter a consise and relevant phrase for the commit message:'
+echo 'enter a concise and relevant phrase for the commit message:'
 read cmmsg
 git commit -m "$cmmsg"
 echo 'about to push to github, get your pass-phrase ready'
