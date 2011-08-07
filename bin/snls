@@ -1,0 +1,3 @@
+#!/bin/bash
+#  show new laundry schedule
+g -c "source ~/.vim/snls.vim"
