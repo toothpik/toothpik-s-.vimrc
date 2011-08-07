@@ -1,0 +1,60 @@
+#!/usr/bin/python
+#
+#  current month, with current day circled, to stdout
+#  minus one plus one
+#
+from calendar import setfirstweekday, month
+from string import strip, replace
+from time import strftime, localtime
+a_yr = int(strftime("%Y", localtime()))
+a_mo = int(strftime("%m", localtime()))
+setfirstweekday(6)
+tod = strftime("%d",localtime())
+if tod[0] == "0":
+    toda = " " + tod[1] + " "
+else:
+    toda = " " + tod + " "
+#
+nm = a_mo + 1
+if nm > 12:
+    nm = 1
+    ny = a_yr + 1
+else:
+    ny = a_yr
+pm = a_mo - 1
+if pm < 1:
+    pm = 12
+    py = a_yr - 1
+else:
+    py = a_yr
+#
+m0 = []
+for l0 in month(py, pm).splitlines():
+    m0.append("%-22s" % l0)
+m1 = []
+for l in month(a_yr, a_mo).splitlines():
+    ts = " " + l + " "
+    if toda in ts:
+        m1.append("%-22s" % replace(ts, toda, "(" + strip(toda) + ")"))
+    else:
+        m1.append("%-22s" % ts)
+m2 = []
+for l2 in month(ny, nm).splitlines():
+    m2.append("%-22s" %  l2)
+#
+lm0 = len(m0)
+lm1 = len(m1)
+lm2 = len(m2)
+lg = max(lm0, lm1, lm2)
+if lm0 < lg:
+    for c in range(lg - lm0):
+        m0.append(" "*22)
+if lm1 < lg:
+    for c in range(lg - lm1):
+        m1.append(" "*22)
+if lm2 < lg:
+    for c in range(lg - lm2):
+        m2.append(" "*22)
+#
+for c in range(lg):
+    print "   %22s  %-22s %25s" % (m0[c], m1[c], m2[c])

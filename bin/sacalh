@@ -1,0 +1,3 @@
+#!/bin/bash
+#  stand alone calendar (longer) minus one plus one month, horizontal
+g -S ~/.vim/mmatc.vim
