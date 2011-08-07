@@ -26,4 +26,3 @@ else
 endif
 setlocal hlsearch
 normal gg
-silent file sacalh_unique_name
