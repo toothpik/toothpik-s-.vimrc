@@ -1,5 +1,8 @@
 mofix.sed
 .vim/mmatc.vim
+.vim/weekly.vim
 bin/cabv
 bin/cm1p1
 bin/sacalh
+bin/weekly
+txt/weekly
