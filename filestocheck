@@ -1,12 +1,15 @@
-mofix.sed
+.bashrc
 .vim/mmatc.vim
 .vim/snls.vim
 .vim/weekly.vim
 bin/cabv
 bin/cm1p1
+bin/glaun
 bin/sacalh
 bin/sll2
 bin/snls
 bin/weekly
+bin/ws
+mofix.sed
 txt/laundry.log
 txt/weekly
