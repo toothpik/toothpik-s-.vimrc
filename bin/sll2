@@ -49,4 +49,3 @@ while(lp > -1):
     if gw and gc and gs:
         break
     lp = lp - 1
-
