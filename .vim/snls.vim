@@ -22,4 +22,3 @@ call NewDay()
 nmap <silent> <Leader>c :call NewDay()<CR>
 nmap <silent> <Leader>ev :e ~/.vim/snls.vim<CR>
 nmap <silent> <Leader>l :source ~/.vim/snls.vim<CR>
-
