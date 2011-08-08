@@ -1,0 +1,25 @@
+#!/bin/bash
+#  check for differences
+cd ~/toothpik-s-.vimrc
+#  did we do anything?
+dwda=0
+for f in `cat filestocheck`; do
+    fs=(~/$f)
+    diff "$fs" "$f"
+    if (( $? )); then
+        dwda=1
+        cp -f "$fs" "$f"
+        git add "$f"
+        echo "enter concise and relevant commit message for $f"
+        read cmmsg
+        git commit -m "$cmmsg"
+    else
+        echo "$f  did not change"
+    fi
+done
+if [[ $dwda -eq 1 ]]; then
+    echo 'about to push to github, get your pass-phrase ready'
+    git push origin master
+else
+    echo 'nothing changed'
+fi

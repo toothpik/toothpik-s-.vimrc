@@ -3,6 +3,7 @@
 .vim/snls.vim
 .vim/weekly.vim
 bin/cabv
+bin/cfd
 bin/cm1p1
 bin/glaun
 bin/mxm
