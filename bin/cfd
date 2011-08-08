@@ -7,12 +7,12 @@ for f in `cat filestocheck`; do
     fs=(~/$f)
     diff "$fs" "$f"
     if (( $? )); then
-        dwda=1
         cp -f "$fs" "$f"
         git add "$f"
         echo "enter concise and relevant commit message for $f"
         read cmmsg
         git commit -m "$cmmsg"
+        dwda=1
     else
         echo "$f  did not change"
     fi
