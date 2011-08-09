@@ -1,0 +1,44 @@
+#!/usr/bin/tclsh
+#  ~/bin/ct0 filter
+#  pipe ct0 through this script to obtain day counts on the side
+proc usage {} {
+    puts "run tcl/ct0 as a filter for bin/ct0, as"
+    puts "    $ ~/bin/ct0 | ~/tcl/ct0"
+    puts "to obtain ct0 output that includes day counts"
+    return
+}
+set data [read stdin]
+#  ct0 lines
+set cl [split $data \n]
+set lcl [llength $cl]
+if { $lcl < 2 } {
+    puts "empty input stream"
+    usage
+    return
+}
+proc commify {num {sep ,}} {
+    while {[regsub {^([-+]?\d+)(\d\d\d)} $num "\\1$sep\\2" num]} {}
+    return $num
+}
+set now [clock seconds]
+for {set i 0} {$i < [expr {$lcl - 1}]} { incr i} {
+    set l [lindex $cl $i]
+    #  words in line array
+    set wila [split $l]
+    set nwila [llength $wila]
+    #  last word in line
+    set lwil [lindex $wila [expr {$nwila - 1}]]
+    if [catch {clock scan $lwil -format "%Y-%b-%d"} dt] {
+        puts $l
+    } else {
+        #  date count
+        set dc [exec jctd $lwil]
+        #  date count with commas
+        set dcwc [commify $dc]
+        if {$dt < $now && $dc != 0} {
+            set dcwc "-$dcwc"
+        }
+        puts "[format %-46s $l]    [format %6s $dcwc]"
+    }
+}
+
