@@ -1,0 +1,12 @@
+#!/usr/bin/tclsh
+if { $argc < 1 } {
+    set y [clock format [clock seconds] -format "%Y"]
+} else {
+    set y [lindex $argv 0]
+}
+set ey [expr {$y + 1}]             ;#  end year
+set sd [clock scan "1 Jan $y"]     ;#  start date
+set ed [clock scan "1 Jan $ey"]    ;#  end date
+for { set d $sd } { $d < $ed } { incr d 86400 } {
+    puts "   [clock format $d -format "%b %e  %a"]"
+}
