@@ -30,6 +30,7 @@ bin/weekly
 bin/wiv
 bin/ws
 fcdit.awk
+funclear.awk
 incend.awk
 mofix.sed
 py/currmo
