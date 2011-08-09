@@ -1,0 +1,130 @@
+realstuff
+
+furnace filter            2011-Aug-14
+restock hp 45             2011-Aug-15
+next fsck                 2011-Aug-20
+dentist                   2011-Sep-26
+raney oil change          2011-Sep-29
+turn mattress             2011-Dec-27
+stubbie: fec fv rab l     2012-Jan-18
+dyson filter clean        2012-Jan-20
+raney wiper blades        2012-May-7
+raney register            2012-May-15
+ups store expires         2012-May-27
+Kmart microwave warranty  2012-Jun-8
+road star register        2013-Apr-15
+last mm payment           2013-Jul-5
+driver's license          2014-Mar-15
+washer hoses              2014-Nov-6
+water heater warranty     2016-Aug-30
+passport expires          2019-Mar-31
+
+endrealstuff
+------------------------------------------------------------
+
+matthew's fsck            2011-Apr-10
+
+     1)  dyson filter clean        2009-7-7
+     2)  furnace filter            2009-7-22
+     3)  next disk check           2009-8-9
+     4)  dentist                   2009-9-11
+     5)  mattress                  2009-12-29
+     6)  raney wiper blades        2010-5-7
+     7)  register ranger           2010-5-15
+     8)  washer hoses              2010-11-6
+     9)  ups store expires         2011-2-27
+    10)  register road star        2011-4-15
+    11)  restock hp 45             2011-6-15
+    12)  last mm payment           2013-7-6
+    13)  driver's license          2014-3-15
+    14)  water heater warranty     2016-8-30
+    15)  passport expires          2019-3-31
+
+     1)  raney wiper blades        2009-5-7
+     2)  next disk check           2009-6-22
+     3)  dyson filter clean        2009-7-7
+     4)  furnace filter            2009-7-22
+     5)  dentist                   2009-9-9
+     6)  mattress                  2009-12-29
+     7)  register ranger           2010-5-15
+     8)  washer hoses              2010-11-6
+     9)  ups store expires         2011-2-27
+    10)  register road star        2011-4-15
+    11)  last mm payment           2013-7-6
+    12)  driver's license          2014-3-15
+    13)  water heater warranty     2016-8-30
+    14)  passport expires          2019-3-31
+------------------------------------------------------------
+     1)  next disk check           2009-4-26
+     2)  raney wiper blades        2009-5-7
+     3)  dyson filter clean        2009-7-7
+     4)  furnace filter            2009-7-22
+     5)  dentist                   2009-9-9
+     6)  mattress                  2009-12-29
+     7)  register ranger           2010-5-15
+     8)  washer hoses              2010-11-6
+     9)  ups store expires         2011-2-27
+    10)  register road star        2011-4-15
+    11)  last mm payment           2013-7-6
+    12)  driver's license          2014-3-15
+    13)  water heater warranty     2016-8-30
+    14)  passport expires          2019-3-31
+------------------------------------------------------------
+1. buy some AAs              2008-10-27
+2. next disk check           2009-3-25
+3. mattress                  2009-12-29
+4. dyson filter clean        2009-7-7
+5. furnace filter            2009-7-22
+6. dentist                   2009-3-3
+------------------------------------------------------------
+1. next disk check           2008-10-5
+2. buy some AAs              2008-10-27
+3. mattress                  2008-12-27
+4. dyson filter clean        2009-1-5
+5. furnace filter            2009-1-20
+6. dentist                   2009-3-3
+------------------------------------------------------------
+1. dentist                   2008-8-26   
+2. next disk check           2008-10-5
+3. mattress                  2008-12-27
+4. dyson filter clean        2009-1-5
+5. furnace filter            2009-1-20  
+------------------------------------------------------------
+1. next disk check           2008-8-6   
+2. dentist                   2008-8-26   
+3. mattress                  2008-12-27
+4. dyson filter clean        2009-1-5
+5. furnace filter            2009-1-20  
+------------------------------------------------------------
+1. furnace filter            2008-6-30  
+2. next disk check           2008-8-6   
+3. dentist                   2008-8-26   
+4. mattress                  2008-12-27
+5. dyson filter clean        2009-1-5
+------------------------------------------------------------
+1. furnace filter            2008-6-30  
+2. dyson filter clean        2008-7-7   
+3. dentist?                  2008-7-9   
+4. next disk check           2008-8-6   
+------------------------------------------------------------
+1. eureka springs            2008-6-29  
+------------------------------------------------------------
+1. next disk check           2008-8-6
+2. smoking ban?              2008-6-20
+3. eureka springs            2008-6-29
+4. furnace filter            2008-6-30
+------------------------------------------------------------
+1. ranger:  wipers and reg   2008-5-7
+2. count to blood draw       2008-5-11
+3. first ss pmt              2008-5-21
+     1	------------------------------------------------------------
+     2	30 Mar 2008  20:47  Sun 
+     3	
+     4	    ct0    cat ~/txt/ct_list
+     5	    ct1    next disk check
+     6	    ct2    count to blood draw
+     7      ct3    first ss pmy
+     8	    ct4    days off work
+     9	    ct5    fun w frili
+    10	    ctcam  camilla's birthday
+    11	
