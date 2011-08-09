@@ -1,4 +1,5 @@
 .bashrc
+.vim/fcd.vim
 .vim/mmatc.vim
 .vim/snls.vim
 .vim/tocal.vim
