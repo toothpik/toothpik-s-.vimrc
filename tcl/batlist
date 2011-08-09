@@ -1,0 +1,49 @@
+#!/usr/bin/tclsh
+#  ~/bin/batlist filter
+#  pipe txt/batlist through this script to obtain day counts for each device
+#  currently ~/bin/b2 does this nicely
+proc usage {} {
+    puts "run tcl/batlist a filter for txt/batlist, as"
+    puts "    $ cat ~/txt/batlist | ~/tcl/batlist"
+    puts "to obtain day counts for each device"
+    return
+}
+proc commify {num {sep ,}} {
+    while {[regsub {^([-+]?\d+)(\d\d\d)} $num "\\1$sep\\2" num]} {}
+    return $num
+}
+set data [read stdin]
+set bl [split $data \n]
+set lbl [llength $bl]
+if { $lbl < 2 } {
+    puts "empty input stream"
+    usage
+    return
+}
+set now [clock seconds]
+for {set i 0} {$i < [expr {$lbl - 1}]} { incr i} {
+    set l [lindex $bl $i]
+    set d1 [string range $l 43 53]
+    if [catch {clock scan $d1 -format "%Y-%b-%d"} dt] {
+        puts $l
+    } else {
+        #  add a year for target
+        if {[string first "adt (cell)" $l] > -1 } {
+            set dtpy [expr {$dt + 31557600 * 5}]
+        } elseif { [string first "adt (main)" $l] > -1 || \
+             [string first "uniden handsets" $l] > -1 } {
+            set dtpy [expr {$dt + 31557600 * 4}]
+        } else {
+            set dtpy [expr {$dt + 31557600}]
+        }
+        set fdtpy [clock format $dtpy -format "%Y-%b-%d"]
+        #  date count
+        set dc [exec jctd $fdtpy]
+        #  date count with commas
+        if { $now > $dtpy } {
+            puts "[format %-55s $l]  $fdtpy  <[format %4s [commify $dc]]>"
+        } else {
+            puts "[format %-55s $l]  $fdtpy  [format %5s [commify $dc]]"
+        }
+    }
+}
