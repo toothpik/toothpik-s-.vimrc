@@ -12,9 +12,12 @@ bin/mxm
 bin/sacalh
 bin/sll2
 bin/snls
+bin/tc
+bin/tcnlc
 bin/weekly
 bin/wiv
 bin/ws
+fcdit.awk
 mofix.sed
 tcl/cw
 txt/filestocheck
