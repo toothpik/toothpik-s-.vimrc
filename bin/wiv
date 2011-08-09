@@ -1,0 +1,3 @@
+#!/bin/bash
+#  weather in vim (so we can highlight the highs)
+v -S ~/.vim/weather.vim -c 'call Makemeweather()' -c 'set hlsearch'
