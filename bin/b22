@@ -1,0 +1,6 @@
+#!/bin/bash
+#echo
+#echo '         battery life as of       ' `date '+%Y-%b-%d'`
+#echo
+fgrep 'Aug-23' ~/txt/batlist | ~/tcl/batlist | sed 's/^/         /'
+echo
