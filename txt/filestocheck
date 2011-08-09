@@ -1,11 +1,13 @@
 .bashrc
 .vim/mmatc.vim
 .vim/snls.vim
-.vim/weekly.vim
+.vim/tocal.vim
 .vim/weather.vim
+.vim/weekly.vim
 bin/cabv
 bin/cfd
 bin/cm1p1
+bin/crt_tocal
 bin/cw
 bin/glaun
 bin/mxm
@@ -14,6 +16,7 @@ bin/sll2
 bin/snls
 bin/tc
 bin/tcnlc
+bin/tocal
 bin/weekly
 bin/wiv
 bin/ws
