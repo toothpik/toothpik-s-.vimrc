@@ -1,0 +1,28 @@
+#!/usr/bin/python
+#
+#  current month, with current day circled, to stdout
+#
+from calendar import setfirstweekday, month
+from string import strip, replace
+from time import strftime, localtime
+import sys
+if len(sys.argv) > 1:
+    los = int(sys.argv[1])
+else:
+    los = 0
+spaces = " " * los
+a_yr = int(strftime("%Y", localtime()))
+a_mo = int(strftime("%m", localtime()))
+setfirstweekday(6)
+tod = strftime("%d",localtime())
+if tod[0] == "0":
+    toda = " " + tod[1] + " "
+else:
+    toda = " " + tod + " "
+sa = []
+for l in month(a_yr, a_mo).splitlines():
+    ts = " " + l + " "
+    if toda in ts:
+        print "%s%-22s" % (spaces, replace(ts, toda, "(" + strip(toda) + ")" ))
+    else:
+        print "%s%-22s" % (spaces, ts)
