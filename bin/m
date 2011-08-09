@@ -1,0 +1,64 @@
+#!/bin/bash
+limit=$((`tput lines` - 1))
+wm=m`date '+%y'`            #  which m
+hm=`$wm | awk -f ~/funclear.awk`
+tm1=`date '+%m'`            #  this month
+tm=${tm1#0} 
+nm=$(($tm + 1))             #  next month
+pm=$(($tm - 1))             #  previous month
+dom=`date '+%d'`            #  day of month
+#  previous month/this month/tail
+function pmtmt() {
+    if [ $pm -lt 1 ]; then
+        pym=m$((`date '+%y'` - 1))
+        {
+            $pym 12
+            $wm 1
+        } | tail -$limit
+    else
+        for m in $pm $tm; do
+            $wm $m
+        done | tail -$limit
+    fi
+}
+#  this month/next month/head
+function tmnmh () {
+    if [ $nm -lt 13 ]; then
+        for m in $tm $nm; do
+            $wm $m
+        done | head -$limit
+    else
+        nym=m$((`date '+%y'` + 1))
+        {
+            $wm 12
+            $nym 1
+        } | head -$limit
+    fi
+}
+#  this month/next month/tail
+function tmnmt () {
+    if [ $nm -lt 13 ]; then
+        for m in $tm $nm; do
+            $wm $m
+        done | tail -$limit
+    else
+        nym=m$((`date '+%y'` + 1))
+        {
+            $wm 12
+            $nym 1
+        } | tail -$limit
+    fi
+}
+if [[ $dom =~ 0[1-9] ]]; then
+    if [[ $hm == "diffmo" ]]; then
+        pmtmt
+    else
+        tmnmh
+    fi
+else
+    if [[ $dom =~ 1[0-7] ]]; then
+        tmnmh
+    else
+        tmnmt
+    fi
+fi
