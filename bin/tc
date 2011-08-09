@@ -1,0 +1,4 @@
+#!/bin/bash
+#  extract of tocal for the command line
+export lc=$((`tput lines` - 2))
+tcnlc
