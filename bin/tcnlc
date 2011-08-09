@@ -1,0 +1,11 @@
+#!/bin/bash
+#  tocal, no linecount
+if [ x$lc == x ]; then
+    echo 'tcnlc cannot function without environment variable "lc"'
+    echo 'defined as a valid/desired line count'
+    echo 'typically that is done with script "tc"'
+    exit 1
+fi
+cb=$(( $lc / 3 ))
+ca=$(( $lc - $cb ))
+awk -f ~/fcdit.awk ~/txt/tocal-t | grep -B$cb -A$ca '  <----<<$'
