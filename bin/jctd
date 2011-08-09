@@ -1,0 +1,65 @@
+#!/usr/bin/python
+#  just count the days
+from datetime import date, timedelta
+from time import strptime
+from sys import argv
+
+def one_date(arglist):
+    try:
+        st1 = strptime(arglist[1], "%Y-%m-%d")
+    except ValueError:
+        try:
+            st1 = strptime(arglist[1], "%Y-%b-%d")
+        except ValueError:
+            usage()
+            return
+    ssd = date(st1.tm_year, st1.tm_mon, st1.tm_mday)
+    std = date.today()
+    if std > ssd:
+        ct = (std - ssd).days
+    else:
+        ct = (ssd - std).days
+    print "%d" % ct
+
+def two_dates(arglist):
+
+    try:
+        st1 = strptime(arglist[1], "%Y-%m-%d")
+        st2 = strptime(arglist[2], "%Y-%m-%d")
+    except ValueError:
+        try:
+            st1 = strptime(arglist[1], "%Y-%b-%d")
+            st2 = strptime(arglist[2], "%Y-%b-%d")
+        except ValueError:
+            usage()
+            return
+        
+    ##  simple start-date:
+    ssd = date(st1.tm_year, st1.tm_mon, st1.tm_mday)
+
+    ##  simple to-date:
+    std = date(st2.tm_year, st2.tm_mon, st2.tm_mday)
+
+    if std > ssd:
+        ct = (std - ssd).days
+    else:
+        ct = (ssd - std).days
+
+    print "%d" % ct
+
+def usage():
+    print " jctd (just count the days) requires one or two dates"
+    print " on the command line"
+    print " format:  YYYY-M-D or YYYY-mmm-d"
+    print " in order to determine the difference"
+
+if __name__ == "__main__":
+   
+    if len(argv) < 3:
+        if len(argv) == 2:
+            one_date(argv)
+        else:
+            usage()
+    else:
+        two_dates(argv)
+
