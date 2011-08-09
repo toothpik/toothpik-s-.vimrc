@@ -1,0 +1,7 @@
+#!/bin/bash
+if (($# == 0))
+then
+    cat ~/txt/plan_2011
+else
+    awk -f ~/plan$1.awk ~/txt/plan_2011
+fi
