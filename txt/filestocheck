@@ -12,9 +12,12 @@ bin/cct
 bin/cfd
 bin/cm1p1
 bin/crt_tocal
+bin/ct0
 bin/cw
 bin/glaun
+bin/jctd
 bin/mxm
+bin/realstuff
 bin/sacalh
 bin/sll2
 bin/snls
@@ -25,8 +28,13 @@ bin/weekly
 bin/wiv
 bin/ws
 fcdit.awk
+incend.awk
 mofix.sed
 py/currmo
+tcl/batlist
+tcl/ct0
 tcl/cw
+txt/batlist
+txt/ct_list
 txt/filestocheck
 txt/weekly
