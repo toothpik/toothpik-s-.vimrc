@@ -3,7 +3,7 @@
 cd ~/toothpik-s-.vimrc
 #  did we do anything?
 dwda=0
-for f in `cat filestocheck`; do
+for f in `cat ~/txt/filestocheck`; do
     fs=(~/$f)
     diff "$fs" "$f"
     if (( $? )); then
