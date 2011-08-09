@@ -2,6 +2,7 @@
 .vim/mmatc.vim
 .vim/snls.vim
 .vim/weekly.vim
+.vim/weather.vim
 bin/cabv
 bin/cfd
 bin/cm1p1
