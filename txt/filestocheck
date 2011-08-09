@@ -5,7 +5,10 @@
 .vim/tocal.vim
 .vim/weather.vim
 .vim/weekly.vim
+bin/b2
+bin/b22
 bin/cabv
+bin/cct
 bin/cfd
 bin/cm1p1
 bin/crt_tocal
