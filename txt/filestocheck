@@ -31,10 +31,10 @@ fcdit.awk
 incend.awk
 mofix.sed
 py/currmo
+realstuff.awk
 tcl/batlist
 tcl/ct0
 tcl/cw
 txt/batlist
-txt/ct_list
 txt/filestocheck
 txt/weekly
