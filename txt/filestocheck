@@ -23,6 +23,7 @@ bin/wiv
 bin/ws
 fcdit.awk
 mofix.sed
+py/currmo
 tcl/cw
 txt/filestocheck
 txt/weekly
