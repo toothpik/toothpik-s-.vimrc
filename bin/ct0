@@ -1,0 +1,2 @@
+#!/bin/bash
+realstuff ~/txt/ct_list | nl -s ')  '
