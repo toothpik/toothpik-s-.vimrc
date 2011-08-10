@@ -1,0 +1,71 @@
+#!/usr/bin/tclsh
+#  plan monthly food totals
+proc usage {} {
+    puts "feed any year's plan through this script (it reads sysin)"
+    puts "to see monthly summaries of food & atm expenditures"
+    puts "eg. m9 | ~/tcl/planmft"
+}
+proc commify {num {sep ,}} {
+    while {[regsub {^([-+]?\d+)(\d\d\d)} $num "\\1$sep\\2" num]} {}
+    return $num
+}
+set bud [exec ~/tcl/foodbud]
+puts "          monthly food & atm budget                               [format %.2f $bud]"
+set data [read stdin]
+set pl [split $data \n]
+set plc [llength $pl]
+if {$plc < 2} {
+    puts "empty input stream"
+    usage
+    return
+}
+set t 0.0
+set gt 0.0
+set mc 0
+set tens [string repeat " " 10]
+for {set i 0} {$i < [expr {$plc - 1}]} {incr i} {
+    set l [lindex $pl $i]
+    set td [string range $l 10 40]
+    if {[string first "_" $td] == 0} {
+        if {$t != 0.0} {
+            set ou [expr {$t - $bud}]
+            set ous [format %10.2f $ou]
+            set ts [string trimleft [format %10.2f $t]]
+            set tswc [commify $ts]
+            puts "${tens}[format %-37s $savemo][format %10s $tswc]     [format %10s $ous]"
+            set gt [expr {$gt + $t}]
+            set t 0.0
+            incr mc
+        }
+        set savemo [lindex [split $td] 0]
+    }
+    if {[string first "Sunfresh" $td] == 0 ||
+        [string first "atm -" $td] == 0 ||
+        [string first "festival" $td] == 0} {
+        set tvals [string trimleft [string range $l 47 56]]
+        set tvnc [string map {, ""} $tvals]
+        set t [expr {$t + [scan $tvnc %f]}]
+    }
+}
+if {$t != 0.0} {
+    set ou [expr {$t - $bud}]
+    set ous [format %10.2f $ou]
+    set ts [string trimleft [format %10.2f $t]]
+    set tswc [commify $ts]
+    puts "${tens}[format %-37s $savemo][format %10s $tswc]     [format %10s $ous]"
+    set gt [expr {$gt + $t}]
+    incr mc
+}
+set totbud [expr {$mc * $bud}]
+set totbuds [format %.2f $totbud]
+set totbudwc [commify $totbuds]
+set gts [format %.2f $gt]
+set gtswc [commify $gts]
+puts "${tens}[format %-37s "grand total:"][format %10s $gtswc][format %15s $totbudwc]"
+set av [expr {$gt / $mc}]
+set avs [format %.2f $av]
+set avswc [commify $avs]
+set tou [expr {$gt - $totbud}]
+set tous [format %.2f $tou]
+set touwc [commify $tous]
+puts "${tens}[format %-37s "average, over/under total:"][format %10s $avswc][format %15s $touwc]"
