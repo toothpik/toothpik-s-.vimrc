@@ -1,0 +1,51 @@
+#!/bin/bash
+clear
+echo
+sl=`tput lines`
+if [ $sl -gt 59 ]; then
+    c=13
+elif [ $sl -gt 55 ]; then
+    c=12
+elif [ $sl -gt 51 ]; then
+    c=11
+elif [ $sl -gt 47 ]; then
+    c=10
+elif [ $sl -gt 43 ]; then
+    c=9
+elif [ $sl -gt 39 ]; then
+    c=8
+elif [ $sl -gt 35 ]; then
+    c=7
+elif [ $sl -gt 31 ]; then
+    c=6
+elif [ $sl -gt 27 ]; then
+    c=5
+elif [ $sl -gt 23 ]; then
+    c=4
+elif [ $sl -gt 19 ]; then
+    c=3
+elif [ $sl -gt 15 ]; then
+    c=2
+elif [ $sl -gt 11 ]; then
+    c=1
+else
+    c=0
+fi
+if [ $c -gt 5 ]; then
+    s=$(($c - 5))
+    m=$(($c + 5))
+else
+    s=$c
+    m=$c
+fi
+Y=$(date '+%Y')
+{
+    echo '    Sun      rise   transit    set'
+    #echo '    Sun      rise                 set'
+    awk -f ~/fcdwd.awk ~/txt/sun_$Y | grep -C$s '<---$'
+    #awk -f ~/fcdwd.awk ~/txt/lod_$Y | grep -C$s '<---$'
+    echo
+    echo '    Moon     rise   transit    set'
+    awk -f ~/fcdwd.awk ~/txt/moon_$Y | grep -C$m '<---$'
+} | sed 's/^/    /'
+echo
