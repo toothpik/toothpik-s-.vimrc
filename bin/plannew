@@ -1,0 +1,52 @@
+#!/bin/bash
+#  make a new plan
+#  for the nonce, most likely for 2012
+#  in fact we will want to remove ~/perl/mmcounts after we
+#  have created the final plan_2012
+#  or update it to fix only jan-jul for 2013, THEN we can
+#  remove it for 2014 and beyond
+cd ~/txt
+if [ $# -lt 1 ]; then
+    YR=$((`date '+%Y'` + 1))
+else
+    YR=$1
+fi
+PR=$(($YR - 1))
+#  last balance from previous year
+lb1=`tail -2 ~/txt/plan_$PR | head -1 | cut -c61-71`
+{
+    printf "%13s %56s\n" "bbf" $lb1
+    printf "%10s%s\n" "+-" "------------------------------------+"
+    printf "%10s%s\n" "| " "may the force be with you           |"
+    printf "%10s%s\n" "| " "as of 2011-May-30 this script was   |"
+    printf "%10s%s\n" "| " "producing a credible plan for $YR  |"
+    printf "%10s%s\n" "| " "                                    |"
+    printf "%10s%s\n" "| " "including:                          |"
+    printf "%10s%s\n" "| " "                                    |"
+    printf "%10s%s\n" "| " "   - bbf from previous year         |"
+    printf "%10s%s\n" "| " "   - core bills (,d)                |"
+    printf "%10s%s\n" "| " "   - core bills other (,dd)         |"
+    printf "%10s%s\n" "| " "   - SocSec receipts every 3rd Wed  |"
+    printf "%10s%s\n" "| " "   - MassMutual payments numbered   |"
+    printf "%10s%s\n" "| " "   - December taxes, Nov ins, AAA   |"
+    printf "%10s%s\n" "| " "   - ADT payments                   |"
+    printf "%10s%s\n" "| " "   - vehicle registration           |"
+    printf "%10s%s\n" "| " "      (raney or road star)          |"
+    printf "%10s%s\n" "| " "   - UPS store box renewal          |"
+    printf "%10s%s\n" "| " "   - dashes between months          |"
+    printf "%10s%s\n" "| " "   - this gorgeous message          |"
+    printf "%10s%s\n" "| " "                                    |"
+    printf "%10s%s\n" "| " "please check it                     |"
+    printf "%10s%s\n" "| " "                                    |"
+    printf "%10s%s\n" "| " "there is no guarantee expressed or  |"
+    printf "%10s%s\n" "| " "implied indicating an accurate      |"
+    printf "%10s%s\n" "| " "plan                                |"
+    printf "%10s%s\n" "| " "                                    |"
+    printf "%10s%s\n" "| " "                                    |"
+    printf "%10s%s\n" "| " "                                    |"
+    printf "%10s%s\n" "| " "                                    |"
+    printf "%10s%s\n" "+-" "------------------------------------+"
+    #   the plan      with social security, updated MM counts,   december taxes,       ADT,            vehicle regs           UPS store          dashes
+    ~/tcl/plannew $YR | ~/py/planss $YR | ~/perl/mmcounts $YR | ~/perl/dectaxes | ~/perl/adt $YR | ~/perl/vehicleregs $YR | ~/perl/ups $YR | ~/py/plandsh
+    #                    and a balance column
+} | g -S ~/.vim/plan.vim -c 'call BalCol()' -
