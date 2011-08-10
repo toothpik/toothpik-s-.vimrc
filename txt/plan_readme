@@ -1,0 +1,23 @@
+2010-Jan-11 18:40
+
+to create a new plan first edit txt/plan_core with 'noexpandtab' --
+there are 3 fields per line separated with tab characters
+field 1:  the day of month the transaction is expected to be dealt with
+field 2:  the description of the transaction
+field 3:  the amount of the transaction
+
+~/tcl/plannew was written to read plan_core and generate a new
+plan -- it requires a year on the commandline, so
+
+    ~/tcl$ ./plannew 2011
+
+will print a new plan for 2011 on stdout -- redirect it to a file
+when you are happy with how it looks
+
+2010-Jan-15 15:17
+there is now a txt/plan_core_other documenting the semis, quarterlies
+and yearlies
+
+and tcl/plannew has been enhanced to start months on the 23rd of the
+preceding month
+
