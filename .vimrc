@@ -329,6 +329,7 @@ nnoremap <silent> <Leader>vv :source ~/.vim/plan.vim<CR>
 nnoremap <Leader>y :source ~/.vim/i_ctr.vim<CR>
 nnoremap <Leader>yy :e ~/.vim/i_ctr.vim<CR>
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
+nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
 " }}}
 " --- functions {{{ 
 function! Acdmo()
