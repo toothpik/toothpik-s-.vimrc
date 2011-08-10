@@ -1,0 +1,14 @@
+the plan modules have a very specific format with column numbers
+assigned for fields that cannot stray -- the 1-based column numbers
+for each field are described below
+
+ field   colnos   desc
+  1       1-5     date transaction created
+  2       7-9     type (u = usbank trans, dc = debit card, a = automatic, nnn = checkno)
+  3       11-40   description -- for more room create a note entry
+  4       42-43   requested clear date for usbank trans
+  5       45-46   actual clear date
+  6       48-57   trans amount -- income shows as negative
+  7       60      past or future -- 'x' means past, blank means future
+  8       62-70   balance amount
+          72 and beyond can be used for reconciliation amount and date
