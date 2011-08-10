@@ -1,6 +1,7 @@
 .bashrc
 .vim/fcd.vim
 .vim/mmatc.vim
+.vim/plan.vim
 .vim/snls.vim
 .vim/tocal.vim
 .vim/weather.vim
@@ -15,6 +16,7 @@ bin/crt_tocal
 bin/ct0
 bin/cw
 bin/glaun
+bin/gp
 bin/jctd
 bin/m
 bin/m11
@@ -52,4 +54,5 @@ tcl/ct0
 tcl/cw
 txt/batlist
 txt/filestocheck
+txt/plan_format
 txt/weekly
