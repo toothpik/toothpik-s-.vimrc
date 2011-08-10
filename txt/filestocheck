@@ -52,6 +52,9 @@ realstuff.awk
 tcl/batlist
 tcl/ct0
 tcl/cw
+tcl/planbal
+tcl/planfood
+tcl/planrecon
 txt/batlist
 txt/filestocheck
 txt/plan_format
