@@ -1,0 +1,60 @@
+#!/usr/bin/tclsh
+#  balance column fixer for the text plan
+#  for editing ~/txt/plan_{year}, currently mapped to <Leader>b
+#  will read from stdin so it can be used as a filter
+proc usage {} {
+    puts "run planbal from within a vim session on plan_{year} as"
+    puts "    :%!~/tcl/planbal"
+    return
+}
+proc commify {num {sep ,}} {
+    while {[regsub {^([-+]?\d+)(\d\d\d)} $num "\\1$sep\\2" num]} {}
+    return $num
+}
+set data [read stdin]
+#  plan lines
+set pl [split $data \n]
+set lc [llength $pl]
+if { $lc < 2 } {
+    puts "empty input stream"
+    usage
+    return
+}
+set bal 0.0
+for {set i 0} {$i < [expr {$lc - 1}]} { incr i} {
+    set l [lindex $pl $i]
+    if { $i == 0 } {
+        set begbals [string trimleft [string range $l 61 69]]
+        set bbnc [string map {, ""} $begbals]
+        set bal [scan $bbnc %f]
+        puts $l
+        continue
+    }
+    set tvals [string trimleft [string range $l 47 56]]
+    if { [string compare $tvals "----------"] == 0 } {
+        puts $l
+    } else {
+        if { [string compare $tvals ""] == 0 } {
+            set tval 0.0
+        } else {
+            #  transaction value, no commas
+            set tvnc [string map {, ""} $tvals]
+            set tval [scan $tvnc %f]
+        }
+        #  new balance
+        set nbal [expr {$bal - $tval}]
+        set nbals [string trimleft [format "%8.2f" $nbal]]
+        #  balance for next iteration
+        set bal $nbal
+        set nbalwc [commify $nbals]
+        set nl [string range $l 0 60]
+        set nll [string length $nl]
+        if { $nll < 61 } {
+            set nms [expr {61 - $nll}]
+            append nl [string repeat " " $nms]
+        }
+        append nl [format "%9s" $nbalwc]
+        append nl [string range $l 70 end]
+        puts $nl
+    }
+}
