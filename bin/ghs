@@ -1,0 +1,3 @@
+#!/bin/bash
+#  hidden vim for use with sysin
+g -c 'call Hideme()' $@ -
