@@ -8,4 +8,4 @@ if [ x$lc == x ]; then
 fi
 cb=$(( $lc / 3 ))
 ca=$(( $lc - $cb ))
-awk -f ~/fcdit.awk ~/txt/tocal-t | grep -B$cb -A$ca '  <----<<$'
+awk -f ~/fcdit.awk ~/txt/tocal | grep -B$cb -A$ca '  <----<<$'
