@@ -18,6 +18,7 @@ bin/cw
 bin/ghs
 bin/glaun
 bin/gp
+bin/hbev
 bin/jctd
 bin/lfy
 bin/m
@@ -54,6 +55,8 @@ plan9.awk
 py/currmo
 py/plandsh
 realstuff.awk
+sae.awk
+sbl.awk
 tcl/batlist
 tcl/ct0
 tcl/cw
