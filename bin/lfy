@@ -5,16 +5,19 @@ chop($ty);
 $py = $ty - 1;
 $tm = `date '+%m'`;
 chop($tm);
+int($tm);
 
 $pyp = "m" . $py;
-$typ = "m" . $ty;
 
-for ($m = int($tm); $m < 13; $m++) {
+foreach $m ($tm .. 12) {
     $cypher = `$pyp $m`;
     print $cypher;
 }
 
-for ($m = 1; $m < int($tm); $m++) {
-    $cypher = `$typ $m`;
-    print $cypher;
+if ($tm > 1) {
+    $typ = "m" . $ty;
+    foreach $m (1 .. $tm - 1) {
+        $cypher = `$typ $m`;
+        print $cypher;
+    }
 }
