@@ -1,0 +1,8 @@
+#!/bin/bash
+#  last fiscal year
+for m in `seq 8 12`; do
+    m10 $m
+done
+for m in `seq 7`; do
+    m11 $m
+done
