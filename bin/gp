@@ -1,0 +1,9 @@
+#!/bin/bash
+#  open text plan in gvim
+cd ~/txt
+if [ $# -eq 0 ]; then
+    Y=`date '+%Y'`
+else
+    Y=$1
+fi
+g -S ~/.vim/plan.vim -c 'call GoLastX()' ~/txt/plan_${Y} 
