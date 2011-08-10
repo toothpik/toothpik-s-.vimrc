@@ -1,0 +1,48 @@
+#!/usr/bin/tclsh
+#  text plan food & atm budget recalculator
+#  for editing ~/txt/plan_{year}, currently mapped to <Leader>f
+#  reads from stdin so it can be used as a filter
+proc usage {} {
+    puts "run planfood from within a vim session on plan_{year} as"
+    puts "    :{range}!~/tcl/planfood"
+    puts "where {range} is for the month to be recalculated"
+    puts "and you will want to call BalCol() after filtering with planfood"
+    return
+}
+proc commify {num {sep ,}} {
+    while {[regsub {^([-+]?\d+)(\d\d\d)} $num "\\1$sep\\2" num]} {}
+    return $num
+}
+set data [read stdin]
+#  plan lines
+set pl [split $data \n]
+set lc [llength $pl]
+if { $lc < 2 } {
+    puts "empty input stream"
+    usage
+    return
+}
+set budget [exec foodbud]
+set last [expr {$lc - 2}]
+for {set i 0} {$i < [expr {$lc - 1}]} { incr i} {
+    set l [lindex $pl $i]
+    #  test description
+    set td [string range $l 10 40]
+    if {[string first "Sunfresh" $td] == 0 ||
+        [string first "atm" $td] == 0 ||
+        [string first "festival" $td] == 0 } {
+        set tvals [string trimleft [string range $l 47 56]]
+        set tvnc [string map {, ""} $tvals]
+        set budget [expr {$budget - [scan $tvnc %f]}]
+        puts "$l"
+    } else {
+        if { $i == $last } {
+            set nl [string range $l 0 46]
+            set nbuds [string trimleft [format "%10.2f" $budget]]
+            set nbudswc [commify $nbuds]
+            puts "$nl[format "%10s" $nbudswc]"
+        } else {
+            puts $l
+        }
+    }
+}
