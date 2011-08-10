@@ -1,0 +1,14 @@
+#!/usr/bin/python
+#  dashes for plannew
+from sys import stdin
+import re
+m = re.compile(" _")
+d = "-" * 71
+for line in stdin:
+    l = line.rstrip()
+    if m.search(l):
+        print d
+        print l
+    else:
+        print l
+print d
