@@ -1,0 +1,65 @@
+#!/usr/bin/tclsh
+#  text plan reconciler
+#  for editing ~/txt/plan_{year}, currently mapped to \r
+#  will read from stdin so it can be used as a filter
+proc usage {} {
+    puts "run planrecon from within a vim session on plan_{year} as"
+    puts "    :{range}!~/tcl/planrecon"
+    puts "where {range} is from the first unclear to the last clear"
+    return
+}
+proc commify {num {sep ,}} {
+    while {[regsub {^([-+]?\d+)(\d\d\d)} $num "\\1$sep\\2" num]} {}
+    return $num
+}
+set data [read stdin]
+#  plan lines
+set pl [split $data \n]
+set lc [llength $pl]
+if { $lc < 2 } {
+    puts "empty input stream"
+    usage
+    return
+}
+set bal 0.0
+set last [expr {$lc - 2}]
+for {set i 0} {$i < [expr {$lc - 1}]} { incr i} {
+    set l [lindex $pl $i]
+    set tr [string range $l 45 45]
+    if {[string compare $tr " "] == 0} {
+        puts $l
+        set tvals [string trimleft [string range $l 47 56]]
+        if {[string compare $tvals ""] != 0} {
+            set tvnc [string map {, ""} $tvals]
+            set bal [expr {$bal + [scan $tvnc %f]}]
+        }
+    } else {
+        if { $i == $last } {
+            set begbals [string trimleft [string range $l 61 69]]
+            set bbnc [string map {, ""} $begbals]
+            set bal [expr {$bal + [scan $bbnc %f]}]
+            set nl [string range $l 0 69]
+            set nbals [string trimleft [format "%8.2f" $bal]]
+            set nbalwc [commify $nbals]
+            set now [clock seconds]
+            set m [clock format $now -format "%m"]
+            set m1 [string range $m 0 0]
+            if {[string compare $m1 "0"] == 0} {
+                set ds [string range $m 1 1]
+            } else {
+                set ds $m
+            }
+            append ds "/"
+            set d [clock format $now -format "%d"]
+            set d1 [string range $d 0 0]
+            if {[string compare $d1 "0"] == 0} {
+                append ds [string range $d 1 1]
+            } else {
+                append ds $d
+            }
+            puts "$nl[format "%10s" $nbalwc][format "%6s" $ds]"
+        } else {
+            puts $l
+        }
+    }
+}
