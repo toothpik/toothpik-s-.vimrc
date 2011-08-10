@@ -1,8 +1,20 @@
-#!/bin/bash
+#!/usr/bin/perl
 #  last fiscal year
-for m in `seq 8 12`; do
-    m10 $m
-done
-for m in `seq 7`; do
-    m11 $m
-done
+$ty = `date '+%y'`;
+chop($ty);
+$py = $ty - 1;
+$tm = `date '+%m'`;
+chop($tm);
+
+$pyp = "m" . $py;
+$typ = "m" . $ty;
+
+for ($m = int($tm); $m < 13; $m++) {
+    $cypher = `$pyp $m`;
+    print $cypher;
+}
+
+for ($m = 1; $m < int($tm); $m++) {
+    $cypher = `$typ $m`;
+    print $cypher;
+}
