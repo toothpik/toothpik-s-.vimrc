@@ -1,0 +1,67 @@
+#!/usr/bin/tclsh
+#  new text plan maker
+#  for creating ~/txt/plan_{newyear}
+proc usage {} {
+    puts "run plannew from the commandline with {newyear} as arg1"
+    puts "normally invoked by ~/bin/plannew"
+    return
+}
+proc commify {num {sep ,}} {
+    while {[regsub {^([-+]?\d+)(\d\d\d)} $num "\\1$sep\\2" num]} {}
+    return $num
+}
+if { $argc < 1 } {
+    puts "plannew requires a year input on the commandline"
+    puts "no argument received"
+    usage
+    return
+}
+set year [lindex $argv 0]
+#  month name strings
+set monms [list "_January" "_February" "_March" "_April" "_May" "_June" "_July" "_August" "_September" "_October" "_November" "_December"]
+#  core bills
+set cb [open "~/txt/plan_core" r]
+set cbdata [read $cb]
+#  core bill lines
+set cbl [split $cbdata \n]
+close $cb
+#  number core bills
+set ncb [expr [llength $cbl] - 1]
+for {set m 0} {$m < 12} {incr m} {
+    #  month out
+    set mono [expr {$m + 1}]
+    if {$m == 0} {
+        set mono1 12
+    } else {
+        set mono1 $m
+    }
+    #  month string
+    set monos [format "%2s" $mono1]
+    #  print month (header)
+    set pm [lindex $monms $m]
+    puts "$monos/23     $pm $year"
+    for {set c 0} {$c < $ncb} {incr c} {
+        set l [lindex $cbl $c]
+        set ll [split $l \t]
+        #  end [of] date
+        set ed [lindex $ll 0]
+        set ted [scan $ed %d]
+        if {$ted > 22} {
+            #  print date -- starts on 23rd of previous month
+            set pd [expr {$mono - 1}]
+            if {$pd == 0} {
+                set pd 12
+            }
+        } else {
+            set pd $mono
+        }
+        append pd "/"
+        append pd $ed
+        set pdesc [lindex $ll 1]
+        #  transaction value
+        set tval [lindex $ll 2]
+        set tvals [string trimleft [format "%8.2f" $tval]]
+        set tvalwc [commify $tvals]
+        puts "[format "%5s" $pd]     [format "%-36s" $pdesc][format "%11s" $tvalwc]"
+    }
+}
