@@ -6,6 +6,7 @@
 .vim/tocal.vim
 .vim/weather.vim
 .vim/weekly.vim
+balamt.awk
 bin/b2
 bin/b22
 bin/cabv
@@ -20,9 +21,11 @@ bin/glaun
 bin/gp
 bin/hbev
 bin/jctd
+bin/lastx
 bin/lfy
 bin/m
 bin/m11
+bin/m2
 bin/mft
 bin/mxm
 bin/plannew
@@ -30,13 +33,16 @@ bin/realstuff
 bin/sacalh
 bin/sll2
 bin/snls
+bin/solve
 bin/tc
 bin/tcnlc
 bin/tocal
 bin/tsm
+bin/uclro
 bin/weekly
 bin/wiv
 bin/ws
+ciaa.awk
 fcdit.awk
 fcdwd.awk
 funclear.awk
@@ -59,6 +65,7 @@ py/plandsh
 realstuff.awk
 sae.awk
 sbl.awk
+sumlwq.awk
 tcl/batlist
 tcl/ct0
 tcl/cw
@@ -71,3 +78,4 @@ txt/filestocheck
 txt/plan_format
 txt/plan_readme
 txt/weekly
+uclearo.awk
