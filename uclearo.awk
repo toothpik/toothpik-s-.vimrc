@@ -12,14 +12,6 @@
 #                      1 2  3 4 5  6 7  8  9 10 
 BEGIN { FIELDWIDTHS = "6 4 31 3 3 11 3 10 10 6" 
         stillx = 1 }
-function commas(x, num) {
-   if (x < 0)
-      return "-" commas(-x)
-   num = x
-   while (num ~ /[0-9][0-9][0-9][0-9]/)
-      sub(/[0-9][0-9][0-9]($|[,.])/, ",&", num)
-   return num
-}
 {
     type = $2
     clear = $5
