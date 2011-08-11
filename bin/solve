@@ -1,0 +1,6 @@
+#!/bin/bash
+bc << EOF
+scale=7
+$@
+quit
+EOF
