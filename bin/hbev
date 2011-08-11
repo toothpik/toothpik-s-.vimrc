@@ -1,6 +1,4 @@
 #!/bin/bash
 #  head before equal on visaCharges
-{
-    awk -f ~/sae.awk ~/txt/visaCharges
-    grep -A1 '^=======' ~/txt/visaCharges | head -2
-} | awk -f ~/sbl.awk
+awk -f ~/sae.awk ~/txt/visaCharges
+grep -A1 '^=======' ~/txt/visaCharges | head -2
