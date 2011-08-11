@@ -1,0 +1,10 @@
+#!/bin/bash
+#  unclear only
+echo "                      << unclear >>"
+sp=${HOME}'/txt/plan_20'
+if [[ $# -eq 0 ]]; then
+    ptc=$sp`date '+%y'`
+else
+    ptc=$sp$1
+fi
+cat $ptc | awk -f ~/uclearo.awk
