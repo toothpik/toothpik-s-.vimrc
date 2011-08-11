@@ -47,6 +47,7 @@ fcdit.awk
 fcdwd.awk
 funclear.awk
 incend.awk
+lastx.awk
 mofix.sed
 plan1.sed
 plan10.sed
