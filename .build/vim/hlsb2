@@ -1,0 +1,5 @@
+#!/bin/bash
+hlsb
+ee 63 | sed 's/^/   /'
+echo
+dbu
