@@ -1,0 +1,22 @@
+#!/bin/bash
+#  how long since last [empty] t?
+yr=`date '+%Y'`
+cd ~/.build/vim
+{
+    echo "the last empty t[est for incoming] was"
+    lt=$(grep "^$yr" spare-incoming.log | tail -1 | cut -c1-17)
+    etolns "$lt" "$(dds)"
+    echo "ago"
+    echo
+    tlt=$(itsmt "$lt")
+    if [ "$tlt" = "LT" ]; then
+        thflt=$(jatt "10:00" "$lt")
+        echo "the next authorized t will be"
+        etolns "$(dds)" "$thflt"
+        echo "from now"
+    else
+        echo ""
+        echo "you are now authorized to do the next t"
+        echo ""
+    fi
+} | sed 's/^/   /'
