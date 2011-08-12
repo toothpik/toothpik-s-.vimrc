@@ -24,7 +24,9 @@ sae.awk
 sbl.awk
 sumlwq.awk
 uclearo.awk
+.build/vim/hlsb
 .build/vim/hlsb2
+.build/vim/t
 .vim/fcd.vim
 .vim/mmatc.vim
 .vim/plan.vim
