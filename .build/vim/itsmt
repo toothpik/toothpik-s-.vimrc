@@ -1,0 +1,30 @@
+#!/usr/bin/tclsh
+#  is this string more than 10 hours in the past?
+proc usage {} {
+    puts "itsmt was written for hlslt"
+    puts "to determine whether the (required) input date-time"
+    puts "is more than 10 hours in the past"
+    return
+}
+if {$argc == 0} {
+    puts "zero arguments supplied"
+    usage
+    return
+}
+if {$argc == 2} {
+    set ts "[lindex $argv 0] [lindex $argv 1]"
+} else {
+    set ts [lindex $argv 0]
+}
+if [catch {clock scan $ts -format "%Y-%b-%d %H:%M"} t1] {
+    puts "cannot parse $ts as a date-time"
+    usage
+    return
+}
+set tn [clock seconds]
+set diff [expr {$tn - $t1}]
+if {$diff < 36000} {
+    puts "LT"
+} else {
+    puts "GToE"
+}
