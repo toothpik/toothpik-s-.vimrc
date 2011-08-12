@@ -26,7 +26,13 @@ sumlwq.awk
 uclearo.awk
 .build/vim/hlsb
 .build/vim/hlsb2
+.build/vim/hlsld
+.build/vim/hlslt
 .build/vim/t
+.build/vim/tfu
+.build/vim/u
+.build/vim/u2
+.build/vim/u3
 .vim/fcd.vim
 .vim/mmatc.vim
 .vim/plan.vim
@@ -37,6 +43,7 @@ uclearo.awk
 bin/Readme
 bin/b2
 bin/b22
+bin/ca
 bin/cabv
 bin/cct
 bin/cfd
@@ -46,6 +53,7 @@ bin/crdme
 bin/crt_tocal
 bin/ct0
 bin/cw
+bin/ee
 bin/ghs
 bin/glaun
 bin/gp
