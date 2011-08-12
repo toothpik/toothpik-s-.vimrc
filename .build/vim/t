@@ -1,0 +1,24 @@
+#!/bin/bash
+#  test incoming for data or not, write to appropriate log
+TMPFILE=$(mktemp -t testincoming.XXXXXXXX) || exit 1
+cd ~/.build/vim/vim
+date '+%Y-%b-%d %H:%M' | tee -a $TMPFILE
+hg incoming 2>&1       | tee -a $TMPFILE
+dsh 40                    >>    $TMPFILE
+grep -q '^abort' $TMPFILE
+if [ $? -eq 0 ]; then
+    cat $TMPFILE >> ../abort.log
+    rm $TMPFILE
+    exit 0
+fi
+grep -q '^no changes found' $TMPFILE
+if [ $? -eq 0 ]; then
+    cat $TMPFILE >> ../spare-incoming.log
+else
+    cat $TMPFILE >> ../incoming.log
+    grep -q 'runtime/doc/tags' $TMPFILE
+    if [ $? -eq 0 ] ; then
+        echo 'TAGS ALERT -- BEEP BEEP BEEP -- TAGS ALERT'
+    fi
+fi
+rm $TMPFILE
