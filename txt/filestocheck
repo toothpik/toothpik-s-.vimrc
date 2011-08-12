@@ -53,7 +53,14 @@ bin/crdme
 bin/crt_tocal
 bin/ct0
 bin/cw
+bin/dds
+bin/dsh
+bin/jatt
+.build/vim/itsmt
+.build/vim/cs
+.build/vim/daysb
 bin/ee
+bin/etolns
 bin/ghs
 bin/glaun
 bin/gp
