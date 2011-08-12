@@ -1,0 +1,4 @@
+#!/bin/bash
+#  changeset
+cd ~/.build/vim/vim
+hg heads | awk -f ../lft.awk
