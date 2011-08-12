@@ -1,0 +1,30 @@
+#!/usr/bin/tclsh
+#  exptime no seconds
+#  express (seconds) time ($1) in english
+#  used by ~/txt/f/wow2, et, etol
+#  and countless others
+set tm [lindex $argv 0]
+set DY [expr {24 * 60 * 60}]
+set HR [expr {60 * 60}]
+set MN 60
+if {$tm >= $DY} {
+    set dy [expr {$tm / $DY}]
+    set hr [expr {($tm - $dy * $DY) / $HR}]
+    set mn [expr {($tm - $dy * $DY - $hr * $HR) / $MN}]
+    if { $dy < 10 } { set dy " $dy" }
+    if { $hr < 10 } { set hr " $hr" }
+    if { $mn < 10 } { set mn " $mn" }
+    puts "$dy dy $hr hr $mn mn"
+} else {
+    if {$tm >= $HR} {
+        set hr [expr {$tm / $HR}]
+        set mn [expr {($tm - $hr * $HR) / $MN}]
+        if { $hr < 10 } { set hr " $hr" }
+        if { $mn < 10 } { set mn " $mn" }
+        puts "      $hr hr $mn mn"
+    } else {
+        set mn [expr {$tm / $MN}]
+        if { $mn < 10 } { set mn " $mn" }
+        puts "            $mn mn"
+    }
+}
