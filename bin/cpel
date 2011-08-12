@@ -1,0 +1,5 @@
+#!/bin/bash
+pwd | sed -f ~/fhp2.sed
+echo
+lc=$((`tput lines` - 3))
+ls -AgGtl --color=always $@ 2>&1 | grep -v '^total ' | head -$lc
