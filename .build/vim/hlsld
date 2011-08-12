@@ -1,0 +1,10 @@
+#!/bin/bash
+#  how long since the last data hit?
+cd ~/.build/vim
+yr=`date '+%Y'`
+ldh=$(grep "^$yr" incoming.log | tail -1 | cut -c1-17)
+{
+    echo "it's been"
+    etolns "$ldh"
+    echo "since the last update"
+} | sed 's/^/   /'
