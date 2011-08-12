@@ -1,0 +1,19 @@
+#!/bin/bash
+#  u3
+echo 'you will want to tail -f the update.log'
+echo 'in case there are queries from mercurial'
+read -p 'ok to proceed? (y/n) ' answer
+if [ $answer != 'y' ]; then
+    exit 0
+fi
+cd ~/.build/vim/vim
+dt=`date '+%Y-%b-%d %H:%M'`
+echo $dt >> ../update.log
+if [ $# -eq 0 ]; then
+    echo "about to hg commit" >> ../update.log
+    hg commit -m "$dt -- updates from bram" 2>&1 >> ../update.log
+else
+    echo "about to hg commit $@" >> ../update.log
+    hg commit "$@" 2>&1 >> ../update.log
+fi
+dsh >> ../update.log
