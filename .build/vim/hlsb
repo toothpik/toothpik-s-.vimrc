@@ -1,0 +1,12 @@
+#!/bin/bash
+#  how long since both
+cd ~/.build/vim
+date '+%S'
+echo
+echo '   how long since both'
+echo
+hlslt
+ee 63 | sed 's/^/   /'
+echo
+hlsld
+echo
