@@ -93,6 +93,7 @@ py/plandsh
 tcl/batlist
 tcl/ct0
 tcl/cw
+tcl/exptimens
 tcl/planbal
 tcl/planfood
 tcl/plannew
