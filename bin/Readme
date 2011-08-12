@@ -1,0 +1,347 @@
+ac             start AssaultCube
+adfh           all downhill from here - extract from high
+af             tail screenful of American Funds
+ai             edit current ai module in gvim
+aiv            edit current ai module in vim
+allawk         edit all awk
+alltimes       print all 1,440 times converted to percentage
+alltimess      open txt/alltimes in gvim converted to percentage
+aos            age of sog
+aost2          age of sog twitch II
+ascal          automatic scale
+b2             txt recalculation of txt/batlist
+b22            b2 for specific batteries
+bdd            bash date difference
+bike           cat txt/bike_rides_{year}
+bkup           rsync ~ to usb storage device
+bkupd          rsync backup that includes the --delete option
+bothcals       call up longcal and tocal in same window
+bscal          backwards scale
+c              clear
+c2f            centigrade to farenheit
+ca             cla *.awk
+cabv           check and backup .vimrc
+calc           yet another calculator -- 5 decimal accuracy
+cb             count backwards
+ccc            clear, checkpath
+ccl            cat channel lineup
+cct            cat the ct output through ~/tcl/ct
+cctv           countdown list for television
+cd0            explain all the other cdds
+cfd            check for differences [in web site modules]
+cfs            check for [vim] swap [files]           
+checkpath      echo and verify $PATH
+chiefs         txt/chiefs through awk to show chiefs
+chiefsp        txt/chiefs through awk to show chiefs preseason
+chktm          similar to vt:  another method to check on ntpd
+chktmwl        chktm with logging
+cj             check januarys (diff januarys in plan_2010 & plan_2011)
+cla            clear; ls -A
+clat           clear; ls -At
+clawn          cat lawn_{year} with statistics
+cll            cat lighter log for current lighter or $1
+clla           cat all lighter logs through less
+cllc           cat current lighter log
+clnup          delete .tfile and .allfiles
+cm1p1          current month minus 1 plus 1
+cmm            cat txt/mass_mutual
+cntrs          just the important counters, fed to a hidden gvim
+cobv           check .vimrc against backup
+commify        perl commifier
+core           open plan_core in gvim
+counters       exercise most special case counter modules
+cpel           clear;pwd;echo;ls -Alt | head
+cpo            cat plan over under w summary
+crdme          check Readme against 'ls'
+crt_longcal    create longcal years
+crt_tocal      create tocal years
+ct             cat txt/timeline
+ct0            realstuff ct_list
+ctdl           count dash lines - use to print 227th entry
+ctdll          count dash lines and report
+ctdn           count down to/from {date}
+ctdn0          quick help for ctdns
+ctdn2          count down from {date} to {date2}
+ctdn3          count down {count} days from/to today
+ctdn4          count down {count} days from {date}
+ctdn5          count down {count} days to {date}
+ctdnwm         countdown with message
+cttc           countdown using tocal
+cttc2          run cttc for aug 5 u-verse install
+curpmo         current plan month
+currmo         current month with today "circled"
+cvisa          cat txt/visaCharges to konsole
+cvisa2         visaCharges through less
+cw             clear, weather
+cwl            whole cw through less
+dddf           2007-Dec-24
+ddds           2007-09-07
+dds            2009-Oct-03 12:20
+ddsd           Jun  1
+ddss           2009-Oct-03 12:19 Sat
+deckoil        days since 2007-11-9
+dict           an attempt to get word definitions
+dltv           diff last two vimrc backups
+dm             calculate projected demise for $1 lighter
+dow            days off work
+dptlb          diff plan to last backup
+ds             demise summary
+dsh            echos however many dashes you want ($1)
+dslh           days since last haircut
+dttm           05 Aug 2007  01:53  Sun
+dttms          Oct 17
+dtts           20080723 (same as ddds in vim)
+dttz           2007-Aug-05  01:54 central standard time\n2007-Aug-05  06:54 zulu
+dwoc           days without cat
+dxclock        run xclock in digital mode
+e              lister of email addresses
+eaa            edit all awk
+ee             repeat $1 '='s
+et             elapsed time
+etol           same as et but output takes only one line
+etolns         same as etol but won't print seconds
+ets            elapsed time calculator
+every          print every [1-4] {weekday} of {year}
+exptime        express $1 (seconds) as days/hours/minutes
+f2c            farenheit to centigrade
+foodbud        display current food budget amount
+fourclocks     start 4 xclocks in 4 time zones
+g              lazy man's gvim (3 less keystrokes!)
+gcabv          check and backup .gvimrc
+gchiefs        open txt/chiefs in gvim
+gct            open ct module in gvim
+gcy            open current year calendar in gvim
+gf             open an .allfiles module in [g]vim
+gft            open mallfiles in gvim, sorted on time
+gg             g, with a +
+ghs            gvim, hidden buffer, reads sysin
+gl             open log in gvim
+glaun          open txt/laundry.log in gvim
+glawn          open current lawn log in gvim
+gli            open txt/l in gvim
+glib           open the library_list and showbooks in gvim
+gll            open lighter log in gvim
+glod           open current length of day module in gvim
+glse           open executable list in gvim
+glset          open list of executables sorted on time in gvim
+glvc           get latest visa charges
+gm12           open latest plan_2012 in gvim
+gm2            open bin/m2 in gvim (with txt/automating_m)
+gmm            open txt/mass_mutual in gvim
+gn             open $@ in gvim with numbers
+gnl            grep not links
+gp             open txt/plan_{year} in gvim
+gplannew       open ~/bin/plannew and supporting modules in gvim
+gpo            open txt/playoffs in gvim
+gpp            open plan_2010 and plan_2011 in gvim
+graney         open txt/ranger/ranger_mpg & friends in gvim
+grc            open .reminders in gvim
+grs            open roadstar in gvim
+gsm            open sun and moon modules in gvim
+gta            open almanac in gvim
+gtl            open txt/timeline in gvim
+gvc            open src/version.c in gvim
+gvimrc         open ~/.vimrc in gvim
+gvl            open .build/vim/version.log in gvim
+gvmo           open txt/moon_{year} in gvim
+hadp           convert times HH:MM as decimal percentage
+hbe            head before equal
+hbev           head before equal for visaCharges
+hml            how many lines (ask seq!)
+hois           how old is stubbie
+hsf            head screen full
+incoming       cat txt/incoming
+inst           instructions
+jatc           just add the count [to $2]
+jatdt          just add the date/time
+jatt           just add the time [to datetime]
+jctd           just count the days -- ctdn2 clone
+jlta           just list the awk
+k2m            kilometers to miles
+kop            ken onion packrat
+kotb           kershaw ken onion tactical blur
+lastc          last cleared line in plan
+lastx          last 'x' line in plan
+lfy            last fiscal year
+libhrs         show hours the library is open
+linst          lighter log instructions
+llav           obtain average lighter gas net weight
+llave          average empty weight of normal bic lighter
+locd           length of current day
+lod            length of daylight
+lodmm          length of day display with minimum and maximum
+lodv           open txt/lod_{year} in vim
+logs           open logs in oocalc
+longcal        edit txt/longcal
+lookymt        print relevant lines from moon_table_wsp
+lsd            list directories only
+lse            list executables
+lsenv          list executables, no vim
+lset           list executables sorted on time
+lsl            list links only
+lst            list 10 (or $1) most recent files
+lstd           list today's files only
+ltn            letters to numbers phone number converter
+lty            last three years [of m]
+ltyiv          last three years in vim
+lubk           look at latest usbank picture
+m              working plan(s)
+m10            an 'm' for 2010
+m11            an 'm' for 2011
+m12            yes we're to that point already
+m2             shows current month + all unclear usbank transactions
+m2004          plan 2004 to stdout
+m3             shows december 2010 and january 2011
+m5             plan 2005 to stdout
+m6             plan 2006 to stdout
+m6m            make six more [konsole tabs in the current konsole]
+m7             plan 2007 to stdout
+m8             plan 2008 to stdout
+m9             plan 2009 to stdout
+ma             make almanac (astrolabe)
+mcdl           link to real 'make countdown list' on py
+mch            display midnight commander help
+mdlt           vim on diff of last two saved plans
+mf             this month's 'm'
+mft            monthly food table -- filter for plans
+minst          instructions on making a new plan
+mls            my ls
+mm             mass mutual payments
+mml            tail screenful of MML
+mo             moon only
+mo3            mo, start and end automated
+mpb            copy plan_{year} to txt/save/plan_{year}_{date}
+mpp            fancier moon phase shower
+mppp           fanciest moon phase shower
+mxc            start xclock
+mxcd           start small digital xclock
+mxm            make $1 more konsole tabs, start the naming at $2
+myage          look for arrow in howoldami
+mytime         nice day time, used occasionally for PS1
+nff            next furnace filter due date
+notes          open plan notes in gvim
+p              extract phone.odt to commandline
+p3cy           print three column year
+phone          open phone modules in oowriter
+pil            plan in less
+plannew        create a new plan
+playoffs       cat relevant part of txt/playoffs
+pnb            print non-blank lines -- a filter
+po             clear;cm1p1;playoffs
+pswd           open txt/pswd
+ptcy           print two column year
+pyenv          environment as seen by python
+r              print today's reminders
+r13            print from retirement xml
+r133           fancified r13
+raney          shortcut to ranger
+raneya         print raney's age
+raneym         display ranger_maint in less
+raneyt         print raney's trips page
+ranger         display screen of ranger stats
+rc             print reminder calender, + weeks
+rcf            fancier form of rc
+rcfna          run check for new all
+rcfnb          run check for new bufexplorer
+rcfnbg         check for new buffergrep
+rcfnbi         run check for new biogoo
+rcfnc          run check for new csapprox
+rcfnn          run cfnn (check for new netrw) (with logging)
+realstuff      filter
+recenti        recent installs
+retire         open retirement modules in gvim
+retireto       retire, "too often"
+retirev        open retirement modules in vim
+roadstar       open road_star in oocalc
+rpc            formatted fancy [remind] calender (rcf)
+rpmhogs.pl     find all packages and sort by size
+rpmsize.pl     called by rpmhogs
+rrmpd          ranger recent miles per day
+rs             roadstar
+rsa            roadstar age
+rsm            roadstar maint to stdout
+rst            roadstar trips to stdout
+rtv            call remind on .tv
+ruvimrc        run upload vimrc
+rvtf           run vt forever
+rwf            run whatever forever
+rwfnc          run whatever forever, no clear
+s_date         2010-01-06 (used for filtering in lstd)
+sacal          stand-alone calendar
+sacalh         longer still (three months) stand-alone calendar, horizontal
+sacall         longer (two months) stand-alone calendar
+sacalll        longer still (three months) stand-alone calendar
+sacaly         whole year standalone calendar (4 columns)
+sacaly2        whole year standalone calendar (3 columns)
+sb             see when library books are due
+scal           write a scale to sysout like vim's
+silly          aptly named
+sll            show laundry log
+sll2           show laundry log, for snls (abbreviated)
+snls           show new laundry schedule
+solve          run equations through bc with 7 decimals
+statm          print last saved date for $1
+sumall         sum filter
+sun            display sun data
+sxc            start xdaliclock
+ta             throw away - use for whatever strikes your fancy at the time
+tad            tail after [last] dash [line]
+tae            tail after equal
+tai            tail of ai [last entry]
+tb             tail screenful of both MML & American Funds
+tc             tocal for shells
+tc2            catted tocal with today bracketed
+tc3            tocal with timeline
+tcc            tocal with calendar
+tcnlc          tocal, no linecount (roll your own)
+tcnlc2         the grep builder and awk driver for tc2         
+tcw            tocal with week
+tester         run something 100 times
+tl             timeline
+tm             this month
+tm2            another way of looking at This Month
+tocal          open txt/tocal in gvim
+tocalv         open txt/tocal in vim
+todo           open txt/todo in gvim
+todoo          realstuff txt/todo 
+tsf            tail screenful
+tsm            the sun and moon
+ttt            date '+%H:%M:%S'
+tv             cat txt/tv
+uclro          unclear [plan transactions] only
+ups            echo store hours and fee expiration
+usbank         open txt/usbank in gvim
+useful         open txt/useful in gvim
+v              link to vim
+vc             filter for visa charges
+vccl           edit channel lineup extractor modules
+vf             open mallfiles in vim
+vft            open mallfiles in vim, sorted on time
+vhs            vim, hidden buffer, reads sysin
+vimrc          open ~/.vimrc in vim
+visa           open visaCharges in gvim and a firefox on Chase
+vl             open log (current directory) in vim
+vll            open lighter log in vim
+vlod           open length of day module (lod) in vim
+vls            open current dir in vim
+vlst           open ls -lt in vim
+vm2            open m2 in vim
+vmm            open txt/mass_mutual in vim
+vn             open $@ in vim with numbers on
+vp             open txt/plan_{year} in vim
+vraney         open txt/ranger/ranger_mpg & friends in vim
+vt             verify time [is being set]
+vv             vim with a +
+vvl            open version log in vim
+vvmo           open txt/moon_{Y} in vim
+want           realstuff txt/want
+wdatln         what's different about the latest netrw
+weekly         open txt/weekly
+widecal        open wider format calendar
+wiv            open tcl/cw (the whole weather) in vim
+wk             weekly for shells
+wkly           worker script for wk
+ws             start weekly and sacalh only
+wsg            start weekly, sacalh and gli in one whoop
+wwa            bash string manipulation
+zbscal         zero based scal
