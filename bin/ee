@@ -1,0 +1,7 @@
+#!/usr/bin/tclsh
+if { $argc < 1 } {
+    set l 60
+} else {
+    set l [lindex $argv 0]
+}
+puts [string repeat "=" $l]
