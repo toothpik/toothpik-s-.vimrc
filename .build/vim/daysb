@@ -1,0 +1,41 @@
+#!/usr/bin/tclsh
+#  days between updates -- used by 'dbu'
+proc usage {} {
+    puts "this script was designed for use by 'dbu'"
+    return
+}
+set data [read stdin]
+set dl [split $data \n]
+set dll [expr [llength $dl] - 1]
+if { $dll < 2 } {
+    puts "no lines input"
+    usage
+    return
+}
+proc scandate { dt } {
+    if [catch {clock scan $dt -format "%Y-%b-%d"} d1] {
+        puts "cannot parse $dt as date"
+        return ""
+    }
+    return $d1
+}
+global avb
+set avb 0
+for {set i 0} {$i < $dll} { incr i} {
+    set l [lindex $dl $i]
+    global date0
+    set date1 [scandate $l]
+    if { $i == 0 } {
+        set date0 $date1
+        puts $l
+    } else {
+        set diff [expr { ($date1 - $date0) / 86400 }]
+        set diffdisp [format "%2d" $diff]
+        puts "$l  $diffdisp"
+        set avb [expr {$avb + $diff}]
+        set date0 $date1
+    }
+}
+incr dll -1
+set av [expr {$avb / double($dll)}]
+puts "average days between updates [format "%.1f" $av]"
