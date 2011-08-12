@@ -1,0 +1,18 @@
+#!/bin/bash
+#  u2
+echo 'you will want to tail -f the update log'
+echo 'in case you need to respond to a query'
+read -p 'ok to proceed? (y/n) ' answer
+if [ $answer != 'y' ]; then
+    exit 0
+fi
+cd ~/.build/vim/vim
+date '+%Y-%b-%d %H:%M' 2>&1 >> ../update.log
+if test $# -lt 1 ; then
+    mt=`cs`
+else
+    mt=$1
+fi
+echo "about to hg merge $mt" >> ../update.log
+hg merge $mt 2>&1            >> ../update.log
+dsh                          >> ../update.log
