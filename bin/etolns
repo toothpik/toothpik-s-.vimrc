@@ -1,0 +1,63 @@
+#!/usr/bin/tclsh
+#  elapsed time, output all on one line, no seconds
+proc usage {} {
+    puts "etolns requires one or two input datetime strings"
+    puts "in the format '%Y-%b-%d %H:%M'"
+    puts "or '%Y-%m-%d %H:%M'"
+    puts "if two valid datetimes are provided, etolns will report"
+    puts "the time elapsed between them"
+    puts "if only one such string is provided"
+    puts "etolns will calculate the difference between that time and now"
+}
+if { $argc == 2} {
+    if [catch {clock scan [lindex $argv 0] -format "%Y-%b-%d %H:%M"} t1] {
+        if [catch {clock scan [lindex $argv 0] -format "%Y-%m-%d %H:%M"} t1] {
+            if [catch {clock scan [lindex $argv 0] -format "%Y-%b-%d %H:%M:%S"} t1] {
+                puts "$t1"
+                puts "cannot parse [lindex $argv 0]"
+                usage
+                return
+            }
+        }
+    }
+    if [catch {clock scan [lindex $argv 1] -format "%Y-%b-%d %H:%M"} t2] {
+        if [catch {clock scan [lindex $argv 1] -format "%Y-%m-%d %H:%M"} t2] {
+            if [catch {clock scan [lindex $argv 1] -format "%Y-%b-%d %H:%M:%S"} t2] {
+                puts "$t2"
+                puts "cannot parse [lindex $argv 1]"
+                usage
+                return
+            }
+        }
+    }
+} else {
+    if {$argc == 1} {
+        if [catch {clock scan [lindex $argv 0] -format "%Y-%b-%d %H:%M"} t1] {
+            if [catch {clock scan [lindex $argv 0] -format "%Y-%m-%d %H:%M"} t1] {
+                if [catch {clock scan [lindex $argv 0] -format "%Y-%b-%d %H:%M:%S"} t1] {
+                    puts "$t1"
+                    puts "cannot parse [lindex $argv 0]"
+                    usage
+                    return
+                }
+            }
+        }
+        set t2a [clock seconds]
+        set t2b [clock format $t2a -format "%Y-%b-%d %H:%M"]
+        set t2 [clock scan $t2b -format "%Y-%b-%d %H:%M"]
+    } else {
+        puts "$argc arguments provided:  $argv"
+        usage
+        return
+    }
+}
+if {$t1 > $t2} {
+    set tmp $t1
+    set t1 $t2
+    set t2 $tmp
+}
+set d [expr {$t2 - $t1}]
+set pretty_d [exec ~/tcl/exptimens $d]
+set disp1 [clock format $t1 -format "%Y-%b-%d %H:%M"]
+set disp2 [clock format $t2 -format "%Y-%b-%d %H:%M"]
+puts "$disp1  to  $disp2  is  $pretty_d"
