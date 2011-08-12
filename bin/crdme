@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+TMPNM=$(mktemp /tmp/crdme.XXXXXXXX) || exit
+TMPNM2=$(mktemp /tmp/crdme.XXXXXXXX) || exit
+awk '{print $1}' Readme > $TMPNM
+find . -maxdepth 1 -executable | grep -v '^\.$' | sed 's/^\.\///' | sort > $TMPNM2
+diff $TMPNM $TMPNM2 | grep '^[<>]'
+rm $TMPNM
+rm $TMPNM2
