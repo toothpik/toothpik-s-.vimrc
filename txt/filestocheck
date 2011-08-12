@@ -32,6 +32,7 @@ uclearo.awk
 .build/vim/hlsld
 .build/vim/hlslt
 .build/vim/itsmt
+.build/vim/lft.awk
 .build/vim/t
 .build/vim/tfu
 .build/vim/u
