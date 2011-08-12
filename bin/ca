@@ -1,0 +1,4 @@
+#!/bin/bash
+ls -A *.awk
+echo
+ls -A *.sed
