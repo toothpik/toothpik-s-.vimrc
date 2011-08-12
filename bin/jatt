@@ -1,0 +1,36 @@
+#!/usr/bin/tclsh
+#  just add the time [to date/time]
+proc usage {} {
+    puts " jatt (just add the time) requires a time and a from-datetime"
+    puts " time format:  HH:MM"
+    puts " datetime format:  'YYYY-M-D H:M' or 'YYYY-mmm-d H:M'"
+    puts " in order to determine the new datetime"
+    puts " if no datetime is supplied current will be used"
+}
+if {$argc == 2} {
+    set hr [scan [string range [lindex $argv 0] 0 1] %d]
+    set mn [scan [string range [lindex $argv 0] 3 4] %d]
+    #  seconds to add:
+    set sta [expr {$hr * 3600 + $mn * 60}]
+    if [catch {clock scan [lindex $argv 1] -format "%Y-%b-%d %H:%M"} dt] {
+        if [catch {clock scan [lindex $argv 1] -format "%Y-%m-%d %H:%M"} dt] {
+            puts "$dt"
+            puts "cannot parse [lindex $argv 1] as datetime"
+            usage
+            return
+        }
+    }
+} else {
+    if {$argc == 1} {
+        set hr [scan [string range [lindex $argv 0] 0 1] %d]
+        set mn [scan [string range [lindex $argv 0] 3 4] %d]
+        set sta [expr {$hr * 3600 + $mn * 60}]
+        set dt [clock seconds]
+    } else {
+        puts "$argc arguments supplied:  $argv"
+        usage
+        return
+    }
+}
+incr dt $sta
+puts [clock format $dt -format "%Y-%b-%d %H:%M"]
