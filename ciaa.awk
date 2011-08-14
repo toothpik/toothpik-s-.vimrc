@@ -1,7 +1,4 @@
-#  ciaa.awk
-#
 #  commas in all arguments
-#
 function commas(x, num) {
    if (x < 0)
       return "-" commas(-x)
