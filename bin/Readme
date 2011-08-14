@@ -15,6 +15,7 @@ bdd            bash date difference
 bike           cat txt/bike_rides_{year}
 bkup           rsync ~ to usb storage device
 bkupd          rsync backup that includes the --delete option
+bmm            biggest mml
 bothcals       call up longcal and tocal in same window
 bscal          backwards scale
 c              clear
@@ -53,6 +54,7 @@ counters       exercise most special case counter modules
 cpel           clear;pwd;echo;ls -Alt | head
 cpo            cat plan over under w summary
 crdme          check Readme against 'ls'
+crdmeh         check Readme on ~
 crt_longcal    create longcal years
 crt_tocal      create tocal years
 ct             cat txt/timeline
