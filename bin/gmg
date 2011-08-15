@@ -1,0 +1,4 @@
+#!/bin/bash
+#  get me going
+cd ~/toothpik.github.com
+g -c 'setl number' -c 'source ~/.vim/html_lets' -c 'badd ~/txt/filestocheck' index.html
