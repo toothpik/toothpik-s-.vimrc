@@ -1,0 +1,26 @@
+
+let @a = '<a href=""></a>'
+let @b = '<br>'
+let @c = '<!-- -->'
+let @g = '&gt;'
+let @h = 'https://github.com/toothpik/toothpik-s-.vimrc/blob/master/'
+let @l = '&lt;'
+let @p = '<pre></pre>'
+let @q = '&quot;'
+
+let mapleader = ','
+nnoremap <Leader>f :e ~/txt/filestocheck<CR>
+nnoremap <Leader>s :call Sortp()<CR>
+
+"  Sortp is for txt/filestocheck -- i want all files in ~ first,
+"  then all files on subdirectories -- this accomplishes that
+function! Sortp()
+    sort
+    let @z = ""
+    g/\//d Z
+    normal G
+    normal "zp
+    g/^$/d
+endfunction
+
+"  vim:ft=vim
