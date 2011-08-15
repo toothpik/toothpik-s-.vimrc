@@ -70,6 +70,7 @@ bin/ee
 bin/etolns
 bin/ghs
 bin/glaun
+bin/gn
 bin/gp
 bin/hbev
 bin/jatt
