@@ -106,6 +106,8 @@ ets            elapsed time calculator
 every          print every [1-4] {weekday} of {year}
 exptime        express $1 (seconds) as days/hours/minutes
 f2c            farenheit to centigrade
+fbt            find biggest total (in r13)
+findi          find income (in plan)
 foodbud        display current food budget amount
 fourclocks     start 4 xclocks in 4 time zones
 g              lazy man's gvim (3 less keystrokes!)
