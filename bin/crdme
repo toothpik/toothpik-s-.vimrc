@@ -1,5 +1,10 @@
 #!/bin/bash
-#
+#  check Readme for undocumented executables
+twd=$(pwd)
+if [[ $twd == $HOME ]]; then
+    crdmeh
+    exit 0
+fi
 TMPNM=$(mktemp /tmp/crdme.XXXXXXXX) || exit
 TMPNM2=$(mktemp /tmp/crdme.XXXXXXXX) || exit
 awk '{print $1}' Readme > $TMPNM
