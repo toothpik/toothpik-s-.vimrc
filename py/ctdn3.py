@@ -43,7 +43,7 @@ def counter_only(arglist):
             print "%4d)  %s" % (c, sd.strftime(outf))
         else:
             print "%3d)  %s" % (c, sd.strftime(outf))
-        c = c - 1
+        c -= 1
         sd += day
 
 def usage():
