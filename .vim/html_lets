@@ -16,11 +16,13 @@ nnoremap <Leader>s :call Sortp()<CR>
 "  then all files on subdirectories -- this accomplishes that
 function! Sortp()
     sort
+    let save_z = @z
     let @z = ""
     g/\//d Z
     normal G
     normal "zp
     g/^$/d
+    let @z = save_z
 endfunction
 
 "  vim:ft=vim
