@@ -1,5 +1,6 @@
 #!/bin/bash
-cd ~/.build/vim/vim
+PATH=~/bin:$PATH
+cd /home/$(gmn)/.build/vim/vim
 date '+%Y-%b-%d %H:%M' >> ../install.log
 make install 2>&1 | tee -a ../install.log
 echo '------------------------------------------------------------' >> ../install.log
