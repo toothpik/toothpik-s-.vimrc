@@ -92,6 +92,11 @@ bin/uclro
 bin/weekly
 bin/wiv
 bin/ws
+py/ctdn.py
+py/ctdn2.py
+py/ctdn3.py
+py/ctdn4.py
+py/ctdn5.py
 py/currmo
 py/plandsh
 tcl/batlist
