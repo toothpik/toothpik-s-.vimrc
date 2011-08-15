@@ -1,6 +1,7 @@
 .bashrc
 balamt.awk
 ciaa.awk
+fcda.awk
 fcdit.awk
 fcdwd.awk
 funclear.awk
@@ -58,6 +59,7 @@ bin/cfd
 bin/cm1p1
 bin/cpel
 bin/crdme
+bin/crdmeh
 bin/crt_tocal
 bin/ct0
 bin/cw
@@ -88,6 +90,7 @@ bin/tc
 bin/tcnlc
 bin/tocal
 bin/tsm
+bin/tv
 bin/uclro
 bin/weekly
 bin/wiv
