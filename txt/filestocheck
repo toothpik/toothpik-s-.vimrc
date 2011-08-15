@@ -44,6 +44,7 @@ uclearo.awk
 .build/vim/u2
 .build/vim/u3
 .vim/fcd.vim
+.vim/html_lets
 .vim/mmatc.vim
 .vim/plan.vim
 .vim/snls.vim
