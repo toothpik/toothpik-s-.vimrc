@@ -1,0 +1,124 @@
+actct0.awk          add count to ct0
+adrbk.awk           name & e-addy extractor for ldif files
+amo2.awk            automate mo2 (moon highlight extractor)
+avglw.awk           average last word
+avltst.awk          average less than 17.05 -- used by 'llave'
+balamt.awk          balance amount from plan line
+bdcit.awk           bracket current date in tocal - formerly used by tc2
+bot1.awk            99 bottles of beer on the wall...
+bot2.awk            99 bottles of beer on the wall...
+bot3.awk            99 bottles of beer on the wall...
+bt.awk              bracket today - used by tm2
+case.awk            case blog
+cblas.awk           count blank lines and stop
+ciaa.awk            commas in all arguments
+cila.awk            commas in last argument
+cs.awk              Chiefs score
+csp.awk             Chiefs preseason + score
+csv_parser.awk      csv parser
+ctdl.awk            count dash lines
+ctdll.awk           count dash lines
+cwl.awk             count wins and losses
+dict.awk            stop and go example
+diff0.awk           diff the weights in lighter log
+diff1.awk           diff the weights in lighter log
+diffa.awk           diff the weights in lighter log
+diffc.awk           diff the weights in lighter log
+diffp.awk           diff the weights in lighter log
+fba.awk             find biggest amfunds
+fbm.awk             find biggest mml - used by bmm
+fbt.awk             find biggest total
+fcd.awk             flag current date  <---
+fcd2.awk            flag 2nd current date
+fcd3.awk            flag current date  <----<<
+fcda.awk            flag current weekday %A
+fcday.awk           flag current weekday %a
+fcdit.awk           flag current date in tocal
+fcdwc.awk           flag current date with case
+fcdwd.awk           flag current date with dash
+fcm.awk             flag current year-month
+fcmy.awk            flag current year-month with case
+ffa.awk             flag first argument - used by ctk
+fi.awk              find income - used by findi
+frili.awk           add dashes after /Fri/
+frili2.awk          add more dashes after /Fri/
+ftlo.awk            First Title Line Only
+funclear.awk        first unclear [in plan_{year}]
+fwday.awk           flag weekday (%A)
+gtnfct.awk          grab the number from countdown
+incend.awk          increasing-end.awk is designed for use with 'cct'
+lastx.awk           last 'x' plan transaction line
+lclear.awk          last clear plan transaction line
+lod.awk             length of day
+moon.awk            grab moon events from cronus.py
+mt.awk              create a moon table from cronus.py
+p678.awk            print $6, $7, $8
+pa.awk              print arrow
+parsecsv.awk        absolutely no idea
+plan1.awk           deprecated january selector
+plan10.awk          deprecated october selector
+plan11.awk          deprecated november selector
+plan12.awk          deprecated december selector
+plan2.awk           deprecated february selector
+plan3.awk           deprecated march selector
+plan4.awk           deprecated april selector
+plan5.awk           deprecated may selector
+plan6.awk           deprecated june selector
+plan7.awk           deprecated july selector
+plan8.awk           deprecated august selector
+plan9.awk           deprecated september selector
+plandsh.awk         deprecated dash adder for plans
+prtsppd.awk         print [current year's] sprint paydates
+prtweat.awk         print weather -- pipe ~/.allweat through this script
+prtweat_so.awk      save old print weather
+r2i.awk             something weird
+realstuff.awk       print whatever's between realstuff and endrealstuff
+reelstuff.awk       another way to do the same thing
+sa.awk              start at $sa
+sae.awk             stop at equal
+sag.awk             start and go - requires start and pc
+sas.awk             start and stop - requires sh and st
+sbl.awk             suppress blank lines
+setcsv.awk          csv parser tool
+smbl.awk            suppress multiple blank lines
+sp.awk              define yr and cat txt/sprint_paydates through this (?)
+sph.awk             stop here - requires sp
+ssa.awk             Start Stop Alternative
+stdvcf.awk          deprecated vcf extractor
+sth.awk             start here - requires gn
+stst.awk            start here stop here, requires sp & sh
+sum8.awk            sum 8th arg -- assumes you want two decimals
+sum9.awk            sum 9th arg -- assumes you want two decimals
+sumlw.awk           sum last word -- assumes you want two decimals
+sumlwq.awk          sum last word QUIETLY -- used by 'm2'
+sumt.awk            sum plan trans amount
+sun.awk             extract sun table from cronus.py
+thisyear.awk        deprecated extractor for tocal
+thisyeart.awk       test depreated extractor for tocal
+tm.awk              extract "this month" from tocal
+tw.awk              transform w (???)
+twyg.awk            total what you gimmie (plan trans amounts)
+uclearo.awk         unclear only
+visa.awk            deprecated visaCharges display
+visa2.awk           deprecated visaCharges display
+vpm.awk             Variable Pattern Matching
+vslw.awk            deprecated sum last word in visa module (114 character printline)
+wpia1.awk           what percentage is $1 of 120?  written for ~/bin/cmm
+
+commify.sed         works to add commas, more trouble than it's worth
+fhp.sed             fix home path
+fhp2.sed            fix home path at beginning
+mo40.sed            move over 40
+mofix.sed           fix "month yyyy" to "  month  "
+plan1.sed           the new january for m
+plan10.sed          the new october for m
+plan11.sed          the new november for m
+plan12.sed          the new december for m
+plan2.sed           the new february for m
+plan3.sed           the new march for m
+plan4.sed           the new april for m
+plan5.sed           the new may for m
+plan6.sed           the new june for m
+plan7.sed           the new july for m
+plan8.sed           the new august for m
+plan9.sed           the new september for m
