@@ -1,0 +1,2 @@
+#!/bin/bash
+realstuff ~/txt/tv | awk -f ~/fcda.awk
