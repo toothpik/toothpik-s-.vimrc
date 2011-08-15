@@ -7,7 +7,6 @@ function commas(x, num) {
       sub(/[0-9][0-9][0-9]($|[,.])/, ",&", num)
    return num
 }
-
 {  for (i = 1; i < NF+1; i = i + 1)
       printf "%s", commas($i)
    printf "\n"
