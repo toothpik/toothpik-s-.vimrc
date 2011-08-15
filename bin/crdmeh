@@ -1,0 +1,12 @@
+#!/bin/bash
+#  check awk and sed on ~
+TMPNM=$(mktemp /tmp/crdme.XXXXXXXX) || exit
+TMPNM2=$(mktemp /tmp/crdme.XXXXXXXX) || exit
+cd ~
+awk '{print $1}' Readme > $TMPNM
+find . -maxdepth 1 -name '*.awk' | sed 's@^\./@@' | sort > $TMPNM2
+echo "" >> $TMPNM2
+find . -maxdepth 1 -name '*.sed' | sed 's@^\./@@' | sort >> $TMPNM2
+diff $TMPNM $TMPNM2 | grep '^[<>]'
+rm $TMPNM
+rm $TMPNM2
