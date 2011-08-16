@@ -131,7 +131,9 @@ glset          open list of executables sorted on time in gvim
 glvc           get latest visa charges
 gm12           open latest plan_2012 in gvim
 gm2            open bin/m2 in gvim (with txt/automating_m)
+gmg            get me going [editing index.html]
 gmm            open txt/mass_mutual in gvim
+gmn            get my name
 gn             open $@ in gvim with numbers
 gnl            grep not links
 gp             open txt/plan_{year} in gvim
