@@ -11,6 +11,7 @@ bot3.awk            99 bottles of beer on the wall...
 bt.awk              bracket today - used by tm2
 case.awk            case blog
 cblas.awk           count blank lines and stop
+cfm.awk             current fiscal month
 ciaa.awk            commas in all arguments
 cila.awk            commas in last argument
 cs.awk              Chiefs score
