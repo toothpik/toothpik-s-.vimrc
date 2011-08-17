@@ -1,9 +1,10 @@
 #!/usr/bin/perl
 #  last fiscal year
+#  or, more accurately, last year's worth of fiscally completed months
 $ty = `date '+%y'`;
 chop($ty);
 $py = $ty - 1;
-$tm = `date '+%m'`;
+$tm = `cfm`;
 chop($tm);
 int($tm);
 
