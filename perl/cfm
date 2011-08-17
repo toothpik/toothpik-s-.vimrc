@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+#  current fiscal month -- for use by lfy
+open(DAT, '-');
+while ($fms = <DAT>) {
+    chop($fms);
+    $fm = $fms + 1;
+    if ($fm == 13) { $fm = 1; }
+    print "$fm\n";
+}
+close(DAT);
