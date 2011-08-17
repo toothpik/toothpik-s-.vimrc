@@ -282,6 +282,7 @@ sacaly2        whole year standalone calendar (3 columns)
 sb             see when library books are due
 scal           write a scale to sysout like vim's
 silly          aptly named
+sk             start [first] konsole
 sll            show laundry log
 sll2           show laundry log, for snls (abbreviated)
 snls           show new laundry schedule
