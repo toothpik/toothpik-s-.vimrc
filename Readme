@@ -108,6 +108,7 @@ wpia1.awk           what percentage is $1 of 120?  written for ~/bin/cmm
 commify.sed         works to add commas, more trouble than it's worth
 fhp.sed             fix home path
 fhp2.sed            fix home path at beginning
+fhp3.sed            fix as many home paths as there are
 mo40.sed            move over 40
 mofix.sed           fix "month yyyy" to "  month  "
 plan1.sed           the new january for m
