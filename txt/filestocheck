@@ -1,6 +1,7 @@
 .bashrc
 Readme
 balamt.awk
+cfm.awk
 ciaa.awk
 fcda.awk
 fcdit.awk
@@ -58,6 +59,7 @@ bin/ca
 bin/cabv
 bin/cct
 bin/cfd
+bin/cfm
 bin/cm1p1
 bin/cpel
 bin/crdme
@@ -99,6 +101,7 @@ bin/uclro
 bin/weekly
 bin/wiv
 bin/ws
+perl/cfm
 py/ctdn.py
 py/ctdn2.py
 py/ctdn3.py
