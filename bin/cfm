@@ -1,0 +1,4 @@
+#!/bin/bash
+#  current fiscal month - for use by lfy
+yr=`date '+%y'`
+m$yr | awk -f ~/cfm.awk | awk 'BEGIN { FS = "/" } { print $1 }' | sed 's/^ //' | ~/perl/cfm
