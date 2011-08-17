@@ -86,6 +86,7 @@ bin/mxm
 bin/plannew
 bin/realstuff
 bin/sacalh
+bin/sk
 bin/sll2
 bin/snls
 bin/solve
