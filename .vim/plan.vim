@@ -29,8 +29,8 @@ nmap <buffer> <Leader>x :call GoLastX()<CR>
 " ------------------------------------------------------------
 iabbr <buffer> dd <c-r>=Fivedate()<CR><c-r>=Eatchar('\s')<CR>
 " ------------------------------------------------------------
-let @a = "dc  atm - gladstone"
-let @s = "dc  Sunfresh #107"
+let @a = "atm - gladstone"
+let @s = "Sunfresh #107"
 " ------------------------------------------------------------
 set cursorline
 " ------------------------------------------------------------
