@@ -1,8 +1,5 @@
 #  current fiscal month
 #  for use by lfy
-#  pre-process deleting the dash lines, for example
-#      m10 | grep -v '^-----' | awk -f ~/fi.awk
-#  to find all income in 2010
 #   1) date
 #   2) type
 #   3) desc
