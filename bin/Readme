@@ -37,7 +37,6 @@ chiefs         txt/chiefs through awk to show chiefs
 chiefsp        txt/chiefs through awk to show chiefs preseason
 chktm          similar to vt:  another method to check on ntpd
 chktmwl        chktm with logging
-cj             check januarys (diff januarys in plan_2010 & plan_2011)
 cla            clear; ls -A
 clat           clear; ls -At
 clawn          cat lawn_{year} with statistics
