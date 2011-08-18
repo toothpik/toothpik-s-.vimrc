@@ -11,7 +11,7 @@ done
 diff -q ~/.vimrc $lb
 if !(( $? ))
 then
-    echo "no difference between ~/.vimrc and $lb" | sed -f ~/fhp.sed
+    echo "no difference between ~/.vimrc and $lb" | sed 's@/home/'$USER'@~@'
     exit 0
 fi
 diff ~/.vimrc $lb
