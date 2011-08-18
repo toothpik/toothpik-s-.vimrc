@@ -16,13 +16,9 @@ nmap <buffer> <Leader>f :call AdjustFoodBudget()<CR>
 nmap <buffer> <Leader>l :source ~/.vim/plan.vim<CR>
 nmap <buffer> <Leader>lu :call system("lubk")<CR>
 nmap <buffer> <Leader>n :e ~/txt/plan_notes\|normal G<CR>
-nmap <buffer> <Leader>nn :split ~/txt/plan_2010\|source ~/.vim/plan.vim\|call search('_December 2010')<CR>
-"nmap <buffer> <Leader>o :e ~/txt/plan_over_under<CR>
 nmap <buffer> <Leader>p :call SyncWNextYear()<CR>
-nmap <buffer> <Leader>pp :call EditTry("~/txt/plan_2010")<CR>
 nmap <buffer> <Leader>r :call Reconcile()<CR>
 nmap <buffer> <Leader>s :call SyncWLastYear()<CR>
-nmap <buffer> <Leader>ss :call SyncJanuarys()<CR>
 nmap <buffer> <Leader>uu :call GoFirstUnclear()<CR>
 nmap <buffer> <Leader>u :e ~/txt/usbank<CR>
 nmap <buffer> <Leader>x :call GoLastX()<CR>
@@ -78,45 +74,35 @@ function! GoLastX()
     normal 0
 endfunction
 
+"  thoughts on the january transition:
+"  when we get there, ie, after we've started fiscal january and there
+"  are still unclear transactions in december of the previous year,
+"  we will be in a better position to look for a trigger -- the dilemma
+"  is it would be inefficient to ALWAYS check previous year for unclear
+"  trans -- so we need a trigger
+"
+"  hmmm -- testing shows uclro run on a previous year with no unclear
+"  trans comes back so fast it looks like a response to Enter -- 
+"  maybe when we get there we add code to check, see how it goes,
+"  maybe look for a trigger, maybe just leave it in
+"
+"  fly in the ointment:  uclro/sumlwq.awk return an empty string
+"  when run against a year with no unclear trans
+"
+"  after we get a good trigger, uclro and sumlwq.awk are ready for
+"  deployment
+"
 function! Reconcile()
     let sv = winsaveview()
     call GoFirstUnclear()
     let starthere = line(".")
     call GoLastClear()
     let dohere = line(".")
-    if (starthere < dohere)
-        execute starthere . "," . dohere . "!~/tcl/planrecon"
-    else
+    if (starthere > dohere)
         let starthere = dohere
-        execute starthere . "," . dohere . "!~/tcl/planrecon"
     endif
+    execute starthere . "," . dohere . "!~/tcl/planrecon"
     call winrestview(sv)
-endfunction
-
-function! SyncJanuarys()
-    if filereadable(".t1")
-        call system("rm .t1")
-    endif
-    if filereadable(".t2")
-        call system("rm .t2")
-    endif
-    edit plan_2010
-    normal gg
-    call search("_January 2011")
-    let starthere = line(".")
-    call search("food & atm")
-    let endhere = line(".")
-    execute starthere","endhere"w .t1"
-    edit plan_2011
-    normal gg
-    call search("_January 2011")
-    let starthere = line(".")
-    call search("food & atm")
-    let endhere = line(".")
-    execute starthere","endhere"w .t2"
-    new
-    call Hideme()
-    r!diff .t1 .t2
 endfunction
 
 function! SyncWLastYear()
@@ -135,7 +121,7 @@ function! SyncWLastYear()
     call BalCol()
 endfunction
 
-"  propagate forward
+"  propagate forward -- mapped to <Leader>p last time i looked
 function! SyncWNextYear()
     let ty = expand("%")[5:8]     "  this year
     let ny = ty + 1               "  next year
