@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "                      << unclear >>"
 uclro
 uc=`uclro | sed 's/,//' | awk -f ~/sumlwq.awk`
 bal=`lastx | awk -f ~/balamt.awk`
