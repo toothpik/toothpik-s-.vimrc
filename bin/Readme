@@ -55,6 +55,7 @@ cpel           clear;pwd;echo;ls -Alt | head
 cpo            cat plan over under w summary
 crdme          check Readme against 'ls'
 crdmeh         check Readme on ~
+crdmev         verify *.vim on ~/.vim
 crt_longcal    create longcal years
 crt_tocal      create tocal years
 ct             cat txt/timeline
@@ -111,6 +112,7 @@ findi          find income (in plan)
 foodbud        display current food budget amount
 fourclocks     start 4 xclocks in 4 time zones
 g              lazy man's gvim (3 less keystrokes!)
+gca            open Readme on ~ (awk and sed)
 gcabv          check and backup .gvimrc
 gchiefs        open txt/chiefs in gvim
 gct            open ct module in gvim
