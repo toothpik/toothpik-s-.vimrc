@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "`ddss`   `pwd | sed 's_^/home/'$USER'_~_'`"
+echo "`ddss`   `pwd | sed 's@^/home/'$USER'@~@'`"
 echo
 lc=$((`tput lines` - 3))
 ls -AgGtl --color=always $@ 2>&1 | grep -v '^total ' | head -$lc
