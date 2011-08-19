@@ -1,6 +1,4 @@
 
-"set lines=8
-"set columns=25
 winsize 25 8
 winpos 0 17
 set cursorline
