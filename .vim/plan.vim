@@ -138,6 +138,7 @@ function! SyncWNextYear()
     execute "edit " . nyn
     call setline(1, twnfl)
     call BalCol()
+    source ~/.vim/plan.vim
 endfunction
 
 function! ToggleColorColumn()
