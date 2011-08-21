@@ -3,4 +3,6 @@
 clear
 echo
 date '+         countdown list as of      %Y-%b-%d'
+echo
 ct0 | ~/tcl/ct0 | awk -f ~/incend.awk
+echo
