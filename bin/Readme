@@ -54,8 +54,6 @@ counters       exercise most special case counter modules
 cpel           clear;pwd;echo;ls -Alt | head
 cpo            cat plan over under w summary
 crdme          check Readme against 'ls'
-crdmeh         check Readme on ~
-crdmev         verify *.vim on ~/.vim
 crt_longcal    create longcal years
 crt_tocal      create tocal years
 ct             cat txt/timeline
