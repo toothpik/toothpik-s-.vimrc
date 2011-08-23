@@ -51,6 +51,7 @@ incend.awk          increasing-end.awk is designed for use with 'cct'
 lastx.awk           last 'x' plan transaction line
 lclear.awk          last clear plan transaction line
 lod.awk             length of day
+ls.awk              lose seconds from antiquated cronus tables
 moon.awk            grab moon events from cronus.py
 mt.awk              create a moon table from cronus.py
 p678.awk            print $6, $7, $8
