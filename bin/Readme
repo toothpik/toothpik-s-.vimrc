@@ -215,6 +215,7 @@ mls            my ls
 mm             mass mutual payments
 mml            tail screenful of MML
 mo             moon only
+mo2            moon only, today in phase context
 mo3            mo, start and end automated
 mpb            copy plan_{year} to txt/save/plan_{year}_{date}
 mpp            fancier moon phase shower
