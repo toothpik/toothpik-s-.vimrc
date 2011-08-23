@@ -36,7 +36,7 @@ fcda.awk            flag current weekday %A
 fcday.awk           flag current weekday %a
 fcdit.awk           flag current date in tocal
 fcdwc.awk           flag current date with case
-fcdwd.awk           flag current date with dash
+fcdwd.awk           flag current date with dash ignoring case
 fcm.awk             flag current year-month
 fcmy.awk            flag current year-month with case
 ffa.awk             flag first argument - used by ctk
