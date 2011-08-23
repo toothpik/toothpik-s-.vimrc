@@ -40,12 +40,12 @@ else
 fi
 Y=$(date '+%Y')
 {
-    #echo '    Sun      rise   transit    set'
-    echo '    Sun      rise                 set'
-    #awk -f ~/fcdwd.awk ~/txt/sun_$Y | grep -C$s '<---$'
-    awk -f ~/fcdwd.awk ~/txt/lod_$Y | grep -C$s '<---$'
+    echo '    Sun      rise   trans   set'
+    #echo '    Sun      rise                 set'
+    awk -f ~/fcdwd.awk ~/txt/sun_$Y | grep -C$s '<---$'
+    #awk -f ~/fcdwd.awk ~/txt/lod_$Y | grep -C$s '<---$'
     echo
     echo '    Moon     rise   trans   set'
-    awk -f ~/fcdwd.awk ~/txt/moon_$Y | grep -C$m '<---$' | awk -f ~/ls.awk
+    awk -f ~/fcdwd.awk ~/txt/moon_$Y | grep -C$m '<---$'
 } | sed 's/^/    /'
 echo
