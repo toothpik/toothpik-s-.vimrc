@@ -16,8 +16,8 @@ elif [ $twd == "${HOME}/bin" ]; then
     #  check everything executable Readme on ~/bin
     find . -maxdepth 1 -executable | grep -v '^\.$' | sed 's/^\.\///' | sort > $TMPNM2
 else
-    #  try to avoid including directories
-    find . -maxdepth 1 -type f -executable | grep -v '^\.$' | sed 's/^\.\///' | sort > $TMPNM2
+    #  avoid including directories
+    find . -maxdepth 1 -type f -executable | grep -v '^\.$' | sed 's@^\./@@' | sort > $TMPNM2
 fi
 diff $TMPNM $TMPNM2 | grep '^[<>]'
 rm $TMPNM
