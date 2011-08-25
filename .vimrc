@@ -1,4 +1,4 @@
-" --- options {{{
+" --- options 
 set noautochdir
 set   autoindent
 set   autoread
@@ -82,13 +82,13 @@ filetype on
 filetype indent on
 filetype plugin on
 syntax enable
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
-" --- autocommands & plugin mappings {{{
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+" --- autocommands & plugin mappings
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
 augroup END
-" ------------------------------------------------------------
+"
 "  some scripts i don't need:
 let g:loaded_netrw = 1
 let g:html_use_css = 1
@@ -103,8 +103,7 @@ let g:no_mail_maps = 1
 let g:no_plugin_maps = 1
 let g:is_bash = 1
 "
-" }}}
-" --- special mappings and commands {{{
+" --- special mappings and commands
 " ------------------------------------------------------------
 if !has("gui_running")
     colo biogoot2
@@ -133,8 +132,8 @@ command! BD b # | bd #
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
 command! Xbit call SetExecutableBit()
-" }}}
-" --- F-key mappings {{{
+"
+" --- F-key mappings
 nmap <silent> <F1> :call F1_formatter("70")<CR>
 imap <silent> <F1> <C-O>:call F1_formatter("70")<CR>
 nmap <S-F1> :call F1_toggle_width("70")<CR>
@@ -213,8 +212,8 @@ imap <silent> <F12> <ESC>:update<CR>
 vmap <silent> <F12> <C-C>:update<CR>
 "  do not try to map S-F12 -- vim never sees it
 nmap <C-F12> :echo 'yes im mappable'<CR>
-" }}}
-" --- insert mode abbreviations {{{
+"
+" --- insert mode abbreviations
 iabbrev <silent> dd1 <c-r>=repeat('-', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd2 <c-r>=repeat('-', 20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd3 <c-r>=repeat('-', 30)<CR><c-r>=Eatchar('\s')<cr>
@@ -285,8 +284,8 @@ iabbrev <silent> ibpp #!/usr/bin/perl<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibt #!/usr/bin/tclsh<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibe #!/usr/bin/expect<c-r>=Eatchar('\s')<cr>
 cabbrev asdf s/[0-2][0-9]:[0-5][0-9]/__:__/
-" }}}
-" --- leader commands {{{
+"
+" --- leader commands
 let mapleader = ','
 nnoremap <Leader>a :%s/\s\+$//e<CR>
 "nnoremap <silent><Leader>b
@@ -330,8 +329,8 @@ nnoremap <Leader>y :source ~/.vim/i_ctr.vim<CR>
 nnoremap <Leader>yy :e ~/.vim/i_ctr.vim<CR>
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
 nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
-" }}}
-" --- functions {{{ 
+"
+" --- functions 
 function! Acdmo()
     read! ~/py/currmo 38
     let im = strftime("%H:%M")
@@ -341,6 +340,23 @@ function! Acdmo()
     normal 3j
     startinsert
 endfunction
+" ------------------------------------------------------------
+"  interesting B command
+"-tim chase
+function! Bufferadd(really, ...)
+    if len(a:000)
+        for globspec in a:000
+            let l:files = split(glob(globspec), "\n")
+            for fname in l:files
+                exec 'badd'.(a:really).' '.(fname)
+            endfor
+        endfor
+    else
+        exec 'badd'.(a:really)
+    endif
+endfunction
+"
+command! -nargs=* -complete=file -bang B call Bufferadd("<bang>", <f-args>)
 " ------------------------------------------------------------
 function! CdCurBuf()
     let cwd = getcwd()
@@ -727,5 +743,4 @@ function! UnsetFolds()
     setlocal foldcolumn=0
 endfunction
 " ------------------------------------------------------------
-" }}}
-"  vim:foldmethod=marker
+"
