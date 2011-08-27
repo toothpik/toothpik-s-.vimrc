@@ -299,8 +299,8 @@ nnoremap <silent> <Leader>ff :call FirstBlankAtEnd()<CR>
 nnoremap <Leader>g :e ~/.gvimrc<CR>
 nnoremap <Leader>gg :source ~/.gvimrc<CR>
 nnoremap <Leader>h :source ~/.vim/reading_help.vim<CR>
-nnoremap <Leader>hh :call HelpgrepScrollers()<CR>
-nnoremap <Leader>hhh :call Hideme()<CR>
+nnoremap <Leader>hh :call Hideme()<CR>
+nnoremap <Leader>hhh :call HelpgrepScrollers()<CR>
 nnoremap <Leader>i :call Maikallfiles()<CR>
 nnoremap <Leader>it :call MaikallfilesT()<CR>
 nnoremap <Leader>j :call FindPointer()<CR>
@@ -320,7 +320,7 @@ nnoremap <silent> <Leader>rr :silent call ToggleScrollbar()<CR>
 nnoremap <silent> <Leader>s :windo set scrollbind!<CR>
 nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <Leader>u :call FileTime()<CR>
-nnoremap <Leader>uh :call Unhideme()<CR>
+nnoremap <Leader>uu :call Unhideme()<CR>
 nnoremap <silent> <Leader>v :set cursorcolumn!<CR>
 nnoremap <silent> <Leader>vv :source ~/.vim/plan.vim<CR>
 "nnoremap <Leader>w
