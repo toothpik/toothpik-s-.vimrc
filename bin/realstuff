@@ -1,2 +1,4 @@
 #!/bin/bash
-awk -f ~/realstuff.awk $@
+awk '/^endrealstuff/ { i = 0 }
+i
+/^realstuff/ { i = 1 }' $@
