@@ -1,4 +1,4 @@
 #!/bin/bash
-ls -A *.awk
+ls -A *.awk 2>/dev/null
 echo
-ls -A *.sed
+ls -A *.sed 2>/dev/null
