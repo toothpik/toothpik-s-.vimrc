@@ -110,6 +110,7 @@ fbt            find biggest total (in r13)
 findi          find income (in plan)
 foodbud        display current food budget amount
 fourclocks     start 4 xclocks in 4 time zones
+ftc            cat txt/filestocheck
 fu             fix user
 g              lazy man's gvim (3 less keystrokes!)
 gca            open Readme on ~ (awk and sed)
