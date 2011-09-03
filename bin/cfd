@@ -21,5 +21,7 @@ if [[ $dwda -eq 1 ]]; then
     echo 'about to push to github, get your pass-phrase ready'
     git push origin master
 else
+    echo '==============='
     echo 'nothing changed'
+    echo '==============='
 fi
