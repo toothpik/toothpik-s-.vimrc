@@ -1,8 +1,14 @@
 #!/usr/bin/python
 #  just count the days
-from datetime import date, timedelta
+from datetime import date
 from time import strptime
 from sys import argv
+
+def usage():
+    print "jctd (just count the days) requires one or two dates"
+    print "on the command line (format:  YYYY-M-D or YYYY-mmm-d)"
+    print "in order to determine the difference"
+    print "-- compares to current date when only one date given"
 
 def one_date(arglist):
     try:
@@ -46,12 +52,6 @@ def two_dates(arglist):
         ct = (ssd - std).days
 
     print "%d" % ct
-
-def usage():
-    print " jctd (just count the days) requires one or two dates"
-    print " on the command line"
-    print " format:  YYYY-M-D or YYYY-mmm-d"
-    print " in order to determine the difference"
 
 if __name__ == "__main__":
    
