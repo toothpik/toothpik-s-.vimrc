@@ -118,7 +118,7 @@ gcabv          check and backup .gvimrc
 gchiefs        open txt/chiefs in gvim
 gct            open ct module in gvim
 gcy            open current year calendar in gvim
-gf             open an .allfiles module in [g]vim
+gf             open an .allfiles module in gvim
 gft            open mallfiles in gvim, sorted on time
 gg             g, with a +
 ghs            gvim, hidden buffer, reads sysin
