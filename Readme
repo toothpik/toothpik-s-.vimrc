@@ -2,6 +2,7 @@ actct0.awk          add count to ct0
 adrbk.awk           name & e-addy extractor for ldif files
 amo2.awk            automate mo2 (moon highlight extractor)
 avglw.awk           average last word
+avgta.awk           average transaction amount
 avltst.awk          average less than 17.05 -- used by 'llave'
 balamt.awk          balance amount from plan line
 bdcit.awk           bracket current date in tocal - formerly used by tc2
