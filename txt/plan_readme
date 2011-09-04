@@ -1,10 +1,12 @@
 2010-Jan-11 18:40
 
-to create a new plan first edit txt/plan_core with 'noexpandtab' --
-there are 3 fields per line separated with tab characters
+to create a new plan first edit txt/plan_core with 'noexpandtab'
+(~/bin/core will call it up for you)
+
+there are 3 fields per line in plan_core separated with tab characters
 field 1:  the day of month the transaction is expected to be dealt with
 field 2:  the description of the transaction
-field 3:  the amount of the transaction
+field 3:  the amount of the transaction (show income as negative)
 
 ~/tcl/plannew was written to read plan_core and generate a new
 plan -- it requires a year on the commandline, so
