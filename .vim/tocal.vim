@@ -1,7 +1,8 @@
 
 let mapleader = ','
-nnoremap <silent> <Leader>d :call Fcd() \| set hlsearch<CR>
-nmap <Leader>ev :e ~/.vim/tocal.vim<CR>
+nnoremap <silent> <Leader>c :call Fcd() \| set hlsearch<CR>
+nnoremap <Leader>ev :e ~/.vim/tocal.vim<CR>
+nnoremap <Leader>s :s ~/.vim/tocal.vim<CR>
 
 if has("gui_running")
     set columns=83
