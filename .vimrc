@@ -309,11 +309,11 @@ nnoremap <Leader>k :s/$/  <---/<CR>
 nnoremap <silent> <Leader>kk :call MovePointerUp()<CR>
 nnoremap <Leader>l :source ~/.vimrc<CR>
 nnoremap <Leader>m :source ~/.vim/mail.vim<CR>
-nnoremap <Leader>n :source ~/.vim/colorstepper.vim<CR>
-nnoremap <Leader>ns :call Step_color()<CR>
+"nnoremap <Leader>n
 nnoremap <silent> <Leader>o :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
 nnoremap <silent> <Leader>oo :call UnsetFolds()<CR>
-nnoremap <Leader>p :call Step_color_back()<CR>
+nnoremap <Leader>p :call Paste(0)<CR>
+nnoremap <Leader>P :call Paste(1)<CR>
 nnoremap <Leader>q :call EditTry("~/.vim/leaders")<CR>
 nnoremap <silent> <Leader>r :silent set ruler!<CR>
 nnoremap <silent> <Leader>rr :silent call ToggleScrollbar()<CR>
@@ -325,8 +325,7 @@ nnoremap <silent> <Leader>v :set cursorcolumn!<CR>
 nnoremap <silent> <Leader>vv :source ~/.vim/plan.vim<CR>
 "nnoremap <Leader>w
 "nnoremap <Leader>x
-nnoremap <Leader>y :source ~/.vim/i_ctr.vim<CR>
-nnoremap <Leader>yy :e ~/.vim/i_ctr.vim<CR>
+"nnoremap <Leader>y
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
 nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
 "
@@ -675,6 +674,17 @@ function! OpenWhat()
     else
         execute 'e ' . testme
     endif
+endfunction
+" ------------------------------------------------------------
+function! Paste(paste_before)
+    let save_q = @q
+    let @q = system("xclip -o")
+    if a:paste_before
+        normal! "qP
+    else
+        normal! "qp
+    endif
+    let @q = save_q
 endfunction
 " ------------------------------------------------------------
 function! Scaleme(w)
