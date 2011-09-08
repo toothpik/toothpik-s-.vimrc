@@ -315,6 +315,7 @@ tocal          open txt/tocal in gvim
 tocalv         open txt/tocal in vim
 todo           open txt/todo in gvim
 todoo          realstuff txt/todo 
+trimc          trim columns too wide for screen
 tsf            tail screenful
 tsm            the sun and moon
 ttt            date '+%H:%M:%S'
