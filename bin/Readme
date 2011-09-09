@@ -340,6 +340,7 @@ vlst           open ls -lt in vim
 vm2            open m2 in vim
 vmm            open txt/mass_mutual in vim
 vn             open $@ in vim with numbers on
+vnc            start vncviewer with some options
 vp             open txt/plan_{year} in vim
 vraney         open txt/ranger/ranger_mpg & friends in vim
 vt             verify time [is being set]
