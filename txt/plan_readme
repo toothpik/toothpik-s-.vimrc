@@ -11,7 +11,7 @@ field 3:  the amount of the transaction (show income as negative)
 ~/tcl/plannew was written to read plan_core and generate a new
 plan -- it requires a year on the commandline, so
 
-    ~/tcl$ ./plannew 2011
+    ~/tcl> ./plannew 2011
 
 will print a new plan for 2011 on stdout -- redirect it to a file
 when you are happy with how it looks
