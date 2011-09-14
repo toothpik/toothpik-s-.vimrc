@@ -1,6 +1,6 @@
 #!/usr/bin/tclsh
 #  text plan reconciler
-#  for editing ~/txt/plan_{year}, currently mapped to \r
+#  for editing ~/txt/plan_{year}, currently mapped to ,r
 #  will read from stdin so it can be used as a filter
 proc usage {} {
     puts "run planrecon from within a vim session on plan_{year} as"
