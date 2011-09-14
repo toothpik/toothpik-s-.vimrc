@@ -498,10 +498,14 @@ endfunction
 " ------------------------------------------------------------
 function! LastNonBlank()
     normal G
-    let ll = len(getline("."))
-    while ll == 0
-        normal k
-        let ll = len(getline("."))
+    let s:lp = line("$")
+    while s:lp > 0
+        if len(getline(".")) == 0 && s:lp > 1
+            normal k
+            let s:lp = s:lp - 1
+        else
+            let s:lp = 0
+        endif
     endwhile
 endfunction
 " ------------------------------------------------------------
@@ -753,4 +757,3 @@ function! UnsetFolds()
     setlocal foldcolumn=0
 endfunction
 " ------------------------------------------------------------
-"
