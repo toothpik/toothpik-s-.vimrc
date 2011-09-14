@@ -1,0 +1,71 @@
+#!/usr/bin/tclsh
+#  text plan reconcile fixer
+#  for fixing a reconciliation that is off due to unclear transactions
+#  in the previous year's plan -- for use in fiscal january
+#  currently mapped to ,rr
+#  reads this year's recon line from stdin and last year's plan
+#  name from the command line
+proc usage {} {
+    puts "run planfixrecon from within a vim session on plan_{year} as"
+    puts "    :.!~/tcl/planfixrecon plan_{prev-year}"
+    puts "where '.' is the last clear with a reconciliation that"
+    puts "needs fixing"
+    return
+}
+#  grab the name of last year's plan as an arg
+if { $argc < 1 } {
+    puts "planfixrecon received no previous year's plan name as an argument"
+    usage
+    return
+}
+set pyp "~/txt/[lindex $argv 0]"
+if [catch {open $pyp} PYP] {
+    puts "cannot open $pyp as input"
+    usage
+    return
+}
+proc commify {num {sep ,}} {
+    while {[regsub {^([-+]?\d+)(\d\d\d)} $num "\\1$sep\\2" num]} {}
+    return $num
+}
+#  grab this year's reconciliation line from sysin
+set data [read stdin]
+set rl [split $data \n]
+if { [llength $rl] < 2 } {
+    puts "no reconciliation line received from sysin"
+    usage
+    return
+}
+set reconline [lindex $rl 0]
+set bal 0.0
+set gotsome 0
+#  loop through previous year's plan looking for unclear transactions
+while {[gets $PYP pl] != -1} {
+    #  test for clear date in column 46
+    set tc [string range $pl 45 45]
+    if {[string compare $tc " "] == 0} {
+        set tvals [string trimleft [string range $pl 47 56]]
+        if {[string compare $tvals ""] != 0} {
+            set tvnc [string map {, ""} $tvals]
+            set bal [expr {$bal + [scan $tvnc %f]}]
+            set gotsome 1
+        }
+    }
+}
+close $PYP
+if { $gotsome == 1 } {
+    #  reconciliation amount
+    set ra [string trimleft [string range $reconline 71 79]]
+    #  reconciliation amount, no commas
+    set ranc [string map {, ""} $ra]
+    #  new reconciliation amount
+    set nra [expr {$bal + [scan $ranc %f]}]
+    #  new reconciliation amount with commas
+    set nrawc [commify $nra]
+    set p1 [string range $reconline 0 69]
+    set p3 [string range $reconline 80 85]
+    puts "$p1[format "%10s" $nrawc]$p3"
+} else {
+    puts "$reconline"
+    puts "no uncleared transactions found in $pyp"
+}
