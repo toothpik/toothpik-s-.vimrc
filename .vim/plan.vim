@@ -3,14 +3,13 @@ if has('gui_running')
     winpos 119 185
 endif
 let mapleader = ','
+nnoremap <buffer> <Leader>a :call OpenLastYear()<CR>
+nnoremap <buffer> <Leader>aa :call OpenNextYear()<CR>
 nmap <buffer> <Leader>b :call BalCol()<CR>
 nmap <buffer> <Leader>c :call GoLastClear()<CR>
 nmap <buffer> <Leader>cc :call ToggleColorColumn()<CR>
 nmap <buffer> <Leader>d :call EditTry("~/txt/plan_core")<CR>
 nmap <buffer> <Leader>dd :call EditTry("~/txt/plan_core_other")<CR>
-nmap <buffer> <Leader>eb :e ~/tcl/planbal<CR>
-nmap <buffer> <Leader>ef :e ~/tcl/planfood<CR>
-nmap <buffer> <Leader>er :e ~/tcl/planrecon<CR>
 nmap <buffer> <Leader>ev :e ~/.vim/plan.vim<CR>
 nmap <buffer> <Leader>f :call AdjustFoodBudget()<CR>
 nmap <buffer> <Leader>l :source ~/.vim/plan.vim<CR>
@@ -18,6 +17,7 @@ nmap <buffer> <Leader>lu :call system("lubk")<CR>
 nmap <buffer> <Leader>n :e ~/txt/plan_notes\|normal G<CR>
 nmap <buffer> <Leader>p :call SyncWNextYear()<CR>
 nmap <buffer> <Leader>r :call Reconcile()<CR>
+nmap <buffer> <Leader>rr :call FixReconcileWLastYear()<CR>
 nmap <buffer> <Leader>s :call SyncWLastYear()<CR>
 nmap <buffer> <Leader>uu :call GoFirstUnclear()<CR>
 nmap <buffer> <Leader>u :e ~/txt/usbank<CR>
@@ -54,6 +54,14 @@ function! Fivedate()
     return mds
 endfunction
 
+function! FixReconcileWLastYear()
+    let ty = expand("%")[5:8]     "  this year
+    let py = ty - 1               "  previous year
+    let pyn = "plan_" . py        "  previous year's name
+    call GoLastClear()
+    execute ".!~/tcl/planfixrecon " . pyn
+endfunction
+
 function! GoFirstUnclear()
     normal gg
     call search("\\%>44c\\%<47c\ \ ")
@@ -74,24 +82,22 @@ function! GoLastX()
     normal 0
 endfunction
 
-"  thoughts on the january transition:
-"  when we get there, ie, after we've started fiscal january and there
-"  are still unclear transactions in december of the previous year,
-"  we will be in a better position to look for a trigger -- the dilemma
-"  is it would be inefficient to ALWAYS check previous year for unclear
-"  trans -- so we need a trigger
-"
-"  hmmm -- testing shows uclro run on a previous year with no unclear
-"  trans comes back so fast it looks like a response to Enter -- 
-"  maybe when we get there we add code to check, see how it goes,
-"  maybe look for a trigger, maybe just leave it in
-"
-"  fly in the ointment:  uclro/sumlwq.awk return an empty string
-"  when run against a year with no unclear trans
-"
-"  after we get a good trigger, uclro and sumlwq.awk are ready for
-"  deployment
-"
+function! OpenLastYear()
+    let ty = expand("%")[5:8]     "  this year
+    let py = ty - 1               "  previous year
+    let pyn = "plan_" . py        "  previous year's name
+    call EditTry(pyn)
+    source ~/.vim/plan.vim
+endfunction
+
+function! OpenNextYear()
+    let ty = expand("%")[5:8]     "  this year
+    let ny = ty + 1               "  next year
+    let nyn = "plan_" . ny        "  next year's name
+    call EditTry(nyn)
+    source ~/.vim/plan.vim
+endfunction
+
 function! Reconcile()
     let sv = winsaveview()
     call GoFirstUnclear()
@@ -110,7 +116,7 @@ function! SyncWLastYear()
     let py = ty - 1               "  previous year
     let pyn = "plan_" . py        "  previous year's name
     let cmd = "tail -2 " . pyn . " | head -1 | awk '{ print $NF }'"
-    let lyeb = system(cmd)[:-2]        "  last year's ending balance
+    let lyeb = system(cmd)[:-2]   "  last year's ending balance
     let lolyeb = strlen(lyeb)     "  length of lyeb
                                   "  new first line
     let nfl = "          bbf                                _"
