@@ -316,8 +316,8 @@ nnoremap <Leader>p :call Paste(0)<CR>
 nnoremap <Leader>P :call Paste(1)<CR>
 nnoremap <Leader>q :call EditTry("~/.vim/leaders")<CR>
 nnoremap <silent> <Leader>r :silent set ruler!<CR>
-nnoremap <silent> <Leader>rr :silent call ToggleScrollbar()<CR>
 nnoremap <silent> <Leader>s :windo set scrollbind!<CR>
+nnoremap <silent> <Leader>ss :silent call ToggleScrollbar()<CR>
 nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <Leader>u :call FileTime()<CR>
 nnoremap <Leader>uu :call Unhideme()<CR>
