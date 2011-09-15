@@ -87,7 +87,6 @@ function! OpenLastYear()
     let py = ty - 1               "  previous year
     let pyn = "plan_" . py        "  previous year's name
     call EditTry(pyn)
-    source ~/.vim/plan.vim
 endfunction
 
 function! OpenNextYear()
@@ -95,7 +94,6 @@ function! OpenNextYear()
     let ny = ty + 1               "  next year
     let nyn = "plan_" . ny        "  next year's name
     call EditTry(nyn)
-    source ~/.vim/plan.vim
 endfunction
 
 function! Reconcile()
