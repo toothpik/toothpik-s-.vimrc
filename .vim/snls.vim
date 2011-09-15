@@ -1,7 +1,7 @@
 "  show new laundry schedule
 "  called by bin/snls
-winsize 22 4
-winpos 830 85
+winsize 22 5
+winpos 830 70
 set cursorline
 set guioptions-=r
 set nonumber
@@ -15,7 +15,6 @@ function! NewDay()
     silent %d
     silent r!sll2
     normal gg
-    normal dd
     normal 0
 endfunction
 call NewDay()
