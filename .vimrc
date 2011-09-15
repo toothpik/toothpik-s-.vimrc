@@ -70,7 +70,6 @@ set   viminfo=!,'20,<50,s10,h
 set   virtualedit=block
 set   visualbell
 set   whichwrap=bhl<>~[]
-set   wildcharm=<C-T>
 set   wildmenu
 set   wildmode=longest:full,full
 set   winaltkeys=no
@@ -145,7 +144,7 @@ nmap <S-F2> g`"
 imap <S-F2> <C-O>`"
 " ------------------------------------------------------------
 nmap <silent> <F3> :bdelete<CR>
-imap <F3> <C-O>:set textwidth=70<CR>
+imap <F3> <ESC>:bdelete<CR>
 nmap <S-F3> :qall<CR>
 imap <S-F3> <ESC>:qall<CR>
 imap <M-F3> <ESC><M-F3>
@@ -156,7 +155,7 @@ nmap <S-F4> :call TestFO()<CR>
 imap <S-F4> <C-O>:verbose set fo?<CR>
 " ------------------------------------------------------------
 map <silent> <F5> :nohlsearch<CR>
-imap <silent> <F5> <C-R>=InsertEmDash()<CR>
+imap <silent> <F5> <C-O>:nohlsearch<CR>
 cmap <F5> <c-r>=strftime("%Y%m%d")<CR>
 nmap <S-F5> :call CountBlankLinesAtEnd()<CR>
 imap <S-F5> <ESC>:call CountBlankLinesAtEnd()<CR>
@@ -211,7 +210,6 @@ nmap <silent> <F12> :update<CR>
 imap <silent> <F12> <ESC>:update<CR>
 vmap <silent> <F12> <C-C>:update<CR>
 "  do not try to map S-F12 -- vim never sees it
-nmap <C-F12> :echo 'yes im mappable'<CR>
 "
 " --- insert mode abbreviations
 iabbrev <silent> dd1 <c-r>=repeat('-', 10)<CR><c-r>=Eatchar('\s')<cr>
@@ -294,7 +292,8 @@ nnoremap <Leader>cd :call CdCurBuf()<CR>
 "nnoremap <silent><Leader>d
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
-nnoremap <silent> <Learder>f :call FindSunDate()<CR>
+nnoremap <Leader>ee :source ~/.vimrc<CR>
+nnoremap <silent> <Leader>f :call FindSunDate()<CR>
 nnoremap <silent> <Leader>ff :call FirstBlankAtEnd()<CR>
 nnoremap <Leader>g :e ~/.gvimrc<CR>
 nnoremap <Leader>gg :source ~/.gvimrc<CR>
@@ -307,8 +306,8 @@ nnoremap <Leader>j :call FindPointer()<CR>
 nnoremap <silent> <Leader>jj :call MovePointerDown()<CR>
 nnoremap <Leader>k :s/$/  <---/<CR>
 nnoremap <silent> <Leader>kk :call MovePointerUp()<CR>
-nnoremap <Leader>l :source ~/.vimrc<CR>
-nnoremap <Leader>m :source ~/.vim/mail.vim<CR>
+nnoremap <Leader>l :call LastNonBlank()<CR>
+"nnoremap <Leader>m
 "nnoremap <Leader>n
 nnoremap <silent> <Leader>o :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
 nnoremap <silent> <Leader>oo :call UnsetFolds()<CR>
@@ -333,9 +332,9 @@ nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
 function! Acdmo()
     read! ~/py/currmo 38
     let im = strftime("%H:%M")
-    let ta = append(line("."), "")
-    let ta = append(line("."), im)
-    let ta = append(line("."), "")
+    call append(line("."), "")
+    call append(line("."), im)
+    call append(line("."), "")
     normal 3j
     startinsert
 endfunction
