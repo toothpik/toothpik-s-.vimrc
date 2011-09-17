@@ -294,6 +294,7 @@ solve          run equations through bc with 7 decimals
 statm          print last saved date for $1
 sumall         sum filter
 sun            display sun data
+sx             start xterm
 sxc            start xdaliclock
 ta             throw away - use for whatever strikes your fancy at the time
 tad            tail after [last] dash [line]
