@@ -75,17 +75,19 @@ then
     echo "PATH already has $PWD"
 else
     export PATH=${PWD}:$PATH
+    export PS1='\w: '
 fi
 }
 #  remove dangerous path extension -- whew!
 function rdp () {
-export PATH=${PATH#$PWD:}
+    export PATH=${PATH#$PWD:}
+    export PS1='\w> '
 }
 function vb () {
-v ~/.bashrc
+    v ~/.bashrc
 }
 function sourceb () {
-. ~/.bashrc
+    . ~/.bashrc
 }
 
 
