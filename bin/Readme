@@ -25,6 +25,7 @@ cabv           check and backup .vimrc
 calc           yet another calculator -- 5 decimal accuracy
 cb             count backwards
 cca            clear, ca
+cca2           marriage of cca and cpel - screen's worth of most recent sed and awk
 ccc            clear, checkpath
 ccl            cat channel lineup
 cct            cat the ct output through ~/tcl/ct
