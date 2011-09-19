@@ -1,3 +1,8 @@
 #!/bin/bash
 #  start konsole
-konsole -p tabtitle="One" 
+if [ $# -lt 1 ]; then
+    tit="One"
+else
+    tit="$@"
+fi
+konsole -p tabtitle="$tit" 
