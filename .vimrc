@@ -187,8 +187,10 @@ imap <silent> <S-F9> <C-O>:set wrap!<CR>
 nmap <silent> <M-F9> :set list!<CR>
 imap <silent> <M-F9> <C-O>:set list!<CR>
 " ------------------------------------------------------------
-nmap <C-J> <C-W>wj<C-W>w
-nmap <C-K> <C-W>wk<C-W>w
+nnoremap <C-J> <C-W>wj<C-W>w
+inoremap <C-J> <ESC><C-W>wj<C-W>wa
+nnoremap <C-K> <C-W>wk<C-W>w
+inoremap <C-K> <ESC><C-W>wk<C-W>wa
 nmap <F10> <C-E>
 imap <F10> <C-O><C-E>
 nmap <silent> <S-F10> :set cursorline!<CR>
@@ -241,7 +243,24 @@ iabbrev <silent> ee6 <c-r>=repeat('=', 60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee7 <c-r>=repeat('=', 70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee8 <c-r>=repeat('=', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee9 <c-r>=repeat('=', 90)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> lll <c-r>=repeat('_', 60)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> md1 <c-r>=repeat('—', 10)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> md2 <c-r>=repeat('—', 20)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> md3 <c-r>=repeat('—', 30)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> md4 <c-r>=repeat('—', 40)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> md5 <c-r>=repeat('—', 50)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> md6 <c-r>=repeat('—', 60)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> md7 <c-r>=repeat('—', 70)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> md8 <c-r>=repeat('—', 80)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> md9 <c-r>=repeat('—', 90)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ll1 <c-r>=repeat('_', 10)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ll2 <c-r>=repeat('_', 20)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ll3 <c-r>=repeat('_', 30)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ll4 <c-r>=repeat('_', 40)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ll5 <c-r>=repeat('_', 50)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ll6 <c-r>=repeat('_', 60)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ll7 <c-r>=repeat('_', 70)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ll8 <c-r>=repeat('_', 80)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ll9 <c-r>=repeat('_', 90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul1 <c-r>=Scaleme(10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul2 <c-r>=Scaleme(20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul3 <c-r>=Scaleme(30)<CR><c-r>=Eatchar('\s')<cr>
