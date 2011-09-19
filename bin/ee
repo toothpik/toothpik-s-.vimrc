@@ -1,7 +1,7 @@
-#!/usr/bin/tclsh
-if { $argc < 1 } {
-    set l 60
+#!/usr/bin/perl
+if (@ARGV < 1) {
+    $ll = 60;
 } else {
-    set l [lindex $argv 0]
+    $ll = $ARGV[0];
 }
-puts [string repeat "=" $l]
+print "=" x $ll . "\n";
