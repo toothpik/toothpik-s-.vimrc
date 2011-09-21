@@ -87,6 +87,7 @@ bin/mxm
 bin/plannew
 bin/realstuff
 bin/sacalh
+bin/sam
 bin/sk
 bin/sll2
 bin/snls
@@ -94,7 +95,6 @@ bin/solve
 bin/tc
 bin/tcnlc
 bin/tocal
-bin/tsm
 bin/tv
 bin/uclro
 bin/weekly
