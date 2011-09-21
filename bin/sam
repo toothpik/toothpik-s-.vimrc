@@ -1,0 +1,8 @@
+#!/bin/bash
+#  sun and moon (you'll need at least a 93 character wide konsole)
+nm1=$(mktemp /tmp/sam.XXXXXXXX) || exit
+nm2=$(mktemp /tmp/sam.XXXXXXXX) || exit
+sun | awk '{ printf "%-41s\n", $0 }' > $nm1
+mo > $nm2
+paste $nm1 $nm2
+rm $nm1 $nm2
