@@ -1,0 +1,28 @@
+#!/bin/bash
+#  moon only
+y=`date '+%Y'`
+fn=${HOME}/txt/moon_${y}
+if ! [ -f "$fn" ]; then
+    echo 'cannot open ' $fn
+    exit 1
+fi
+sl=$((`tput lines` - 3))
+cb=$(( $sl / 3 ))
+ca=$(( $sl - $cb ))
+{
+    echo '    Moon     rise   trans   set'
+    awk -f ~/fcdwd2.awk $fn | grep -B$cb -A$ca '<----<<$'
+} | sed 's/^/    /'
+
+lof=`awk -f ~/fcdwd2.awk $fn | awk -v sh='<----<<$' -f ~/sth.awk | wc -l`
+lof=$(($lof - 1))
+if [[ $lof -lt $ca ]]; then
+    ny=$(( $y + 1 ))
+    fn2=${HOME}'/txt/moon_'$ny
+    if ! [ -f "$fn2" ]; then
+        echo 'cannot open ' $fn2
+        exit 1
+    fi
+    wl=$(( $ca - $lof ))
+    head -$wl $fn2 | sed 's/^/    /'
+fi
