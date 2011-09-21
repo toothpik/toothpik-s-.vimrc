@@ -31,7 +31,7 @@ ccl            cat channel lineup
 cct            cat the ct output through ~/tcl/ct
 cctv           countdown list for television
 cd0            explain all the other cdds
-cfd            check for differences [in web site modules]
+cfd            check for differences [in web site modules (filestocheck)]
 cfm            current fiscal month
 cfs            check for [vim] swap [files]           
 checkpath      echo and verify $PATH
