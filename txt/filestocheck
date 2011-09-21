@@ -83,6 +83,7 @@ bin/m
 bin/m11
 bin/m2
 bin/mft
+bin/mo
 bin/mxm
 bin/plannew
 bin/realstuff
@@ -92,6 +93,7 @@ bin/sk
 bin/sll2
 bin/snls
 bin/solve
+bin/sun
 bin/tc
 bin/tcnlc
 bin/tocal
