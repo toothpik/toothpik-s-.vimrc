@@ -286,6 +286,7 @@ sacall         longer (two months) stand-alone calendar
 sacalll        longer still (three months) stand-alone calendar
 sacaly         whole year standalone calendar (4 columns)
 sacaly2        whole year standalone calendar (3 columns)
+sam            sun and moon (you'll need at least a 93 character wide konsole)
 sb             see when library books are due
 scal           write a scale to sysout like vim's
 silly          aptly named
