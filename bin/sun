@@ -1,0 +1,10 @@
+#!/bin/bash
+#  sun
+Y=`date '+%Y'`
+sl=$((`tput lines` - 3))
+cb=$(( $sl / 3 ))
+ca=$(( $sl - $cb ))
+{
+    echo '    Sun      rise   trans   set'
+    awk -f ~/fcdwd.awk ~/txt/sun_$Y | grep -B$cb -A$ca '<---$'
+} | sed 's/^/    /'
