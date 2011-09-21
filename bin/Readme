@@ -90,6 +90,7 @@ dow            days off work
 dptlb          diff plan to last backup
 ds             demise summary
 dsh            echos however many dashes you want ($1)
+dshh           dash line of em-dashes
 dslh           days since last haircut
 dttm           05 Aug 2007  01:53  Sun
 dttms          Oct 17
@@ -157,6 +158,7 @@ gvmo           open txt/moon_{year} in gvim
 hadp           convert times HH:MM as decimal percentage
 hbe            head before equal
 hbev           head before equal for visaCharges
+hl             how long [has Staff's had my television]
 hml            how many lines (ask seq!)
 hois           how old is stubbie
 hsf            head screen full
