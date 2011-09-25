@@ -70,18 +70,23 @@ export TERM=xterm-256color
 
 #  dangerous path extension of %PWD
 function dp () {
-if [[ $PATH = $PWD:* ]]
-then
-    echo "PATH already has $PWD"
-else
-    export PATH=${PWD}:$PATH
-    export PS1='\w: '
-fi
+    if [[ $PATH = $PWD:* ]]
+    then
+        echo "PATH already has $PWD"
+    else
+        export PATH=${PWD}:$PATH
+        export PS1='\w: '
+    fi
 }
 #  remove dangerous path extension -- whew!
 function rdp () {
-    export PATH=${PATH#$PWD:}
-    export PS1='\w> '
+    if [[ $PATH = $PWD:* ]]
+    then
+        export PATH=${PATH#$PWD:}
+        export PS1='\w> '
+    else
+        echo "PATH doesn't have $PWD at the front"
+    fi
 }
 function vb () {
     v ~/.bashrc
