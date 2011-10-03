@@ -355,10 +355,12 @@ vvmo           open txt/moon_{Y} in vim
 want           realstuff txt/want
 wdatln         what's different about the latest netrw
 weekly         open txt/weekly
+whatlang       what language is $1? - called by wl
 widecal        open wider format calendar
 wiv            open tcl/cw (the whole weather) in vim
 wk             weekly for shells
 wkly           worker script for wk
+wl             what language are executables on .?
 ws             start weekly and sacalh only
 wsg            start weekly, sacalh and gli in one whoop
 wwa            bash string manipulation
