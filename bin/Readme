@@ -18,6 +18,7 @@ bkupd          rsync backup that includes the --delete option
 bmm            biggest mml
 bothcals       call up longcal and tocal in same window
 bscal          backwards scale
+bta            [i thought i'd never] be there again
 c              clear
 c2f            centigrade to farenheit
 ca             cla *.awk
