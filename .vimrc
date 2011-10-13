@@ -225,15 +225,6 @@ iabbrev <silent> dd8 <c-r>=repeat('-', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd9 <c-r>=repeat('-', 90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd10 <c-r>=repeat('-', 100)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd11 <c-r>=repeat('-', 110)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ~~1 <c-r>=repeat('~', 10)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ~~2 <c-r>=repeat('~', 20)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ~~3 <c-r>=repeat('~', 30)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ~~4 <c-r>=repeat('~', 40)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ~~5 <c-r>=repeat('~', 50)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ~~6 <c-r>=repeat('~', 60)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ~~7 <c-r>=repeat('~', 70)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ~~8 <c-r>=repeat('~', 80)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ~~9 <c-r>=repeat('~', 90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee1 <c-r>=repeat('=', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee2 <c-r>=repeat('=', 20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee3 <c-r>=repeat('=', 30)<CR><c-r>=Eatchar('\s')<cr>
@@ -252,15 +243,6 @@ iabbrev <silent> md6 <c-r>=repeat('—', 60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> md7 <c-r>=repeat('—', 70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> md8 <c-r>=repeat('—', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> md9 <c-r>=repeat('—', 90)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ll1 <c-r>=repeat('_', 10)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ll2 <c-r>=repeat('_', 20)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ll3 <c-r>=repeat('_', 30)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ll4 <c-r>=repeat('_', 40)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ll5 <c-r>=repeat('_', 50)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ll6 <c-r>=repeat('_', 60)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ll7 <c-r>=repeat('_', 70)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ll8 <c-r>=repeat('_', 80)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ll9 <c-r>=repeat('_', 90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul1 <c-r>=Scaleme(10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul2 <c-r>=Scaleme(20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul3 <c-r>=Scaleme(30)<CR><c-r>=Eatchar('\s')<cr>
@@ -293,14 +275,11 @@ iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds2 <c-r>=strftime("%Y-%b-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddss <c-r>=strftime("%Y-%b-%d  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> lddds <c-r>=strftime("%Y-%b-%2d  %H:%M")<CR><C-R>=Eatchar('\s')<CR>
-iabbrev <silent> tt <c-r>=strftime("%H:%M")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ttt <c-r>=strftime("%H:%M:%S")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibs #!/bin/bash<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibp #!/usr/bin/python<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibpp #!/usr/bin/perl<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibt #!/usr/bin/tclsh<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibe #!/usr/bin/expect<c-r>=Eatchar('\s')<cr>
-cabbrev asdf s/[0-2][0-9]:[0-5][0-9]/__:__/
 "
 " --- leader commands
 let mapleader = ','
