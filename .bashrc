@@ -119,4 +119,4 @@ function extract()      # Handy Extract Program.
     fi
 }
 
-function vman() { man "$@" | col -bx | iconv -c | vim -c 'set ft=man nomod nolist' -; }
+function vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist' -; }
