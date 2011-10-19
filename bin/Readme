@@ -314,6 +314,7 @@ tcnlc          tocal, no linecount (roll your own)
 tcnlc2         the grep builder and awk driver for tc2         
 tcw            tocal with week
 tester         run something 100 times
+three          combination of scripts for konsole three
 tl             timeline
 tm             this month
 tm2            another way of looking at This Month
