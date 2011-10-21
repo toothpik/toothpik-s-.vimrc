@@ -316,6 +316,7 @@ nnoremap <silent> <Leader>r :silent set ruler!<CR>
 nnoremap <silent> <Leader>s :windo set scrollbind!<CR>
 nnoremap <silent> <Leader>ss :silent call ToggleScrollbar()<CR>
 nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
+nnoremap <silent> <Leader>tt :normal i<c-r>=strftime("%H:%M")<ESC><CR>
 nnoremap <Leader>u :call FileTime()<CR>
 nnoremap <Leader>uu :call Unhideme()<CR>
 nnoremap <silent> <Leader>v :set cursorcolumn!<CR>
