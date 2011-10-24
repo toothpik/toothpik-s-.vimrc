@@ -111,6 +111,7 @@ exptime        express $1 (seconds) as days/hours/minutes
 f2c            farenheit to centigrade
 fbt            find biggest total (in r13)
 findi          find income (in plan)
+five           scripts for konsole 5
 foodbud        display current food budget amount
 fourclocks     start 4 xclocks in 4 time zones
 ftc            cat txt/filestocheck
@@ -161,6 +162,7 @@ hbe            head before equal
 hbev           head before equal for visaCharges
 hl             how long [has Staff's had my television]
 hml            how many lines (ask seq!)
+hoirb          how old is raney's battery?
 hois           how old is stubbie
 hsf            head screen full
 incoming       cat txt/incoming
@@ -218,6 +220,7 @@ mdlt           vim on diff of last two saved plans
 mf             this month's 'm'
 mft            monthly food table -- filter for plans
 minst          instructions on making a new plan
+mio            move it over (sysin)
 mls            my ls
 mm             mass mutual payments
 mml            tail screenful of MML
