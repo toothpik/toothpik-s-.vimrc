@@ -188,9 +188,7 @@ nmap <silent> <M-F9> :set list!<CR>
 imap <silent> <M-F9> <C-O>:set list!<CR>
 " ------------------------------------------------------------
 nnoremap <C-J> <C-W>wj<C-W>w
-inoremap <C-J> <ESC><C-W>wj<C-W>wa
 nnoremap <C-K> <C-W>wk<C-W>w
-inoremap <C-K> <ESC><C-W>wk<C-W>wa
 nmap <F10> <C-E>
 imap <F10> <C-O><C-E>
 nmap <silent> <S-F10> :set cursorline!<CR>
