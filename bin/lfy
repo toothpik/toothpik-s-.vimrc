@@ -1,10 +1,11 @@
 #!/usr/bin/perl
 #  last fiscal year
-#  or, more accurately, last year's worth of fiscally completed months
-$ty = `date '+%y'`;
-chop($ty);
+#  or, more accurately, most recent year's worth 
+#  of fiscally completed months
+use DateTime;
+$ty = DateTime->now(time_zone => 'America/Chicago')->strftime("%y");
 $py = $ty - 1;
-$tm = `cfm`;
+$tm = `~/bin/cfm`;
 chop($tm);
 int($tm);
 
