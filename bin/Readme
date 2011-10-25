@@ -237,6 +237,7 @@ mxm            make $1 more konsole tabs, start the naming at $2
 myage          look for arrow in howoldami
 mytime         nice day time, used occasionally for PS1
 nff            next furnace filter due date
+nil            nice lines [filter]
 notes          open plan notes in gvim
 p              extract phone.odt to commandline
 p3cy           print three column year
