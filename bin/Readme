@@ -215,7 +215,6 @@ m7             plan 2007 to stdout
 m8             plan 2008 to stdout
 m9             plan 2009 to stdout
 ma             make almanac (astrolabe)
-mcdl           link to real 'make countdown list' on py
 mch            display midnight commander help
 mdlt           vim on diff of last two saved plans
 mf             this month's 'm'
@@ -240,7 +239,6 @@ nff            next furnace filter due date
 nil            nice lines [filter]
 notes          open plan notes in gvim
 p              extract phone.odt to commandline
-p3cy           print three column year
 phone          open phone modules in oowriter
 pil            plan in less
 plannew        create a new plan
@@ -248,8 +246,6 @@ playoffs       cat relevant part of txt/playoffs
 pnb            print non-blank lines -- a filter
 po             clear;cm1p1;playoffs
 pswd           open txt/pswd
-ptcy           print two column year
-pyenv          environment as seen by python
 r              print today's reminders
 r13            print from retirement xml
 r133           fancified r13
