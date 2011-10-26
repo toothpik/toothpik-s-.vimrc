@@ -3,7 +3,7 @@
 proc usage {} {
     puts "feed any year's plan through this script (it reads sysin)"
     puts "to see monthly summaries of food & atm expenditures"
-    puts "eg. m9 | ~/tcl/planmft"
+    puts "eg. m9 | mft"
 }
 proc commify {num {sep ,}} {
     while {[regsub {^([-+]?\d+)(\d\d\d)} $num "\\1$sep\\2" num]} {}
