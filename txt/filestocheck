@@ -52,7 +52,6 @@ uclearo.awk
 .vim/tocal.vim
 .vim/weather.vim
 .vim/weekly.vim
-bin/Readme
 bin/b2
 bin/b22
 bin/ca
