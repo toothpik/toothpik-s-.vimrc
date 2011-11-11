@@ -11,7 +11,11 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-set nocursorline
+if has("gui_running")
+    set cursorline
+else
+    set nocursorline
+endif
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -66,6 +70,8 @@ else
 endif
 set   timeoutlen=1500
 set   ttimeoutlen=100
+set   undodir=~/.vim/undo
+set   undofile
 set   viminfo=!,'20,<50,s10,h
 set   virtualedit=block
 set   visualbell
