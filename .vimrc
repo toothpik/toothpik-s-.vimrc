@@ -82,12 +82,12 @@ set   winaltkeys=no
 set   winminheight=0
 set   wrap
 set nowrapscan
-"  ~~~~~~~~~~~~~~~~~~~~
+" ----------------------------------------
 filetype on
 filetype indent on
 filetype plugin on
 syntax enable
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+" ----------------------------------------
 " --- autocommands & plugin mappings
 augroup vimrcgrp
     au!
@@ -107,13 +107,12 @@ let g:loaded_zipPlugin = 1
 let g:no_mail_maps = 1
 let g:no_plugin_maps = 1
 let g:is_bash = 1
-"
+" ----------------------------------------
 " --- special mappings and commands
-" ------------------------------------------------------------
 if !has("gui_running")
     colo biogoot2
 endif
-" ------------------------------------------------------------
+" ----------------------------------------
 imap <C-^> <ESC>:sp #<CR>
 nmap <S-Insert> "+gP
 vmap <S-Insert> "-d"+P
@@ -132,34 +131,35 @@ vnoremap > ><CR>gv
 vnoremap < <<CR>gv
 nnoremap ; :
 nmap . .`[
-" ------------------------------------------------------------
+" ----------------------------------------
+" --- commands
 command! BD b # | bd #
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
 command! Xbit call SetExecutableBit()
-"
+" ----------------------------------------
 " --- F-key mappings
 nmap <silent> <F1> :call F1_formatter("70")<CR>
 imap <silent> <F1> <C-O>:call F1_formatter("70")<CR>
 nmap <S-F1> :call F1_toggle_width("70")<CR>
 imap <S-F1> <C-O>:call F1_toggle_width("70")<CR>
-" ------------------------------------------------------------
+" ----------------------------------------
 nmap <F2> o
 imap <F2> <C-O>o
 nmap <S-F2> g`"
 imap <S-F2> <C-O>`"
-" ------------------------------------------------------------
+" ----------------------------------------
 nmap <silent> <F3> :bdelete<CR>
 imap <F3> <ESC>:bdelete<CR>
 nmap <S-F3> :qall<CR>
 imap <S-F3> <ESC>:qall<CR>
 imap <M-F3> <ESC><M-F3>
-" ------------------------------------------------------------
+" ----------------------------------------
 map <F4> :call OpenWhat()<CR>
 imap <F4> <C-O>J
-nmap <S-F4> :call TestFO()<CR>
-imap <S-F4> <C-O>:verbose set fo?<CR>
-" ------------------------------------------------------------
+nmap <S-F4> :call FixBlankLinesAtEnd()<CR>
+imap <S-F4> <ESC>:call FixBlankLinesAtEnd()<CR>
+" ----------------------------------------
 map <silent> <F5> :nohlsearch<CR>
 imap <silent> <F5> <C-O>:nohlsearch<CR>
 cmap <F5> <c-r>=strftime("%Y%m%d")<CR>
@@ -167,32 +167,32 @@ nmap <S-F5> :call CountBlankLinesAtEnd()<CR>
 imap <S-F5> <ESC>:call CountBlankLinesAtEnd()<CR>
 nmap <silent> <M-F5> :call FirstBlankAtEnd()<CR>
 imap <silent> <M-F5> <C-O>:call FirstBlankAtEnd()<CR>
-" ------------------------------------------------------------
+" ----------------------------------------
 nmap <silent> <F6> :bnext<CR>
 imap <silent> <F6> <ESC>:bnext<CR>
 nmap <silent> <S-F6> :bprevious<CR>
 imap <silent> <S-F6> <ESC>:bprevious<CR>
 nmap <M-F6> :ls<CR>:b
-" ------------------------------------------------------------
+" ----------------------------------------
 nmap <silent> <F7> :set spell!<CR>
 imap <silent> <F7> <ESC>:set spell!<CR>
 nmap <silent> <S-F7> :call Acdmo()<CR>
 imap <silent> <S-F7> <ESC>:call Acdmo()<CR>
-" ------------------------------------------------------------
+" ----------------------------------------
 nmap <silent> <F8> :m+<CR>
 imap <silent> <F8> <ESC>:m+<CR>a
 nmap <silent> <S-F8> :m-2<CR>
 imap <silent> <S-F8> <ESC>:m-2<CR>a
 nmap <silent> <M-F8> yyp
 imap <silent> <M-F8> <ESC>yyp$a
-" ------------------------------------------------------------
+" ----------------------------------------
 nmap <silent> <F9> :call NumberToggle()<CR>
 imap <silent> <F9> <C-O>:call NumberToggle()<CR>
 nmap <silent> <S-F9> :set wrap!<CR>
 imap <silent> <S-F9> <C-O>:set wrap!<CR>
 nmap <silent> <M-F9> :set list!<CR>
 imap <silent> <M-F9> <C-O>:set list!<CR>
-" ------------------------------------------------------------
+" ----------------------------------------
 nnoremap <C-J> <C-W>wj<C-W>w
 nnoremap <C-K> <C-W>wk<C-W>w
 nmap <F10> <C-E>
@@ -203,7 +203,7 @@ nmap <silent> <M-F10> :set cursorcolumn!<CR>
 imap <silent> <M-F10> <C-O>:set cursorcolumn!<CR>
 nmap <silent> <C-F10> <C-W>w<C-E><C-W>w
 imap <silent> <C-F10> <ESC><C-W>w<C-E><C-W>wa
-" ------------------------------------------------------------
+" ----------------------------------------
 nmap <F11> <C-Y>
 imap <F11> <C-O><C-Y>
 nmap <silent> <S-F11> :call MyExplore('')<CR>
@@ -211,12 +211,12 @@ imap <silent> <S-F11> <ESC>:call MyExplore('')<CR>
 nmap <silent> <M-F11> :call MyExplore('t')<CR>
 imap <silent> <M-F11> <ESC>:call MyExplore('t')<CR>
 nmap <silent> <C-F11> <C-W>w<C-Y><C-W>w
-" ------------------------------------------------------------
+" ----------------------------------------
 nmap <silent> <F12> :update<CR>
 imap <silent> <F12> <ESC>:update<CR>
 vmap <silent> <F12> <C-C>:update<CR>
 "  do not try to map S-F12 -- vim never sees it
-"
+" ----------------------------------------
 " --- insert mode abbreviations
 iabbrev <silent> dd1 <c-r>=repeat('-', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd2 <c-r>=repeat('-', 20)<CR><c-r>=Eatchar('\s')<cr>
@@ -284,7 +284,7 @@ iabbrev <silent> ibp #!/usr/bin/python<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibpp #!/usr/bin/perl<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibt #!/usr/bin/tclsh<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibe #!/usr/bin/expect<c-r>=Eatchar('\s')<cr>
-"
+" ----------------------------------------
 " --- leader commands
 let mapleader = ','
 nnoremap <Leader>a :%s/\s\+$//e<CR>
@@ -330,7 +330,7 @@ nnoremap <silent> <Leader>vv :source ~/.vim/plan.vim<CR>
 "nnoremap <Leader>y
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
 nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
-"
+" ----------------------------------------
 " --- functions 
 function! Acdmo()
     read! ~/py/currmo 38
@@ -341,7 +341,7 @@ function! Acdmo()
     normal 3j
     startinsert
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 "  interesting B command
 "-tim chase
 function! Bufferadd(really, ...)
@@ -358,7 +358,7 @@ function! Bufferadd(really, ...)
 endfunction
 "
 command! -nargs=* -complete=file -bang B call Bufferadd("<bang>", <f-args>)
-" ------------------------------------------------------------
+" ----------------------------------------
 function! CdCurBuf()
     let cwd = getcwd()
     let cth = expand("%:p:h")
@@ -369,12 +369,12 @@ function! CdCurBuf()
         echo 'cwd changed to ' cth
     endif
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! CdMaik(dir)
     execute 'cd ' . a:dir
     call Maikallfiles()
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! ClearBuffers()
     let i = 1
     let dc = 0
@@ -387,7 +387,7 @@ function! ClearBuffers()
     endwhile
     echo 'buffers deleted:' dc
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! CountBlankLinesAtEnd()
     let s:bc = NumberBlankLinesAtEnd()
     let s:tn = expand("%")
@@ -401,13 +401,13 @@ function! CountBlankLinesAtEnd()
     endif
     echo printf("%s  has  %d  blank line%s at the end", s:tn, s:bc, s:ps)
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 "  from :h iabbreviation
 function! Eatchar(pat)
     let c = nr2char(getchar(0))
     return (c =~ a:pat) ? '' : c
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! EditTry(what)
     if &modified
         execute "split " a:what
@@ -415,14 +415,14 @@ function! EditTry(what)
         execute "edit " a:what
     endif
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! F1_formatter(cp)
     let s:save_tw = &textwidth
     let &textwidth = a:cp
     silent normal gq}
     let &textwidth = s:save_tw
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! F1_toggle_width(w)
     if &textwidth == 0
         let &textwidth = a:w
@@ -431,7 +431,7 @@ function! F1_toggle_width(w)
     endif
     set textwidth?
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! FileTime()
     let s:fn = expand("%")
     let s:islink = getftype(s:fn)
@@ -446,7 +446,7 @@ function! FileTime()
     let s:ft = getftime(s:fn)
     echo s:isexe s:fnf strftime("%Y-%b-%d %H:%M:%S", s:ft)
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! FindPointer()
     let save_l = @/
     0
@@ -460,7 +460,7 @@ function! FindPointer()
     endtry
     let @/ = save_l
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! FindSunDate()
     normal gg
     let fd = strftime("%Y-%b-%d")
@@ -473,7 +473,7 @@ function! FindSunDate()
     catch
     endtry
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! FirstBlankAtEnd()
     let go = NumberBlankLinesAtEnd() - 1
     normal G
@@ -481,23 +481,45 @@ function! FirstBlankAtEnd()
         execute 'normal ' go . 'k'
     endif
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
+function! FixBlankLinesAtEnd()
+    let s:bc = NumberBlankLinesAtEnd()
+    if s:bc == 7
+        echo 'this module has 7 blank lines at the end already'
+        return
+    endif
+    let s:d7 = 7 - s:bc
+    if s:d7 > 0
+        echo 'need to add' s:d7
+        while s:d7 > 0
+            call append(line('$'), "")
+            let s:d7 -= 1
+        endwhile
+    else
+        let s:d7 = s:d7 * -1
+        let view = winsaveview()
+        call FirstBlankAtEnd()
+        execute 'normal ' . s:d7 . 'dd'
+        call winrestview(view)
+    endif
+endfunction
+" ----------------------------------------
 function! HelpgrepScrollers()
     silent! nmap <F6> :silent cnext<CR>
     silent! nmap <S-F6> :silent cprev<CR>
     echo 'helpgrep scrollers :cn and :cp added to F6 and S-F6'
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! Hideme()
     setlocal noswapfile
     setlocal buftype=nofile
     setlocal bufhidden=hide
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! InsertEmDash()
     return ' ― '
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! LastNonBlank()
     normal G
     let s:lp = line("$")
@@ -510,9 +532,8 @@ function! LastNonBlank()
         endif
     endwhile
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! LongBlogDate()
-"iabbrev <silent> bskk <c-r>=strftime("%Y %B %_d  %A  %l:%M%P %Z")<CR><c-r>=Eatchar('\s')<cr>
     let d1 = strftime("%Y %B %_d")
     let d1s = substitute(d1, "  ", " ", "")
     let d2 = strftime("%A")
@@ -520,13 +541,13 @@ function! LongBlogDate()
     let d3s = substitute(d3, " ", "", "^")
     return d1s . "  " . d2 . "  " . d3s
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! Longdate()
     let d1 = strftime("%A, %e %B %Y, %l:%M%P")
     let d2 = substitute(d1, "  ", " ", 'g')
     return d2
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 "  make allfiles
 function! Maikallfiles()
     let l:tst_name = expand("%")
@@ -560,7 +581,7 @@ function! MaikallfilesT()
     silent g/^total/d
     normal gg
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! MovePointerDown()
     let s:save_l = @/
     let @/ = "  <---$"
@@ -583,7 +604,7 @@ function! MovePointerDown()
     endif
     let @/ = s:save_l
 endfunction
-" ------------------------------------------------------------
+"
 function! MovePointerUp()
     let s:save_l = @/
     let @/ = "  <---$"
@@ -606,7 +627,7 @@ function! MovePointerUp()
     endif
     let @/ = s:save_l
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! Mydatestamp()
     let td = strftime("%d")
     if td < 10
@@ -618,7 +639,7 @@ function! Mydatestamp()
         return strftime("%Y-%b-%d %H:%M")
     endif
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! MyExplore(s)
     if a:s == "t"
         call MyExploreT()
@@ -630,11 +651,11 @@ function! MyExplore(s)
     call search(wh)
     normal zz
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! MyExploreT()
     call MaikallfilesT()
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! NumberBlankLinesAtEnd()
     let s:bc = 0
     let s:lp = line("$")
@@ -649,7 +670,7 @@ function! NumberBlankLinesAtEnd()
     endwhile
     return s:bc
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! NumberToggle()
     if exists("&rnu")
         if &number
@@ -669,7 +690,7 @@ function! NumberToggle()
         endif
     endif
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! OpenWhat()
     let testme = expand("<cfile>")
     if testme =~ '^\~'
@@ -681,7 +702,7 @@ function! OpenWhat()
         execute 'e ' . testme
     endif
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! Paste(paste_before)
     let save_q = @q
     let @q = system("xclip -o")
@@ -692,7 +713,7 @@ function! Paste(paste_before)
     endif
     let @q = save_q
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! Scaleme(w)
     let c = 0
     let str = ""
@@ -711,23 +732,14 @@ function! Scaleme(w)
     endwhile
     return str
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! SetExecutableBit()
     if &modified
         write
     endif
     call system("chmod 754 " . expand('%'))
 endfunction
-" ------------------------------------------------------------
-function! TestFO()
-    if &fo == "tcq"
-        echo '&fo == tcq'
-    else
-        echo 'fo not tcq'
-        verbose set fo?
-    endif
-endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! ToggleExpandtab()
     if &expandtab
         echo "noexpandtab"
@@ -739,7 +751,7 @@ function! ToggleExpandtab()
         setlocal softtabstop=4
     endif
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! ToggleScrollbar()
     if &guioptions =~ 'r'
         set guioptions-=r
@@ -747,15 +759,15 @@ function! ToggleScrollbar()
         set guioptions+=r
     endif
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! Unhideme()
     setlocal swapfile
     setlocal buftype=""
     setlocal bufhidden=""
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
 function! UnsetFolds()
     setlocal foldexpr=0
     setlocal foldcolumn=0
 endfunction
-" ------------------------------------------------------------
+" ----------------------------------------
