@@ -1,3 +1,3 @@
 #!/bin/bash
 #  days between updates
-grep '^20' incoming.log | awk '{ print $1 }' | uniq | daysb | tail -12 | sed 's/^/   /'
+grep '^20' incoming.log | awk '{ print $1 }' | sth '2010-Aug-17' | uniq | daysb | tail -12 | sed 's/^/   /'
