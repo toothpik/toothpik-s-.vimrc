@@ -33,13 +33,13 @@ export LC_COLLATE=POSIX
 
 #export PS1='\[\e[6;31m\][$(date "+%a %H:%M")] \w $\[\e[m\] '
 #  export PS1='[\d \A] \w> '
-#  export PS1='[$(mytime)] \w $ '
+export PS1='[$(mytime)] \w $ '
 #  export PS1='\[\e[6;31m\][$(mytime)] \w $\[\e[m\] '
 #  export PS1='\[\e[6;31m\]\w $\[\e[m\] '
 #  export PS1='\[\e[6;31m\]$\[\e[m\] '
 #  export PS1='[$(date "+%a %H:%M")] \w $ '
 #  export PS1='$ '
-export PS1='\w> '
+#export PS1='\w> '
 #  export PS1='$PWD> '
 
 alias cd2='cd ~/bin'
@@ -57,6 +57,8 @@ alias cd7='cd ~/.build/vim'
 alias cd77='cd ~/.build/vim/vim/src'
 alias cd8='cd ~/ruby'
 alias cd88='cd ~/ruby/koans'
+alias cdc='cd ~/calc'
+alias cdcp='cd ~/calc/primes'
 alias cdd='cd /usr/local/share/vim/vim73/doc'
 alias cdf='cd ~/txt/f'
 alias cdp='cd ~/perl'
@@ -76,7 +78,7 @@ function dp () {
         echo "PATH already has $PWD"
     else
         export PATH=${PWD}:$PATH
-        export PS1='\w: '
+        export PS1='[$(mytime)] \w : '
     fi
 }
 #  remove dangerous path extension -- whew!
@@ -84,7 +86,7 @@ function rdp () {
     if [[ $PATH = $PWD:* ]]
     then
         export PATH=${PATH#$PWD:}
-        export PS1='\w> '
+        export PS1='[$(mytime)] \w $ '
     else
         echo "PATH doesn't have $PWD at the front"
     fi
