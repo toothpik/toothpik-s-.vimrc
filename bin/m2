@@ -6,4 +6,4 @@ bal=`lastx | awk -f ~/balamt.awk`
 sum=`solve $uc + ${bal/,/}`
 sumwc=`echo $sum | awk -f ~/ciaa.awk`
 printf "%57s\n" "========="
-printf "%57s %12s %9s\n" $uc $bal $sumwc
+printf "%57s %12s %9s\n" `commify $uc` $bal $sumwc
