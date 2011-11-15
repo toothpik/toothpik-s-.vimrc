@@ -27,6 +27,7 @@ diff1.awk           diff the weights in lighter log
 diffa.awk           diff the weights in lighter log
 diffc.awk           diff the weights in lighter log
 diffp.awk           diff the weights in lighter log
+fabcd.awk           flag and bracket current date (used by sam2)
 fba.awk             find biggest amfunds
 fbm.awk             find biggest mml - used by bmm
 fbt.awk             find biggest total
