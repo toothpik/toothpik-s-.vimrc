@@ -92,6 +92,7 @@ syntax enable
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
+    au BufWritePre /tmp/*,*.tmp setlocal noundofile
 augroup END
 "
 "  some scripts i don't need:
