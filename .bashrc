@@ -71,6 +71,11 @@ alias l='ls -AgGl --group-directories-first'
 
 export TERM=xterm-256color
 
+#  for vidir:
+export VIDIR_EDITOR=vim
+#export VIDIR_EDITOR_ARGS='-c :set nolist | :set ft=vidir-ls'
+#export VIDIR_EDITOR_ARGS='-c :set ft=vidir-ls'
+
 #  dangerous path extension of %PWD
 function dp () {
     if [[ $PATH = $PWD:* ]]
