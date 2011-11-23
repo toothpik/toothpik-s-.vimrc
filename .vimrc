@@ -113,7 +113,8 @@ let g:is_bash = 1
 if !has("gui_running")
     colo biogoot2
 endif
-" ----------------------------------------
+nnoremap <Down> gj
+nnoremap <Up> gk
 imap <C-^> <ESC>:sp #<CR>
 nmap <S-Insert> "+gP
 vmap <S-Insert> "-d"+P
@@ -486,7 +487,7 @@ endfunction
 function! FixBlankLinesAtEnd()
     let s:bc = NumberBlankLinesAtEnd()
     if s:bc == 7
-        echo 'this module has 7 blank lines at the end already'
+        echo 'this module already has 7 blank lines at the end'
         return
     endif
     let s:d7 = 7 - s:bc
