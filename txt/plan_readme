@@ -23,3 +23,17 @@ and yearlies
 and tcl/plannew has been enhanced to start months on the 23rd of the
 preceding month
 
+2011-Nov-22 00:14
+use ~/bin/ept to estimate realistic ele and gas bills for the new year
+-- keep the total up using fgrep and ~/tta.awk, eg
+
+    m12 | grep -F 'Power & Light' | awk -f ~/tta.awk
+
+to make sure the total for the year is sufficiently conservative
+
+
+
+
+
+
+
