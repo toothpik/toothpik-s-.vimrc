@@ -1,5 +1,5 @@
 " --- options 
-set noautochdir
+set   autochdir
 set   autoindent
 set   autoread
 set   backspace=indent,eol,start
@@ -289,7 +289,7 @@ iabbrev <silent> ibe #!/usr/bin/expect<c-r>=Eatchar('\s')<cr>
 " ----------------------------------------
 " --- leader commands
 let mapleader = ','
-nnoremap <Leader>a :%s/\s\+$//e<CR>
+nnoremap <Leader>a :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 "nnoremap <silent><Leader>b
 "nnoremap <silent><Leader>c
 nnoremap <Leader>cd :call CdCurBuf()<CR>
