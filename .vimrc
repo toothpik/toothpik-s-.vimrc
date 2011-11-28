@@ -37,7 +37,7 @@ set   linebreak
 set   listchars=eol:$,extends:»,precedes:«
 set   mouse=ar
 set   mousemodel=popup_setpos
-set nonumber
+set   number
 set   nrformats-=octal
 set   numberwidth=1
 set   printoptions=header:0,number:n,syntax:n
