@@ -11,11 +11,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-if has("gui_running")
-    set cursorline
-else
-    set nocursorline
-endif
+set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -292,7 +288,6 @@ let mapleader = ','
 nnoremap <Leader>a :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 "nnoremap <silent><Leader>b
 "nnoremap <silent><Leader>c
-nnoremap <Leader>cd :call CdCurBuf()<CR>
 "nnoremap <silent><Leader>d
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
@@ -325,8 +320,8 @@ nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <silent> <Leader>tt :normal i<c-r>=strftime("%H:%M")<ESC><CR>
 nnoremap <Leader>u :call FileTime()<CR>
 nnoremap <Leader>uu :call Unhideme()<CR>
-nnoremap <silent> <Leader>v :set cursorcolumn!<CR>
-nnoremap <silent> <Leader>vv :source ~/.vim/plan.vim<CR>
+"nnoremap <Leader>v
+nnoremap <Leader>vv :source ~/.vim/plan.vim<CR>
 "nnoremap <Leader>w
 "nnoremap <Leader>x
 "nnoremap <Leader>y
