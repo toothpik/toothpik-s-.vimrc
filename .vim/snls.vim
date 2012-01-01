@@ -1,7 +1,7 @@
 "  show new laundry schedule
 "  called by bin/snls
 winsize 22 5
-winpos 830 70
+winpos 830 68
 set cursorline
 set guioptions-=r
 set nonumber
