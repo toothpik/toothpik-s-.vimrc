@@ -5,6 +5,8 @@
 #  have created the final plan_2012
 #  or update it to fix only jan-jul for 2013, THEN we can
 #  remove it for 2014 and beyond
+#  MM update:  ~/perl/mmcounts has been replaced with ~/py/planmm
+#  for 2013 -- MassMutual has been removed from ~/txt/plan_core
 cd ~/txt
 if [ $# -lt 1 ]; then
     YR=$((`date '+%Y'` + 1))
@@ -19,7 +21,7 @@ lb1=`tail -2 ~/txt/plan_$PR | head -1 | cut -c61-71`
     printf "%10s%s\n" "+-" "------------------------------------+"
     printf "%10s%s\n" "| " "                                    |"
     printf "%10s%s\n" "| " "as of 2011-May-30 this script was   |"
-    printf "%10s%s\n" "| " "producing a credible plan for $YR  |"
+    printf "%10s%s\n" "| " "producing a credible plan for 2012  |"
     printf "%10s%s\n" "| " "                                    |"
     printf "%10s%s\n" "| " "including:                          |"
     printf "%10s%s\n" "| " "                                    |"
@@ -39,9 +41,14 @@ lb1=`tail -2 ~/txt/plan_$PR | head -1 | cut -c61-71`
     printf "%10s%s\n" "| " "                                    |"
     printf "%10s%s\n" "| " "~/txt/plan_readme has rudimentary   |"
     printf "%10s%s\n" "| " "instructions...                     |"
+    printf "%10s%s\n" "| " "instructions also in ~/bin/minst    |"
+    printf "%10s%s\n" "| " "                                    |"
+    printf "%10s%s\n" "| " "2012-Jan-01  adding 'a' flags to    |"
+    printf "%10s%s\n" "| " "the automatic transactions (there   |"
+    printf "%10s%s\n" "| " "are 5 of them at last count)        |"
     printf "%10s%s\n" "| " "                                    |"
     printf "%10s%s\n" "+-" "------------------------------------+"
-    #   the plan      with social security, updated MM counts,   december taxes,       ADT,            vehicle regs           UPS store          dashes
-    ~/tcl/plannew $YR | ~/py/planss $YR | ~/perl/mmcounts $YR | ~/perl/dectaxes | ~/perl/adt $YR | ~/perl/vehicleregs $YR | ~/perl/ups $YR | ~/py/plandsh
+    #   the plan      with social security, MassMutual,      december taxes,       ADT,            vehicle regs           UPS store       auto flags       dashes
+    ~/tcl/plannew $YR | ~/py/planss $YR | ~/py/planmm $YR | ~/perl/dectaxes | ~/perl/adt $YR | ~/perl/vehicleregs $YR | ~/perl/ups $YR | ~/perl/autos | ~/py/plandsh
     #                    and a balance column
 } | g -S ~/.vim/plan.vim -c 'call BalCol()' -
