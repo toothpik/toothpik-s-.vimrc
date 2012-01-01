@@ -74,6 +74,7 @@ plan7.awk           deprecated july selector
 plan8.awk           deprecated august selector
 plan9.awk           deprecated september selector
 plandsh.awk         deprecated dash adder for plans
+procmail.awk        formatter for cating or tailing procmail.log
 prtsppd.awk         print [current year's] sprint paydates
 prtweat.awk         print weather -- pipe ~/.allweat through this script
 prtweat_so.awk      save old print weather
