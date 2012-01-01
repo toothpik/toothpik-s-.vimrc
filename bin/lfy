@@ -4,10 +4,19 @@
 #  of fiscally completed months
 use DateTime;
 $ty = DateTime->now(time_zone => 'America/Chicago')->strftime("%y");
+$mmdd = DateTime->now(time_zone => 'America/Chicago')->strftime("%m%d");
 $py = $ty - 1;
 $tm = `~/bin/cfm`;
 chop($tm);
 int($tm);
+
+#  for the sake of the last week of the year:
+if ($tm == 12 && $mmdd > 1222) {
+    $typ = "m" . $ty;
+    $cypher = `$typ`;
+    print $cypher;
+    exit 0;
+}
 
 $pyp = "m" . $py;
 
