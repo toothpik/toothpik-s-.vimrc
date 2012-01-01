@@ -9,14 +9,24 @@ fi
 sl=$((`tput lines` - 3))
 cb=$(( $sl / 3 ))
 ca=$(( $sl - $cb ))
-{
-    echo '    Moon     rise   trans   set'
-    awk -f ~/fcdwd2.awk $fn | grep -B$cb -A$ca '<----<<$'
-} | sed 's/^/    /'
+echo '    Moon     rise   trans   set' | mio 4
 
-lof=`awk -f ~/fcdwd2.awk $fn | awk -v sh='<----<<$' -f ~/sth.awk | wc -l`
+#  print some from previous year if too near the beginning of this one
+lot=`awk -f ~/fcdwd2.awk $fn | stp '<----<<$' | wc -l`
+lot=$(( $lot - 1 ))
+if test $lot -lt $cb; then
+    py=$(( $y - 1 ))
+    wl=$(( $cb - $lot ))
+    tail -$wl ~/txt/moon_$py | mio 4
+fi
+
+#  main print
+awk -f ~/fcdwd2.awk $fn | grep -B$cb -A$ca '<----<<$' | mio 4
+
+#  print some from next year if too near the end of this one
+lof=`awk -f ~/fcdwd2.awk $fn | sth '<----<<$' | wc -l`
 lof=$(($lof - 1))
-if [[ $lof -lt $ca ]]; then
+if test $lof -lt $ca; then
     ny=$(( $y + 1 ))
     fn2=${HOME}'/txt/moon_'$ny
     if ! [ -f "$fn2" ]; then
@@ -24,5 +34,5 @@ if [[ $lof -lt $ca ]]; then
         exit 1
     fi
     wl=$(( $ca - $lof ))
-    head -$wl $fn2 | sed 's/^/    /'
+    head -$wl $fn2 | mio 4
 fi
