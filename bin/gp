@@ -1,6 +1,5 @@
 #!/bin/bash
 #  open text plan in gvim
-cd ~/txt
 if [ $# -eq 0 ]; then
     Y=`date '+%Y'`
 else
