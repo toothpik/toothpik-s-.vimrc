@@ -4,5 +4,7 @@ echo
 echo -n '        battery life   as of   '
 date '+%Y-%b-%d'
 echo
-cat ~/txt/batlist | ~/tcl/batlist | sed 's/^/        /'
+#                                            ....+...
+#at ~/txt/batlist | ~/tcl/batlist | sed 's/^/        /'
+cat ~/txt/batlist | ~/tcl/batlist | mio 8
 echo
