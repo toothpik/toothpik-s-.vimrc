@@ -1,11 +1,16 @@
 #!/usr/bin/python
 #  this will need a tweak in the transition between December
 #  and January, but for now this works great
+#
+#  2012-Jan-01 13:26
+#  thanx pal, it's tweak time, and you just pissed me off
+#
 from datetime import date
 from os import environ
 from re import compile
 from sys import exit
 from time import strftime, strptime
+
 Y = strftime("%Y")
 fn = environ['HOME'] + '/txt/laundry.log'
 try:
@@ -22,18 +27,27 @@ white = compile('white')
 colored = compile('colored')
 sheets = compile('sheets')
 today = date.today()
+
 #  calculate date difference
 def cdd (inst, what):
     bd = inst[4:11] + Y
     wd = strptime(bd, "%b %d %Y")
     sd = date(wd.tm_year, wd.tm_mon, wd.tm_mday)
     diff = today - sd
+
+    if diff.days < 0:
+        bd = inst[4:11] + str((int(Y) - 1))
+        wd = strptime(bd, "%b %d %Y")
+        sd = date(wd.tm_year, wd.tm_mon, wd.tm_mday)
+        diff = today - sd
+
     dys = diff.days
     if dys == 1:
         ess = ""
     else:
         ess = "s"
     print "%2d day%s since %s" % (dys, ess, what)
+
 lp = lL - 1
 while(lp > -1):
     tl = LL[lp]
