@@ -57,15 +57,19 @@ alias cd7='cd ~/.build/vim'
 alias cd77='cd ~/.build/vim/vim/src'
 alias cd8='cd ~/ruby'
 alias cd88='cd ~/ruby/koans'
+alias cdb='cd ~/bin-mail'
 alias cdc='cd ~/calc'
 alias cdcp='cd ~/calc/primes'
 alias cdd='cd /usr/local/share/vim/vim73/doc'
 alias cdf='cd ~/txt/f'
+alias cdm='cd ~/Mail'
 alias cdp='cd ~/perl'
 alias cdpp='cd ~/perl/primes'
 alias cdr='cd /usr/local/share/vim/vim73'
 alias cdt='cd ~/toothpik-s-.vimrc'
 alias cdtt='cd ~/toothpik.github.com'
+alias cdv='cd /var/spool/mail'
+alias cdvt='cd ~/.vim-tmp'
 alias ....='cd ../../..'
 alias l='ls -AgGl --group-directories-first'
 
@@ -75,6 +79,9 @@ export TERM=xterm-256color
 export VIDIR_EDITOR=vim
 #export VIDIR_EDITOR_ARGS='-c :set nolist | :set ft=vidir-ls'
 #export VIDIR_EDITOR_ARGS='-c :set ft=vidir-ls'
+
+#  for mutt:
+export COLORFGBG="default;default"
 
 #  dangerous path extension of %PWD
 function dp () {
@@ -126,4 +133,4 @@ function extract()      # Handy Extract Program.
     fi
 }
 
-function vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist' -; }
+function vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist' -c 'call Hideme()' -; }
