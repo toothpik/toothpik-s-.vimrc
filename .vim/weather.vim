@@ -16,9 +16,7 @@ function! Makemeweather()
     call Hideme()
     setlocal ignorecase
     silent %d
-"    call append(0, strftime("%Y-%b-%d %H:%M"))
     silent 0read !~/tcl/cw
-    g/Current Local Weather/d
     1
 endfunction
 
