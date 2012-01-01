@@ -56,12 +56,12 @@ close $PYP
 if { $gotsome == 1 } {
     #  reconciliation amount
     set ra [string trimleft [string range $reconline 71 79]]
-    #  reconciliation amount, no commas
     set ranc [string map {, ""} $ra]
-    #  new reconciliation amount
-    set nra [expr {$bal + [scan $ranc %f]}]
-    #  new reconciliation amount with commas
+    #  puts "reconciliation amount, no commas:  $ranc"
+    set nra [format "%.2f" [expr {$bal + [scan $ranc %f]}]]
+    #  puts "new reconciliation amount:  $nra"
     set nrawc [commify $nra]
+    #  puts "new reconciliation amount with commas:  $nrawc"
     set p1 [string range $reconline 0 69]
     set p3 [string range $reconline 80 85]
     puts "$p1[format "%10s" $nrawc]$p3"
