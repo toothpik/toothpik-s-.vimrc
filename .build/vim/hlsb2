@@ -1,5 +1,7 @@
 #!/bin/bash
 hlsb
-dsh 63 | sed 's/^/   /'
+dsh 63 | mio 3
 echo
-dbu
+lc=$(( `tput lines` - 20 ))
+grep '^20' incoming.log | awk '{ print $1 }' | sth '2010-Aug-17' | uniq | daysb | tail -$lc | mio 3
+echo
