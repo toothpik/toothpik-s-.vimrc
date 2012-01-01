@@ -1,7 +1,6 @@
 #!/bin/bash
 #  how long since both
 cd ~/.build/vim
-date '+%S'
 echo
 echo '   how long since both'
 echo
