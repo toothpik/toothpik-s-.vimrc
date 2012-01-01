@@ -4,7 +4,29 @@ Y=`date '+%Y'`
 sl=$((`tput lines` - 3))
 cb=$(( $sl / 3 ))
 ca=$(( $sl - $cb ))
-{
-    echo '    Sun      rise   trans   set'
-    awk -f ~/fcdwd.awk ~/txt/sun_$Y | grep -B$cb -A$ca '<---$'
-} | sed 's/^/    /'
+echo '    Sun      rise   trans   set' | mio 4
+
+#  print some from previous year if near the beginning of this one
+lot=`awk -f ~/fcdwd.awk ~/txt/sun_$Y | stp '<---$' | wc -l`
+lot=$(( $lot - 1 ))
+if test $lot -lt $cb; then
+    py=$(( $Y - 1 ))
+    wl=$(( $cb - $lot ))
+    tail -$wl ~/txt/sun_$py | mio 4
+fi
+
+#  main print
+awk -f ~/fcdwd.awk ~/txt/sun_$Y | grep -B$cb -A$ca '<---$' | mio 4
+
+#  print some from next year if near the end of this one
+lof=`awk -f ~/fcdwd.awk ~/txt/sun_$Y | sth '<---$' | wc -l`
+lof=$(($lof - 1))
+if [[ $lof -lt $ca ]]; then
+    ny=$(( $Y + 1 ))
+    if ! [ -f ~/txt/sun_$ny ]; then
+        echo 'cannot open ' ~/txt/sun_$ny
+        exit 1
+    fi
+    wl=$(( $ca - $lof ))
+    head -$wl ~/txt/sun_$ny | mio 4
+fi
