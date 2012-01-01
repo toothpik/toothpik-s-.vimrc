@@ -36,6 +36,9 @@ set c 0
 set wl [split $wp "\n"]             ;#  weather lines
 foreach l $wl {
     set el [string trim $l]         ;#  examine line
+    if {[string first "Current Local Weather" $el] > -1} {
+        continue
+    }
     if {[string first "Last Update on" $el] == 0} {
         puts $el
         puts "[clock format [clock seconds] -format "%A"]"
