@@ -1,2 +1,2 @@
 #!/bin/bash
-g + ~/txt/laundry.log
+g + -S ~/.vim/laundry.vim ~/txt/laundry.log
