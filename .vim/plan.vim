@@ -1,5 +1,5 @@
 if has('gui_running')
-    winsize 92 29
+    winsize 92 30
     winpos 119 185
 endif
 let mapleader = ','
@@ -87,6 +87,7 @@ function! OpenLastYear()
     let py = ty - 1               "  previous year
     let pyn = "plan_" . py        "  previous year's name
     call EditTry(pyn)
+    nmap <buffer> <Leader>l :source ~/.vim/plan.vim<CR>
 endfunction
 
 function! OpenNextYear()
@@ -94,6 +95,7 @@ function! OpenNextYear()
     let ny = ty + 1               "  next year
     let nyn = "plan_" . ny        "  next year's name
     call EditTry(nyn)
+    nmap <buffer> <Leader>l :source ~/.vim/plan.vim<CR>
 endfunction
 
 function! Reconcile()
