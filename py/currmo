@@ -1,7 +1,5 @@
 #!/usr/bin/python
-#
 #  current month, with current day circled, to stdout
-#
 from calendar import setfirstweekday, month
 from string import strip, replace
 from time import strftime, localtime
@@ -19,7 +17,6 @@ if tod[0] == "0":
     toda = " " + tod[1] + " "
 else:
     toda = " " + tod + " "
-sa = []
 for l in month(a_yr, a_mo).splitlines():
     ts = " " + l + " "
     if toda in ts:
