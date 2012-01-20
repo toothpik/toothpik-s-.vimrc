@@ -41,7 +41,6 @@ set   number
 set   nrformats-=octal
 set   numberwidth=3
 set   printoptions=header:0,number:n,syntax:n
-set norelativenumber
 set   ruler
 set   scrollopt=ver,hor,jump
 set   selection=exclusive
@@ -70,10 +69,8 @@ else
 endif
 set   timeoutlen=1500
 set   ttimeoutlen=100
+set   undofile
 set   undodir=~/.vim/undo
-if expand("%") != "pswd"
-    set   undofile
-endif
 set   viminfo=!,'20,<50,s10,h
 set   virtualedit=block
 set   visualbell
