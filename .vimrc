@@ -11,7 +11,11 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-set   cursorline
+if has("gui_running")
+    set   cursorline
+else
+    set  nocursorline
+endif
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -35,7 +39,7 @@ set   mouse=ar
 set   mousemodel=popup_setpos
 set   number
 set   nrformats-=octal
-set   numberwidth=1
+set   numberwidth=3
 set   printoptions=header:0,number:n,syntax:n
 set norelativenumber
 set   ruler
@@ -67,7 +71,9 @@ endif
 set   timeoutlen=1500
 set   ttimeoutlen=100
 set   undodir=~/.vim/undo
-set   undofile
+if expand("%") != "pswd"
+    set   undofile
+endif
 set   viminfo=!,'20,<50,s10,h
 set   virtualedit=block
 set   visualbell
@@ -104,6 +110,9 @@ let g:loaded_zipPlugin = 1
 let g:no_mail_maps = 1
 let g:no_plugin_maps = 1
 let g:is_bash = 1
+" ----------------------------------------
+"  some i do
+let g:undo_tree_diffparam = 'diff -c'
 " ----------------------------------------
 " --- special mappings and commands
 if !has("gui_running")
@@ -292,7 +301,7 @@ nnoremap <Leader>a :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
 nnoremap <Leader>ee :source ~/.vimrc<CR>
-nnoremap <silent> <Leader>f :call FindSunDate()<CR>
+nnoremap <Leader>f :call F1_toggle_width("70")<CR>
 nnoremap <silent> <Leader>ff :call FirstBlankAtEnd()<CR>
 nnoremap <Leader>g :e ~/.gvimrc<CR>
 nnoremap <Leader>gg :source ~/.gvimrc<CR>
