@@ -69,8 +69,8 @@ else
 endif
 set   timeoutlen=1500
 set   ttimeoutlen=100
-set   undofile
 set   undodir=~/.vim/undo
+set   undofile
 set   viminfo=!,'20,<50,s10,h
 set   virtualedit=block
 set   visualbell
@@ -294,7 +294,7 @@ iabbrev <silent> ibe #!/usr/bin/expect<c-r>=Eatchar('\s')<cr>
 " --- leader commands
 let mapleader = ','
 nnoremap <Leader>a :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-"nnoremap <silent><Leader>b
+nnoremap <silent><Leader>b :call LastNonBlank()<CR>
 "nnoremap <silent><Leader>c
 "nnoremap <silent><Leader>d
 nnoremap <Leader>dd :call ClearBuffers()<CR>
@@ -313,7 +313,7 @@ nnoremap <Leader>j :call FindPointer()<CR>
 nnoremap <silent> <Leader>jj :call MovePointerDown()<CR>
 nnoremap <Leader>k :s/$/  <---/<CR>
 nnoremap <silent> <Leader>kk :call MovePointerUp()<CR>
-nnoremap <Leader>l :call LastNonBlank()<CR>
+nnoremap <Leader>l :source ~/.vim/i_ctr.vim<CR>
 "nnoremap <Leader>m
 "nnoremap <Leader>n
 nnoremap <silent> <Leader>o :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
