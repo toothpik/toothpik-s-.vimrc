@@ -1,0 +1,11 @@
+#!/bin/bash
+cd ~/bin-mail
+tod=`date '+%b %e'`
+echo
+date '+                  now  %H:%M' 
+echo
+ls -lt ~/Mail | grep -v "^total" | grep -F "$tod" | awk -f ccr.awk
+echo
+laflp
+echo
+dsh 31 | mio 6
