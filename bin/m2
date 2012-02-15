@@ -7,4 +7,14 @@ if test $tsl -gt 37; then
     cm1p1 | mio $pfc
     b
 fi
-m12 2 | mio 7
+cy=`date '+%y'`
+wm=`curpmo`
+nm=$((wm + 1))
+if test $nm -gt 12; then
+    y=$((cy + 1))
+    m=1
+else
+    y=$cy
+    m=$nm
+fi
+m$y $m | mio 7
