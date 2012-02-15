@@ -2,4 +2,4 @@
 #g -c "source ~/.vim/weekly.vim" ~/txt/weekly
 cat ~/txt/weekly > /tmp/week.foobar
 cat ~/txt/weekly >> /tmp/week.foobar
-g -c "source ~/.vim/weekly.vim" /tmp/week.foobar
+g --servername WKLY -c "source ~/.vim/weekly.vim" /tmp/week.foobar
