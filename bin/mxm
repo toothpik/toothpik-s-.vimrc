@@ -60,23 +60,9 @@ function numword ()
             ;;
     esac
 }
-function docmd ()
-{
-    case $1 in
-        1) echo 'cw'
-            ;;
-        2) echo 'tc'
-            ;;
-        3) echo 'cct;b22'
-            ;;
-        4) echo 'm'
-            ;;
-    esac
-}
 x=0
 while test $x -lt $hm ; do
-    kn=$(($x + $sn))
+    kn=$(( x + sn ))
     konsole --new-tab -p tabtitle="$(numword $kn)" 
-#    konsole --new-tab -p tabtitle="$(numword $kn)" -e "$(docmd $kn)"
     x=$(( x + 1 ))
 done
