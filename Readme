@@ -21,6 +21,7 @@ csp.awk             Chiefs preseason + score
 csv_parser.awk      csv parser
 ctdl.awk            count dash lines
 ctdll.awk           count dash lines
+curmo.awk           determine current plan month
 cwl.awk             count wins and losses
 dict.awk            stop and go example
 diff0.awk           diff the weights in lighter log
