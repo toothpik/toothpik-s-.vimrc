@@ -11,11 +11,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-if has("gui_running")
-    set   cursorline
-else
-    set  nocursorline
-endif
+set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -152,8 +148,8 @@ imap <S-F1> <C-O>:call F1_toggle_width("70")<CR>
 " ----------------------------------------
 nmap <F2> o
 imap <F2> <C-O>o
-nmap <S-F2> g`"
-imap <S-F2> <C-O>`"
+nmap <S-F2> O
+imap <S-F2> <C-O>O
 " ----------------------------------------
 nmap <silent> <F3> :bdelete<CR>
 imap <F3> <ESC>:bdelete<CR>
