@@ -1,0 +1,59 @@
+#!/usr/bin/python
+from os import environ
+from string import find, split, strip
+flog = ""
+fmailrc = environ.get('HOME') + '/.fetchmailrc'
+
+try:
+   frc=open(fmailrc, 'r')
+   while 1:
+      S=frc.readline()
+      if S == "":
+         frc.close()
+         break
+      if (S.find('set logfile') > -1):
+         flog = S.split()[2].strip('"')
+except IOError:
+   print 'could not open %s for reading' % fmailrc
+   exit (1)
+
+saveLine = "fetchmail not running as a daemon - no sleeping in the log"
+
+try:
+   f=open(flog, 'r')
+   while 1:
+      S=f.readline()
+      if S == "":
+        f.close()
+        break
+      if (S.find('fetchmail: sleeping at ') > -1):
+         saveLine = S
+except IOError:
+   print 'could not open %s for reading' % flog
+   exit (1)
+
+wa = saveLine.split()
+ls = wa[7]     # last sleep
+ss = wa[11]    # sleep seconds
+ampm = wa[8]   # AM or PM
+
+if ss == "in":
+    print saveLine
+else:
+    sleep_duration = int(ss) / 60
+    hms = ls.split(':')
+    hour = int(hms[0])
+    if ampm == "PM":
+        if hour != 12:
+            hour += 12
+    else:
+        if hour == 12:
+            hour = 0
+    minute = int(hms[1])
+    nmin = minute + sleep_duration
+    if (nmin > 59):
+        nmin -= 60
+        hour += 1
+        if (hour > 23):
+            hour -= 24
+    print '           next fetch  %02d:%02d:%s' % (hour, nmin, hms[2])
