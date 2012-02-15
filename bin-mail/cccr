@@ -1,0 +1,11 @@
+#!/bin/bash
+clear
+b
+tsl=`tput lines`
+if test $tsl -gt 37; then
+    psf=$(( ( `tput cols` - 75 ) / 2 - 2))
+    cm1p1 | mio $psf
+    b 2
+fi
+ccr | mio 25
+b 4
