@@ -1,0 +1,5 @@
+#!/bin/bash
+#  update "ws" windows
+vim --servername WKLY --remote-send ':call NewDay()<CR><CR>'
+vim --servername TCAL --remote-send ':source ~/.vim/mmatc.vim<CR>'
+vim --servername LAUN --remote-send ':call NewDay()<CR><CR>'
