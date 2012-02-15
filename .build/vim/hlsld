@@ -1,14 +1,9 @@
 #!/bin/bash
-#  how long since the last data hit?
-cd ~/.build/vim
-yr=`date '+%Y'`
-ldh=$(grep "^$yr" incoming.log | tail -1 | cut -c1-17)
-if test "X$ldh" = "X"; then
-    yr=$(( yr - 1 ))
-    ldh=$(grep "^$yr" incoming.log | tail -1 | cut -c1-17)
-fi
+#  how long since the last update?
+ldh=$(tail -1 ~/.vim/version.log | cut -c1-17)
+lv=$(tail -1 ~/.vim/version.log | cut -c20- )
 {
     echo "it's been"
     etolns "$ldh"
-    echo "since the last update"
-} | sed 's/^/   /'
+    echo "since update to $lv"
+} | mio 3
