@@ -1,0 +1,4 @@
+#!/bin/bash
+#  trim columns
+cts=$((`tput cols` - 1))
+cut -c1-$cts
