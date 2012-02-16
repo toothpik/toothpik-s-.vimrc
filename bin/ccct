@@ -1,0 +1,14 @@
+#!/bin/bash
+#  new and improved cct
+clear
+b
+tsl=`tput lines`
+if test $tsl -gt 37; then
+    pfc=$(( ( (`tput cols` - 75) / 2) - 2 ))
+    cm1p1 | mio $pfc
+    b 2
+fi
+cct | mio 7
+b
+~/py/laundry2 | mio 12
+b
