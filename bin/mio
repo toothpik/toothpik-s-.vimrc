@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+#  move it over
+if (@ARGV < 1) {
+    $dns = 60;
+} else {
+    $dns = $ARGV[0];
+}
+open(S, '-');
+while ($l = <S>) {
+    if ($dns < 0) {
+        printf "%s%s", " " x $dns, substr($l, $dns * -1);
+    } else {
+        printf "%s%s", " " x $dns, $l;
+    }
+}
+close(S);
