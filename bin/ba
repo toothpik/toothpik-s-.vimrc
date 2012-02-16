@@ -1,0 +1,16 @@
+#!/bin/bash
+clear
+tsl=`tput lines`
+if test $tsl -gt 37; then
+    b
+    pfc=$(( ( (`tput cols` - 75) / 2) - 2 ))
+    cm1p1 | mio $pfc
+    b
+fi
+b2    | mio 8
+hoirb | mio 8
+b
+rb    | mio 8
+b
+mb    | mio 8
+b
