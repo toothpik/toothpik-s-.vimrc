@@ -8,4 +8,4 @@ if [ x$lc == x ]; then
 fi
 cb=$(( $lc / 3 ))
 ca=$(( $lc - $cb ))
-cat ~/txt/tocal | ~/py/bcdit | grep -v '^ -----' | grep -B$cb -A$ca '  <----<<$' | trimc
+cat ~/txt/tocal | bcdit | grep -v '^ -----' | grep -B$cb -A$ca '  <----<<$' | trimc
