@@ -3,9 +3,9 @@
 nmap <buffer> <Leader>ev :e ~/.vim/laundry.vim<CR>
 
 let mapleader = ','
-nnoremap <Leader>c :call AddNewLaundryEntry("colored")<CR>
-nnoremap <Leader>s :call AddNewLaundryEntry("sheets")<CR>
-nnoremap <Leader>w :call AddNewLaundryEntry("white")<CR>
+nnoremap <silent> <Leader>c :call AddNewLaundryEntry("colored")<CR>
+nnoremap <silent> <Leader>s :call AddNewLaundryEntry("sheets")<CR>
+nnoremap <silent> <Leader>w :call AddNewLaundryEntry("white")<CR>
 
 function! AddNewLaundryEntry(strtadd)
     let ds = strftime("    %b %e  %a  ")
