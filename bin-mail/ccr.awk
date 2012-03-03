@@ -6,4 +6,4 @@ function commas(x, num) {
       sub(/[0-9][0-9][0-9]($|[,.])/, ",&", num)
    return num
 }
-{ printf "%15s %s %2d %s %s\n", commas($5), $6, $7, $8, $9}
+{ printf "%15s  %s  %s\n", commas($5), $8, $9}
