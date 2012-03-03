@@ -13,9 +13,8 @@ if test $bs -eq 1; then
     cm1p1 | mio $pfc
     b 2
 fi
-cct | mio 7
+cct | mio 17
 b
 if test $bs -eq 1; then
-    ~/py/laundry2 | mio 12
-    b
+    laundry2 | mio 25
 fi
