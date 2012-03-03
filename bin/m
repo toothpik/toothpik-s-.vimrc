@@ -14,11 +14,11 @@ function pmtmt() {
         {
             $pym 12
             $wm 1
-        } | tail -$limit
+        } | tail -$limit | mio 8
     else
         for m in $pm $tm; do
             $wm $m
-        done | tail -$limit
+        done | tail -$limit | mio 8
     fi
 }
 #  this month/next month/head
@@ -26,13 +26,13 @@ function tmnmh () {
     if [ $nm -lt 13 ]; then
         for m in $tm $nm; do
             $wm $m
-        done | head -$limit
+        done | head -$limit | mio 8
     else
         nym=m$((`date '+%y'` + 1))
         {
             $wm 12
             $nym 1
-        } | head -$limit
+        } | head -$limit | mio 8
     fi
 }
 #  this month/next month/tail
@@ -40,13 +40,13 @@ function tmnmt () {
     if [ $nm -lt 13 ]; then
         for m in $tm $nm; do
             $wm $m
-        done | tail -$limit
+        done | tail -$limit | mio 8
     else
         nym=m$((`date '+%y'` + 1))
         {
             $wm 12
             $nym 1
-        } | tail -$limit
+        } | tail -$limit | mio 8
     fi
 }
 if [[ $dom =~ 0[1-9] ]]; then
