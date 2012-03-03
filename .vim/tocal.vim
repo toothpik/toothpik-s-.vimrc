@@ -12,6 +12,7 @@ endif
 set cursorline
 set nowrap
 set hlsearch
+set nonumber
 
 source ~/.vim/fcd.vim
 source ~/.vim/wpp.vim
