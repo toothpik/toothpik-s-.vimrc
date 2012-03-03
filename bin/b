@@ -1,0 +1,12 @@
+#!/bin/bash
+#  generate blank lines
+if test $# -eq 0; then
+    nw=1
+else
+    nw=$1
+fi
+if test $nw -gt 0; then
+    for ((i=0; i<nw; i++)) ; do
+        echo
+    done
+fi
