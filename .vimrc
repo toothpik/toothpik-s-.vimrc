@@ -165,8 +165,8 @@ imap <S-F4> <ESC>:call FixBlankLinesAtEnd()<CR>
 map <silent> <F5> :nohlsearch<CR>
 imap <silent> <F5> <C-O>:nohlsearch<CR>
 cmap <F5> <c-r>=strftime("%Y%m%d")<CR>
-nmap <S-F5> :call CountBlankLinesAtEnd()<CR>
-imap <S-F5> <ESC>:call CountBlankLinesAtEnd()<CR>
+nmap <S-F5> :call ZeroBlankLinesAtEnd()<CR>
+imap <S-F5> <ESC>:call ZeroBlankLinesAtEnd()<CR>
 nmap <silent> <M-F5> :call FirstBlankAtEnd()<CR>
 imap <silent> <M-F5> <C-O>:call FirstBlankAtEnd()<CR>
 " ----------------------------------------
@@ -198,6 +198,7 @@ imap <silent> <M-F9> <C-O>:set list!<CR>
 nnoremap <C-J> <C-W>wj<C-W>w
 nnoremap <C-K> <C-W>wk<C-W>w
 nmap <F10> <C-E>
+vmap <F10> <C-E>
 imap <F10> <C-O><C-E>
 nmap <silent> <S-F10> :set cursorline!<CR>
 imap <silent> <S-F10> <C-O>:set cursorline!<CR>
@@ -770,5 +771,17 @@ endfunction
 function! UnsetFolds()
     setlocal foldexpr=0
     setlocal foldcolumn=0
+endfunction
+" ----------------------------------------
+function! ZeroBlankLinesAtEnd()
+    let s:bc = NumberBlankLinesAtEnd()
+    if s:bc == 0
+        echo 'this module already has 0 blank lines at the end'
+        return
+    endif
+    let view = winsaveview()
+    call FirstBlankAtEnd()
+    execute 'normal ' . s:bc . 'dd'
+    call winrestview(view)
 endfunction
 " ----------------------------------------
