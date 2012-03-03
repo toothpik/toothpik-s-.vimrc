@@ -1,11 +1,6 @@
 #!/usr/bin/perl
 #  add holidays to tocal
 use DateTime;
-if (@ARGV < 1) {
-    $yr = DateTime->now()->strftime("%Y") + 1;
-} else {
-    $yr = $ARGV[0];
-}
 #
 sub adhol {
     if (length == 14) {
@@ -20,126 +15,114 @@ sub adhol {
     }
 }
 #
-$processing = 0;
-$c = 0;
-#
 open(DAT, '-');
 while ($_ = <DAT>) {
     chop;
-    if (/^ $yr/) {
-        $processing = 1;
+    if (/^   Jan  1/) {
+        $_ = &adhol("New Year's Day");
+        $c = 0;
+    } 
+    #  MLK:  3rd Monday in Jan
+    if (/^   Jan/ && substr($_, 11, 3) =~ /Mon/) {
+        $c++;
+        if ($c == 3) {
+            $_ = &adhol("Martin Luther King Day");
+        }
     }
-    if ($processing) {
-        if (/^   Jan  1/) {
-            $_ = &adhol("New Year's Day");
-        } 
-        #  MLK:  3rd Monday in Jan
-        if (/^   Jan/ && substr($_, 11, 3) =~ /Mon/) {
-            $c++;
-            if ($c == 3) {
-                $_ = &adhol("Martin Luther King Day");
-            }
-        }
-        #
-        if (/^   Feb 12/) {
-            $_ = &adhol("Lincoln's Birthday");
-        }
-        #
-        if (/^   Feb 14/) {
-            $_ = &adhol("Valentine's Day");
-        }
-        #  President's:  3rd Monday in Feb
-        if (/^   Feb  1/) { $c = 0; }
-        if (/^   Feb/ && substr($_, 11, 3) =~ /Mon/) {
-            $c++;
-            if ($c == 3) {
-                $_ = &adhol("President's Day");
-            }
-        }
-        #
-        if (/^   Mar 17/) {
-            $_ = &adhol("St. Patrick's Day");
-        }
-        #  Mother's:  2nd Sunday in May
-        if (/^   May  1/) { $c = 0; }
-        if (/^   May/ && substr($_, 11, 3) =~ /Sun/) {
-            $c++;
-            if ($c == 2) {
-                $_ = &adhol("Mother's Day");
-            }
-        }
-        #  Memorial:  last Monday in May
-        if (/^   May  1/) {
-            $fdom = substr($_, 11, 3);
-               if ($fdom =~ /Fri/) {$mdy = 25;}
-            elsif ($fdom =~ /Thu/) {$mdy = 26;}
-            elsif ($fdom =~ /Wed/) {$mdy = 27;}
-            elsif ($fdom =~ /Tue/) {$mdy = 28;}
-            elsif ($fdom =~ /Mon/) {$mdy = 29;}
-            elsif ($fdom =~ /Sun/) {$mdy = 30;}
-            else                   {$mdy = 31;}
-        }
-        if (/^   May $mdy/) {
-            $_ = &adhol("Memorial Day");
-        }
-        #  Father's:  3rd Sunday in Jun
-        if (/^   Jun  1/) { $c = 0; }
-        if (/^   Jun/ && substr($_, 11, 3) =~ /Sun/) {
-            $c++;
-            if ($c == 3) {
-                $_ = &adhol("Father's Day");
-            }
-        }
-        #
-        if (/^   Jul  4/) {
-            $_ = &adhol("Independence Day");
-        }
-        #  Labor:  first Monday in Sep
-        if (/^   Sep  1/) { $c = 0; }
-        if (/^   Sep/ && substr($_, 11, 3) =~ /Mon/) {
-            $c++;
-            if ($c == 1) {
-                $_ = &adhol("Labor Day");
-            }
-        }
-        #  Columbus:  2nd Monday in Oct
-        if (/^   Oct  1/) { $c = 0; }
-        if (/^   Oct/ && substr($_, 11, 3) =~ /Mon/) {
-            $c++;
-            if ($c == 2) {
-                $_ = &adhol("Columbus Day");
-            }
-        }
-        #
-        if (/^   Oct 31/) {
-            $_ = &adhol("Halloween");
-        }
-        #
-        if (/^   Nov 11/) {
-            $_ = &adhol("Veteran's Day");
-        }
-        #  Thanksgiving:  4th Thursday in Nov
-        if (/^   Nov  1/) { $c = 0; }
-        if (/^   Nov/ && substr($_, 11, 3) =~ /Thu/) {
-            $c++;
-            if ($c == 4) {
-                $_ = &adhol("Thanksgiving");
-            }
-        }
-        #
-        if (/^   Dec 25/) {
-            $_ = &adhol("Christmas");
-        }
-        #
-        if (/^   Dec 31/) {
-            $_ = &adhol("New Year's Eve");
-        }
-        print "$_\n";
-    } else {
-        print "$_\n";
+    #
+    if (/^   Feb 12/) {
+        $_ = &adhol("Lincoln's Birthday");
     }
+    #
+    if (/^   Feb 14/) {
+        $_ = &adhol("Valentine's Day");
+    }
+    #  President's:  3rd Monday in Feb
+    if (/^   Feb  1/) { $c = 0; }
+    if (/^   Feb/ && substr($_, 11, 3) =~ /Mon/) {
+        $c++;
+        if ($c == 3) {
+            $_ = &adhol("President's Day");
+        }
+    }
+    #
+    if (/^   Mar 17/) {
+        $_ = &adhol("St. Patrick's Day");
+    }
+    #  Mother's:  2nd Sunday in May
+    if (/^   May  1/) { $c = 0; }
+    if (/^   May/ && substr($_, 11, 3) =~ /Sun/) {
+        $c++;
+        if ($c == 2) {
+            $_ = &adhol("Mother's Day");
+        }
+    }
+    #  Memorial:  last Monday in May
+    if (/^   May  1/) {
+        $fdom = substr($_, 11, 3);
+           if ($fdom =~ /Fri/) {$mdy = 25;}
+        elsif ($fdom =~ /Thu/) {$mdy = 26;}
+        elsif ($fdom =~ /Wed/) {$mdy = 27;}
+        elsif ($fdom =~ /Tue/) {$mdy = 28;}
+        elsif ($fdom =~ /Mon/) {$mdy = 29;}
+        elsif ($fdom =~ /Sun/) {$mdy = 30;}
+        else                   {$mdy = 31;}
+    }
+    if (/^   May $mdy/) {
+        $_ = &adhol("Memorial Day");
+    }
+    #  Father's:  3rd Sunday in Jun
+    if (/^   Jun  1/) { $c = 0; }
+    if (/^   Jun/ && substr($_, 11, 3) =~ /Sun/) {
+        $c++;
+        if ($c == 3) {
+            $_ = &adhol("Father's Day");
+        }
+    }
+    #
+    if (/^   Jul  4/) {
+        $_ = &adhol("Independence Day");
+    }
+    #  Labor:  first Monday in Sep
+    if (/^   Sep  1/) { $c = 0; }
+    if (/^   Sep/ && substr($_, 11, 3) =~ /Mon/) {
+        $c++;
+        if ($c == 1) {
+            $_ = &adhol("Labor Day");
+        }
+    }
+    #  Columbus:  2nd Monday in Oct
+    if (/^   Oct  1/) { $c = 0; }
+    if (/^   Oct/ && substr($_, 11, 3) =~ /Mon/) {
+        $c++;
+        if ($c == 2) {
+            $_ = &adhol("Columbus Day");
+        }
+    }
+    #
+    if (/^   Oct 31/) {
+        $_ = &adhol("Halloween");
+    }
+    #
+    if (/^   Nov 11/) {
+        $_ = &adhol("Veteran's Day");
+    }
+    #  Thanksgiving:  4th Thursday in Nov
+    if (/^   Nov  1/) { $c = 0; }
+    if (/^   Nov/ && substr($_, 11, 3) =~ /Thu/) {
+        $c++;
+        if ($c == 4) {
+            $_ = &adhol("Thanksgiving");
+        }
+    }
+    #
+    if (/^   Dec 25/) {
+        $_ = &adhol("Christmas");
+    }
+    #
     if (/^   Dec 31/) {
-        $processing = 0;
+        $_ = &adhol("New Year's Eve");
     }
+    print "$_\n";
 }
 close(DAT);
