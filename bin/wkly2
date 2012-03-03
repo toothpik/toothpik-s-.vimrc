@@ -1,0 +1,27 @@
+#!/usr/bin/python
+#  line shuffler for weekly and wkly (and tcw...)
+#  cat ~/txt/weekly | wkly2  --  will arrange current date (flagged) in middle
+#  with three days above and three below
+from datetime import date
+from sys import stdin
+wkdy = date.today().strftime("%a")
+dl = []
+lc = 0
+for line in stdin:
+    lc += 1
+    L = line.rstrip()
+    if L.find(wkdy) > -1:
+        dl.append(L + "  <---")
+        fd = lc
+    else:
+        dl.append(L)
+if fd > 3:
+    for i in range(fd - 4, 7):
+        print dl[i]
+    for i in range(fd - 4):
+        print dl[i]
+else:
+    for i in range(fd + 3, 7):
+        print dl[i]
+    for i in range(fd + 3):
+        print dl[i]
