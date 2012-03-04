@@ -5,7 +5,7 @@ gc=0
 gl=0
 for s in `vim --serverlist`; do
     case $s in 
-        WKLY) vim --servername WKLY --remote-send ':call NewDay()<CR><CR>'
+        WKLY) vim --servername WKLY --remote-send ':source ~/.vim/weekly.vim<CR><CR>'
               gw=1
               ;;
         TCAL) vim --servername TCAL --remote-send ':source ~/.vim/mmatc.vim<CR>'
@@ -20,7 +20,6 @@ done
 
 if test $gw -eq 0; then
     weekly
-    vim --servername WKLY --remote-send 'call NewDay()<CR><CR>'
 fi
 
 if test $gc -eq 0; then
