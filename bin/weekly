@@ -1,2 +1,2 @@
 #!/bin/bash
-cat ~/txt/weekly | wkly2 | g --servername WKLY -S ~/.vim/weekly.vim -
+g --servername WKLY -S ~/.vim/weekly.vim
