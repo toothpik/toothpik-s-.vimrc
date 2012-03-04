@@ -1,4 +1,12 @@
+"  weekly reminder formatter
 "  called by ~/bin/weekly
+"
+let mapleader = ','
+nmap <silent> <Leader>c :source ~/.vim/weekly.vim<CR>
+nmap <silent> <Leader>ev :edit ~/.vim/weekly.vim<CR>
+let @/ = strftime("%a")
+silent %d
+silent 0r!cat ~/txt/weekly | wkly2
 call Hideme()
 winpos 0 17
 set columns=25
@@ -9,19 +17,9 @@ set nonumber
 set noruler
 set noshowmode
 set nowrap
-let @/ = strftime("%a")
+normal gg
 silent normal n
 normal 0
-function! NewDay()
-    let @/ = strftime("%a")
-    silent %d
-    silent 0r!cat ~/txt/weekly | wkly2
-    1
-    silent normal n
-    normal 0
-    normal zz
-endfunction
+normal zz
 set hlsearch
 silent file week
-nmap <silent> <Leader>c :call NewDay()<CR>
-nmap <silent> <Leader>ev :edit ~/.vim/weekly.vim<CR>
