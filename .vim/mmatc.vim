@@ -3,6 +3,7 @@
 "
 let mapleader = ','
 nnoremap <Leader>c :source ~/.vim/mmatc.vim<CR>
+nnoremap <Leader>ev :edit ~/.vim/mmatc.vim<CR>
 normal gg
 silent %d
 silent r!cm1p1 | sed -f ~/mofix.sed
