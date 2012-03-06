@@ -221,6 +221,8 @@ vmap <silent> <F12> <C-C>:update<CR>
 "  do not try to map S-F12 -- vim never sees it
 " ----------------------------------------
 " --- insert mode abbreviations
+iabbrev <silent> bsk <c-r>=strftime("%Y-%b-%2d  %H:%M  %a")<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> bskk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd1 <c-r>=repeat('-', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd2 <c-r>=repeat('-', 20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd3 <c-r>=repeat('-', 30)<CR><c-r>=Eatchar('\s')<cr>
@@ -232,6 +234,20 @@ iabbrev <silent> dd8 <c-r>=repeat('-', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd9 <c-r>=repeat('-', 90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd10 <c-r>=repeat('-', 100)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd11 <c-r>=repeat('-', 110)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dda <c-r>=strftime("%a")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ddd <c-r>=strftime("%d %b %Y  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dddd <c-r>=strftime("%Y-%m-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dddf <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dddl <c-r>=Longdate()<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dddn <c-r>=strftime("%Y-%b-%d %H:%M %a")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dddof <c-r>=strftime("%B %d, %Y  %A")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dddt  <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dded <c-r>=Mydatestamp()<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dds2 <c-r>=strftime("%Y-%b-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ddsd <c-r>=strftime("%b %_d")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ddsdd <c-r>=strftime("%b %_d  %a")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ddss <c-r>=strftime("%Y-%b-%d  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee1 <c-r>=repeat('=', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee2 <c-r>=repeat('=', 20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee3 <c-r>=repeat('=', 30)<CR><c-r>=Eatchar('\s')<cr>
@@ -241,6 +257,12 @@ iabbrev <silent> ee6 <c-r>=repeat('=', 60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee7 <c-r>=repeat('=', 70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee8 <c-r>=repeat('=', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee9 <c-r>=repeat('=', 90)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ibe #!/usr/bin/expect<c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ibp #!/usr/bin/python<c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ibpp #!/usr/bin/perl<c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ibs #!/bin/bash<c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ibt #!/usr/bin/tclsh<c-r>=Eatchar('\s')<cr>
+iabbrev <silent> lddds <c-r>=strftime("%Y-%b-%2d  %H:%M")<CR><C-R>=Eatchar('\s')<CR>
 iabbrev <silent> md1 <c-r>=repeat('—', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> md2 <c-r>=repeat('—', 20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> md3 <c-r>=repeat('—', 30)<CR><c-r>=Eatchar('\s')<cr>
@@ -251,6 +273,12 @@ iabbrev <silent> md7 <c-r>=repeat('—', 70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> md8 <c-r>=repeat('—', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> md9 <c-r>=repeat('—', 90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul1 <c-r>=Scaleme(10)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> rul10 <c-r>=Scaleme(100)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> rul11 <c-r>=Scaleme(110)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> rul12 <c-r>=Scaleme(120)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> rul13 <c-r>=Scaleme(130)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> rul14 <c-r>=Scaleme(140)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> rul15 <c-r>=Scaleme(150)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul2 <c-r>=Scaleme(20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul3 <c-r>=Scaleme(30)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul4 <c-r>=Scaleme(40)<CR><c-r>=Eatchar('\s')<cr>
@@ -259,34 +287,7 @@ iabbrev <silent> rul6 <c-r>=Scaleme(60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul7 <c-r>=Scaleme(70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul8 <c-r>=Scaleme(80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul9 <c-r>=Scaleme(90)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> rul10 <c-r>=Scaleme(100)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> rul11 <c-r>=Scaleme(110)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> rul12 <c-r>=Scaleme(120)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> rul13 <c-r>=Scaleme(130)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> rul14 <c-r>=Scaleme(140)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> rul15 <c-r>=Scaleme(150)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> bsk <c-r>=strftime("%Y-%b-%2d  %H:%M  %a")<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> bskk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dda <c-r>=strftime("%a")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ddd <c-r>=strftime("%d %b %Y  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dddd <c-r>=strftime("%Y-%m-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dddf <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dddl <c-r>=Longdate()<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dddn <c-r>=strftime("%Y-%b-%d %H:%M %a")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dddof <c-r>=strftime("%B %d, %Y  %A")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dddt  <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dded <c-r>=Mydatestamp()<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ddsd <c-r>=strftime("%b %_d")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ddsdd <c-r>=strftime("%b %_d  %a")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dds2 <c-r>=strftime("%Y-%b-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ddss <c-r>=strftime("%Y-%b-%d  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> lddds <c-r>=strftime("%Y-%b-%2d  %H:%M")<CR><C-R>=Eatchar('\s')<CR>
-iabbrev <silent> ibs #!/bin/bash<c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ibp #!/usr/bin/python<c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ibpp #!/usr/bin/perl<c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ibt #!/usr/bin/tclsh<c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ibe #!/usr/bin/expect<c-r>=Eatchar('\s')<cr>
+iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
 " ----------------------------------------
 " --- leader commands
 let mapleader = ','
@@ -492,7 +493,7 @@ function! FixBlankLinesAtEnd()
     endif
     let s:d7 = 7 - s:bc
     if s:d7 > 0
-        echo 'need to add' s:d7
+        echo 'adding' s:d7
         while s:d7 > 0
             call append(line('$'), "")
             let s:d7 -= 1
