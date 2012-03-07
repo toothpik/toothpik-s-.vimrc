@@ -57,7 +57,7 @@ for {set i 0} {$i < [expr {$lc - 1}]} { incr i} {
             } else {
                 append ds $d
             }
-            puts "$nl[format "%10s" $nbalwc][format "%6s" $ds]"
+            puts "$nl[format "%11s" $nbalwc][format "%6s" $ds]"
         } else {
             puts $l
         }
