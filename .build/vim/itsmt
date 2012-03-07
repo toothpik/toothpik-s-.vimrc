@@ -1,5 +1,11 @@
 #!/usr/bin/tclsh
 #  is this string more than 10 hours in the past?
+#
+#  is there no end to the disreguard for DST and all the other
+#  complications of date arithmetic?
+#
+#  eventually i hope to see a pythonian itsmt...
+#
 proc usage {} {
     puts "itsmt was written for hlslt"
     puts "to determine whether the (required) input date-time"
