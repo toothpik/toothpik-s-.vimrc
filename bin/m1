@@ -1,0 +1,12 @@
+#!/bin/bash
+clear
+b
+tsl=`tput lines`
+if test $tsl -gt 37; then
+    pfc=$(( ( (`tput cols` - 75) / 2) - 2 ))
+    cm1p1 | mio $pfc
+    b
+fi
+y=`date '+%y'`
+wm=`curpmo`
+m$y $wm | mio 8
