@@ -2,7 +2,7 @@
 cd ~/bin-mail
 tod=`date '+%b %e'`
 echo
-date '+            now  %H:%M' 
+date '+            now  %H:%M:%S' 
 echo
 ls -lt ~/Mail | grep -v "^total" | grep -F "$tod" | awk -f ccr.awk
 echo
