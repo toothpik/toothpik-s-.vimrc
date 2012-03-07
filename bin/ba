@@ -7,10 +7,11 @@ if test $tsl -gt 37; then
     cm1p1 | mio $pfc
     b
 fi
-b2    | mio 8
-hoirb | mio 8
+ma=8
+b2    | mio $ma
+hoirb | mio $ma
 b
-rb    | mio 8
+rb    | mio $ma
 b
-mb    | mio 8
+mb    | mio $ma
 b
