@@ -6,6 +6,14 @@ if test $tsl -gt 37; then
     psf=$(( ( `tput cols` - 75 ) / 2 - 2))
     cm1p1 | mio $psf
     b 2
+else
+    loo=`ccr | wc -l`
+#   echo "length of output is $loo"
+#   echo "length of screen is $tsl"
+    dp=$(( (tsl - loo) / 2 - 5))
+#   echo "desired push is $dp"
+    if test $dp -gt 0; then
+        b $dp
+    fi
 fi
 ccr | mio 29
-b 4
