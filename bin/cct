@@ -2,4 +2,4 @@
 #  cat the ct0 output through ~/tcl/ct0
 date '+         countdown list as of      %Y-%b-%d'
 echo
-ct0 | ~/tcl/ct0 | awk -f ~/incend.awk
+ct0 | ctctr | awk -f ~/incend.awk
