@@ -31,16 +31,21 @@ test -s ~/.alias && . ~/.alias || true
 #  dotted items will come before non-dotted ones
 export LC_COLLATE=POSIX
 
-#export PS1='\[\e[6;31m\][$(date "+%a %H:%M")] \w $\[\e[m\] '
+###############################################################
+#  when changing PS1 be sure to also change dp and rdp to     #
+#  stay in sync                                               #
+###############################################################
+#  export PS1='\[\e[6;31m\][$(date "+%a %H:%M")] \w $\[\e[m\] '
 #  export PS1='[\d \A] \w> '
-#export PS1='[$(mytime)] \w $ '
+#  export PS1='[$(mytime)] \w $ '
 #  export PS1='\[\e[6;31m\][$(mytime)] \w $\[\e[m\] '
 #  export PS1='\[\e[6;31m\]\w $\[\e[m\] '
 #  export PS1='\[\e[6;31m\]$\[\e[m\] '
 #  export PS1='[$(date "+%a %H:%M")] \w $ '
 export PS1='$ '
-#export PS1='\w> '
+#  export PS1='\w> '
 #  export PS1='$PWD> '
+#  export PS1='\w$ '
 
 alias cd2='cd ~/bin'
 alias cd3='cd ~/txt'
@@ -92,6 +97,7 @@ function dp () {
         export PATH=${PWD}:$PATH
 #       export PS1='[$(mytime)] \w : '
         export PS1=': '
+#       export PS1='\w: '
     fi
 }
 #  remove dangerous path extension -- whew!
