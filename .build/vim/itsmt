@@ -1,36 +1,32 @@
-#!/usr/bin/tclsh
+#!/usr/bin/python
 #  is this string more than 10 hours in the past?
+from datetime import datetime
+from pytz import timezone
+from sys import argv, exit
 #
-#  is there no end to the disreguard for DST and all the other
-#  complications of date arithmetic?
+#  f and s are the first and second dates
+#  f1 and s1 are the time-zone aware versions
 #
-#  eventually i hope to see a pythonian itsmt...
-#
-proc usage {} {
-    puts "itsmt was written for hlslt"
-    puts "to determine whether the (required) input date-time"
-    puts "is more than 10 hours in the past"
-    return
-}
-if {$argc == 0} {
-    puts "zero arguments supplied"
-    usage
-    return
-}
-if {$argc == 2} {
-    set ts "[lindex $argv 0] [lindex $argv 1]"
-} else {
-    set ts [lindex $argv 0]
-}
-if [catch {clock scan $ts -format "%Y-%b-%d %H:%M"} t1] {
-    puts "cannot parse $ts as a date-time"
-    usage
-    return
-}
-set tn [clock seconds]
-set diff [expr {$tn - $t1}]
-if {$diff < 36000} {
-    puts "LT"
-} else {
-    puts "GToE"
-}
+ctz = timezone('US/Central')
+dfm = "%Y-%b-%d %H:%M"   #  date format
+hma = len(argv)          #  how many arguments?
+if hma < 2:
+    print "itsmt requires a datetime string"
+    exit(1)
+
+s = datetime.now()
+s1 = ctz.localize(s)
+try:
+    f = datetime.strptime(argv[1], dfm)
+    f1 = ctz.localize(f)
+except ValueError:
+    print "cannot parse %s as datetime" % argv[1]
+    exit(1)
+
+d = s1 - f1
+hours = d.seconds / 3600
+
+if d.days > 0 or hours > 9:
+    print "GToE"
+else:
+    print "LT"
