@@ -52,6 +52,7 @@ set nosmartindent
 set   softtabstop=4
 set   spellcapcheck=
 set   spelllang=en_us
+set   splitbelow
 set nostartofline
 set   swapfile
 set   swapsync=
@@ -65,8 +66,7 @@ else
 endif
 set   timeoutlen=1500
 set   ttimeoutlen=100
-set   undodir=~/.vim/undo
-set   undofile
+set noundofile
 set   viminfo=!,'20,<50,s10,h
 set   virtualedit=block
 set   visualbell
@@ -141,83 +141,85 @@ command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
 command! Xbit call SetExecutableBit()
 " ----------------------------------------
 " --- F-key mappings
-nmap <silent> <F1> :call F1_formatter("70")<CR>
-imap <silent> <F1> <C-O>:call F1_formatter("70")<CR>
-nmap <S-F1> :call F1_toggle_width("70")<CR>
-imap <S-F1> <C-O>:call F1_toggle_width("70")<CR>
+nnoremap <silent> <F1> :call F1_formatter("70")<CR>
+inoremap <silent> <F1> <C-O>:call F1_formatter("70")<CR>
+nnoremap <S-F1> :call F1_toggle_width("70")<CR>
+inoremap <S-F1> <C-O>:call F1_toggle_width("70")<CR>
 " ----------------------------------------
-nmap <F2> o
-imap <F2> <C-O>o
-nmap <S-F2> O
-imap <S-F2> <C-O>O
+nnoremap <F2> o
+inoremap <F2> <C-O>o
+nnoremap <S-F2> O
+inoremap <S-F2> <C-O>O
 " ----------------------------------------
-nmap <silent> <F3> :bdelete<CR>
-imap <F3> <ESC>:bdelete<CR>
-nmap <S-F3> :qall<CR>
-imap <S-F3> <ESC>:qall<CR>
-imap <M-F3> <ESC><M-F3>
+nnoremap <silent> <F3> :bdelete<CR>
+inoremap <F3> <ESC>:bdelete<CR>
+nnoremap <S-F3> :qall<CR>
+inoremap <S-F3> <ESC>:qall<CR>
+inoremap <M-F3> <ESC><M-F3>
 " ----------------------------------------
-map <F4> :call OpenWhat()<CR>
-imap <F4> <C-O>J
-nmap <S-F4> :call FixBlankLinesAtEnd()<CR>
-imap <S-F4> <ESC>:call FixBlankLinesAtEnd()<CR>
+nnoremap <F4> :call OpenWhat()<CR>
+inoremap <F4> <C-O>J
+nnoremap <S-F4> :call FixBlankLinesAtEnd()<CR>
+inoremap <S-F4> <ESC>:call FixBlankLinesAtEnd()<CR>
 " ----------------------------------------
-map <silent> <F5> :nohlsearch<CR>
-imap <silent> <F5> <C-O>:nohlsearch<CR>
+nnoremap <silent> <F5> :nohlsearch<CR>
+inoremap <silent> <F5> <C-O>:nohlsearch<CR>
 cmap <F5> <c-r>=strftime("%Y%m%d")<CR>
-nmap <S-F5> :call ZeroBlankLinesAtEnd()<CR>
-imap <S-F5> <ESC>:call ZeroBlankLinesAtEnd()<CR>
-nmap <silent> <M-F5> :call FirstBlankAtEnd()<CR>
-imap <silent> <M-F5> <C-O>:call FirstBlankAtEnd()<CR>
+nnoremap <S-F5> :call ZeroBlankLinesAtEnd()<CR>
+inoremap <S-F5> <ESC>:call ZeroBlankLinesAtEnd()<CR>
+nnoremap <silent> <M-F5> :call FirstBlankAtEnd()<CR>
+inoremap <silent> <M-F5> <C-O>:call FirstBlankAtEnd()<CR>
 " ----------------------------------------
-nmap <silent> <F6> :bnext<CR>
-imap <silent> <F6> <ESC>:bnext<CR>
-nmap <silent> <S-F6> :bprevious<CR>
-imap <silent> <S-F6> <ESC>:bprevious<CR>
-nmap <M-F6> :ls<CR>:b
+nnoremap <silent> <F6> :bnext<CR>
+inoremap <silent> <F6> <ESC>:bnext<CR>
+nnoremap <silent> <S-F6> :bprevious<CR>
+inoremap <silent> <S-F6> <ESC>:bprevious<CR>
+nnoremap <M-F6> :ls<CR>:b
 " ----------------------------------------
-nmap <silent> <F7> :set spell!<CR>
-imap <silent> <F7> <ESC>:set spell!<CR>
-nmap <silent> <S-F7> :call Acdmo()<CR>
-imap <silent> <S-F7> <ESC>:call Acdmo()<CR>
+nnoremap <silent> <F7> :set spell!<CR>
+inoremap <silent> <F7> <ESC>:set spell!<CR>
+nnoremap <silent> <S-F7> :call Acdmo()<CR>
+inoremap <silent> <S-F7> <ESC>:call Acdmo()<CR>
 " ----------------------------------------
-nmap <silent> <F8> :m+<CR>
-imap <silent> <F8> <ESC>:m+<CR>a
-nmap <silent> <S-F8> :m-2<CR>
-imap <silent> <S-F8> <ESC>:m-2<CR>a
-nmap <silent> <M-F8> yyp
-imap <silent> <M-F8> <ESC>yyp$a
+nnoremap <silent> <F8> :m+<CR>
+inoremap <silent> <F8> <ESC>:m+<CR>a
+vnoremap <silent> <F8> :m'>+<CR>
+nnoremap <silent> <S-F8> :m-2<CR>
+inoremap <silent> <S-F8> <ESC>:m-2<CR>a
+vnoremap <silent> <S-F8> :m-2<CR>
+nnoremap <silent> <M-F8> yyp
+inoremap <silent> <M-F8> <ESC>yyp$a
 " ----------------------------------------
-nmap <silent> <F9> :call NumberToggle()<CR>
-imap <silent> <F9> <C-O>:call NumberToggle()<CR>
-nmap <silent> <S-F9> :set wrap!<CR>
-imap <silent> <S-F9> <C-O>:set wrap!<CR>
-nmap <silent> <M-F9> :set list!<CR>
-imap <silent> <M-F9> <C-O>:set list!<CR>
+nnoremap <silent> <F9> :call NumberToggle()<CR>
+inoremap <silent> <F9> <C-O>:call NumberToggle()<CR>
+nnoremap <silent> <S-F9> :set wrap!<CR>
+inoremap <silent> <S-F9> <C-O>:set wrap!<CR>
+nnoremap <silent> <M-F9> :set list!<CR>
+inoremap <silent> <M-F9> <C-O>:set list!<CR>
 " ----------------------------------------
 nnoremap <C-J> <C-W>wj<C-W>w
 nnoremap <C-K> <C-W>wk<C-W>w
-nmap <F10> <C-E>
-vmap <F10> <C-E>
-imap <F10> <C-O><C-E>
-nmap <silent> <S-F10> :set cursorline!<CR>
-imap <silent> <S-F10> <C-O>:set cursorline!<CR>
-nmap <silent> <M-F10> :set cursorcolumn!<CR>
-imap <silent> <M-F10> <C-O>:set cursorcolumn!<CR>
-nmap <silent> <C-F10> <C-W>w<C-E><C-W>w
-imap <silent> <C-F10> <ESC><C-W>w<C-E><C-W>wa
+nnoremap <F10> <C-E>
+vnoremap <F10> <C-E>
+inoremap <F10> <C-O><C-E>
+nnoremap <silent> <S-F10> :set cursorline!<CR>
+inoremap <silent> <S-F10> <C-O>:set cursorline!<CR>
+nnoremap <silent> <M-F10> :set cursorcolumn!<CR>
+inoremap <silent> <M-F10> <C-O>:set cursorcolumn!<CR>
+nnoremap <silent> <C-F10> <C-W>w<C-E><C-W>w
+inoremap <silent> <C-F10> <ESC><C-W>w<C-E><C-W>wa
 " ----------------------------------------
-nmap <F11> <C-Y>
-imap <F11> <C-O><C-Y>
-nmap <silent> <S-F11> :call MyExplore('')<CR>
-imap <silent> <S-F11> <ESC>:call MyExplore('')<CR>
-nmap <silent> <M-F11> :call MyExplore('t')<CR>
-imap <silent> <M-F11> <ESC>:call MyExplore('t')<CR>
-nmap <silent> <C-F11> <C-W>w<C-Y><C-W>w
+nnoremap <F11> <C-Y>
+inoremap <F11> <C-O><C-Y>
+nnoremap <silent> <S-F11> :call MyExplore('')<CR>
+inoremap <silent> <S-F11> <ESC>:call MyExplore('')<CR>
+nnoremap <silent> <M-F11> :call MyExplore('t')<CR>
+inoremap <silent> <M-F11> <ESC>:call MyExplore('t')<CR>
+nnoremap <silent> <C-F11> <C-W>w<C-Y><C-W>w
 " ----------------------------------------
-nmap <silent> <F12> :update<CR>
-imap <silent> <F12> <ESC>:update<CR>
-vmap <silent> <F12> <C-C>:update<CR>
+nnoremap <silent> <F12> :update<CR>
+inoremap <silent> <F12> <ESC>:update<CR>
+vnoremap <silent> <F12> <C-C>:update<CR>
 "  do not try to map S-F12 -- vim never sees it
 " ----------------------------------------
 " --- insert mode abbreviations
