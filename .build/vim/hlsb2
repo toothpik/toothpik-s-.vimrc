@@ -1,7 +1,8 @@
 #!/bin/bash
+#  hlsb + days between updates
 hlsb
 dsh 63 | mio 3
 echo
-lc=$(( `tput lines` - 20 ))
-grep '^20' incoming.log | awk '{ print $1 }' | sth '2010-Aug-17' | uniq | daysb | tail -$lc | mio 3
+lc=$(( `tput lines` - 21 ))
+cat ~/.vim/version.log | daysb2 | tail -$lc | mio 3
 echo
