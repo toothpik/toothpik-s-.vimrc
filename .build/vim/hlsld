@@ -1,6 +1,5 @@
 #!/bin/bash
 #  how long since the last update?
-cd ~/.vim/build
 ldh=$(tail -1 ~/.vim/version.log | cut -c1-17)
 lv=$(tail -1 ~/.vim/version.log | cut -c20- )
 {
