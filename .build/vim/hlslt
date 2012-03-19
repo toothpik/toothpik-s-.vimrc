@@ -14,8 +14,8 @@ cd ~/.build/vim
         echo "the next authorized t will be"
         etolns "$(dds)" "$thflt"
         echo "from now"
-    else
         echo ""
+    else
         echo "you are now authorized to do the next t"
         echo ""
     fi
