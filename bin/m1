@@ -9,4 +9,4 @@ if test $tsl -gt 37; then
 fi
 y=`date '+%y'`
 wm=`curpmo`
-m$y $wm | mio 8
+m$y $wm | sed -e 's/\<x\>/✔/' | mio 8
