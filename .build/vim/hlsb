@@ -1,11 +1,11 @@
 #!/bin/bash
 #  how long since both
 cd ~/.build/vim
-echo
+b
 echo '   how long since both'
-echo
+b
 hlslt
-dsh 63 | sed 's/^/   /'
-echo
+dsh 63 | mio 3
+b
 hlsld
-echo
+b
