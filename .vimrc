@@ -296,7 +296,7 @@ let mapleader = ','
 nnoremap <Leader>a :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <silent><Leader>b :call LastNonBlank()<CR>
 "nnoremap <silent><Leader>c
-"nnoremap <silent><Leader>d
+nnoremap <silent><Leader>d :call FindTocalDate()<CR>:set hlsearch<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
 nnoremap <Leader>ee :source ~/.vimrc<CR>
@@ -477,6 +477,15 @@ function! FindSunDate()
         normal 0
     catch
     endtry
+endfunction
+" ----------------------------------------
+function! FindTocalDate()
+    normal gg
+    let yr = '^ ' . strftime("%Y")
+    call search(yr)
+    let dt = '^   ' . strftime("%b %e  %a")
+    let @/ = dt[3:]
+    call search(dt)
 endfunction
 " ----------------------------------------
 function! FirstBlankAtEnd()
