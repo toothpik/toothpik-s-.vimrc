@@ -17,4 +17,4 @@ else
     y=`date '+%y'`
     m=$pm
 fi
-m$y $m | mio 8
+m$y $m | sed 's/\<x\>/✔/' | mio 8
