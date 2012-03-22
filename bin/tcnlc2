@@ -1,7 +1,7 @@
 #!/bin/bash
 #  tocal, no linecount
 if [ x$lc == x ]; then
-    echo 'tcnlc cannot function without environment variable "lc"'
+    echo 'tcnlc2 cannot function without environment variable "lc"'
     echo 'defined as a valid/desired line count'
     echo 'examples include the scripts tc and tc2'
     exit 1
