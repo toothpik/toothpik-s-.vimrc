@@ -19,4 +19,4 @@ cd ~/.build/vim
         echo "you are now authorized to do the next t"
         echo ""
     fi
-} | sed 's/^/   /'
+} | mio 3
