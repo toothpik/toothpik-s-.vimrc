@@ -1,0 +1,16 @@
+#!/bin/bash
+clear
+b
+tsl=`tput lines`
+if test $tsl -gt 37; then
+    psf=$(( ( `tput cols` - 75 ) / 2 - 2))
+    cm1p1 | mio $psf
+    b 2
+else
+    loo=`ccr | wc -l`
+    dp=$(( (tsl - loo) / 2 - 5))
+    if test $dp -gt 0; then
+        b $dp
+    fi
+fi
+ccr | mio 29
