@@ -3,11 +3,19 @@
 tsl=`tput lines`
 if test $tsl -gt 37; then
     b
-    export lc=$(($tsl - `cm1p1 | wc -l` - 4))
+    if test $# -gt 0; then
+        export lc=$1
+    else
+        export lc=$(($tsl - `cm1p1 | wc -l` - 4))
+    fi
     pfc=$(( ( (`tput cols` - 75) / 2) - 2 ))
     cm1p1 | mio $pfc
     dsh 74 | mio $((pfc + 1))
 else
-    export lc=$(($tsl - 2))
+    if test $# -gt 0; then
+        export lc=$1
+    else
+        export lc=$(($tsl - 2))
+    fi
 fi
 tcnlc2 | mio 7
