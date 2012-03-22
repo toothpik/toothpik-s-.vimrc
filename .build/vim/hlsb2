@@ -3,6 +3,6 @@
 hlsb
 dsh 63 | mio 3
 echo
-lc=$(( `tput lines` - 21 ))
+lc=$(( `tput lines` - `hlsb | wc -l` - 4 ))
 cat ~/.vim/version.log | daysb2 | tail -$lc | mio 3
 echo
