@@ -1,12 +1,38 @@
-#!/usr/bin/tclsh
-if { $argc < 1 } {
-    set y [clock format [clock seconds] -format "%Y"]
-} else {
-    set y [lindex $argv 0]
-}
-set ey [expr {$y + 1}]             ;#  end year
-set sd [clock scan "1 Jan $y"]     ;#  start date
-set ed [clock scan "1 Jan $ey"]    ;#  end date
-for { set d $sd } { $d < $ed } { incr d 86400 } {
-    puts "   [clock format $d -format "%b %e  %a"]"
-}
+#!/usr/bin/python
+#  create new year for tocal
+from datetime import date, timedelta
+from sys import argv, exit
+
+def usage():
+    print 'crt_tocal creates new years for tocal'
+    print 'requires a 4 digit year as $1'
+
+if len(argv) < 2:
+    print 'no argument supplied'
+    usage()
+    exit(1)
+
+if len(argv[1]) != 4:
+    print "%s is not a 4 digit year" % argv[1]
+    usage()
+    exit(1)
+
+try:
+    Y = int(argv[1])
+except ValueError:
+    print "cannot parse %s as year" % argv[1]
+    usage()
+    exit(1)
+
+dt = date(Y, 1, 1)
+end = date(Y, 12, 31)
+day = timedelta(days=1)
+
+print " %d" % Y
+print " %s" % ('-' * 60)
+
+while dt <= end:
+    print "   %s" % dt.strftime("%b %e  %a")
+    dt += day
+
+print " %s" % ('-' * 60)
