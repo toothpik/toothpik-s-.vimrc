@@ -87,7 +87,6 @@ syntax enable
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
-    au BufWritePre /tmp/*,*.tmp setlocal noundofile
 augroup END
 "
 "  some scripts i don't need:
@@ -103,9 +102,6 @@ let g:loaded_zipPlugin = 1
 let g:no_mail_maps = 1
 let g:no_plugin_maps = 1
 let g:is_bash = 1
-" ----------------------------------------
-"  some i do
-let g:undo_tree_diffparam = 'diff -c'
 " ----------------------------------------
 " --- special mappings and commands
 if !has("gui_running")
@@ -326,7 +322,7 @@ nnoremap <silent> <Leader>s :windo set scrollbind!<CR>
 nnoremap <silent> <Leader>ss :silent call ToggleScrollbar()<CR>
 nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <silent> <Leader>tt :normal i<c-r>=strftime("%H:%M")<ESC><CR>
-nnoremap <Leader>u :call FileTime()<CR>
+nnoremap <silent> <Leader>u :call FileTime()<CR>
 nnoremap <Leader>uu :call Unhideme()<CR>
 "nnoremap <Leader>v
 nnoremap <Leader>vv :source ~/.vim/plan.vim<CR>
@@ -449,7 +445,7 @@ function! FileTime()
         let s:fnf = s:fn
     endif
     let s:ft = getftime(s:fn)
-    echo s:isexe s:fnf strftime("%Y-%b-%d %H:%M:%S", s:ft)
+    echo s:isexe s:fnf strftime("%Y-%b-%d %H:%M", s:ft)
 endfunction
 " ----------------------------------------
 function! FindPointer()
