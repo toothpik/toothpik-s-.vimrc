@@ -1,5 +1,22 @@
 #!/usr/bin/perl
 #  add holidays to tocal
+use Date::Easter;
+if (@ARGV < 1) {
+    die "adholtt requires the year in \$1";
+}
+($emon, $eday) = easter($ARGV[0]);
+if ($emon == 3) {
+    $em = "Mar";
+} elsif ($emon == 4) {
+    $em = "Apr";
+} else {
+    die "trouble understanding $emon as month of Easter";
+}
+if ($eday < 10) {
+    $easter = $em . "  " . $eday;
+} else {
+    $easter = $em . " " . $eday;
+}
 #
 sub adhol {
     if (length == 14) {
@@ -47,6 +64,10 @@ while ($_ = <DAT>) {
     #
     if (/^   Mar 17/) {
         $_ = &adhol("St. Patrick's Day");
+    }
+    #  Easter is in here somewhere
+    if (/^   $easter/) {
+        $_ = &adhol("Easter");
     }
     #  Mother's:  2nd Sunday in May
     if (/^   May  1/) { $c = 0; }
