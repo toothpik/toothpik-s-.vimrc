@@ -6,7 +6,7 @@
 #$mtr | awk -f ~/curmo.awk
 m1=`date '+%m'`
 m=${m1#0}
-if test $m -lt 23; then
+if [[ $m < 23 ]]; then
     echo $m
 else
     m=$((m + 1))
