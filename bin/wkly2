@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #  line shuffler for weekly and wkly (and tcw...)
-#  cat ~/txt/weekly | wkly2  --  will arrange current date (flagged) in middle
-#  with three days above and three below
+#  cat ~/txt/weekly | wkly2  --  will arrange current day (flagged) 
+#  in the middle with three days above and three below
 from datetime import date
 from sys import stdin
 wkdy = date.today().strftime("%a")
