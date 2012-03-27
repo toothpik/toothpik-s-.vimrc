@@ -1,11 +1,12 @@
 #!/bin/bash
 echo "                      << unclear >>"
-uclro
+mf=8
+uclro | mio $mf
 uc=`uclro | sed 's/,//' | awk -f ~/sumlwq.awk`
 bal=`lastx | awk -f ~/balamt.awk`
 sum=`solve $uc + ${bal/,/}`
 sumwz=`printf "%.2f" $sum`
 sumwc=`echo $sumwz | awk -f ~/ciaa.awk`
 ucwc=`printf "%.2f" $uc | awk -f ~/ciaa.awk`
-printf "%57s\n" "========="
-printf "%57s %12s %10s\n" $ucwc $bal $sumwc
+printf "%57s\n" "=========" | mio $mf
+printf "%57s %12s %10s\n" $ucwc $bal $sumwc | mio $mf
