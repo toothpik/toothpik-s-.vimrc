@@ -1,0 +1,56 @@
+#!/usr/bin/python
+#  encoding:  utf-8
+#  box current date in tocal
+#  used by ~/bin/tcnlc3, which is used by tcc3
+from datetime import date, timedelta
+from sys import stdin
+import re
+tod = date.today()
+day = timedelta(days=1)
+tom = tod + day
+yr = tod.strftime("%Y")
+nyi = int(yr) + 1
+ny = "%d" % nyi
+todf = tod.strftime("%b %e")
+tomf = tom.strftime("%b %e")
+y = re.compile("^ %s" % yr)
+n = re.compile("^ %s" % ny)
+t = re.compile("^   %s" % todf)
+m = re.compile("^   %s" % tomf)
+rc = 0
+inyr = False
+intod = False
+ll = 0    #  longest [today] line
+ta = []   #  today array
+for line in stdin:
+    rc += 1
+    l = line.rstrip()
+    if y.search(line):
+        inyr = True
+    if n.search(line):
+        inyr = False
+    if inyr:
+        if t.search(l):
+            ll = len(l)
+            ta.append(l)
+            intod = True
+        elif m.search(l):
+            #  hit tomorrow, we now have enough info to print
+            #  today first
+            print " %s%s%s" % ('┌', '─' * (ll - 1), '┐')
+            for li in ta:
+                lil = len(li)
+                print " │ %s%s │" % (li[3:], " " * (ll - lil))
+            print " %s%s%s" % ('└', '─' * (ll - 1), '┘' )
+            #  and finally tomorrow
+            print l
+            intod = False
+        else:
+            if intod == True:
+                if len(l) > ll:
+                    ll = len(l)
+                ta.append(l)
+            else:
+                print l
+    else:
+        print l
