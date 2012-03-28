@@ -1,0 +1,11 @@
+#!/bin/bash
+#  tocal, no linecount
+if [ x$lc == x ]; then
+    echo 'tcnlc3 cannot function without environment variable "lc"'
+    echo 'defined as a valid/desired line count'
+    echo 'examples include the scripts tcc3'
+    exit 1
+fi
+cb=$(( lc / 3 ))
+ca=$(( lc - cb ))
+cat ~/txt/tocal | bcdit3 | grep -v '^ -----' | grep -B$cb -A$ca '──────┐$' | trimc
