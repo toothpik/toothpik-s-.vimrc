@@ -1,0 +1,40 @@
+#!/usr/bin/perl
+#  add DST to tocal
+#  current rule:  clocks forward at 02:00 2nd Sunday in March
+#                 clocks back at 03:00 1st Sunday in November
+sub addst {
+    if (length == 14) {
+        $_ = $_ . "  " . $_[0];
+    } else {
+        $sp = substr($_, 14);
+        if ($sp =~ $_[0]) {
+            $_;
+        } else {
+            $_ = substr($_, 0, 14) . "  ". $_[0] . "\n" . " "x14 . $sp;
+        }
+    }
+}
+#
+open(DAT, '-');
+while ($_ = <DAT>) {
+    chop;
+    if (/^   Mar  1/) { $c = 0; } 
+    #  DST begins 2nd Sunday in March
+    if (/^   Mar/ && substr($_, 11, 3) =~ /Sun/) {
+        $c++;
+        if ($c == 2) {
+            $_ = &addst("02:00  DST begins:  clocks forward");
+        }
+    }
+    #
+    if (/^   Nov  1/) { $c = 0; }
+    #  DST ends 1st Sunday in November
+    if (/^   Nov/ && substr($_, 11, 3) =~ /Sun/) {
+        $c++;
+        if ($c == 1) {
+            $_ = &addst("03:00  DST ends:  clocks back");
+        }
+    }
+    print "$_\n";
+}
+close(DAT);
