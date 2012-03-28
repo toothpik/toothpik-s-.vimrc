@@ -1,0 +1,5 @@
+#!/bin/bash
+#  create new year for tocal -- this script writes to
+#  stdout -- save it to the end of the real tocal when
+#  you're happy with it
+crt_tocal $1 | adbirtt $1 | adholtt $1 | addsttt
