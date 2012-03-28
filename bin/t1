@@ -4,7 +4,7 @@ tsl=`tput lines`
 if test $tsl -gt 37; then
     b
     if test $# -gt 0; then
-        export lc=$1
+        export lc=$(($1 + 1))
     else
         export lc=$(($tsl - `cm1p1 | wc -l` - 4))
     fi
@@ -13,7 +13,7 @@ if test $tsl -gt 37; then
     dsh 74 | mio $((pfc + 1))
 else
     if test $# -gt 0; then
-        export lc=$1
+        export lc=$(($1 + 1))
     else
         export lc=$(($tsl - 2))
     fi
