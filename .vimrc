@@ -1,4 +1,4 @@
-" --- options 
+" --- optioens 
 set   autochdir
 set   autoindent
 set   autoread
@@ -134,6 +134,7 @@ nmap . .`[
 command! BD b # | bd #
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
+command! -nargs=+ H execute 'silent help <args>' | only
 command! Xbit call SetExecutableBit()
 " ----------------------------------------
 " --- F-key mappings
@@ -256,7 +257,7 @@ iabbrev <silent> ee7 <c-r>=repeat('=', 70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee8 <c-r>=repeat('=', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee9 <c-r>=repeat('=', 90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibe #!/usr/bin/expect<c-r>=Eatchar('\s')<cr>
-iabbrev <silent> ibp #!/usr/bin/python<c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ibp #!/usr/bin/python3<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibpp #!/usr/bin/perl<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibs #!/bin/bash<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibt #!/usr/bin/tclsh<c-r>=Eatchar('\s')<cr>
