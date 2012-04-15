@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #  countdown [one date]
 
 from datetime import date, timedelta
@@ -6,9 +6,9 @@ from time import strptime
 from sys import argv, exit
 
 def usage():
-    print " ctdn requires a date in YYYY-M-D or YYYY-mmm-d format"
-    print " in order to count down to it on sysout"
-    print " (will work with dates in the past, counting down to today)"
+    print(" ctdn requires a date in YYYY-M-D or YYYY-mmm-d format")
+    print(" in order to count down to it on sysout")
+    print(" (will work with dates in the past, counting down to today)")
 
 def one_date(arglist):
 
@@ -19,7 +19,7 @@ def one_date(arglist):
         try:
             td_ts = strptime(arglist[1], "%Y-%b-%d")
         except ValueError:
-            print "received %s as input, cannot parse as date" % arglist[1]
+            print("received %s as input, cannot parse as date" % arglist[1])
             usage()
             exit(2)
     #  the following date is "naive" in that it knows nothing of timezones or DST
@@ -52,11 +52,11 @@ def one_date(arglist):
 
     while c > -1:
         if fivedig:
-            print "%5d)  %s" % (c, sd.strftime(outf))
+            print("%5d)  %s" % (c, sd.strftime(outf)))
         elif fourdig:
-            print "%4d)  %s" % (c, sd.strftime(outf))
+            print("%4d)  %s" % (c, sd.strftime(outf)))
         else:
-            print "%3d)  %s" % (c, sd.strftime(outf))
+            print("%3d)  %s" % (c, sd.strftime(outf)))
         c -= 1
         sd += day
 
