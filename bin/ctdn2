@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 ##  input two dates in YYYY-MM-DD format -- this script will
 ##  output a countdown from the first to the second
 
@@ -7,10 +7,10 @@ from time import strptime
 from sys import argv, exit
 
 def usage():
-    print " ctdn2 requires two dates on the command line"
-    print " in YYYY-M-D or YYYY-mmm-d format"
-    print " in order to count down from the first to the second"
-    print " on sysout"
+    print(" ctdn2 requires two dates on the command line")
+    print(" in YYYY-M-D or YYYY-mmm-d format")
+    print(" in order to count down from the first to the second")
+    print(" on sysout")
 
 def two_dates(arglist):
 
@@ -49,11 +49,11 @@ def two_dates(arglist):
 
     while c > -1:
         if fivedig:
-            print "%5d)  %s" % (c, sd.strftime(outf))
+            print("%5d)  %s" % (c, sd.strftime(outf)))
         elif fourdig:
-            print "%4d)  %s" % (c, sd.strftime(outf))
+            print("%4d)  %s" % (c, sd.strftime(outf)))
         else:
-            print "%3d)  %s" % (c, sd.strftime(outf))
+            print("%3d)  %s" % (c, sd.strftime(outf)))
         c -= 1
         sd += day
 
