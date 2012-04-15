@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #  laundry2 prints only if days since last whatever > 6
-#  written for ~/bin/ccct
+#  written for ~/bin/ccct (which is now ~/bin/3)
 from datetime import date
 from os import environ
 from re import compile
@@ -11,7 +11,7 @@ fn = environ['HOME'] + '/txt/laundry.log'
 try:
     F = open(fn, 'r')
 except IOError:
-    print "cannot open %s" % fn
+    print("cannot open %s" % fn)
     exit(1)
 L = F.read()
 F.close()
@@ -40,18 +40,18 @@ def cdd (inst, what):
 
     dys = diff.days
     if dys > 6:
-        print "%2d days since the last %s laundry" % (dys, what)
+        print("%2d days since the last %s laundry" % (dys, what))
         didanything += 1
 
 lp = lL - 1
 while(lp > -1):
     tl = LL[lp]
-    if not gw and white.search(tl):
-        cdd(tl, "white")
-        gw = True
     if not gc and colored.search(tl):
         cdd(tl, "colored")
         gc = True
+    if not gw and white.search(tl):
+        cdd(tl, "white")
+        gw = True
     if not gs and sheets.search(tl):
         cdd(tl, "sheets")
         gs = True
@@ -60,4 +60,4 @@ while(lp > -1):
     lp = lp - 1
 
 if didanything > 0:
-    print ""
+    print("")
