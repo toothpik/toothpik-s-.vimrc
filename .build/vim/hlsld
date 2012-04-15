@@ -4,6 +4,6 @@ ldh=$(tail -1 ~/.vim/version.log | cut -c1-17)
 lv=$(tail -1 ~/.vim/version.log | cut -c20- )
 {
     echo "it's been"
-    etolns "$ldh"
+    etol "$ldh"
     echo "since update to $lv"
 } | mio 3
