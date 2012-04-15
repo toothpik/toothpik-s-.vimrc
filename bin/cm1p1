@@ -1,7 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #  current month minus one plus one
 from calendar import setfirstweekday, month
-from string import strip, replace
 from time import strftime, localtime
 a_yr = int(strftime("%Y", localtime()))
 a_mo = int(strftime("%m", localtime()))
@@ -32,7 +31,7 @@ m1 = []
 for l in month(a_yr, a_mo).splitlines():
     ts = " " + l + " "
     if toda in ts:
-        m1.append("%-22s" % replace(ts, toda, "(" + strip(toda) + ")"))
+        m1.append("%-22s" % (ts.replace(toda, "(" + (toda.strip()) + ")")))
     else:
         m1.append("%-22s" % ts)
 m2 = []
@@ -54,4 +53,4 @@ if lm2 < lg:
         m2.append(" "*22)
 #
 for c in range(lg):
-    print "   %22s  %-22s %25s" % (m0[c], m1[c], m2[c])
+    print("   %22s  %-22s %25s" % (m0[c], m1[c], m2[c]))
