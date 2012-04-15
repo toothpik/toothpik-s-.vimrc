@@ -1,18 +1,18 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #  just add the count [to date]
 from datetime import date, timedelta
 from time import strptime
 from sys import argv, exit
 
 def usage():
-    print "          Just Add the Count"
-    print "jatc requires a count on the command line"
-    print "and an optional from-date (format YYYY-MM-DD or YYYY-mmm-d)"
-    print "in order to print the sum of the count and date"
-    print "(uses current date if no date is supplied)"
+    print("          Just Add the Count")
+    print("jatc requires a count on the command line")
+    print("and an optional from-date (format YYYY-MM-DD or YYYY-mmm-d)")
+    print("in order to print the sum of the count and date")
+    print("(uses current date if no date is supplied)")
 
 if len(argv) < 2:
-    print "zero arguments supplied on the command line"
+    print("zero arguments supplied on the command line")
     usage()
     exit(1)
 
@@ -27,7 +27,7 @@ else:
         try:
             ts = strptime(argv[2], "%Y-%m-%d")
         except ValueError:
-            print "cannot parse %s as date" % argv[2]
+            print("cannot parse %s as date" % argv[2])
             usage()
             exit(1)
     sd = date(ts.tm_year, ts.tm_mon, ts.tm_mday)
@@ -35,10 +35,9 @@ else:
 try:
     nd = sd + day * int(argv[1])
 except ValueError:
-    print "trouble adding count to date"
-    print "is %s really a good count?" % argv[1]
+    print("trouble adding count to date")
+    print("is %s really a good count?" % argv[1])
     usage()
     exit(1)
 
-print nd.strftime("%Y-%b-%d")
-
+print(nd.strftime("%Y-%b-%d"))
