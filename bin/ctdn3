@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #  input a counter -- this script will output a countdown from current 
 #  date [counter] days to zero
 #  if [counter] is negative, start the count [counter] days ago
@@ -7,9 +7,9 @@ from datetime import date, timedelta
 from sys import argv, exit
 
 def usage():
-    print " ctdn3 requires a count on the commandline"
-    print " in order to count down [count] days from today"
-    print " on sysout"
+    print(" ctdn3 requires a count on the commandline")
+    print(" in order to count down [count] days from today")
+    print(" on sysout")
 
 def counter_only(arglist):
     day = timedelta(days=1)
@@ -40,11 +40,11 @@ def counter_only(arglist):
 
     while c > -1:
         if fivedig:
-            print "%5d)  %s" % (c, sd.strftime(outf))
+            print("%5d)  %s" % (c, sd.strftime(outf)))
         elif fourdig:
-            print "%4d)  %s" % (c, sd.strftime(outf))
+            print("%4d)  %s" % (c, sd.strftime(outf)))
         else:
-            print "%3d)  %s" % (c, sd.strftime(outf))
+            print("%3d)  %s" % (c, sd.strftime(outf)))
         c -= 1
         sd += day
 
