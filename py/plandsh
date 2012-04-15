@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#  dashes for plannew
+#  filter to add dashes, used by ~/bin/plannew
 from sys import stdin
 import re
 m = re.compile(" _")
