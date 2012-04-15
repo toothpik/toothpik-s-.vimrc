@@ -1,7 +1,6 @@
-#!/usr/bin/python
-#  encoding:  utf-8
+#!/usr/bin/python3
 #  box current date in tocal
-#  used by ~/bin/tcnlc3, which is used by tcc3
+#  used by ~/bin/tcnlc3, which is used by t1
 from datetime import date, timedelta
 from sys import stdin
 import re
@@ -37,20 +36,21 @@ for line in stdin:
         elif m.search(l):
             #  hit tomorrow, we now have enough info to print
             #  today first
-            print " %s%s%s" % ('┌', '─' * (ll - 1), '┐')
+            print(" %s%s%s" % ('┌', '─' * (ll - 1), '┐'))
             for li in ta:
                 lil = len(li)
-                print " │ %s%s │" % (li[3:], " " * (ll - lil))
-            print " %s%s%s" % ('└', '─' * (ll - 1), '┘' )
+                print(" │ %s%s │" % (li[3:], " " * (ll - lil)))
+            print(" %s%s%s" % ('└', '─' * (ll - 1), '┘' ))
             #  and finally tomorrow
-            print l
+            print(l)
             intod = False
         else:
             if intod == True:
-                if len(l) > ll:
-                    ll = len(l)
+                L = len(l)
+                if L > ll:
+                    ll = L
                 ta.append(l)
             else:
-                print l
+                print(l)
     else:
-        print l
+        print(l)
