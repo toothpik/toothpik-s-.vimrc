@@ -1,5 +1,5 @@
 #!/usr/bin/tclsh
-#  new text plan maker
+#  new text plan maker, used by ~/bin/plannew
 #  for creating ~/txt/plan_{newyear}
 proc usage {} {
     puts "run plannew from the commandline with {newyear} as arg1"
