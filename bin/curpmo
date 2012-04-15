@@ -1,12 +1,8 @@
 #!/bin/bash
-#  the purpose of this script is specific:  to answer the question
-#  what is the current plan month (where do the xs end)
-#Y=$(date '+%y')
-#mtr=m${Y}
-#$mtr | awk -f ~/curmo.awk
+#  current plan month
 m1=`date '+%m'`
 m=${m1#0}
-if [[ $m < 23 ]]; then
+if test $m -lt 23 ; then
     echo $m
 else
     m=$((m + 1))
