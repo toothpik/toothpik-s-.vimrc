@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #  line shuffler for weekly and wkly (and tcw...)
 #  cat ~/txt/weekly | wkly2  --  will arrange current day (flagged) 
 #  in the middle with three days above and three below
@@ -17,11 +17,11 @@ for line in stdin:
         dl.append(L)
 if fd > 3:
     for i in range(fd - 4, 7):
-        print dl[i]
+        print(dl[i])
     for i in range(fd - 4):
-        print dl[i]
+        print(dl[i])
 else:
     for i in range(fd + 3, 7):
-        print dl[i]
+        print(dl[i])
     for i in range(fd + 3):
-        print dl[i]
+        print(dl[i])
