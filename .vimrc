@@ -85,6 +85,12 @@ filetype plugin on
 syntax enable
 " ---------------------------------------- }}}
 " --- autocommands & plugin mappings {{{
+"  http://vim.wikia.com/wiki/Avoid_scrolling_when_switch_buffers
+if v:version >= 700
+    au BufLeave * let b:winview = winsaveview()
+    au BufEnter * if exists('b:winview') | call winrestview(b:winview) | endif
+endif
+"
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
