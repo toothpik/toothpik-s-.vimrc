@@ -8,4 +8,5 @@ if test $tsl -gt 37; then
     b
 fi
 y=`date '+%y'`
-m$y `curpmo` | sed -e 's/\<x\>/✔/' | lac | mio 8
+#m$y `curpmo` | ci60 | lac | mio 8
+m$y `curpmo` | ci60 | mio 8
