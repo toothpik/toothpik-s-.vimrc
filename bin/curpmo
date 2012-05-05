@@ -1,8 +1,9 @@
 #!/bin/bash
 #  current plan month
 m1=`date '+%m'`
+td=`date '+%d'`
 m=${m1#0}
-if test $m -lt 23 ; then
+if test $td -lt 23 ; then
     echo $m
 else
     m=$((m + 1))
