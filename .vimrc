@@ -17,7 +17,7 @@ set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
 set noerrorbells
 set   expandtab
-set   formatoptions=tcq
+set   formatoptions+=j
 set   guioptions-=L
 set   guioptions-=m
 set   guioptions-=r
@@ -77,20 +77,13 @@ set   winaltkeys=no
 set   winminheight=0
 set   wrap
 set nowrapscan
+set   writebackup
 " ---------------------------------------- }}}
 "  --- filetype & syntax {{{
-filetype on
-filetype indent on
-filetype plugin on
+filetype plugin indent on
 syntax enable
 " ---------------------------------------- }}}
 " --- autocommands & plugin mappings {{{
-"  http://vim.wikia.com/wiki/Avoid_scrolling_when_switch_buffers
-if v:version >= 700
-    au BufLeave * let b:winview = winsaveview()
-    au BufEnter * if exists('b:winview') | call winrestview(b:winview) | endif
-endif
-"
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
@@ -144,10 +137,10 @@ command! -nargs=+ H execute 'silent help <args>' | only
 command! Xbit call SetExecutableBit()
 " ---------------------------------------- }}}
 " --- F-key mappings {{{
-nnoremap <F1> :call F1_formatter("70")<CR>
-inoremap <F1> <C-O>:call F1_formatter("70")<CR>
-nnoremap <S-F1> :call F1_toggle_width("70")<CR>
-inoremap <S-F1> <C-O>:call F1_toggle_width("70")<CR>
+nnoremap <F1> :call F1_formatter("75")<CR>
+inoremap <F1> <C-O>:call F1_formatter("75")<CR>
+nnoremap <S-F1> :call F1_toggle_width("75")<CR>
+inoremap <S-F1> <C-O>:call F1_toggle_width("75")<CR>
 " ----------------------------------------
 nnoremap <F2> o
 inoremap <F2> <C-O>o
@@ -165,7 +158,7 @@ inoremap <F4> <C-O>J
 nnoremap <S-F4> :call FixBlankLinesAtEnd()<CR>
 inoremap <S-F4> <ESC>:call FixBlankLinesAtEnd()<CR>
 " ----------------------------------------
-nnoremap <silent> <F5> :nohlsearch<CR>
+nnoremap <silent> <F5> :call Fmt('75')<CR>
 inoremap <silent> <F5> <C-O>:nohlsearch<CR>
 cmap <F5> <c-r>=strftime("%Y%m%d")<CR>
 nnoremap <S-F5> :call ZeroBlankLinesAtEnd()<CR>
@@ -304,7 +297,7 @@ nnoremap <silent><Leader>d :call FindTocalDate()<CR>:set hlsearch<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
 nnoremap <Leader>ee :source ~/.vimrc<CR>
-nnoremap <Leader>f :call F1_toggle_width("70")<CR>
+nnoremap <Leader>f :call F1_toggle_width("75")<CR>
 nnoremap <silent> <Leader>ff :call FirstBlankAtEnd()<CR>
 nnoremap <Leader>g :e ~/.gvimrc<CR>
 nnoremap <Leader>gg :source ~/.gvimrc<CR>
@@ -520,6 +513,23 @@ function! FixBlankLinesAtEnd()
         execute 'normal ' . s:d7 . 'dd'
         call winrestview(view)
     endif
+endfunction
+" ----------------------------------------
+function! Fmt(w)
+    let start = line('.')
+    let ll = strlen(getline(start))
+    while ll > 0
+        let start -= 1
+        let ll = strlen(getline(start))
+    endwhile
+    let start += 1
+    let end = search("^$")
+    if end == 0
+        let end = line('$')
+    endif
+    execute start . ',' . end . '!fmt -w ' . a:w
+    normal }
+    normal j
 endfunction
 " ----------------------------------------
 function! HelpgrepScrollers()
