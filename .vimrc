@@ -4,6 +4,7 @@ set   autoindent
 set   autoread
 set   backspace=indent,eol,start
 set nobackup
+set   browsedir=buffer
 set nocindent
 set   clipboard=autoselect,exclude:cons
 set   cmdheight=1
@@ -11,7 +12,11 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-set   cursorline
+if has('gui_running')
+    set cursorline
+else
+    set nocursorline
+endif
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -98,7 +103,7 @@ let g:loaded_matchparen = 1
 let g:loaded_rrhelper = 1
 let g:loaded_tarPlugin = 1
 let g:loaded_zipPlugin = 1
-let g:no_mail_maps = 1
+"let g:no_mail_maps = 1
 let g:no_plugin_maps = 1
 let g:is_bash = 1
 " ---------------------------------------- }}}
@@ -163,14 +168,16 @@ inoremap <silent> <F5> <C-O>:nohlsearch<CR>
 cmap <F5> <c-r>=strftime("%Y%m%d")<CR>
 nnoremap <S-F5> :call ZeroBlankLinesAtEnd()<CR>
 inoremap <S-F5> <ESC>:call ZeroBlankLinesAtEnd()<CR>
-nnoremap <silent> <M-F5> :call FirstBlankAtEnd()<CR>
-inoremap <silent> <M-F5> <C-O>:call FirstBlankAtEnd()<CR>
+nnoremap <M-F5> :set paste<CR>
+inoremap <M-F5> <C-O>:set paste<CR>
 " ----------------------------------------
 nnoremap <silent> <F6> :bnext<CR>
 inoremap <silent> <F6> <ESC>:bnext<CR>
 nnoremap <silent> <S-F6> :bprevious<CR>
 inoremap <silent> <S-F6> <ESC>:bprevious<CR>
-nnoremap <M-F6> :ls<CR>:b
+nnoremap <M-F6> :set nopaste<CR>
+inoremap <M-F6> <nop>
+set pastetoggle=<M-F6>
 " ----------------------------------------
 nnoremap <silent> <F7> :set spell!<CR>
 inoremap <silent> <F7> <ESC>:set spell!<CR>
@@ -178,13 +185,13 @@ nnoremap <silent> <S-F7> :call Acdmo()<CR>
 inoremap <silent> <S-F7> <ESC>:call Acdmo()<CR>
 " ----------------------------------------
 nnoremap <silent> <F8> :m+<CR>
-inoremap <silent> <F8> <ESC>:m+<CR>a
+inoremap <silent> <F8> <ESC>:m+<CR>gi
 vnoremap <silent> <F8> :m'>+<CR>
 nnoremap <silent> <S-F8> :m-2<CR>
-inoremap <silent> <S-F8> <ESC>:m-2<CR>a
+inoremap <silent> <S-F8> <ESC>:m-2<CR>gi
 vnoremap <silent> <S-F8> :m-2<CR>
 nnoremap <silent> <M-F8> yyp
-inoremap <silent> <M-F8> <ESC>yyp$a
+inoremap <silent> <M-F8> <ESC>yyp$gi
 " ----------------------------------------
 nnoremap <silent> <F9> :call NumberToggle()<CR>
 inoremap <silent> <F9> <C-O>:call NumberToggle()<CR>
