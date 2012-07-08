@@ -568,6 +568,13 @@ function! LastNonBlank()
     endwhile
 endfunction
 " ----------------------------------------
+function! Ll()
+"  locate and go to the (first) longest line
+    let lines = map(getline(1, '$'), 'len(v:val)')
+    let gtl = index(lines, max(lines)) + 1
+    execute gtl
+endfunction
+" ----------------------------------------
 function! LongBlogDate()
     let d1 = strftime("%Y %B %_d")
     let d1s = substitute(d1, "  ", " ", "")
