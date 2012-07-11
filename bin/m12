@@ -1,4 +1,5 @@
 #!/bin/bash
+#  print 2012 plan, or specify month in $1
 if (($# == 0))
 then
     cat ~/txt/plan_2012
