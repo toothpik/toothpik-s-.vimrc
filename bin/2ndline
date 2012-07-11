@@ -1,0 +1,3 @@
+#!/bin/awk -f
+#  print the 2nd line only
+{ if (NR == 2) print }
