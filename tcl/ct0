@@ -1,5 +1,5 @@
 #!/usr/bin/tclsh
-#  ~/bin/ct0 filter
+#  ~/bin/ct0 filter (not actually used)
 #  pipe ct0 through this script to obtain day counts on the side
 proc usage {} {
     puts "run tcl/ct0 as a filter for bin/ct0, as"
