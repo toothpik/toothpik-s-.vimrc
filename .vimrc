@@ -12,11 +12,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-if has('gui_running')
-    set cursorline
-else
-    set nocursorline
-endif
+set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -262,6 +258,7 @@ iabbrev <silent> ee6 <c-r>=repeat('=', 60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee7 <c-r>=repeat('=', 70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee8 <c-r>=repeat('=', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee9 <c-r>=repeat('=', 90)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> iba #!/bin/awk -f<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibe #!/usr/bin/expect<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibp #!/usr/bin/python3<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibpp #!/usr/bin/perl<c-r>=Eatchar('\s')<cr>
@@ -299,7 +296,7 @@ iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
 let mapleader = ','
 nnoremap <Leader>a :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <silent><Leader>b :call LastNonBlank()<CR>
-"nnoremap <silent><Leader>c
+nnoremap <silent><Leader>c :call RefreshReadme()<CR>
 nnoremap <silent><Leader>d :call FindTocalDate()<CR>:set hlsearch<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
@@ -332,7 +329,7 @@ nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <silent> <Leader>tt :normal i<c-r>=strftime("%H:%M")<ESC><CR>
 nnoremap <silent> <Leader>u :call FileTime()<CR>
 nnoremap <Leader>uu :call Unhideme()<CR>
-"nnoremap <Leader>v
+nnoremap <Leader>v :call RefreshVim()<CR>
 nnoremap <Leader>vv :source ~/.vim/plan.vim<CR>
 "nnoremap <Leader>w
 "nnoremap <Leader>x
@@ -754,6 +751,30 @@ function! Paste(paste_before)
         normal! "qp
     endif
     let @q = save_q
+endfunction
+" ----------------------------------------
+function! RefreshReadme()
+    if &bufhidden != 'hide'
+        echo 'RefreshReadme is for hidden buffers only'
+        echo 'it will delete and replace your entire buffer'
+        return
+    endif
+    let saveline = line('.')
+    silent %d
+    r!readme
+    execute saveline
+endfunction
+" ----------------------------------------
+function! RefreshVim()
+    if &bufhidden != 'hide'
+        echo 'RefreshVim is for hidden buffers only'
+        echo 'it will delete and replace your entire buffer'
+        return
+    endif
+    let saveline = line('.')
+    silent %d
+    r!readmv
+    execute saveline
 endfunction
 " ----------------------------------------
 function! Scaleme(w)
