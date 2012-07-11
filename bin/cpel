@@ -1,4 +1,5 @@
 #!/bin/bash
+#  first screenful of recently edited files
 echo "`ddss`   `pwd | fu`"
 echo
 lc=$((`tput lines` - 3))
