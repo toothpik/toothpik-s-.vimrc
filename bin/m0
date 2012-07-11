@@ -1,4 +1,5 @@
 #!/bin/bash
+#  print previous fiscal month of plan data
 clear
 b
 tsl=`tput lines`
@@ -17,4 +18,4 @@ else
     y=`date '+%y'`
     m=$pm
 fi
-m$y $m | ci60 | mio 8
+m$y $m | grep -v '^-----' | ci60 | mio 8
