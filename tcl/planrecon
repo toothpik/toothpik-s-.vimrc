@@ -27,6 +27,7 @@ for {set i 0} {$i < [expr {$lc - 1}]} { incr i} {
     set l [lindex $pl $i]
     set tr [string range $l 45 45]
     if {[string compare $tr " "] == 0} {
+        #  the transaction has not yet cleared
         puts $l
         set tvals [string trimleft [string range $l 47 56]]
         if {[string compare $tvals ""] != 0} {
