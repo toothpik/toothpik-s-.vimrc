@@ -12,7 +12,7 @@ then
             ;;
     esac
 fi
-for f in *
+for f in "$2"*
 do
     if [ -h "$f" ]; then
         wl=`file $f`
