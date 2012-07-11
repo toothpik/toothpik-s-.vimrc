@@ -5,112 +5,69 @@ set url "http://forecast.weather.gov/MapClick.php?CityName=Kansas+City&state=MO&
 #set url "http://forecast.weather.gov/MapClick.php?lat=39.17798166079628&lon=-94.55245971679688&site=eax&smap=1&marine=0&unit=0&lg=en"
 #  set url "http://forecast.weather.gov/MapClick.php?lat=39.18649760718107&lon=-94.559326171875&site=eax&smap=1&marine=0&unit=0&lg=en"
 #
+proc usage {} {
+    puts "run cw to obtain command line weather information"
+}
 #  fix washington's birthday:  get rid of [XX] where XX is a number
 proc fix_wb {wl} {
     set sl [string first "\]" $wl]
     return [string range $wl [expr {$sl + 1}] 999]
 }
-
-#    set cl [expr {[string first ":" $wl] + 2}]
-#    if {[string first "Washington's Birthday" $wl] > -1 || \
-#        [string first "Memorial Day" $wl] > -1 || \
-#        [string first "Labor Day" $wl] > -1} {
-#        set nl "Monday: [string range $wl $cl 999]"
-#    } else {
-#        set nl ""
-#    }
-#    return $nl
-#}
-
 #  get weather page
 if { [catch {exec lynx -dump $url} wp] } {
     puts "weather page retrieval failure:  $wp"
     puts $::errorInfo
     exit
 }
-set dtf false
-set topsec false
-#  top of top
-set tot false
-set c 0
+set save_temp ""
+set save_humidity ""
 set wl [split $wp "\n"]             ;#  weather lines
-foreach l $wl {
+set ll [llength $wl]
+if { $ll < 2 } {
+    puts "no weather data obtained"
+    usage
+    exit
+}
+for {set i 0} {$i < $ll} {incr i} {
+    set l [lindex $wl $i]
     set el [string trim $l]         ;#  examine line
-    if {[string first "Current Local Weather" $el] > -1} {
-        continue
-    }
     if {[string first "Last Update on" $el] == 0} {
         puts $el
-        puts "[clock format [clock seconds] -format "%A"]"
         puts ""
-        set tot true
-        continue
+        puts "Temperature  $save_temp"
+        set hum1 [string trim $save_humidity "* "]
+        set throwaway [regsub "^Humidity" $hum1 "Humidity        " hum2]
+        puts $hum2
+        set win1 [string trim $save_wind "* "]
+        set ta2 [regsub "Wind Speed" $win1 "Wind Speed   " win2]
+        puts $win2
     }
-    if {[string first "Detailed text forecast" $el] > -1} {
-        set dtf true
-        set dtfc 0
-    }
-    if { $dtf } {
-        if { $dtfc > 0 } {
-            if {[string first "Hazardous" $el] > -1 || \
-                [string first "Warning" $el] > -1 || \
-                [string first "Special Weather" $el] > -1 || \
-                [string first "Hydrologic" $el] > -1 } { 
-                    set ish true 
-                } else { 
-                    set ish false 
-                }
-            if {[string first "\[" $el] > -1} { 
-                set el [fix_wb $el]
+    if {[string first "* Humidity" $el] == 0} {
+        set save_humidity $el
+        for {set j $i} {$j > 0} {incr j -1} {
+            set el2 [lindex $wl $j]
+            if {[string last "°F" $el2] > -1} {
+                set save_temp $el2
+                set j 0
             }
-            if { [llength $el] > 0} {
-                if {!$ish} {
-                    if { [string first ":" $el] > 1
-                      || [string first "..." $el] > 1 && [regexp {[A-Z]} [string range $el 0 1]]} {
-                        lappend dtfl ""
-                        lappend dtfl $el
-                    } else {
-                        lappend dtfl $el
-                    }
+        }
+    }
+    if {[string first "* Wind Speed" $el] == 0} {
+        set save_wind $el
+    }
+    if {[string first "7-DAY FORECAST" $el] == 0} {
+        for {set j [expr $i + 2]} {$j < 999} {incr j} {
+            set tl [string trim [lindex $wl $j]]
+            if {[string length $tl] > 0 } {
+                if {[string first "* " $tl] == 0} {
+                    puts ""
+                    puts [string trim $tl "* "]
+                } else {
+                    puts $tl
                 }
             } else {
-                set dtf false
-                set topsec true
+                set j 1000
             }
-        }
-        incr dtfc
-    }
-    set dp false
-    if { $topsec } {
-        incr c
-        if {$c > 4} {
-            if {[string first "(" $el] == 0} { set isc true } \
-            else { set isc false }
-            if {[string first "Barometer" $el] == 0} { set isb true } \
-            else { set isb false }
-
-            if { $tot } {
-                set save_cond $el
-                set tot false
-                set dp true
-            }
-
-            if {[string first " °F" $el] > -1} {
-                set el "[format "%-31s" $save_cond][format "%6s" $el]"
-                set dp false
-            }
-
-            if {!$isc && !$isb && !$dp} {
-                puts $el
-            }
-        }
-        if {$c > 9} {
-            set topsec false
         }
     }
 }
-foreach dtfitem $dtfl {
-    puts $dtfitem
-}
-
-
