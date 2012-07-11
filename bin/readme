@@ -1,0 +1,26 @@
+#!/bin/bash
+#  list executables through ghs, vhs, or pt (pass-through)
+pt='pt'
+if test $# -gt 0
+then
+    case $1 in
+        g) pt=ghs
+            ;;
+        v) pt=vhs
+            ;;
+        *) pt=pt
+            ;;
+    esac
+fi
+for f in *
+do
+    if [ -h "$f" ]; then
+        wl=`file $f`
+        echo "$f -- $wl"
+    else
+        if [ -f "$f" -a -x "$f" ]; then
+            sl=`2ndline $f`
+            printf "%-11s %s\n" "$f" "$sl"
+        fi
+    fi
+done | $pt
