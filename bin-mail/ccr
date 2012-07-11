@@ -1,4 +1,5 @@
 #!/bin/bash
+#  print mail folders sorted on time, filtered for today
 cd ~/bin-mail
 tod=`date '+%b %e'`
 echo
@@ -7,6 +8,5 @@ echo
 ls -lt ~/Mail | grep -v "^total" | grep -F "$tod" | awk -f ccr.awk
 echo
 laflp
-#ets `ttt` `laflp | awk '{ print $3 }'` | mio 21
 echo
 dsh 31 | mio 4
