@@ -1,4 +1,4 @@
-
+"  setup for ~/bin/wiv
 set nocursorline
 
 let mapleader = ','
@@ -19,4 +19,3 @@ function! Makemeweather()
     silent 0read !~/tcl/cw
     1
 endfunction
-
