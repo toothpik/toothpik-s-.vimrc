@@ -1,4 +1,5 @@
 #!/bin/bash
+#  battery life on steroids
 clear
 tsl=`tput lines`
 if test $tsl -gt 37; then
