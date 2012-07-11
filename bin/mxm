@@ -36,27 +36,7 @@ function numword ()
             ;;
         10) echo 'Ten'
             ;;
-        11) echo 'Eleven'
-            ;;
-        12) echo 'Twelve'
-            ;;
-        13) echo 'Thirteen'
-            ;;
-        14) echo 'Fourteen'
-            ;;
-        15) echo 'Fifteen'
-            ;;
-        16) echo 'Sixteen'
-            ;;
-        17) echo 'Seventeen'
-            ;;
-        18) echo 'Eighteen'
-            ;;
-        19) echo 'Nineteen'
-            ;;
-        20) echo 'Twenty'
-            ;;
-        *) echo $1
+        *) echo $1') %D'
             ;;
     esac
 }
