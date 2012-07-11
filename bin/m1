@@ -1,4 +1,5 @@
 #!/bin/bash
+#  print current fiscal month of plan data
 clear
 b
 tsl=`tput lines`
@@ -6,7 +7,9 @@ if test $tsl -gt 37; then
     pfc=$(( ( (`tput cols` - 75) / 2) - 2 ))
     cm1p1 | mio $pfc
     b
+    ta=$(($tsl - `cm1p1 | wc -l` - 3))
+else
+    ta=$(($tsl - 1))
 fi
 y=`date '+%y'`
-#m$y `curpmo` | ci60 | lac | mio 8
-m$y `curpmo` | ci60 | mio 8
+m$y `curpmo` | grep -v '^-----' | ci60 | mio 8 | tail -$ta
