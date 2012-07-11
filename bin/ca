@@ -1,4 +1,5 @@
 #!/bin/bash
+#  list awk and sed
 ls -A *.awk 2>/dev/null
 echo
 ls -A *.sed 2>/dev/null
