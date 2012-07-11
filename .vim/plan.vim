@@ -1,5 +1,6 @@
+"  setup for edit of plans - used by gp and vp to name a few
 if has('gui_running')
-    winsize 92 30
+    winsize 94 41
     winpos 119 185
 endif
 let mapleader = ','
