@@ -1,5 +1,5 @@
 #!/bin/bash
-#  sun
+#  print screenful of sun rise/transit/set, pointer at current
 Y=`date '+%Y'`
 sl=$((`tput lines` - 3))
 cb=$(( $sl / 3 ))
