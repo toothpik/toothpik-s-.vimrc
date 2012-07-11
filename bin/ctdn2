@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+#  two date countdowner
 ##  input two dates in YYYY-MM-DD format -- this script will
 ##  output a countdown from the first to the second
 
