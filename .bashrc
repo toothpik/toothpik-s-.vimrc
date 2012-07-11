@@ -41,32 +41,35 @@ export LC_COLLATE=POSIX
 #  export PS1='\[\e[6;31m\][$(mytime)] \w $\[\e[m\] '
 #  export PS1='\[\e[6;31m\]\w $\[\e[m\] '
 #  export PS1='\[\e[6;31m\]$\[\e[m\] '
+#  export PS1='$(date "+%a %H:%M") \w $ '
 #  export PS1='[$(date "+%a %H:%M")] \w $ '
-#  export PS1='$ '
-export PS1='\w> '
+export PS1='$ '
+#  export PS1='\w> '
 #  export PS1='$PWD> '
-#  export PS1='\w$ '
+#  export PS1='\w $ '
 
+alias ....='cd ../../..'
 alias cd2='cd ~/bin'
-alias cd3='cd ~/txt'
 alias cd33='cd ~/txt/ranger'
 alias cd34='cd ~/txt/retire'
 alias cd35='cd ~/txt/roadstar'
-alias cd4='cd ~/py'
+alias cd3='cd ~/txt'
 alias cd44='cd ~/py/primes'
-alias cd5='cd ~/tcl'
+alias cd4='cd ~/py'
 alias cd55='cd ~/tcl/primes'
-alias cd6='cd ~/.vim'
+alias cd5='cd ~/tcl'
 alias cd66='cd ~/.vim-tmp'
-alias cd7='cd ~/.build/vim'
+alias cd6='cd ~/.vim'
 alias cd77='cd ~/.build/vim/vim/src'
-alias cd8='cd ~/ruby'
+alias cd7='cd ~/.build/vim'
 alias cd88='cd ~/ruby/koans'
+alias cd8='cd ~/ruby'
 alias cdb='cd ~/bin-mail'
 alias cdc='cd ~/calc'
 alias cdcp='cd ~/calc/primes'
 alias cdd='cd /usr/local/share/vim/vim73/doc'
 alias cdf='cd ~/txt/f'
+alias cdk='cd ~/txt/roadking'
 alias cdm='cd ~/Mail'
 alias cdp='cd ~/perl'
 alias cdpp='cd ~/perl/primes'
@@ -75,7 +78,6 @@ alias cdt='cd ~/toothpik-s-.vimrc'
 alias cdtt='cd ~/toothpik.github.com'
 alias cdv='cd /var/spool/mail'
 alias cdvt='cd ~/.vim-tmp'
-alias ....='cd ../../..'
 alias l='ls -AgGl --group-directories-first'
 
 export TERM=xterm-256color
@@ -95,7 +97,7 @@ function dp () {
         echo "PATH already has $PWD"
     else
         export PATH=${PWD}:$PATH
-        export PS1='\w: '
+        export PS1=': '
     fi
 }
 #  remove dangerous path extension -- whew!
@@ -103,7 +105,7 @@ function rdp () {
     if [[ $PATH = $PWD:* ]]
     then
         export PATH=${PATH#$PWD:}
-        export PS1='\w> '
+        export PS1='$ '
     else
         echo "PATH doesn't have $PWD at the front"
     fi
@@ -111,7 +113,7 @@ function rdp () {
 function vb () {
     v ~/.bashrc
 }
-function sourceb () {
+function sb () {
     . ~/.bashrc
 }
 
