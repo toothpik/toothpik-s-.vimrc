@@ -2,6 +2,7 @@
 #  ~/bin/batlist filter
 #  pipe txt/batlist through this script to obtain day counts for each device
 #  currently ~/bin/b2 does this nicely
+#  or maybe it's ~/bin/ba
 proc usage {} {
     puts "run tcl/batlist a filter for txt/batlist, as"
     puts "    $ cat ~/txt/batlist | ~/tcl/batlist"
