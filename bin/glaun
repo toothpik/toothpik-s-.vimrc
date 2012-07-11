@@ -1,2 +1,3 @@
 #!/bin/bash
+#  open laundry log in gvim
 g + -S ~/.vim/laundry.vim ~/txt/laundry.log
