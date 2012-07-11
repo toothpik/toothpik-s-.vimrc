@@ -1,2 +1,3 @@
 #!/bin/bash
+#  update or start weekly in specially formatted gvim
 g --servername WKLY -S ~/.vim/weekly.vim
