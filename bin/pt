@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+#  pass through (a no-op for readme)
+open(DAT, '-');
+while ($l = <DAT>) {
+    print "$l";
+}
+close(DAT);
