@@ -1,4 +1,4 @@
 #!/bin/bash
-#  get me going
+#  get me going (editing my index.html in gvim)
 cd ~/toothpik.github.com
 g -S ~/.vim/gmg.vim
