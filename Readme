@@ -1,4 +1,3 @@
-actct0.awk          add count to ct0
 adrbk.awk           name & e-addy extractor for ldif files
 amo2.awk            automate mo2 (moon highlight extractor)
 avcldt.awk          average clear date -- filter for plans
