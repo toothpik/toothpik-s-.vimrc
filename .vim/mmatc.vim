@@ -1,5 +1,4 @@
-" make me a three calendar
-" currently called by sacalh
+"  make me a three calendar - currently called by sacalh
 "
 let mapleader = ','
 nnoremap <Leader>c :source ~/.vim/mmatc.vim<CR>
