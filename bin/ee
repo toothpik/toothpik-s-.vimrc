@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+#  print 60 = characters, or another number
 if (@ARGV < 1) {
     $ll = 60;
 } else {
