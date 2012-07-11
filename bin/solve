@@ -1,4 +1,5 @@
 #!/bin/bash
+#  quick & dirty command line calculator
 bc << EOF
 scale=7
 $@
