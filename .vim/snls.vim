@@ -1,5 +1,4 @@
-"  show new laundry schedule
-"  called by bin/snls
+"  show new laundry schedule - called by bin/snls
 winsize 22 5
 winpos 830 68
 set cursorline
