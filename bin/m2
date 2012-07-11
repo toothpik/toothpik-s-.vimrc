@@ -1,4 +1,5 @@
 #!/bin/bash
+#  print next fiscal month of plan data
 clear
 b
 tsl=`tput lines`
