@@ -1,4 +1,5 @@
 #!/bin/bash
+#  ccr fancified (lists today's mail folders)
 clear
 b
 tsl=`tput lines`
