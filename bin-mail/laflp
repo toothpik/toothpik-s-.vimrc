@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#  look at fetchmail log, predict next fetch time
 from os import environ
 from string import find, split, strip
 flog = ""
