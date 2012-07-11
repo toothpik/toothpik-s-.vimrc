@@ -1,5 +1,5 @@
 #  increasing-end.awk is designed for use with 'cct'
-#  it makes sure the last field is increasing
+#  it makes sure the last field is increasing (or equal)
 BEGIN { savelf = -100 }
 /^        / { print; next }
 {
