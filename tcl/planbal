@@ -1,5 +1,5 @@
 #!/usr/bin/tclsh
-#  balance column fixer for the text plan
+#  balance column fixer for plan - mapped to ,b
 #  for editing ~/txt/plan_{year}, currently mapped to <Leader>b
 #  will read from stdin so it can be used as a filter
 proc usage {} {
