@@ -1,4 +1,4 @@
-
+"  setup for tocal edit - called by tocal & tocalv
 let mapleader = ','
 nnoremap <silent> <Leader>c :call Fcd() \| set hlsearch<CR>
 nnoremap <Leader>ev :e ~/.vim/tocal.vim<CR>
