@@ -1,4 +1,5 @@
 #!/bin/bash
+#  echo 60 dashes, or other character, or other number
 function usage-exit ()
 {
     printf "usage: %s [-c X] [#]\n" $(basename $0)
