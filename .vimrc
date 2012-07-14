@@ -296,7 +296,7 @@ iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
 let mapleader = ','
 nnoremap <Leader>a :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <silent><Leader>b :call LastNonBlank()<CR>
-nnoremap <silent><Leader>c :call RefreshReadme()<CR>
+"nnoremap <silent><Leader>c
 nnoremap <silent><Leader>d :call FindTocalDate()<CR>:set hlsearch<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
@@ -329,7 +329,7 @@ nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <silent> <Leader>tt :normal i<c-r>=strftime("%H:%M")<ESC><CR>
 nnoremap <silent> <Leader>u :call FileTime()<CR>
 nnoremap <Leader>uu :call Unhideme()<CR>
-nnoremap <Leader>v :call RefreshVim()<CR>
+"nnoremap <Leader>v
 nnoremap <Leader>vv :source ~/.vim/plan.vim<CR>
 "nnoremap <Leader>w
 "nnoremap <Leader>x
@@ -751,30 +751,6 @@ function! Paste(paste_before)
         normal! "qp
     endif
     let @q = save_q
-endfunction
-" ----------------------------------------
-function! RefreshReadme()
-    if &bufhidden != 'hide'
-        echo 'RefreshReadme is for hidden buffers only'
-        echo 'it will delete and replace your entire buffer'
-        return
-    endif
-    let saveline = line('.')
-    silent %d
-    r!readme
-    execute saveline
-endfunction
-" ----------------------------------------
-function! RefreshVim()
-    if &bufhidden != 'hide'
-        echo 'RefreshVim is for hidden buffers only'
-        echo 'it will delete and replace your entire buffer'
-        return
-    endif
-    let saveline = line('.')
-    silent %d
-    r!readmv
-    execute saveline
 endfunction
 " ----------------------------------------
 function! Scaleme(w)
