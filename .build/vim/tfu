@@ -1,2 +1,3 @@
 #!/bin/bash
+#  run 'tail -f' on the update.log
 tail -f update.log
