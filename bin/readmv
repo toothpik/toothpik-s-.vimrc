@@ -5,11 +5,11 @@ pt='pt'
 if test $# -gt 0
 then
     case $1 in
-        g) pt=ghs
+        g) pt='ghs -S ~/.vim/readmv.vim'
             ;;
-        v) pt=vhs
+        v) pt='vhs -S ~/.vim/readmv.vim'
             ;;
-        *) pt=pt
+        *) pt='pt'
             ;;
     esac
 fi
