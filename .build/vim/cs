@@ -1,4 +1,4 @@
 #!/bin/bash
-#  changeset
+#  print changeset ID of 'tip'
 cd ~/.build/vim/vim
 hg heads | awk -f ../lft.awk
