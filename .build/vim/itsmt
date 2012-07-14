@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#  is this string more than 10 hours in the past?
+#  is this string more than 10 hours in the past?  used by hlslt
 from datetime import datetime
 from pytz import timezone
 from sys import argv, exit
