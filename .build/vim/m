@@ -1,4 +1,5 @@
 #!/bin/bash
+#  run make on the vim path
 cd ~/.build/vim/vim
 dds >> ../make.log
 make 2>&1 | tee -a ../make.log
