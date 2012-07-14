@@ -1,4 +1,5 @@
 #!/bin/bash
+#  whack old config, re-config from scratch
 cd ~/.build/vim/vim
 rm -f src/auto/config.cache
 date '+%Y-%b-%d %H:%M' >> ../configure.log
