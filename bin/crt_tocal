@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#  create new year for tocal
+#  create new year for tocal - just the dates - use crttc for more data
 from datetime import date, timedelta
 from sys import argv, exit
 
