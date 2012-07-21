@@ -4,8 +4,8 @@ if has('gui_running')
     winpos 119 185
 endif
 let mapleader = ','
-nnoremap <buffer> <Leader>a :call OpenLastYear()<CR>
-nnoremap <buffer> <Leader>aa :call OpenNextYear()<CR>
+nnoremap <buffer> <Leader>a :call OpenLastYear()\|source ~/.vim/plan.vim<CR>
+nnoremap <buffer> <Leader>aa :call OpenNextYear()\|source ~/.vim/plan.vim<CR>
 nmap <buffer> <Leader>b :call BalCol()<CR>
 nmap <buffer> <Leader>c :call GoLastClear()<CR>
 nmap <buffer> <Leader>cc :call ToggleColorColumn()<CR>
