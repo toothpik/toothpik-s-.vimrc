@@ -1,48 +1,19 @@
 #!/bin/bash
-#  mxm
-#  make $1 more, start naming at $2
-if test $# -eq 0 ; then
-    hm=19           #  how many
-    sn=2            #  starting number
-else
-    if test $# -eq 1 ; then
-        hm=$1
+#  make "x" more, start naming at $2
+case $# in
+    0)  hm=19           #  how many
+        sn=2            #  starting number
+        ;;
+    1)  hm=$1
         sn=2
-    else
-        hm=$1
+        ;;
+    *)  hm=$1
         sn=$2
-    fi
-fi
-function numword ()
-{
-    case $1 in
-        1) echo 'One'
-            ;;
-        2) echo 'Two'
-            ;;
-        3) echo 'Three'
-            ;;
-        4) echo 'Four'
-            ;;
-        5) echo 'Five'
-            ;;
-        6) echo 'Six'
-            ;;
-        7) echo 'Seven'
-            ;;
-        8) echo 'Eight'
-            ;;
-        9) echo 'Nine'
-            ;;
-        10) echo 'Ten'
-            ;;
-        *) echo $1') %D'
-            ;;
-    esac
-}
+        ;;
+esac
 x=0
 while test $x -lt $hm ; do
     kn=$(( x + sn ))
-    konsole --new-tab -p tabtitle="$(numword $kn)" 
+    konsole --new-tab -p tabtitle="$kn)  %D" 
     x=$(( x + 1 ))
 done
