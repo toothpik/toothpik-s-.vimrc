@@ -1,5 +1,5 @@
 #!/bin/bash
-#  generate blank lines
+#  generate blank line[s]
 if test $# -eq 0; then
     nw=1
 else
