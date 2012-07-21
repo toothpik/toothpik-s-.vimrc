@@ -1,5 +1,5 @@
 #!/bin/bash
-#  update (or start) "ws" windows
+#  update (or start) "ws" (workspace) windows
 gw=0
 gc=0
 gl=0
