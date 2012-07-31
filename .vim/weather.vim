@@ -17,5 +17,8 @@ function! Makemeweather()
     setlocal ignorecase
     silent %d
     silent 0read !~/tcl/cw
+    exe '%s/^Today/' . strftime("%A") . '/e'
+    exe '%s/^This Afternoon/' . strftime("%A") . '/e'
+    exe '%s/^Tonight/' . strftime("%A") . ' Night/e'
     1
 endfunction
