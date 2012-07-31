@@ -8,7 +8,7 @@ then
             ;;
         v) pt='vhs -S ~/.vim/readme.vim'
             ;;
-        *) pt=pt
+        *) pt='pt'
             ;;
     esac
 fi
@@ -19,8 +19,9 @@ do
         echo "$wl"
     else
         if [ -f "$f" -a -x "$f" ]; then
+            lang=`head -1 "$f" | awk 'BEGIN {FS = "/"} { print $NF }' | awk '{print $1}'`
             sl=`2ndline $f`
-            printf "%-11s %s\n" "$f" "$sl"
+            printf "%-11s [%-7s] %s\n" "$f" "$lang" "${sl#\#  }"
         fi
     fi
 done | $pt
