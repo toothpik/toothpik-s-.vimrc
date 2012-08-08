@@ -1,6 +1,6 @@
 #!/bin/bash
 #  cat weather
 lc=$((`tput lines` - 1))
-~/tcl/cw 2>&1 | head -$lc
+~/tcl/cw 2>&1 | head -$lc | fixtoday
 #  use wiv for the following
 #v -S ~/.vim/weather.vim -c 'call Makemeweather()' -c 'set hlsearch'
