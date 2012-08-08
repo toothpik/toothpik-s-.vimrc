@@ -20,5 +20,6 @@ function! Makemeweather()
     exe '%s/^Today/' . strftime("%A") . '/e'
     exe '%s/^This Afternoon/' . strftime("%A") . '/e'
     exe '%s/^Tonight/' . strftime("%A") . ' Night/e'
+    exe '%s/^Overnight/' . strftime("%A") . ' Night/e'
     1
 endfunction
