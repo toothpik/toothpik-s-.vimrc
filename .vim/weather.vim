@@ -16,10 +16,6 @@ function! Makemeweather()
     call Hideme()
     setlocal ignorecase
     silent %d
-    silent 0read !~/tcl/cw
-    exe '%s/^Today/' . strftime("%A") . '/e'
-    exe '%s/^This Afternoon/' . strftime("%A") . '/e'
-    exe '%s/^Tonight/' . strftime("%A") . ' Night/e'
-    exe '%s/^Overnight/' . strftime("%A") . ' Night/e'
+    silent 0read !~/tcl/cw | fixtoday
     1
 endfunction
