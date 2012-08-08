@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+#  fix "Today" in weather stream
+from re import compile
+from datetime import date
+from sys import stdin
+t1 = date.today()
+t2 = t1.strftime("%A")
+s1 = "Late Afternoon"
+s2 = "Tonight"
+s3 = "Overnight"
+l1 = compile(s1)
+l2 = compile(s2)
+l3 = compile(s3)
+
+rc = 0
+for line in stdin:
+    l = line.rstrip()
+    if l1.search(l):
+        nl = t2 + " afternoon " + l.lstrip(s1)
+        print(nl)
+    elif l2.search(l):
+        nl = t2 + " night " + l.lstrip(s2)
+        print(nl)
+    elif l3.search(l):
+        nl = t2 + " night " + l.lstrip(s3)
+    else:
+        print(l)
