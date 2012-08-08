@@ -43,10 +43,10 @@ export LC_COLLATE=POSIX
 #  export PS1='\[\e[6;31m\]$\[\e[m\] '
 #  export PS1='$(date "+%a %H:%M") \w $ '
 #  export PS1='[$(date "+%a %H:%M")] \w $ '
-export PS1='$ '
+#  export PS1='$ '
 #  export PS1='\w> '
 #  export PS1='$PWD> '
-#  export PS1='\w $ '
+export PS1='\w$ '
 
 alias ....='cd ../../..'
 alias cd2='cd ~/bin'
@@ -97,7 +97,7 @@ function dp () {
         echo "PATH already has $PWD"
     else
         export PATH=${PWD}:$PATH
-        export PS1=': '
+        export PS1='\w: '
     fi
 }
 #  remove dangerous path extension -- whew!
@@ -105,7 +105,7 @@ function rdp () {
     if [[ $PATH = $PWD:* ]]
     then
         export PATH=${PATH#$PWD:}
-        export PS1='$ '
+        export PS1='\w$ '
     else
         echo "PATH doesn't have $PWD at the front"
     fi
