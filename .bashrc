@@ -44,9 +44,9 @@ export LC_COLLATE=POSIX
 #  export PS1='$(date "+%a %H:%M") \w $ '
 #  export PS1='[$(date "+%a %H:%M")] \w $ '
 #  export PS1='$ '
-#  export PS1='\w> '
+export PS1='\w> '
 #  export PS1='$PWD> '
-export PS1='\w$ '
+#  export PS1='\w$ '
 
 alias ....='cd ../../..'
 alias cd2='cd ~/bin'
@@ -105,7 +105,7 @@ function rdp () {
     if [[ $PATH = $PWD:* ]]
     then
         export PATH=${PATH#$PWD:}
-        export PS1='\w$ '
+        export PS1='\w> '
     else
         echo "PATH doesn't have $PWD at the front"
     fi
