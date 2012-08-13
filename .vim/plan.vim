@@ -152,6 +152,6 @@ function! ToggleColorColumn()
     if ( &cc )
         setl cc=
     else
-        setl cc=6,10,41,44,47,59,61,71,81,87
+        setl cc=6,10,41,44,47,58,61,71,82,88
     endif
 endfunction
