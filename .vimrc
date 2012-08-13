@@ -53,7 +53,7 @@ set nosmartindent
 set   softtabstop=4
 set   spellcapcheck=
 set   spelllang=en_us
-set   splitbelow
+set nosplitbelow
 set nostartofline
 set   swapfile
 set   swapsync=
@@ -295,7 +295,7 @@ iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
 " --- leader commands {{{
 let mapleader = ','
 nnoremap <Leader>a :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-nnoremap <silent><Leader>b :call LastNonBlank()<CR>
+nnoremap <silent><Leader>b :ls<CR>:b
 "nnoremap <silent><Leader>c
 nnoremap <silent><Leader>d :call FindTocalDate()<CR>:set hlsearch<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
