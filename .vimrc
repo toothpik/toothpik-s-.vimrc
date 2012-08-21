@@ -295,7 +295,7 @@ iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
 " --- leader commands {{{
 let mapleader = ','
 nnoremap <Leader>a :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-nnoremap <silent><Leader>b :ls<CR>:b
+nnoremap <Leader>b :ls<CR>
 "nnoremap <silent><Leader>c
 nnoremap <silent><Leader>d :call FindTocalDate()<CR>:set hlsearch<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
