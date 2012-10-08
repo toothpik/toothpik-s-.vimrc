@@ -1,5 +1,4 @@
 #!/bin/bash
-#  install vim -- run as root or 'sudo i'
 PATH=~/bin:$PATH
 cd /home/$(gmn)/.build/vim/vim
 date '+%Y-%b-%d %H:%M' >> ../install.log
