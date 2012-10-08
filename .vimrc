@@ -309,7 +309,7 @@ iabbrev ø ✖
 " --- leader commands {{{
 let mapleader = ','
 nnoremap <Leader>a :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-nnoremap <Leader>b :ls<CR>
+nnoremap <Leader>b :ls<CR>:b
 "nnoremap <silent><Leader>c
 nnoremap <silent><Leader>d :call FindTocalDate()<CR>:set hlsearch<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
@@ -361,23 +361,6 @@ function! Acdmo()
     normal 3j
     startinsert
 endfunction
-" ----------------------------------------
-"  interesting B command
-"-tim chase
-function! Bufferadd(really, ...)
-    if len(a:000)
-        for globspec in a:000
-            let l:files = split(glob(globspec), "\n")
-            for fname in l:files
-                exec 'badd'.(a:really).' '.(fname)
-            endfor
-        endfor
-    else
-        exec 'badd'.(a:really)
-    endif
-endfunction
-"
-command! -nargs=* -complete=file -bang B call Bufferadd("<bang>", <f-args>)
 " ----------------------------------------
 function! CdCurBuf()
     let cwd = getcwd()
