@@ -291,6 +291,20 @@ iabbrev <silent> rul7 <c-r>=Scaleme(70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul8 <c-r>=Scaleme(80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul9 <c-r>=Scaleme(90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
+" ----------------------------------------
+"  fun with UTF-8
+"  alt-, double left chevron
+"  alt-. double right chevron
+"  alt-a arrow
+"  alt-b bullet
+"  alt-c check mark
+"  alt-x fat raised x
+iabbrev ¬ «
+iabbrev ® »
+iabbrev á →
+iabbrev â •
+iabbrev ã ✔
+iabbrev ø ✖
 " ---------------------------------------- }}}
 " --- leader commands {{{
 let mapleader = ','
@@ -577,8 +591,8 @@ function! LongBlogDate()
     let d1s = substitute(d1, "  ", " ", "")
     let d2 = strftime("%A")
     let d3 = strftime("%l:%M%P %Z")
-    let d3s = substitute(d3, " ", "", "^")
-    return d1s . "  " . d2 . "  " . d3s
+"    let d3s = substitute(d3, " ", "", "^")
+    return d1s . "  " . d2 . "  " . d3
 endfunction
 " ----------------------------------------
 function! Longdate()
