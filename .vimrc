@@ -91,7 +91,7 @@ augroup vimrcgrp
 augroup END
 "
 "  some scripts i don't need:
-let g:loaded_netrw = 1
+"let g:loaded_netrw = 1
 let g:html_use_css = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_gzip = 1
