@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#  fix "Today" in weather stream
+#  fix "Today" in weather stream (reads stdin)
 from re import compile
 from datetime import date
 from sys import stdin
@@ -10,13 +10,11 @@ s0 = "Today"
 s1 = "This Afternoon"
 s2 = "Late Afternoon"
 s3 = "Tonight"
-s4 = "Overnight"
 
 l0 = compile(s0)
 l1 = compile(s1)
 l2 = compile(s2)
 l3 = compile(s3)
-l4 = compile(s4)
 
 for line in stdin:
     l = line.rstrip()
@@ -25,9 +23,7 @@ for line in stdin:
     elif l1.search(l):
         nl = tod + " afternoon " + l.lstrip(s1)
     elif l2.search(l):
-        nl = tod + " afternoon " + l.lstrip(s1)
-    elif l2.search(l):
-        nl = tod + " night " + l.lstrip(s2)
+        nl = tod + " afternoon " + l.lstrip(s2)
     elif l3.search(l):
         nl = tod + " night " + l.lstrip(s3)
     else:
