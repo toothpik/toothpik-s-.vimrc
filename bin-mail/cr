@@ -3,7 +3,7 @@
 clear
 b
 tsl=`tput lines`
-if test $tsl -gt 38; then
+if test $tsl -gt 40; then
     psf=$(( ( `tput cols` - 75 ) / 2 - 2))
     cm1p1 | mio $psf
     b 2
@@ -15,3 +15,5 @@ else
     fi
 fi
 ccr | mio 29
+b
+epl | mio 29
