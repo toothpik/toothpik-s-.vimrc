@@ -5,4 +5,4 @@ if [ $# -eq 0 ]; then
 else
     Y=$1
 fi
-g -c 'source ~/.vim/plan.vim' -c 'call GoLastX()' -c 'mark h' ~/txt/plan_${Y} 
+g -c 'badd ~/txt/plan_2013' -c 'source ~/.vim/plan.vim' -c 'call GoLastX()' -c 'mark h' ~/txt/plan_${Y} 
