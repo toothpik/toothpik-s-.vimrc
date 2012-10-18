@@ -2,5 +2,5 @@
 cd ~/.build/vim/vim
 rm -f src/auto/config.cache
 date '+%Y-%b-%d %H:%M' >> ../configure.log
-./configure --with-features=big --with-compiledby=toothpik@home 2>&1 | tee -a ../configure.log
+./configure --with-features=big --with-compiledby=toothpik@home --enable-gui=gtk2 2>&1 | tee -a ../configure.log
 dsh 60 >> ../configure.log
