@@ -9,7 +9,7 @@ silent %d
 silent 0r!cat ~/txt/weekly | wkly2
 call Hideme()
 winpos 0 17
-set columns=25
+set columns=35
 set lines=8
 set cursorline
 set guioptions-=r
