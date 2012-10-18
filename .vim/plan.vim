@@ -66,7 +66,7 @@ endfunction
 function! GoFirstUnclear()
     normal gg
     call search("\\%>44c\\%<47c\ \ ")
-    normal zz
+    normal zt
 endfunction
 
 function! GoLastClear()
