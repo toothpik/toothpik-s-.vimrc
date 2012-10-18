@@ -125,8 +125,8 @@ nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzx' :
 map <C-L> zl
 map <C-H> zh
 "  move text and rehighlight
-vnoremap > ><CR>gv
-vnoremap < <<CR>gv
+vmap > >gv
+vmap < <gv
 nnoremap ; :
 nmap . .`[
 " ---------------------------------------- }}}
@@ -291,6 +291,7 @@ iabbrev <silent> rul7 <c-r>=Scaleme(70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul8 <c-r>=Scaleme(80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul9 <c-r>=Scaleme(90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ttt <c-r>=strftime("%H:%M:%S")<CR><c-r>=Eatchar('\s')<cr>
 " ----------------------------------------
 "  fun with UTF-8
 "  alt-, double left chevron
