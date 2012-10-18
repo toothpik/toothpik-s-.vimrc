@@ -3,10 +3,12 @@
 clear
 b
 tsl=`tput lines`
-if test $tsl -gt 38; then
+if test $tsl -gt 40; then
     pfc=$(( ( (`tput cols` - 75) / 2) - 2 ))
     cm1p1 | mio $pfc
     b
+else
+    pfc=11
 fi
 wm=`curpmo`
 pm=$((wm - 1))
@@ -18,4 +20,4 @@ else
     y=`date '+%y'`
     m=$pm
 fi
-m$y $m | grep -v '^-----' | ci60 | mio 8
+m$y $m | grep -v '^-----' | ci60 | mio $(($pfc - 5))
