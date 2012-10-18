@@ -1,22 +1,68 @@
 #!/bin/bash
-#  how long since last [empty] t?
+#  how long since last t?
 yr=`date '+%Y'`
 cd ~/.build/vim
 {
-    echo "the last empty t[est for incoming] was"
+    echo "the last hit on the git server was"
     lt=$(grep "^$yr" spare-incoming.log | tail -1 | cut -c1-17)
-    etol "$lt" "$(dds)"
-    echo "ago"
+#   last update    
+    lu=$(grep "^$yr" incoming.log | tail -1 | cut -c1-17)
+#   last grab
+    lg=$(grep "^$yr" update.log | tail -1 | cut -c1-17)
+    declare -a A
+    declare -a B
+    declare -a C
+    A=($lt)
+    B=($lu)
+    C=($lg)
+    yeart=$(echo "${A[0]}" | awk 'BEGIN {FS="-"} {print $1}')
+    yearu=$(echo "${B[0]}" | awk 'BEGIN {FS="-"} {print $1}')
+    yearg=$(echo "${C[0]}" | awk 'BEGIN {FS="-"} {print $1}')
+    montht=$(echo "${A[0]}" | awk 'BEGIN {FS="-"} {print $2}')
+    monthu=$(echo "${B[0]}" | awk 'BEGIN {FS="-"} {print $2}')
+    monthg=$(echo "${C[0]}" | awk 'BEGIN {FS="-"} {print $2}')
+    domt=$(echo "${A[0]}" | awk 'BEGIN {FS="-"} {print $3}')
+    domu=$(echo "${B[0]}" | awk 'BEGIN {FS="-"} {print $3}')
+    domg=$(echo "${C[0]}" | awk 'BEGIN {FS="-"} {print $3}')
+    nnmot=$(~/py/nummo.py "$montht")
+    nnmou=$(~/py/nummo.py "$monthu")
+    nnmog=$(~/py/nummo.py "$monthg")
+    dttmt="$yeart-$nnmot-$domt ${A[1]}:00 +0000"
+    dttmu="$yearu-$nnmou-$domu ${B[1]}:00 +0000"
+    dttmg="$yearg-$nnmog-$domg ${C[1]}:00 +0000"
+#   epoch seconds
+    ltes=$(date -d "$dttmt" '+%s')
+#   echo "epoch seconds for spare-incoming log are $ltes"
+    lues=$(date -d "$dttmu" '+%s')
+#   echo "epoch seconds for       incoming log are $lues"
+    lges=$(date -d "$dttmg" '+%s')
+#   echo "epoch seconds for         update log are $lges"
+#   which date?
+    if [[ $ltes -gt $lues && $ltes -gt $lges ]] ; then
+        wd="$lt"
+        fas=" (for an empty t)"
+    elif [[ $lues -gt $ltes && $lues -gt $lges ]] ; then
+        wd="$lu"
+        fas=" (obtaining a full t)"
+    else
+        wd="$lg"
+        fas=" (with an actual update)"
+    fi
+    etol "$wd"
+    echo "ago$fas"
     echo
-    tlt=$(itsmt "$lt")
-    if [ "$tlt" = "LT" ]; then
-        thflt=$(jatt "10:00" "$lt")
-        echo "the next authorized t will be"
-        etol "$(dds)" "$thflt"
-        echo "from now"
+    tlt=$(etol "$wd")
+    h1=$(etol "$wd" | cut -c53-54)
+    h2=${h1# }
+    pdy=$(echo "$tlt" | cut -c50-51)
+    if [[ "$pdy" == 'dy' || $h2 -gt 9 ]]; then
+        echo "you are now authorized to do the next t"
         echo ""
     else
-        echo "you are now authorized to do the next t"
+        thflt=$(jatt "10:00" "$wd")
+        echo "the next authorized t will be"
+        etol "$thflt"
+        echo "from now"
         echo ""
     fi
 } | mio 3
