@@ -1,5 +1,5 @@
 #!/bin/bash
-#  tocal, no linecount
+#  tocal, no linecount, used by tcc2
 if [ x$lc == x ]; then
     echo 'tcnlc3 cannot function without environment variable "lc"'
     echo 'defined as a valid/desired line count'
