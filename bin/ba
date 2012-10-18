@@ -2,7 +2,7 @@
 #  battery life on steroids
 clear
 tsl=`tput lines`
-if test $tsl -gt 38; then
+if test $tsl -gt 40; then
     b
     pfc=$(( ( (`tput cols` - 75) / 2) - 2 ))
     cm1p1 | mio $pfc
