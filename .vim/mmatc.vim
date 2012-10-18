@@ -1,5 +1,4 @@
 "  make me a three calendar - currently called by sacalh
-"
 let mapleader = ','
 nnoremap <Leader>c :source ~/.vim/mmatc.vim<CR>
 nnoremap <Leader>ev :edit ~/.vim/mmatc.vim<CR>
@@ -8,7 +7,7 @@ silent %d
 silent r!cm1p1 | sed -f ~/mofix.sed
 let l = line("$") + 1
 execute "winsize 76 " . l
-winpos 212 0
+winpos 271 0
 call Hideme()
 setlocal guioptions-=r
 setlocal nocursorline
