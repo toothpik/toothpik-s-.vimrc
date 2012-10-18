@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #  is this string more than 10 hours in the past?
 from datetime import datetime
 from pytz import timezone
@@ -11,7 +11,7 @@ ctz = timezone('US/Central')
 dfm = "%Y-%b-%d %H:%M"   #  date format
 hma = len(argv)          #  how many arguments?
 if hma < 2:
-    print "itsmt requires a datetime string"
+    print("itsmt requires a datetime string")
     exit(1)
 
 s = datetime.now()
@@ -20,13 +20,13 @@ try:
     f = datetime.strptime(argv[1], dfm)
     f1 = ctz.localize(f)
 except ValueError:
-    print "cannot parse %s as datetime" % argv[1]
+    print("cannot parse %s as datetime" % argv[1])
     exit(1)
 
 d = s1 - f1
 hours = d.seconds / 3600
 
 if d.days > 0 or hours > 9:
-    print "GToE"
+    print("GToE")
 else:
-    print "LT"
+    print("LT")
