@@ -48,6 +48,7 @@ let   &showbreak = "» "
 set   showcmd
 set   showmode
 set noshowmatch
+set   showtabline=0
 set   sidescroll=1
 set nosmartindent
 set   softtabstop=4
@@ -129,8 +130,10 @@ vmap > >gv
 vmap < <gv
 nnoremap ; :
 nmap . .`[
+let g:netrw_banner = 0
+let g:netrw_liststyle = 1
 " ---------------------------------------- }}}
-" --- commands {{{
+" --- ex commands {{{
 command! BD b # | bd #
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
@@ -138,10 +141,14 @@ command! -nargs=+ H execute 'silent help <args>' | only
 command! Xbit call SetExecutableBit()
 " ---------------------------------------- }}}
 " --- F-key mappings {{{
-nnoremap <F1> :call F1_formatter("75")<CR>
-inoremap <F1> <C-O>:call F1_formatter("75")<CR>
-nnoremap <S-F1> :call F1_toggle_width("75")<CR>
-inoremap <S-F1> <C-O>:call F1_toggle_width("75")<CR>
+" ----------------------------------------
+nnoremap <TAB> :bnext<CR>
+nnoremap <S-TAB> :bprev<CR>
+" ----------------------------------------
+nnoremap <F1> :call F1_formatter("78")<CR>
+inoremap <F1> <C-O>:call F1_formatter("78")<CR>
+nnoremap <S-F1> :call F1_toggle_width("78")<CR>
+inoremap <S-F1> <C-O>:call F1_toggle_width("78")<CR>
 " ----------------------------------------
 nnoremap <F2> o
 inoremap <F2> <C-O>o
@@ -159,18 +166,21 @@ inoremap <F4> <C-O>J
 nnoremap <S-F4> :call FixBlankLinesAtEnd()<CR>
 inoremap <S-F4> <ESC>:call FixBlankLinesAtEnd()<CR>
 " ----------------------------------------
-nnoremap <silent> <F5> :call Fmt('75')<CR>
-inoremap <silent> <F5> <C-O>:nohlsearch<CR>
+nnoremap <silent> <F5> :call Fmt('78')<CR>
+inoremap <silent> <F5> <C-O>:call Fmt('78')<CR>
 cmap <F5> <c-r>=strftime("%Y%m%d")<CR>
 nnoremap <S-F5> :call ZeroBlankLinesAtEnd()<CR>
 inoremap <S-F5> <ESC>:call ZeroBlankLinesAtEnd()<CR>
 nnoremap <M-F5> :set paste<CR>
 inoremap <M-F5> <C-O>:set paste<CR>
 " ----------------------------------------
-nnoremap <silent> <F6> :bnext<CR>
-inoremap <silent> <F6> <ESC>:bnext<CR>
-nnoremap <silent> <S-F6> :bprevious<CR>
-inoremap <silent> <S-F6> <ESC>:bprevious<CR>
+"  newer versions of netrw may be obtained at
+"  http://www.drchip.org/astronaut/vim/index.html#NETRW
+"  download netrw.vba.gz, move it to ~/.vim
+nnoremap <silent> <F6> :Explore<Bar>1<CR>
+inoremap <silent> <F6> <ESC>:Explore<Bar>1<CR>
+nnoremap <S-F6> :ls<CR>:b
+inoremap <S-F6> <ESC>:ls<CR>:b
 nnoremap <M-F6> :set nopaste<CR>
 inoremap <M-F6> <nop>
 set pastetoggle=<M-F6>
@@ -333,7 +343,7 @@ nnoremap <Leader>l :source ~/.vim/i_ctr.vim<CR>
 "nnoremap <Leader>m
 "nnoremap <Leader>n
 nnoremap <silent> <Leader>o :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
-nnoremap <silent> <Leader>oo :call UnsetFolds()<CR>
+nnoremap <silent> <Leader>oo :setlocal foldexpr=0 foldcolumn=0<CR>
 nnoremap <Leader>p :call Paste(0)<CR>
 nnoremap <Leader>P :call Paste(1)<CR>
 nnoremap <Leader>q :call EditTry("~/.vim/leaders")<CR>
@@ -380,6 +390,7 @@ function! CdMaik(dir)
 endfunction
 " ----------------------------------------
 function! ClearBuffers()
+"  bdelete all but the current buffer
     let i = 1
     let dc = 0
     while i <= bufnr("$")
@@ -801,11 +812,6 @@ function! Unhideme()
     setlocal swapfile
     setlocal buftype=""
     setlocal bufhidden=""
-endfunction
-" ----------------------------------------
-function! UnsetFolds()
-    setlocal foldexpr=0
-    setlocal foldcolumn=0
 endfunction
 " ----------------------------------------
 function! ZeroBlankLinesAtEnd()
