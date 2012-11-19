@@ -8,8 +8,9 @@ if test $tsl -gt 40; then
     cm1p1 | mio $pfc
     b
 fi
-b2    | mio
-hoirb | mio
+hm=16
+b2    | mio $hm
+hoirb | mio $hm
 b
-mb    | mio
+mb    | mio $hm
 b
