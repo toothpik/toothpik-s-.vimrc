@@ -30,7 +30,7 @@ for {set i 0} {$i < $dll} { incr i} {
         puts $l
     } else {
         set diff [expr { ($date1 - $date0) / 86400 }]
-        set diffdisp [format "%2d" $diff]
+        set diffdisp [format "%3d" $diff]
         puts "$l  $diffdisp"
         set avb [expr {$avb + $diff}]
         set date0 $date1
