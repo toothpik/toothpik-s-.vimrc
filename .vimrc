@@ -42,6 +42,7 @@ set   ruler
 set   scrollopt=ver,hor,jump
 set   selection=exclusive
 set   selectmode+=key
+set   shiftround
 set   shiftwidth=4
 set   shortmess=aoOtT
 let   &showbreak = "» " 
