@@ -1,8 +1,10 @@
 "  setup for edit of plans - used by gp and vp to name a few
 if has('gui_running')
-    winsize 94 41
-    winpos 119 185
+    winsize 94 45
+    winpos 119 0
+"    winpos 119 185
 endif
+setl dictionary+='~/txt/plan-dict'
 let mapleader = ','
 nnoremap <buffer> <Leader>a :call OpenLastYear()\|source ~/.vim/plan.vim<CR>
 nnoremap <buffer> <Leader>aa :call OpenNextYear()\|source ~/.vim/plan.vim<CR>
