@@ -1,5 +1,10 @@
-"  setup for ~/bin/wiv
+"  setup for ~/bin/wiv (and wig)
 set nocursorline
+
+if has('gui_running')
+    set lines=44
+    set columns=85
+endif
 
 let mapleader = ','
 map <silent> <Leader>c :call Makemeweather()<CR>
