@@ -12,7 +12,11 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-set   cursorline
+if has('gui_running')
+    set cursorline
+else
+    set nocursorline
+endif
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -62,7 +66,7 @@ set   swapsync=
 set   t_vb=
 set   tabstop=8
 set   textwidth=0
-if has("gui_running")
+if has('gui_running')
     set title
 else
     set notitle
