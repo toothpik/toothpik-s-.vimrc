@@ -1,20 +1,19 @@
 #!/bin/bash
-#  list *.vim modules through ghs, vhs, or pt (pass-through)
+#  list *.vim modules to stdout, vhs, or ghs
 #  examines the first line
-pt='pt'
-if test $# -gt 0
+function readnreport() {
+    for f in *.vim
+    do
+        fl=`head -1 $f`
+        printf "%-16s %s\n" "$f" "$fl"
+    done
+}
+if test $# -lt 1
 then
-    case $1 in
-        g) pt='ghs -S ~/.vim/readmv.vim'
-            ;;
-        v) pt='vhs -S ~/.vim/readmv.vim'
-            ;;
-        *) pt='pt'
-            ;;
-    esac
+    readnreport
+elif test $1 == 'v'
+then
+    readnreport | vhs -S ~/.vim/readmv.vim
+else
+    readnreport | ghs -S ~/.vim/readmv.vim
 fi
-for f in *.vim
-do
-    fl=`head -1 $f`
-    printf "%-16s %s\n" "$f" "$fl"
-done | $pt
