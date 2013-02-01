@@ -1,14 +1,16 @@
 #!/bin/bash
-#  cat weather [moved over 13 w possible header]
+#  cat weather [moved over w possible header]
 tsl=`tput lines`
-if test $tsl -gt 40; then
+if test $tsl -gt 50; then
     hbh=$(( $tsl - `cm1p1 | wc -l` - 3 ))
     clear
     b
     pfc=$(( ( (`tput cols` - 75) / 2) - 2 ))
     cm1p1 | mio $pfc
     b
-    ~/tcl/cw 2>&1 | head -$hbh | fixtoday | mio 13
+    ~/tcl/cw 2>&1 | head -$hbh | fixtoday | mio 8
 else
-    ~/tcl/cw 2>&1 | hsf | fixtoday | mio 13
+    c
+    b
+    ~/tcl/cw 2>&1 | hsf | fixtoday | mio 8
 fi
