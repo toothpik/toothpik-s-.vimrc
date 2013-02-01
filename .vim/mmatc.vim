@@ -7,7 +7,7 @@ silent %d
 silent r!cm1p1 | sed -f ~/mofix.sed
 let l = line("$") + 1
 execute "winsize 76 " . l
-winpos 271 0
+winpos 797 0
 call Hideme()
 setlocal guioptions-=r
 setlocal nocursorline
