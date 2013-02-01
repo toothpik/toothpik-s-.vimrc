@@ -41,10 +41,10 @@ export LC_COLLATE=POSIX
 #  export PS1='\[\e[6;31m\][$(mytime)] \w $\[\e[m\] '
 #  export PS1='\[\e[6;31m\]\w $\[\e[m\] '
 #  export PS1='\[\e[6;31m\]$\[\e[m\] '
-#  export PS1='$(date "+%a %H:%M") \w $ '
+export PS1='$(date "+%a %H:%M") \w> '
 #  export PS1='[$(date "+%a %H:%M")] \w $ '
 #  export PS1='$ '
-export PS1='\w> '
+#  export PS1='\w> '
 #  export PS1='$PWD> '
 #  export PS1='\w$ '
 
@@ -62,8 +62,7 @@ alias cd66='cd ~/.vim-tmp'
 alias cd6='cd ~/.vim'
 alias cd77='cd ~/.build/vim/vim/src'
 alias cd7='cd ~/.build/vim'
-alias cd88='cd ~/ruby/koans'
-alias cd8='cd ~/ruby'
+alias cd8='cd ~/perl'
 alias cdb='cd ~/bin-mail'
 alias cdc='cd ~/calc'
 alias cdcp='cd ~/calc/primes'
@@ -76,7 +75,7 @@ alias cdpp='cd ~/perl/primes'
 alias cdr='cd /usr/local/share/vim/vim73'
 alias cdt='cd ~/toothpik-s-.vimrc'
 alias cdtt='cd ~/toothpik.github.com'
-alias cdv='cd /var/spool/mail'
+alias cdv='cd /usr/local/share/vim/vim73'
 alias cdvt='cd ~/.vim-tmp'
 alias l='ls -AgGl --group-directories-first'
 
@@ -97,7 +96,7 @@ function dp () {
         echo "PATH already has $PWD"
     else
         export PATH=${PWD}:$PATH
-        export PS1='\w: '
+        export PS1='$(date "+%a %H:%M") \w: '
     fi
 }
 #  remove dangerous path extension -- whew!
@@ -105,7 +104,7 @@ function rdp () {
     if [[ $PATH = $PWD:* ]]
     then
         export PATH=${PATH#$PWD:}
-        export PS1='\w> '
+        export PS1='$(date "+%a %H:%M") \w> '
     else
         echo "PATH doesn't have $PWD at the front"
     fi
