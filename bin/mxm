@@ -14,6 +14,6 @@ esac
 x=0
 while test $x -lt $hm ; do
     kn=$(( x + sn ))
-    konsole --new-tab -p tabtitle="$kn)  %D" 
+    konsole --new-tab -p tabtitle="$kn) %D" 
     x=$(( x + 1 ))
 done
