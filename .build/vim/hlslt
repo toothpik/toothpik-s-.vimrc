@@ -1,14 +1,13 @@
 #!/bin/bash
-#  how long since last t?
-yr=`date '+%Y'`
+#  how long since [the] last t?
 cd ~/.build/vim
 {
     echo "the last hit on the git server was"
-    lt=$(grep "^$yr" spare-incoming.log | tail -1 | cut -c1-17)
+    lt=$(grep "^20" spare-incoming.log | tail -1 | cut -c1-17)
 #   last update    
-    lu=$(grep "^$yr" incoming.log | tail -1 | cut -c1-17)
+    lu=$(grep "^20" incoming.log | tail -1 | cut -c1-17)
 #   last grab
-    lg=$(grep "^$yr" update.log | tail -1 | cut -c1-17)
+    lg=$(grep "^20" update.log | tail -1 | cut -c1-17)
     declare -a A
     declare -a B
     declare -a C
