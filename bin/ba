@@ -2,15 +2,22 @@
 #  battery life on steroids
 clear
 tsl=`tput lines`
-if test $tsl -gt 40; then
+tcols=`tput cols`
+if test $tsl -gt 50; then
     b
-    pfc=$(( ( (`tput cols` - 75) / 2) - 2 ))
+    pfc=$(( ( (tcols - 75) / 2) - 2 ))
     cm1p1 | mio $pfc
     b
 fi
-hm=16
-b2    | mio $hm
-hoirb | mio $hm
-b
-mb    | mio $hm
+hm=$(( ( (tcols - 75) / 2) - 1 ))
+{
+    b2
+    hoirb
+    b
+    mb
+    b
+    tpr
+    b
+    tpk
+} | mio $hm
 b
