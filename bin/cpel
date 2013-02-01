@@ -1,6 +1,6 @@
 #!/bin/bash
 #  first screenful of recently edited files
-echo "`ddss`   `pwd | fu`"
+echo "`ddsss`   `pwd | fu`"
 echo
 lc=$((`tput lines` - 3))
 ls -AgGtl --color=always $@ 2>&1 | grep -v '^total ' | head -$lc
