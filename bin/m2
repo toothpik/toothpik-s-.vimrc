@@ -3,7 +3,7 @@
 clear
 b
 tsl=`tput lines`
-if test $tsl -gt 40; then
+if test $tsl -gt 50; then
     pfc=$(( ( (`tput cols` - 75) / 2) - 2 ))
     cm1p1 | mio $pfc
     b
