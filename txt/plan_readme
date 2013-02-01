@@ -29,7 +29,11 @@ use ~/bin/ept to estimate realistic ele and gas bills for the new year
 
     m12 | grep -F 'Power & Light' | awk -f ~/tta.awk
 
-to make sure the total for the year is sufficiently conservative
+to make sure the total for the year is sufficiently conservative and to
+get realistic seasonal fluctuations in the bills
+
+if the amount of the social security deposit changes, edit ~/py/pevery
+and change it there -- it's hard coded
 
 
 
