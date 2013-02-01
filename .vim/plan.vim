@@ -1,10 +1,8 @@
 "  setup for edit of plans - used by gp and vp to name a few
+"  ~/txt/plan_readme and ~/bin/minst that describes creation of new plans
 if has('gui_running')
-    winsize 94 45
-    winpos 119 0
-"    winpos 119 185
+    winsize 94 53
 endif
-setl dictionary+='~/txt/plan-dict'
 let mapleader = ','
 nnoremap <buffer> <Leader>a :call OpenLastYear()\|source ~/.vim/plan.vim<CR>
 nnoremap <buffer> <Leader>aa :call OpenNextYear()\|source ~/.vim/plan.vim<CR>
@@ -13,6 +11,7 @@ nmap <buffer> <Leader>c :call GoLastClear()<CR>
 nmap <buffer> <Leader>cc :call ToggleColorColumn()<CR>
 nmap <buffer> <Leader>d :call EditTry("~/txt/plan_core")<CR>
 nmap <buffer> <Leader>dd :call EditTry("~/txt/plan_core_other")<CR>
+nmap <buffer> <Leader>ec :e ~/bin/plannew<CR>
 nmap <buffer> <Leader>ev :e ~/.vim/plan.vim<CR>
 nmap <buffer> <Leader>f :call AdjustFoodBudget()<CR>
 nmap <buffer> <Leader>l :source ~/.vim/plan.vim<CR>
@@ -30,8 +29,6 @@ iabbr <buffer> dd <c-r>=Fivedate()<CR><c-r>=Eatchar('\s')<CR>
 " ------------------------------------------------------------
 let @a = "atm - gladstone"
 let @s = "Sunfresh #107"
-" ------------------------------------------------------------
-set cursorline
 " ------------------------------------------------------------
 function! AdjustFoodBudget()
     let sv = winsaveview()
@@ -146,8 +143,8 @@ function! SyncWNextYear()
     let twnfl = nfl . tms . lbws  "  the whole new first line
     execute "edit " . nyn
     call setline(1, twnfl)
+    source ~/.vim/plan.vim
     call BalCol()
-"    source ~/.vim/plan.vim
 endfunction
 
 function! ToggleColorColumn()
