@@ -1,4 +1,9 @@
 #!/bin/bash
 #  create new year for tocal -- writes to stdout
 #  save it to the end of the real tocal when you're happy with it
+#  adholtt makes use of the Date::Easter perl module
+#  the command
+#      sudo cpan i /Date-Easter/
+#  should install it for you if you've recently rebuilt the box and
+#  don't have it yet
 crt_tocal $1 | adbirtt $1 | adholtt $1 | addsttt
