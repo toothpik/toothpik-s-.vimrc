@@ -1,8 +1,13 @@
 #!/bin/bash
 #  print unclear plan transactions
-echo "                      << unclear >>"
-mf=11
-uclro | mio $mf
+dt=`date '+%m/%d'`
+pfc=$(( ( ( `tput cols` - 75) / 2) - 2 ))
+{
+    if test $# -lt 1; then
+        echo "$dt     Today's Unclear"
+    fi
+    uclro $1 
+} | mio $(( $pfc - 5 ))
 #
 #  unless and until you can tell me why sumlwq.awk produces
 #  erroneous sums i refuse to allow it to mislead me
