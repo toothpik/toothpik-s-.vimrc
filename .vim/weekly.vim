@@ -8,7 +8,7 @@ let @/ = strftime("%a")
 silent %d
 silent 0r!cat ~/txt/weekly | wkly2
 call Hideme()
-winpos 0 17
+winpos 0 0
 set columns=35
 set lines=8
 set cursorline
