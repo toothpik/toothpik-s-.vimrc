@@ -12,11 +12,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-if has('gui_running')
-    set cursorline
-else
-    set nocursorline
-endif
+set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -46,7 +42,7 @@ set   ruler
 set   scrollopt=ver,hor,jump
 set   selection=exclusive
 set   selectmode+=key
-set   shiftround
+set noshiftround
 set   shiftwidth=4
 set   shortmess=aoOtT
 let   &showbreak = "» " 
@@ -89,6 +85,7 @@ set   writebackup
 "  --- filetype & syntax {{{
 filetype plugin indent on
 syntax enable
+let readline_has_bash = 1
 " ---------------------------------------- }}}
 " --- autocommands & plugin mappings {{{
 augroup vimrcgrp
@@ -111,7 +108,7 @@ let g:is_bash = 1
 " ---------------------------------------- }}}
 " --- special mappings and commands {{{
 if !has("gui_running")
-    colo default
+    colo biogoo
 endif
 nnoremap <Down> gj
 inoremap <Down> <C-O>gj
@@ -137,6 +134,7 @@ nnoremap ; :
 nmap . .`[
 let g:netrw_banner = 0
 let g:netrw_liststyle = 1
+command! -range D <line1>,<line2>d | norm <C-o>
 " ---------------------------------------- }}}
 " --- ex commands {{{
 command! BD b # | bd #
@@ -182,8 +180,8 @@ inoremap <M-F5> <C-O>:set paste<CR>
 "  newer versions of netrw may be obtained at
 "  http://www.drchip.org/astronaut/vim/index.html#NETRW
 "  download netrw.vba.gz, move it to ~/.vim
-nnoremap <silent> <F6> :Explore<Bar>1<CR>
-inoremap <silent> <F6> <ESC>:Explore<Bar>1<CR>
+nnoremap <silent> <F6> :Explore<bar>1<CR>
+inoremap <silent> <F6> <ESC>:Explore<bar>1<CR>
 nnoremap <S-F6> :ls<CR>:b
 inoremap <S-F6> <ESC>:ls<CR>:b
 nnoremap <M-F6> :set nopaste<CR>
@@ -239,6 +237,7 @@ vnoremap <silent> <F12> <C-C>:update<CR>
 " --- insert mode abbreviations {{{
 iabbrev <silent> bsk <c-r>=strftime("%Y-%b-%2d  %H:%M  %a")<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> bskk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dd <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd1 <c-r>=repeat('-', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd2 <c-r>=repeat('-', 20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd3 <c-r>=repeat('-', 30)<CR><c-r>=Eatchar('\s')<cr>
@@ -261,6 +260,7 @@ iabbrev <silent> dddt  <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dded <c-r>=Mydatestamp()<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds2 <c-r>=strftime("%Y-%b-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dds3 <c-r>=strftime("%Y-%b-%d  %A  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddsd <c-r>=strftime("%b %_d")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddsdd <c-r>=strftime("%b %_d  %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddss <c-r>=strftime("%Y-%b-%d  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
@@ -275,6 +275,7 @@ iabbrev <silent> ee8 <c-r>=repeat('=', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee9 <c-r>=repeat('=', 90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> iba #!/bin/awk -f<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibe #!/usr/bin/expect<c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ibl #!/usr/local/bin/lua<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibp #!/usr/bin/python3<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibpp #!/usr/bin/perl<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibs #!/bin/bash<c-r>=Eatchar('\s')<cr>
@@ -324,7 +325,8 @@ iabbrev ø ✖
 " ---------------------------------------- }}}
 " --- leader commands {{{
 let mapleader = ','
-nnoremap <Leader>a :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
+"_s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <Leader>b :ls<CR>:b
 "nnoremap <silent><Leader>c
 nnoremap <silent><Leader>d :call FindTocalDate()<CR>:set hlsearch<CR>
@@ -551,8 +553,8 @@ function! Fmt(w)
 endfunction
 " ----------------------------------------
 function! HelpgrepScrollers()
-    silent! nmap <F6> :silent cnext<CR>
-    silent! nmap <S-F6> :silent cprev<CR>
+    silent! nmap <F6> :cnext<CR>
+    silent! nmap <S-F6> :cprev<CR>
     echo 'helpgrep scrollers :cn and :cp added to F6 and S-F6'
 endfunction
 " ----------------------------------------
@@ -791,6 +793,15 @@ function! SetExecutableBit()
         write
     endif
     call system("chmod 754 " . expand('%'))
+endfunction
+" ----------------------------------------
+function! StripTrailingWhitespace()
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
 endfunction
 " ----------------------------------------
 function! ToggleExpandtab()
