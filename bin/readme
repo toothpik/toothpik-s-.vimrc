@@ -1,27 +1,30 @@
 #!/bin/bash
-#  list executables through ghs, vhs, or pt (pass-through)
-pt='pt'
-if test $# -gt 0
-then
-    case $1 in
-        g) pt='ghs -S ~/.vim/readme.vim'
-            ;;
-        v) pt='vhs -S ~/.vim/readme.vim'
-            ;;
-        *) pt='pt'
-            ;;
-    esac
-fi
-for f in "$2"*
-do
-    if [ -h "$f" ]; then
-        wl=`file $f`
-        echo "$wl"
-    else
-        if [ -f "$f" -a -x "$f" ]; then
-            lang=`head -1 "$f" | awk 'BEGIN {FS = "/"} { print $NF }' | awk '{print $1}'`
-            sl=`2ndline $f`
-            printf "%-11s [%-7s] %s\n" "$f" "$lang" "${sl#\#  }"
+#  list executables to stdout, vhs, or ghs
+function lexe() {
+    for f in "$2"*
+    do
+        if [ -h "$f" ]; then
+            wl=`file $f`
+            echo "$wl"
+        else
+            if [ -f "$f" -a -x "$f" ]; then
+                if [[ "${f}" == *.pyc ]]; then
+                    printf "%-11s  is a pyc\n" "$f"
+                else
+                    lang=`head -1 "$f" | awk 'BEGIN {FS = "/"} { print $NF }' | awk '{print $1}'`
+                    sl=`2ndline $f`
+                    printf "%-11s [%-7s] %s\n" "$f" "$lang" "${sl#\#  }"
+                fi
+            fi
         fi
-    fi
-done | $pt
+    done
+}
+if test $# -lt 1
+then
+    lexe
+elif test $1 == 'v'
+then
+    lexe | vhs -S ~/.vim/readme.vim
+else
+    lexe | ghs -S ~/.vim/readme.vim
+fi
