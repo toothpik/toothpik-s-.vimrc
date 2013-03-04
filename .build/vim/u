@@ -9,4 +9,6 @@ fi
 cd ~/.build/vim/vim
 dds >> ../update.log
 hg pull 2>&1 >> ../update.log
+#echo "about to update" >> ../update.log
+#hg update 2>&1 >> ../update.log
 dsh >> ../update.log
