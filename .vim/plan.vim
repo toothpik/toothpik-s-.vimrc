@@ -28,6 +28,7 @@ nmap <buffer> <Leader>x :call GoLastX()<CR>
 iabbr <buffer> dd <c-r>=Fivedate()<CR><c-r>=Eatchar('\s')<CR>
 " ------------------------------------------------------------
 let @a = "atm - gladstone"
+let @f = "fesival"
 let @s = "Sunfresh #107"
 " ------------------------------------------------------------
 function! AdjustFoodBudget()
