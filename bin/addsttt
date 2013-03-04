@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#  add DST to tocal
+#  add DST to tocal, used by crttc
 #  current rule:  clocks forward at 02:00 2nd Sunday in March
 #                 clocks back at 03:00 1st Sunday in November
 sub addst {
