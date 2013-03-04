@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#  add holidays to tocal
+#  add holidays to tocal, used by crttc - reads sysin, writes to sysout
 use Date::Easter;
 if (@ARGV < 1) {
     die "adholtt requires the year in \$1";
@@ -44,6 +44,10 @@ while ($_ = <DAT>) {
         if ($c == 3) {
             $_ = &adhol("Martin Luther King Day");
         }
+    }
+    #
+    if (/^   Feb  2/) {
+        $_ = &adhol("Groundhog Day");
     }
     #
     if (/^   Feb 12/) {
