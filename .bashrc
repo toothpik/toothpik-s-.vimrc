@@ -99,7 +99,7 @@ function dp () {
         export PS1='$(date "+%a %H:%M") \w: '
     fi
 }
-#  remove dangerous path extension -- whew!
+#  remove dangerous path -- whew!
 function rdp () {
     if [[ $PATH = $PWD:* ]]
     then
