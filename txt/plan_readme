@@ -35,6 +35,10 @@ get realistic seasonal fluctuations in the bills
 if the amount of the social security deposit changes, edit ~/py/pevery
 and change it there -- it's hard coded
 
+------------------------------------------------------------
+
+in order to print plan pages import it into oocalc and struggle for an
+hour to make it look right, then print from there
 
 
 
