@@ -6,4 +6,3 @@ then
 else
     sed -f ~/plan$1.sed ~/txt/plan_2012
 fi
-
