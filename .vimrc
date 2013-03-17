@@ -249,7 +249,6 @@ iabbrev <silent> dd8 <c-r>=repeat('-', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd9 <c-r>=repeat('-', 90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd10 <c-r>=repeat('-', 100)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd11 <c-r>=repeat('-', 110)<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dda <c-r>=strftime("%a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddd <c-r>=strftime("%d %b %Y  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddd <c-r>=strftime("%Y-%m-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddf <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
