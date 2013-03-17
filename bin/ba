@@ -1,14 +1,15 @@
 #!/bin/bash
 #  battery life on steroids
 clear
-tsl=`tput lines`
+#tsl=`tput lines`
 tcols=`tput cols`
-if test $tsl -gt 50; then
-    b
-    pfc=$(( ( (tcols - 75) / 2) - 2 ))
-    cm1p1 | mio $pfc
-    b
-fi
+#if test $tsl -gt 50; then
+#    b
+#    pfc=$(( ( (tcols - 75) / 2) - 2 ))
+#    cm1p1 | mio $pfc
+#    b
+#fi
+b 3
 hm=$(( ( (tcols - 75) / 2) - 1 ))
 {
     b2
