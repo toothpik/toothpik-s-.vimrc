@@ -110,6 +110,7 @@ let g:is_bash = 1
 if !has("gui_running")
     colo biogoo
 endif
+nnoremap - dd
 nnoremap <Down> gj
 inoremap <Down> <C-O>gj
 nnoremap <Up> gk
