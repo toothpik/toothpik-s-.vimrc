@@ -361,8 +361,7 @@ nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <silent> <Leader>tt :normal i<c-r>=strftime("%H:%M")<ESC><CR>
 nnoremap <silent> <Leader>u :call FileTime()<CR>
 nnoremap <Leader>uu :call Unhideme()<CR>
-"nnoremap <Leader>v
-nnoremap <Leader>vv :source ~/.vim/plan.vim<CR>
+nnoremap <Leader>v :source ~/.vim/plan.vim<CR>
 "nnoremap <Leader>w
 "nnoremap <Leader>x
 "nnoremap <Leader>y
