@@ -1,7 +1,7 @@
 "  setup for edit of plans - used by gp and vp to name a few
 "  ~/txt/plan_readme and ~/bin/minst that describes creation of new plans
 if has('gui_running')
-    winsize 94 53
+    winsize 99 53
 endif
 let mapleader = ','
 nnoremap <buffer> <Leader>a :call OpenLastYear()\|source ~/.vim/plan.vim<CR>
