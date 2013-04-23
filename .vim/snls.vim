@@ -3,7 +3,11 @@ winsize 22 5
 winpos 1690 0
 set cursorline
 set guioptions-=r
-set nonumber
+if &number
+    setlocal nonumber
+elseif &relativenumber
+    setlocal norelativenumber
+endif
 set noruler
 set nocursorline
 set noshowmode
