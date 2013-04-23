@@ -12,7 +12,7 @@ ca=$(( $sl - $cb ))
 echo '    Moon     rise   trans   set' | mio 4
 
 #  print some from previous year if too near the beginning of this one
-lot=`awk -f ~/fcdwd2.awk $fn | stp '<----<<$' | wc -l`
+lot=`awk -f ~/fcdwd2.awk $fn | stp '<────<<$' | wc -l`
 lot=$(( $lot - 1 ))
 if test $lot -lt $cb; then
     py=$(( $y - 1 ))
@@ -21,10 +21,10 @@ if test $lot -lt $cb; then
 fi
 
 #  main print
-awk -f ~/fcdwd2.awk $fn | grep -B$cb -A$ca '<----<<$' | mio 4
+awk -f ~/fcdwd2.awk $fn | grep -B$cb -A$ca '<────<<$' | mio 4
 
 #  print some from next year if too near the end of this one
-lof=`awk -f ~/fcdwd2.awk $fn | sth '<----<<$' | wc -l`
+lof=`awk -f ~/fcdwd2.awk $fn | sth '<────<<$' | wc -l`
 lof=$(($lof - 1))
 if test $lof -lt $ca; then
     ny=$(( $y + 1 ))
