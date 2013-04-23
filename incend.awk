@@ -35,7 +35,7 @@ BEGIN { savelf = -100 }
     if (lf >= savelf) {
         print
     } else {
-        printf "%s  <--- out of order\n", $0
+        printf "%s  <─── out of order\n", $0
     }
     savelf = lf
 }
