@@ -13,13 +13,18 @@ set columns=35
 set lines=9
 set cursorline
 set guioptions-=r
-set nonumber
+if &number
+    setlocal nonumber
+elseif &relativenumber
+    setlocal norelativenumber
+endif
 set noruler
 set noshowmode
 set nowrap
 normal gg
-"silent normal n
+call search(@/)
 normal 0
 normal zz
+normal 
 set hlsearch
 silent file week
