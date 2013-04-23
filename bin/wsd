@@ -8,6 +8,8 @@ for s in `vim --serverlist`; do
               ;;
         LAUN) vim --servername LAUN --remote-send ':quit<CR>'
               ;;
+        LAU2) vim --servername LAU2 --remote-send ':quit<CR>'
+              ;;
         ?) ;;
     esac
 done
