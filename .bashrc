@@ -80,6 +80,10 @@ alias cdv='cd /usr/local/share/vim/vim73'
 alias cdvt='cd ~/.vim-tmp'
 alias l='ls -AgGl --group-directories-first'
 
+if [ $UID -ne 0 ]; then
+    alias pf='sudo pf'
+fi
+
 export TERM=xterm-256color
 
 #  for vidir:
@@ -141,3 +145,4 @@ function extract()      # Handy Extract Program.
 }
 
 function vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist' -c 'call Hideme()' -; }
+function gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -c 'set ft=man nomod nolist' -c 'call Hideme()' -c 'set columns=117' -; }
