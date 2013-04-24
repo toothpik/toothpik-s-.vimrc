@@ -1,5 +1,17 @@
 #!/bin/bash
-limit=$((`tput lines` - 1))
+#  print current plan data
+if test $# -gt 0; then
+    limit=$1
+else    
+    limit=$((`tput lines` - 2))
+fi
+#if test $limit -gt 55; then
+#    cm1p2
+#else
+    c
+#fi
+b
+hmc=$(( ( ( (`tput cols`) - 87) / 2 ) - 1 ))
 wm=m`date '+%y'`            #  which m
 hm=`$wm | awk -f ~/funclear.awk`
 tm1=`date '+%m'`            #  this month
@@ -14,11 +26,11 @@ function pmtmt() {
         {
             $pym 12
             $wm 1
-        } | tail -$limit | mio 8
+        } | tail -$limit | mio $hmc
     else
         for m in $pm $tm; do
             $wm $m
-        done | tail -$limit | mio 8
+        done | tail -$limit | mio $hmc
     fi
 }
 #  this month/next month/head
@@ -26,13 +38,13 @@ function tmnmh () {
     if [ $nm -lt 13 ]; then
         for m in $tm $nm; do
             $wm $m
-        done | head -$limit | mio 8
+        done | head -$limit | mio $hmc
     else
         nym=m$((`date '+%y'` + 1))
         {
             $wm 12
             $nym 1
-        } | head -$limit | mio 8
+        } | head -$limit | mio $hmc
     fi
 }
 #  this month/next month/tail
@@ -40,15 +52,16 @@ function tmnmt () {
     if [ $nm -lt 13 ]; then
         for m in $tm $nm; do
             $wm $m
-        done | tail -$limit | mio 8
+        done | tail -$limit | mio $hmc
     else
         nym=m$((`date '+%y'` + 1))
         {
             $wm 12
             $nym 1
-        } | tail -$limit | mio 8
+        } | tail -$limit | mio $hmc
     fi
 }
+
 if [[ $dom =~ 0[1-9] ]]; then
     if [[ $hm == "diffmo" ]]; then
         pmtmt
