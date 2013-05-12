@@ -45,7 +45,7 @@ set   selectmode+=key
 set noshiftround
 set   shiftwidth=4
 set   shortmess=aoOtT
-let   &showbreak = "» " 
+let   &showbreak = "» "
 set   showcmd
 set   showmode
 set noshowmatch
@@ -326,10 +326,9 @@ iabbrev ø ✖
 " --- leader commands {{{
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
-"_s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <Leader>b :ls<CR>:b
 "nnoremap <silent><Leader>c
-nnoremap <silent><Leader>d :call FindTocalDate()<CR>:set hlsearch<CR>
+"nnoremap <silent><Leader>d :call InsertShortDate()<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
 nnoremap <Leader>ee :source ~/.vimrc<CR>
@@ -493,15 +492,6 @@ function! FindSunDate()
         normal 0
     catch
     endtry
-endfunction
-" ----------------------------------------
-function! FindTocalDate()
-    normal gg
-    let yr = '^ ' . strftime("%Y")
-    call search(yr)
-    let dt = '^   ' . strftime("%b %e  %a")
-    let @/ = dt[3:]
-    call search(dt)
 endfunction
 " ----------------------------------------
 function! FirstBlankAtEnd()
@@ -795,12 +785,11 @@ function! SetExecutableBit()
 endfunction
 " ----------------------------------------
 function! StripTrailingWhitespace()
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
+    let l:svd_sch=@/
+    let l:oldpos = getpos(".")
     %s/\s\+$//e
-    let @/=_s
-    call cursor(l, c)
+    call setpos(".", l:oldpos)
+    let @/ = l:svd_sch
 endfunction
 " ----------------------------------------
 function! ToggleExpandtab()
