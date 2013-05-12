@@ -1,3 +1,15 @@
 #!/bin/bash
 #  update or start weekly in specially formatted gvim
-g --servername WKLY -S ~/.vim/weekly.vim
+#  see if it's Already Running
+ar=0
+for s in `vim --serverlist`; do
+    case $s in
+        WKLY) vim --servername WKLY --remote-send ':source ~/.vim/weekly.vim<CR><CR>'
+              ar=1
+              ;;
+        ?) ;;
+    esac
+done
+if test $ar -eq 0; then
+    g --servername WKLY -S ~/.vim/weekly.vim
+fi
