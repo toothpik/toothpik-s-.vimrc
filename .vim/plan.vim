@@ -38,7 +38,8 @@ function! AdjustFoodBudget()
     let startmonth = line(".")
     call search('\%>10c\%<41cfood & atm')
     let endmonth = line('.')
-    execute 'silent ' . startmonth . "," . endmonth . "!~/tcl/planfood"
+"    execute 'silent ' . startmonth . "," . endmonth . "!~/tcl/planfood"
+    execute startmonth . "," . endmonth . "pyf ~/.vim/planfood.py"
     call BalCol()
     call winrestview(sv)
 endfunction
@@ -96,7 +97,6 @@ function! OpenNextYear()
     let ny = ty + 1               "  next year
     let nyn = "plan_" . ny        "  next year's name
     call EditTry(nyn)
-    nmap <buffer> <Leader>l :source ~/.vim/plan.vim<CR>
 endfunction
 
 function! Reconcile()
@@ -108,7 +108,8 @@ function! Reconcile()
     if (starthere > dohere)
         let starthere = dohere
     endif
-    execute starthere . "," . dohere . "!~/tcl/planrecon"
+    "execute starthere . "," . dohere . "!~/tcl/planrecon"
+    execute starthere . "," . dohere . "pyf ~/.vim/prec.py"
     call winrestview(sv)
 endfunction
 
