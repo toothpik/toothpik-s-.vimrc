@@ -1,0 +1,3 @@
+#!/bin/bash
+#  start mail konsole
+konsole -p tabtitle="Mail" --profile 'mail shell' 
