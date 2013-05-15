@@ -46,7 +46,8 @@ endfunction
 
 function! BalCol()
     let sv = winsaveview()
-    silent %!~/tcl/planbal
+"    silent %!~/tcl/planbal
+    %pyf ~/.vim/planbal.py
     call winrestview(sv)
 endfunction
 
