@@ -1,0 +1,5 @@
+#!/bin/bash
+#  tire pressure, ranger
+cd ~/txt/ranger
+echo "for the ranger,"
+tplc
