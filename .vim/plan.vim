@@ -58,11 +58,11 @@ function! Fivedate()
 endfunction
 
 function! FixReconcileWLastYear()
-    let ty = expand("%")[5:8]     "  this year
-    let py = ty - 1               "  previous year
-    let pyn = "plan_" . py        "  previous year's name
+    let ty = expand("%")[-4:]
+    let prvyr = ty - 1
     call GoLastClear()
-    execute ".!~/tcl/planfixrecon " . pyn
+"    execute ".!~/tcl/planfixrecon " . pyn
+    .pyf ~/.vim/planfixrecon.py
 endfunction
 
 function! GoFirstUnclear()
@@ -86,7 +86,7 @@ function! GoLastX()
 endfunction
 
 function! OpenLastYear()
-    let ty = expand("%")[5:8]     "  this year
+    let ty = expand("%")[-4:]     "  this year
     let py = ty - 1               "  previous year
     let pyn = "plan_" . py        "  previous year's name
     call EditTry(pyn)
@@ -94,7 +94,7 @@ function! OpenLastYear()
 endfunction
 
 function! OpenNextYear()
-    let ty = expand("%")[5:8]     "  this year
+    let ty = expand("%")[-4:]     "  this year
     let ny = ty + 1               "  next year
     let nyn = "plan_" . ny        "  next year's name
     call EditTry(nyn)
