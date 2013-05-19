@@ -1,0 +1,5 @@
+#!/bin/bash
+#  tire pressure, roadking
+cd ~/txt/roadking
+echo "for the roadking,"
+tplc
