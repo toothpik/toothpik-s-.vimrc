@@ -1,0 +1,12 @@
+#!/bin/bash
+#  new and improved cct
+clear
+b 3
+pfc=$(( ( (`tput cols` - 75) / 2)  ))
+cct | mio $pfc
+b
+testtodo=`todoo|wc -l`
+if test $testtodo -gt 0; then
+    todoo | mio
+    b
+fi
