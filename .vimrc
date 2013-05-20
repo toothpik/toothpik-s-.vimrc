@@ -12,7 +12,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-set   cursorline
+set nocursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -95,6 +95,7 @@ augroup END
 "
 "  some scripts i don't need:
 "let g:loaded_netrw = 1
+let g:loaded_2html_plugin = 1
 let g:html_use_css = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_gzip = 1
@@ -108,7 +109,7 @@ let g:is_bash = 1
 " ---------------------------------------- }}}
 " --- special mappings and commands {{{
 if !has("gui_running")
-    colo biogoo
+    colo biogoot
 endif
 nnoremap - dd
 nnoremap <Down> gj
