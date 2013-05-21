@@ -8,5 +8,6 @@ else
     mt=$1
 fi
 echo "about to hg merge $mt" >> ../update.log
+export PYTHONUNBUFFERED="unbuffered"
 hg merge $mt 2>&1            >> ../update.log
 dsh                          >> ../update.log
