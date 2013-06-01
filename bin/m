@@ -1,16 +1,8 @@
 #!/bin/bash
 #  print current plan data
-if test $# -gt 0; then
-    limit=$1
-else    
-    limit=$((`tput lines` - 2))
-fi
-#if test $limit -gt 55; then
-#    cm1p2
-#else
-    c
-#fi
+c
 b
+limit=$((`tput lines` - 2))
 hmc=$(( ( ( (`tput cols`) - 87) / 2 ) - 1 ))
 wm=m`date '+%y'`            #  which m
 hm=`$wm | awk -f ~/funclear.awk`
