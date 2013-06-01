@@ -1,0 +1,8 @@
+#!/bin/bash
+#  open text plan in vim
+if test $# -eq 0; then
+    Y=`date '+%Y'`
+else
+    Y=$1
+fi
+v -S ~/.vim/plan.vim -c 'call GoLastX()' -c 'mark h' ~/txt/plan_${Y} 
