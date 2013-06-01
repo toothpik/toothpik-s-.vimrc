@@ -12,7 +12,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-set nocursorline
+set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -38,13 +38,14 @@ set   number
 set   nrformats-=octal
 set   numberwidth=3
 set   printoptions=header:0,number:n,syntax:n
+set   regexpengine=1
 set   ruler
 set   scrollopt=ver,hor,jump
 set   selection=exclusive
 set   selectmode+=key
 set noshiftround
 set   shiftwidth=4
-set   shortmess=aoOtT
+set   shortmess=aIoOtT
 let   &showbreak = "» "
 set   showcmd
 set   showmode
@@ -84,7 +85,7 @@ set   writebackup
 " ---------------------------------------- }}}
 "  --- filetype & syntax {{{
 filetype plugin indent on
-syntax enable
+syntax on
 let readline_has_bash = 1
 " ---------------------------------------- }}}
 " --- autocommands & plugin mappings {{{
@@ -349,7 +350,7 @@ nnoremap <silent> <Leader>kk :call MovePointerUp()<CR>
 nnoremap <Leader>l :source ~/.vim/i_ctr.vim<CR>
 "nnoremap <Leader>m
 "nnoremap <Leader>n
-nnoremap <silent> <Leader>o :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
+"nnoremap <silent> <Leader>o :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
 nnoremap <silent> <Leader>oo :setlocal foldexpr=0 foldcolumn=0<CR>
 nnoremap <Leader>p :call Paste(0)<CR>
 nnoremap <Leader>P :call Paste(1)<CR>
