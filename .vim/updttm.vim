@@ -1,4 +1,4 @@
-"  update dttm [of .vimrc] in index.html
+"  update date [of .vimrc] in index.html
 call search("^Here's my <a href")
 let l = getline(".")
 let dt = strftime("%Y-%b-%d")
