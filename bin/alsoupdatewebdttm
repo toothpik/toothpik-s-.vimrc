@@ -1,8 +1,8 @@
 #!/bin/bash
-#  update and push dttm on web page
+#  update and push date on web page
 cd ~/toothpik.github.com
 v -S ~/.vim/updttm.vim index.html
 sleep 5
 git add index.html
-git commit -m 'updated vimrc dttm'
+git commit -m 'updated vimrc date'
 git push origin master
