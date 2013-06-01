@@ -1,4 +1,5 @@
 #!/bin/bash
-#  days between updates
+#  days between updates, which presumes [erroneously] there will always be an entry in the
+#  input.log when there are updates
 sl=$((`tput lines` - 1))
 grep '^20' incoming.log | awk '{ print $1 }' | sth '2010-Aug-17' | uniq | daysb | tail -$sl | mio 2
