@@ -1,4 +1,5 @@
 #!/bin/bash
+#  install [vim]
 PATH=~/bin:$PATH
 cd /home/scott/.build/vim/vim
 date '+%Y-%b-%d %H:%M' >> ../install.log
