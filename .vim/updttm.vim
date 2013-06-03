@@ -1,5 +1,5 @@
 "  update date [of .vimrc] in index.html
-call search("^Here's my <a href")
+call search("as it existed")
 let l = getline(".")
 let dt = strftime("%Y-%b-%d")
 let loe = match(l, "existed")
