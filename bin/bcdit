@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #  bracket current date in tocal
 #  used by ~/bin/tcnlc2, which is used by tcc2, tcl2, and tcw2
 from datetime import date, timedelta
@@ -28,12 +28,12 @@ for line in stdin:
     if inyr:
         if t.search(line):
             ll = len(line.rstrip())
-            print "  %s" % ("~" * (ll - 1))
-            print "%s  <----<<" % line.rstrip()
+            print("  %s" % ("~" * (ll - 1)))
+            print("%s  <────<<" % line.rstrip())
         elif m.search(line):
-            print "  %s" % ("~" * (ll - 1))
-            print line.rstrip()
+            print("  %s" % ("~" * (ll - 1)))
+            print(line.rstrip())
         else:
-            print line.rstrip()
+            print(line.rstrip())
     else:
-        print line.rstrip()
+        print(line.rstrip())
