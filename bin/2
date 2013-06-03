@@ -1,21 +1,5 @@
 #!/bin/bash
 #  extract of tocal for the command line
 tsl=`tput lines`
-#if test $tsl -gt 50; then
-#    b
-#    if test $# -gt 0; then
-#        export lc=$(($1 + 1))
-#    else
-#        export lc=$(($tsl - `cm1p1 | wc -l` - 4))
-#    fi
-#    pfc=$(( ( (`tput cols` - 75) / 2) - 2 ))
-#    cm1p1 | mio $pfc
-#    b
-#else
-#    if test $# -gt 0; then
-#        export lc=$(($1 + 1))
-#    else
-        export lc=$(($tsl - 2))
-#    fi
-#fi
+export lc=$(($tsl - 2))
 tcnlc2
