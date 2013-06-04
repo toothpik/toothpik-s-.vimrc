@@ -55,8 +55,8 @@ for {set i 0} {$i < $ll} {incr i} {
     if {[string first "* Wind Speed" $el] == 0} {
         set save_wind $el
     }
-    if {[string first "7-DAY FORECAST" $el] == 0} {
-        for {set j [expr $i + 2]} {$j < 999} {incr j} {
+    if {[string first "7 Day Forecast" $el] == 0} {
+        for {set j [expr $i + 4]} {$j < 999} {incr j} {
             set tl [string trim [lindex $wl $j]]
             if {[string length $tl] > 0 } {
                 if {[string first "* " $tl] == 0} {
