@@ -39,6 +39,7 @@ set   nrformats-=octal
 set   numberwidth=3
 set   printoptions=header:0,number:n,syntax:n
 set   regexpengine=1
+set norelativenumber
 set   ruler
 set   scrollopt=ver,hor,jump
 set   selection=exclusive
@@ -718,21 +719,16 @@ function! NumberBlankLinesAtEnd()
 endfunction
 " ----------------------------------------
 function! NumberToggle()
-    if exists("&rnu")
-        if &number
-            setlocal relativenumber
-        else
-            if &relativenumber
-                setlocal norelativenumber
-            else
-                setlocal number
-            endif
-        endif
+    if &number
+        setlocal nonumber
+        setlocal relativenumber
     else
-        if &number
+        if &relativenumber
             setlocal nonumber
+            setlocal norelativenumber
         else
             setlocal number
+            setlocal norelativenumber
         endif
     endif
 endfunction
