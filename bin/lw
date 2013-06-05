@@ -1,0 +1,14 @@
+#!/bin/bash
+#  laundry window
+ar=0
+for s in `vim --serverlist`; do
+    case $s in
+        LAU2) vim --servername LAU2 --remote-send ':call LWme()<CR><CR>'
+              ar=1
+              ;;
+        ?) ;;
+    esac
+done
+if test $ar -eq 0; then
+    g --servername LAU2 -S ~/.vim/lw.vim -c 'call LWme()' -c 'set hlsearch'
+fi
