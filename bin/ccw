@@ -1,6 +1,8 @@
 #!/bin/bash
 #  cat weather
 c
-php ~/php/cw.php > ~/.rawweather
+if test $# -eq 0; then
+    php ~/php/cw.php > ~/.rawweather
+fi
 python ~/py/parseweather.py | head -5
 python ~/py/parseweather.py | tail -n +6 | fmt
