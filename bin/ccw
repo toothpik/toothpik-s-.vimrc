@@ -1,6 +1,6 @@
 #!/bin/bash
 #  cat weather
 c
-b
 php ~/php/cw.php > ~/.rawweather
-#~/py/cw 2>&1 | hsf | fixtoday | mio 8
+python ~/py/parseweather.py | head -5
+python ~/py/parseweather.py | tail -n +6 | fmt
