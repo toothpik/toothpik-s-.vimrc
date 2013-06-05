@@ -17,14 +17,13 @@ wk = F.read()
 F.close()
 
 class MyParser(HTMLParser):
+
     def __init__(self):
         HTMLParser.__init__(self)
         self.savets = False
         self.savetmp = False
         self.savehum = False
-        self.td = 0
         self.wnd = False
-        self.td2 = 0
         self.grab = False
         self.fcst = []
 
@@ -51,10 +50,10 @@ class MyParser(HTMLParser):
             self.temp = data
             self.savetmp = False
         if self.savehum:
-            self.td += 1
-            if self.td > 1:
-                self.hum = data
-                self.savehum = False
+            self.hum = data
+            self.savehum = False
+        if data == "Humidity":
+            self.savehum = True
         if self.wnd:
             self.wind = data
             self.wnd = False
@@ -70,8 +69,8 @@ print parser.timestamp
 print
 print "Temperature:  %s°F" % parser.temp
 print "Humidity:      %s" % parser.hum
-print "Wind:     %-10s" % parser.wind
-print
+sn = 13 - len(parser.wind)                    #  spaces needed
+print "Wind:%s%s" % (" " * sn, parser.wind)
 
 for i in parser.fcst:
     print i
