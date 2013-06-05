@@ -20,9 +20,9 @@ class MyParser(HTMLParser):
 
     def __init__(self):
         HTMLParser.__init__(self)
-        self.savets = False
-        self.savetmp = False
-        self.savehum = False
+        self.ts = False
+        self.tmp = False
+        self.hum = False
         self.wnd = False
         self.grab = False
         self.fcst = []
@@ -30,11 +30,11 @@ class MyParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         for a in attrs:
             if a[0] == "class" and a[1] == "current-conditions-timestamp":
-                self.savets = True
+                self.ts = True
             if a[0] == "class" and a[1] == "myforecast-current-lrg":
-                self.savetmp = True
+                self.tmp = True
             if a[0] == "class" and a[1] == "current-conditions-detail":
-                self.savehum = True
+                self.hum = True
             if a[0] == "class" and a[1] == "point-forecast-7-day":
                 self.grab = True
 
@@ -43,17 +43,17 @@ class MyParser(HTMLParser):
             self.grab = False
 
     def handle_data(self, data):
-        if self.savets:
+        if self.ts:
             self.timestamp = data
-            self.savets = False
-        if self.savetmp:
+            self.ts = False
+        if self.tmp:
             self.temp = data
-            self.savetmp = False
-        if self.savehum:
-            self.hum = data
-            self.savehum = False
+            self.tmp = False
+        if self.hum:
+            self.humid = data
+            self.hum = False
         if data == "Humidity":
-            self.savehum = True
+            self.hum = True
         if self.wnd:
             self.wind = data
             self.wnd = False
@@ -68,7 +68,7 @@ parser.feed(wk)
 print parser.timestamp
 print
 print "Temperature:  %s°F" % parser.temp
-print "Humidity:      %s" % parser.hum
+print "Humidity:      %s" % parser.humid
 sn = 13 - len(parser.wind)                    #  spaces needed
 print "Wind:%s%s" % (" " * sn, parser.wind)
 
