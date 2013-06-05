@@ -144,5 +144,5 @@ function extract()      # Handy Extract Program.
     fi
 }
 
-function vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist' -c 'call Hideme()' -; }
-function gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -c 'set ft=man nomod nolist' -c 'call Hideme()' -c 'set columns=117' -; }
+function vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
+function gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -c 'set columns=117' -; }
