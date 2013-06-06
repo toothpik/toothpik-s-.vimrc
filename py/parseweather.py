@@ -67,10 +67,9 @@ parser.feed(wk)
 
 print parser.timestamp
 print
-print "Temperature:  %s°F" % parser.temp
-print "Humidity:      %s" % parser.humid
-sn = 13 - len(parser.wind)                    #  spaces needed
-print "Wind:%s%s" % (" " * sn, parser.wind)
+print "Temperature:%4s°F" % parser.temp
+print "Humidity:%9s" % parser.humid
+print "Wind:%13s" % parser.wind
 
 for i in parser.fcst:
     print i
