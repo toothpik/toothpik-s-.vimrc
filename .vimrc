@@ -132,7 +132,7 @@ imap <C-Insert> <C-O>"+y
 vmap <C-Insert> "+y
 vmap <S-Del> "+d
 imap <C-Del> <C-O>daw
-nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzx' : 'zc')<cr>
+nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzxzt' : 'zc')<cr>
 "  scroll left and right when 'nowrap':
 map <C-L> zl
 map <C-H> zh
