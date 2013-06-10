@@ -18,6 +18,7 @@ nmap <buffer> <Leader>l :source ~/.vim/plan.vim<CR>
 nmap <buffer> <Leader>lu :call system("lubk")<CR>
 nmap <buffer> <Leader>n :e ~/txt/plan_notes\|normal G<CR>
 nmap <buffer> <Leader>p :call SyncWNextYear()<CR>
+nmap <buffer> <Leader>q :call DisplayLeaders()<CR>
 nmap <buffer> <Leader>r :call Reconcile()<CR>
 nmap <buffer> <Leader>rr :call FixReconcileWLastYear()<CR>
 nmap <buffer> <Leader>s :call SyncWLastYear()<CR>
@@ -49,6 +50,30 @@ function! BalCol()
 "    silent %!~/tcl/planbal
     %pyf ~/.vim/planbal.py
     call winrestview(sv)
+endfunction
+
+function! DisplayLeaders()
+echom 'a :call OpenLastYear()\|source ~/.vim/plan.vim'
+echom 'aa :call OpenNextYear()\|source ~/.vim/plan.vim'
+echom 'b :call BalCol()'
+echom 'c :call GoLastClear()'
+echom 'cc :call ToggleColorColumn()'
+echom 'd :call EditTry("~/txt/plan_core")'
+echom 'dd :call EditTry("~/txt/plan_core_other")'
+echom 'ec :e ~/bin/plannew'
+echom 'ev :e ~/.vim/plan.vim'
+echom 'f :call AdjustFoodBudget()'
+echom 'l :source ~/.vim/plan.vim'
+echom 'lu :call system("lubk")'
+echom 'n :e ~/txt/plan_notes\|normal G'
+echom 'p :call SyncWNextYear()'
+echom 'q :call DisplayLeaders()'
+echom 'r :call Reconcile()'
+echom 'rr :call FixReconcileWLastYear()'
+echom 's :call SyncWLastYear()'
+echom 'uu :call GoFirstUnclear()'
+echom 'u :e ~/txt/usbank'
+echom 'x :call GoLastX()'
 endfunction
 
 function! Fivedate()
