@@ -118,6 +118,8 @@ if !has("gui_running")
 "    colo biogoot
     colo default
 endif
+nnoremap <TAB> :bnext<CR>
+nnoremap <S-TAB> :bprev<CR>
 nnoremap - dd
 nnoremap <Down> gj
 inoremap <Down> <C-O>gj
@@ -153,9 +155,6 @@ command! -nargs=+ H execute 'silent help <args>' | only
 command! Xbit call SetExecutableBit()
 " ---------------------------------------- }}}
 " --- F-key mappings {{{
-" ----------------------------------------
-nnoremap <TAB> :bnext<CR>
-nnoremap <S-TAB> :bprev<CR>
 " ----------------------------------------
 nnoremap <F1> :call F1_formatter("78")<CR>
 inoremap <F1> <C-O>:call F1_formatter("78")<CR>
