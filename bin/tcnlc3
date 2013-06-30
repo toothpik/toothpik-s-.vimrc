@@ -6,6 +6,10 @@ if [ x$lc == x ]; then
     echo 'examples include the scripts tcc3'
     exit 1
 fi
-cb=$(( lc / 3 ))
+if test $# -gt 0; then
+    cb=$1
+else
+    cb=$(( lc / 3 ))
+fi
 ca=$(( lc - cb ))
 cat ~/txt/tocal | ts | bcdit3 | grep -v '^ -----' | grep -B$cb -A$ca '──────┐$' | trimc
