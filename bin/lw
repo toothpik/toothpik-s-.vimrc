@@ -3,7 +3,7 @@
 ar=0
 for s in `vim --serverlist`; do
     case $s in
-        LAU2) vim --servername LAU2 --remote-send ':call LWme()<CR><CR>'
+        LAU2) vim --servername LAU2 --remote-send ':call LWme()<CR>'
               ar=1
               ;;
         ?) ;;
