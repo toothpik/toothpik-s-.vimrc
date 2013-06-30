@@ -2,4 +2,8 @@
 #  extract of tocal for the command line
 tsl=`tput lines`
 export lc=$(($tsl - 2))
-tcnlc2
+if test $# -gt 0; then
+    tcnlc2 "$1"
+else
+    tcnlc2
+fi
