@@ -12,11 +12,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-if has("gui_running")
-    set   cursorline
-else
-    set nocursorline
-endif
+set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -101,6 +97,7 @@ augroup END
 "
 "  some scripts i don't need:
 "let g:loaded_netrw = 1
+let g:CSApprox_loaded = 1
 let g:loaded_2html_plugin = 1
 let g:html_use_css = 1
 let g:loaded_getscriptPlugin = 1
@@ -115,8 +112,8 @@ let g:is_bash = 1
 " ---------------------------------------- }}}
 " --- special mappings and commands {{{
 if !has("gui_running")
-"    colo biogoot
-    colo default
+    colo biogoot
+"    colo default
 endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
@@ -231,7 +228,7 @@ inoremap <silent> <C-F10> <ESC><C-W>w<C-E><C-W>wa
 " ----------------------------------------
 nnoremap <F11> <C-Y>
 inoremap <F11> <C-O><C-Y>
-nnoremap <silent> <S-F11> :call MyExplore('')<CR>
+nnoremap <silent> <S-F11> :Explore<CR>
 inoremap <silent> <S-F11> <ESC>:call MyExplore('')<CR>
 nnoremap <silent> <M-F11> :call MyExplore('t')<CR>
 inoremap <silent> <M-F11> <ESC>:call MyExplore('t')<CR>
