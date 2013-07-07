@@ -1,0 +1,7 @@
+#!/bin/bash
+#  changeset wanted for merge after extra tags commit
+cd ~/.build/vim
+wwt=`cs`
+rv=$(( $wwt - 1 ))
+echo $rv
+
