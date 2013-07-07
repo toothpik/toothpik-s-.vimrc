@@ -1,0 +1,13 @@
+#!/bin/bash
+#  u3 - tags
+cd ~/.build/vim/vim
+dt=`date '+%Y-%b-%d %H:%M'`
+echo $dt >> ../update.log
+if [ $# -eq 0 ]; then
+    echo "about to hg commit" >> ../update.log
+    hg commit -m "tags again" 2>&1 | tee -a ../update.log
+else
+    echo "about to hg commit $@" >> ../update.log
+    hg commit "$@" 2>&1 | tee -a ../update.log
+fi
+dsh >> ../update.log
