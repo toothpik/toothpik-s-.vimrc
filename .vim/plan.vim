@@ -32,6 +32,7 @@ iabbr <buffer> dd <c-r>=Fivedate()<CR><c-r>=Eatchar('\s')<CR>
 " ------------------------------------------------------------
 let @a = "atm - gladstone"
 let @f = "festival"
+let @h = "Halligan Lawn Services"
 let @s = "Sunfresh #107"
 " ------------------------------------------------------------
 function! AdjustFoodBudget()
