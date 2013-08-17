@@ -2,7 +2,7 @@
 #  how long since [the] last t?
 cd ~/.build/vim
 {
-    echo "the last hit on the git server was"
+    echo "the last hit on the mercurial server was"
     lt=$(grep "^20" spare-incoming.log | tail -1 | cut -c1-17)
 #   last update    
     lu=$(grep "^20" incoming.log | tail -1 | cut -c1-17)
