@@ -2,29 +2,32 @@
 "  called by ~/bin/weekly
 "
 let mapleader = ','
-nmap <silent> <Leader>c :source ~/.vim/weekly.vim<CR>
+nmap <silent> <Leader>c :call WeekMe()<CR>
 nmap <silent> <Leader>ev :edit ~/.vim/weekly.vim<CR>
-let @/ = strftime("%a")
-silent %d
-silent r!cat ~/txt/weekly | wkly2
-call Hideme()
-winpos 0 0
+nmap <silent> <Leader>s :source ~/.vim/weekly.vim<CR>
+
 set columns=35
 set lines=9
 set cursorline
 set guioptions-=r
 if &number
     setlocal nonumber
-elseif &relativenumber
+endif
+if &relativenumber
     setlocal norelativenumber
 endif
 set noruler
 set noshowmode
 set nowrap
-normal gg
-call search(@/)
-normal 0
-normal zz
-normal 
-set hlsearch
+winpos 1562 0
+call Hideme()
 silent file week
+
+function! WeekMe()
+    let @/ = strftime("%a")
+    silent %d
+    silent r!cat ~/txt/weekly | wkly2
+    normal gg
+    silent normal n
+    normal 0
+endfunction
