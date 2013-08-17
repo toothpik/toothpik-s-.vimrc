@@ -8,8 +8,7 @@
 proc usage {} {
     puts "run planfixrecon from within a vim session on plan_{year} as"
     puts "    :.!~/tcl/planfixrecon plan_{prev-year}"
-    puts "where '.' is the last clear with a reconciliation that"
-    puts "needs fixing"
+    puts "where '.' is the last clear with a reconciliation that needs fixing"
     return
 }
 #  grab the name of last year's plan as an arg
