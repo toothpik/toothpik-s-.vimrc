@@ -4,4 +4,3 @@ cd ~/.build/vim
 wwt=`cs`
 rv=$(( $wwt - 1 ))
 echo $rv
-
