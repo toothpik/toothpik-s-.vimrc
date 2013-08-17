@@ -1,73 +1,75 @@
 #!/usr/bin/tclsh
+puts "DEPRECATED:  we are using php now to get the page -- lynx no longer succeeds"
+exit
 #  cat weather
-set url "http://forecast.weather.gov/MapClick.php?CityName=Kansas+City&state=MO&site=EAX&textField1=39.0904&textField2=-94.5837&e=0"
+#set url "http://forecast.weather.gov/MapClick.php?CityName=Kansas+City&state=MO&site=EAX&textField1=39.0904&textField2=-94.5837&e=0"
 #set url "http://forecast.weather.gov/MapClick.php?lat=39.208847057702286&lon=-94.51812744140625&site=eax&smap=1&unit=0&lg=en"
 #set url "http://forecast.weather.gov/MapClick.php?lat=39.17798166079628&lon=-94.55245971679688&site=eax&smap=1&marine=0&unit=0&lg=en"
 #  set url "http://forecast.weather.gov/MapClick.php?lat=39.18649760718107&lon=-94.559326171875&site=eax&smap=1&marine=0&unit=0&lg=en"
 #
-proc usage {} {
-    puts "run cw to obtain command line weather information"
-}
+#proc usage {} {
+#    puts "run cw to obtain command line weather information"
+#}
 #  fix washington's birthday:  get rid of [XX] where XX is a number
-proc fix_wb {wl} {
-    set sl [string first "\]" $wl]
-    return [string range $wl [expr {$sl + 1}] 999]
-}
+#proc fix_wb {wl} {
+#    set sl [string first "\]" $wl]
+#    return [string range $wl [expr {$sl + 1}] 999]
+#}
 #  get weather page
-if { [catch {exec lynx -dump $url} wp] } {
-    puts "weather page retrieval failure:  $wp"
-    puts $::errorInfo
-    exit
-}
-set save_temp ""
-set save_humidity ""
-set wl [split $wp "\n"]             ;#  weather lines
-set ll [llength $wl]
-if { $ll < 2 } {
-    puts "no weather data obtained"
-    usage
-    exit
-}
-for {set i 0} {$i < $ll} {incr i} {
-    set l [lindex $wl $i]
-    set el [string trim $l]         ;#  examine line
-    if {[string first "Last Update on" $el] == 0} {
-        puts $el
-        puts ""
-        puts "Temperature  $save_temp"
-        set hum1 [string trim $save_humidity "* "]
-        set throwaway [regsub "^Humidity" $hum1 "Humidity        " hum2]
-        puts $hum2
-        set win1 [string trim $save_wind "* "]
-        set ta2 [regsub "Wind Speed" $win1 "Wind Speed   " win2]
-        puts $win2
-    }
-    if {[string first "* Humidity" $el] == 0} {
-        set save_humidity $el
-        for {set j $i} {$j > 0} {incr j -1} {
-            set el2 [lindex $wl $j]
-            if {[string last "°F" $el2] > -1} {
-                set save_temp $el2
-                set j 0
-            }
-        }
-    }
-    if {[string first "* Wind Speed" $el] == 0} {
-        set save_wind $el
-    }
-    if {[string first "7 Day Forecast" $el] == 0} {
-        for {set j [expr $i + 4]} {$j < 999} {incr j} {
-            set tl [string trim [lindex $wl $j]]
-            if {[string length $tl] > 0 } {
-                if {[string first "* " $tl] == 0} {
-                    puts ""
-                    puts [string trim $tl "* "]
-                } else {
-                    puts $tl
-                }
-            } else {
-                set j 1000
-            }
-        }
-    }
-}
+#if { [catch {exec lynx -dump $url} wp] } {
+#    puts "weather page retrieval failure:  $wp"
+#    puts $::errorInfo
+#    exit
+#}
+#set save_temp ""
+#set save_humidity ""
+#set wl [split $wp "\n"]             ;#  weather lines
+#set ll [llength $wl]
+#if { $ll < 2 } {
+#    puts "no weather data obtained"
+#    usage
+#    exit
+#}
+#for {set i 0} {$i < $ll} {incr i} {
+#    set l [lindex $wl $i]
+#    set el [string trim $l]         ;#  examine line
+#    if {[string first "Last Update on" $el] == 0} {
+#        puts $el
+#        puts ""
+#        puts "Temperature  $save_temp"
+#        set hum1 [string trim $save_humidity "* "]
+#        set throwaway [regsub "^Humidity" $hum1 "Humidity        " hum2]
+#        puts $hum2
+#        set win1 [string trim $save_wind "* "]
+#        set ta2 [regsub "Wind Speed" $win1 "Wind Speed   " win2]
+#        puts $win2
+#    }
+#    if {[string first "* Humidity" $el] == 0} {
+#        set save_humidity $el
+#        for {set j $i} {$j > 0} {incr j -1} {
+#            set el2 [lindex $wl $j]
+#            if {[string last "°F" $el2] > -1} {
+#                set save_temp $el2
+#                set j 0
+#            }
+#        }
+#    }
+#    if {[string first "* Wind Speed" $el] == 0} {
+#        set save_wind $el
+#    }
+#    if {[string first "7 Day Forecast" $el] == 0} {
+#        for {set j [expr $i + 4]} {$j < 999} {incr j} {
+#            set tl [string trim [lindex $wl $j]]
+#            if {[string length $tl] > 0 } {
+#                if {[string first "* " $tl] == 0} {
+#                    puts ""
+#                    puts [string trim $tl "* "]
+#                } else {
+#                    puts $tl
+#                }
+#            } else {
+#                set j 1000
+#            }
+#        }
+#    }
+#}
