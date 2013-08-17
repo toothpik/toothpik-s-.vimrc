@@ -1,0 +1,3 @@
+#!/bin/bash
+#  open vim's version log in gvim
+g + -S ~/.vim/version.vim -c 'ver' ~/.vim/version.log
