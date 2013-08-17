@@ -1,5 +1,6 @@
 #!/bin/bash
 #  open text plan in vim
+cd ~/txt
 if test $# -eq 0; then
     Y=`date '+%Y'`
 else
