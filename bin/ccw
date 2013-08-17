@@ -1,5 +1,5 @@
 #!/bin/bash
-#  cat weather
+#  clear & cat weather
 c
 if test $# -eq 0; then
     php ~/php/cw.php > ~/.rawweather
