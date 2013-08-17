@@ -1,6 +1,6 @@
 #!/bin/bash
 #  update (or start) "ws" (workspace) windows
-weekly
 sv
-snls
+weekly
 lw
+snls
