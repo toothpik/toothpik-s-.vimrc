@@ -11,7 +11,6 @@ map <silent> <Leader>c :call Makemeweather()<CR>
 map <Leader>ec :e ~/bin/cw<CR>
 map <Leader>ev :e ~/.vim/weather.vim<CR>
 map <Leader>eg :e ~/bin/wiv<CR>
-map <Leader>et :e ~/tcl/cw<CR>
 map <silent> <Leader>h :let @/ = '\(high\_snear\_s\)\@<=\d\+\<bar>\(low\_saround\_s\)\@<=\d\+\<bar>snow\<bar>rain\>\<bar>drizzle\<bar>freezing\_s\<bar>sleet\<bar>flurries\<bar>showers\<bar>thunderstorm[s]*\<bar>sunny'<CR>
 map <silent> <Leader>s :source ~/.vim/weather.vim<CR>
 map <silent> <Leader>pp :let @/ = '\(high\_snear\_s\)\@<=\d\+'<CR>
@@ -21,6 +20,8 @@ function! Makemeweather()
     call Hideme()
     setlocal ignorecase
     silent %d
-    silent 0read !~/tcl/cw | fixtoday
+    !php ~/php/cw.php > ~/.rawweather
+    silent 0read !python ~/py/parseweather.py | head -5
+    silent read !python  ~/py/parseweather.py | tail -n +6 | fixtoday | fmt
     1
 endfunction
