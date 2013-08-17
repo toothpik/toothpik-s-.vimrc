@@ -12,4 +12,4 @@ else
     cb=$(( lc / 3 ))
 fi
 ca=$(( lc - cb ))
-cat ~/txt/tocal | ts | bcdit3 | grep -v '^ -----' | grep -B$cb -A$ca '──────┐$' | trimc
+cat ~/txt/tocal | jtr | bcdit3 | grep -v '^ -----' | grep -B$cb -A$ca '──────┐$' | trimc
