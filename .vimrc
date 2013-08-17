@@ -1,6 +1,6 @@
-" --- options {{{
-set   autochdir
-set   autoindent
+" --- options 
+set noautochdir
+set noautoindent
 set   autoread
 set   backspace=indent,eol,start
 set nobackup
@@ -46,7 +46,7 @@ set   selection=exclusive
 set   selectmode+=key
 set noshiftround
 set   shiftwidth=4
-set   shortmess=aIoOtT
+set   shortmess=aoOtT
 let   &showbreak = "» "
 set   showcmd
 set   showmode
@@ -83,13 +83,13 @@ set   winminheight=0
 set   wrap
 set nowrapscan
 set   writebackup
-" ---------------------------------------- }}}
-"  --- filetype & syntax {{{
+" ----------------------------------------
+"  --- filetype & syntax 
 filetype plugin indent on
 syntax on
 let readline_has_bash = 1
-" ---------------------------------------- }}}
-" --- autocommands & plugin mappings {{{
+" ----------------------------------------
+" --- autocommands & plugin mappings
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
@@ -109,8 +109,8 @@ let g:loaded_zipPlugin = 1
 "let g:no_mail_maps = 1
 let g:no_plugin_maps = 1
 let g:is_bash = 1
-" ---------------------------------------- }}}
-" --- special mappings and commands {{{
+" ----------------------------------------
+" --- special mappings and commands
 if !has("gui_running")
     colo biogoot
 "    colo default
@@ -143,15 +143,15 @@ nmap . .`[
 let g:netrw_banner = 0
 let g:netrw_liststyle = 1
 command! -range D <line1>,<line2>d | norm <C-o>
-" ---------------------------------------- }}}
-" --- ex commands {{{
+" ----------------------------------------
+" --- ex commands
 command! BD b # | bd #
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
 command! -nargs=+ H execute 'silent help <args>' | only
 command! Xbit call SetExecutableBit()
-" ---------------------------------------- }}}
-" --- F-key mappings {{{
+" ----------------------------------------
+" --- F-key mappings
 " ----------------------------------------
 nnoremap <F1> :call F1_formatter("78")<CR>
 inoremap <F1> <C-O>:call F1_formatter("78")<CR>
@@ -238,8 +238,8 @@ nnoremap <silent> <F12> :update<CR>
 inoremap <silent> <F12> <ESC>:update<CR>
 vnoremap <silent> <F12> <C-C>:update<CR>
 "  do not try to map S-F12 -- vim never sees it
-" ---------------------------------------- }}}
-" --- insert mode abbreviations {{{
+" ----------------------------------------
+" --- insert mode abbreviations
 iabbrev <silent> bsk <c-r>=strftime("%Y-%b-%2d  %H:%M  %a")<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> bskk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
@@ -326,12 +326,12 @@ iabbrev á →
 iabbrev â •
 iabbrev ã ✔
 iabbrev ø ✖
-" ---------------------------------------- }}}
-" --- leader commands {{{
+" ----------------------------------------
+" --- leader commands
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 nnoremap <Leader>b :ls<CR>:b
-"nnoremap <silent><Leader>c
+nnoremap <silent><Leader>c :call CdCurBuf()<CR>
 "nnoremap <silent><Leader>d :call InsertShortDate()<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
@@ -370,8 +370,8 @@ nnoremap <Leader>v :source ~/.vim/plan.vim<CR>
 "nnoremap <Leader>y
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
 nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
-" ---------------------------------------- }}}
-" --- functions {{{
+" ----------------------------------------
+" --- functions
 function! Acdmo()
     read! ~/py/currmo 38
     let im = strftime("%H:%M")
@@ -828,5 +828,4 @@ function! ZeroBlankLinesAtEnd()
     execute 'normal ' . s:bc . 'dd'
     call winrestview(view)
 endfunction
-" ---------------------------------------- }}}
-"  vim: foldmethod=marker
+" ----------------------------------------
