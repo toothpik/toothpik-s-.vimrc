@@ -1,12 +1,7 @@
 #!/bin/bash
 #  hlsb formatted for tall terminal
 c
-#b
-#tl=$(tput lines)
-psf=$(( ( (`tput cols` - 75) / 2) - 2))
-#if test $tl -gt 50 ; then
-#    cm1p1|mio $psf
-#fi
 b 13
+psf=$(( ( (`tput cols` - 75) / 2) - 2))
 hlsb|mio $(($psf + 3))
 b 4
