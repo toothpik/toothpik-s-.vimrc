@@ -4,7 +4,9 @@ for s in `vim --serverlist`; do
     case $s in 
         WKLY) vim --servername WKLY --remote-send ':quit<CR>'
               ;;
-        TCAL) vim --servername TCAL --remote-send ':quit<CR>'
+        TCAL) if test $# -eq 0; then
+                  vim --servername TCAL --remote-send ':quit<CR>'
+              fi
               ;;
         LAUN) vim --servername LAUN --remote-send ':quit<CR>'
               ;;
