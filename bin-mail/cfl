@@ -1,0 +1,42 @@
+#!/usr/bin/python
+#  reduce fetch log to 500 lines if it's longer than 2000
+##
+from os import environ, system
+from string import find, split, strip
+flog = ""
+fmailrc = environ.get('HOME') + '/.fetchmailrc'
+
+try:
+   frc=open(fmailrc, 'r')
+   while 1:
+      S=frc.readline()
+      if S == "":
+         frc.close()
+         break
+      if (S.find('set logfile') > -1):
+         flog = S.split()[2].strip('"')
+except IOError:
+   print 'could not open %s for reading' % fmailrc
+   exit (1)
+
+##  ------------------------------------------------------------
+##  we have searched the .fetchmailrc for the name of the logfile,
+##  now we'll see how big it is
+##  ------------------------------------------------------------
+
+lcnt = 0
+try:
+    FML = open(flog, 'r').readlines()
+    lcnt = len(FML)
+except IOError:
+    print 'unable to open %s for reading' % flog
+    exit(2) 
+
+if lcnt < 2000:
+    print "fetchmail log has %d lines" % lcnt
+else:
+    system("tail -500 %s > flog.zulu" % flog)
+    system("rm %s" % flog)
+    system("mv flog.zulu %s" % flog)
+    print "the fetchmail log has been reduced from %d to 500" % lcnt
+exit(0)
