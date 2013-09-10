@@ -1,0 +1,8 @@
+#!/bin/bash
+#  how big is fetchmail.log
+cd ~/bin-mail || exit 1
+echo -n 'the fetchmail.log has '
+fll=`wc -l fetchmail.log | sed 's/ fetchmail.log//'`
+fllc=`commify $fll`
+echo -n "$fllc"
+echo " lines"
