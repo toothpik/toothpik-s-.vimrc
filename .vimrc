@@ -195,8 +195,8 @@ set pastetoggle=<M-F6>
 " ----------------------------------------
 nnoremap <silent> <F7> :set spell!<CR>
 inoremap <silent> <F7> <ESC>:set spell!<CR>
-nnoremap <silent> <S-F7> :call Acdmo()<CR>
-inoremap <silent> <S-F7> <ESC>:call Acdmo()<CR>
+nnoremap <silent> <S-F7> :call CdCurBuf()<CR>
+inoremap <silent> <S-F7> <C-O>:call CdCurBuf()<CR>
 " ----------------------------------------
 nnoremap <silent> <F8> :m+<CR>
 inoremap <silent> <F8> <ESC>:m+<CR>gi
@@ -332,7 +332,7 @@ let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 nnoremap <Leader>b :ls<CR>:b
 nnoremap <silent><Leader>c :call CdCurBuf()<CR>
-"nnoremap <silent><Leader>d :call InsertShortDate()<CR>
+nnoremap <silent><Leader>d :e %:h<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
 nnoremap <Leader>ee :source ~/.vimrc<CR>
