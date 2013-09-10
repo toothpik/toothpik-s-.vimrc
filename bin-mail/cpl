@@ -1,0 +1,12 @@
+#!/bin/bash
+#  open procmail.log in gvim if lines > 2000
+cd ~/bin-mail
+lc=`wc -l procmail.log | awk '{print $1}'`
+if test $lc -gt 2000; then
+    tail -500 procmail.log > procmail.zulu
+    rm procmail.log
+    mv procmail.zulu procmail.log
+    echo "the procmail log has been reduced from $lc to 500"
+else
+    echo "procmail log has $lc lines"
+fi
