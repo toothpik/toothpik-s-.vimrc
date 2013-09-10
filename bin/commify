@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+#  add commas to numbers
+local $_ = shift; 
+s{(?<!\d|\.)(\d{4,})} 
+ {my $n = $1; 
+  $n=~s/(?<=.)(?=(?:.{3})+$)/,/g; 
+  $n; 
+ }eg; 
+print $_;
