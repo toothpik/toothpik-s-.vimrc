@@ -1,0 +1,8 @@
+#!/bin/bash
+#  how big is procmail.log
+cd ~/bin-mail || exit 1
+echo -n 'the procmail.log has '
+pll=`wc -l procmail.log | sed 's/ procmail.log//'`
+pllc=`commify $pll`
+echo -n "$pllc"
+echo " lines"
