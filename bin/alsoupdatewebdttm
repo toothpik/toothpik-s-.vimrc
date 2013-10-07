@@ -2,7 +2,7 @@
 #  update and push date on web page
 cd ~/toothpik.github.com
 v -S ~/.vim/updttm.vim index.html
-sleep 5
+sleep 15
 git add index.html
 git commit -m 'updated vimrc date'
 git push origin master
