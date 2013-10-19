@@ -172,8 +172,8 @@ inoremap <M-F3> <ESC><M-F3>
 " ----------------------------------------
 nnoremap <F4> :call OpenWhat()<CR>
 inoremap <F4> <C-O>J
-nnoremap <S-F4> :call FixBlankLinesAtEnd()<CR>
-inoremap <S-F4> <ESC>:call FixBlankLinesAtEnd()<CR>
+nnoremap <S-F4> :call FixBlankLinesAtEnd('7')<CR>
+inoremap <S-F4> <ESC>:call FixBlankLinesAtEnd('7')<CR>
 " ----------------------------------------
 nnoremap <silent> <F5> :call Fmt('78')<CR>
 inoremap <silent> <F5> <C-O>:call Fmt('78')<CR>
@@ -507,13 +507,13 @@ function! FirstBlankAtEnd()
     endif
 endfunction
 " ----------------------------------------
-function! FixBlankLinesAtEnd()
+function! FixBlankLinesAtEnd(num)
     let s:bc = NumberBlankLinesAtEnd()
-    if s:bc == 7
-        echo 'this module already has 7 blank lines at the end'
+    if s:bc == a:num
+        echo 'this module already has ' . a:num . ' blank lines at the end'
         return
     endif
-    let s:d7 = 7 - s:bc
+    let s:d7 = a:num - s:bc
     if s:d7 > 0
         echo 'adding' s:d7
         while s:d7 > 0
@@ -706,10 +706,10 @@ function! MyExploreT()
 endfunction
 " ----------------------------------------
 function! NumberBlankLinesAtEnd()
-    let s:bc = 0
-    let s:lp = line("$")
+    let s:bc = 0                              "  blank count
+    let s:lp = line("$")                      "  line pointer
     while s:lp > 0
-        let s:tl = strlen(getline(s:lp))
+        let s:tl = strlen(getline(s:lp))      "  test length
         if (s:tl > 0)
             let s:lp = 0
         else
