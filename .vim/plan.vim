@@ -1,5 +1,5 @@
 "  setup for edit of plans - used by gp and vp to name a few
-"  ~/txt/plan_readme and ~/bin/minst that describes creation of new plans
+"  ~/txt/plan_readme and ~/bin/minst describe creation of new plans
 
 if has('gui_running')
     winsize 99 53
@@ -19,7 +19,7 @@ nmap <buffer> <Leader>f :call AdjustFoodBudget()<CR>
 nmap <buffer> <Leader>l :source ~/.vim/plan.vim<CR>
 nmap <buffer> <Leader>lu :call system("lubk")<CR>
 nmap <buffer> <Leader>n :e ~/txt/plan_notes\|normal G<CR>
-nmap <buffer> <Leader>p :call SyncWNextYear()<CR>
+nmap <buffer> <Leader>p :call SyncNextYear()<CR>
 nmap <buffer> <Leader>q :call DisplayLeaders()<CR>
 nmap <buffer> <Leader>r :call Reconcile()<CR>
 nmap <buffer> <Leader>rr :call FixReconcileWLastYear()<CR>
@@ -69,7 +69,7 @@ echom 'f :call AdjustFoodBudget()'
 echom 'l :source ~/.vim/plan.vim'
 echom 'lu :call system("lubk")'
 echom 'n :e ~/txt/plan_notes\|normal G'
-echom 'p :call SyncWNextYear()'
+echom 'p :call SyncNextYear()'
 echom 'q :call DisplayLeaders()'
 echom 'r :call Reconcile()'
 echom 'rr :call FixReconcileWLastYear()'
@@ -159,7 +159,7 @@ function! SyncWLastYear()
 endfunction
 
 "  propagate forward -- mapped to <Leader>p last time i looked
-function! SyncWNextYear()
+function! SyncNextYear()
     let ty = expand("%")[5:8]     "  this year
     let ny = ty + 1               "  next year
     let nyn = "plan_" . ny        "  next year's name
