@@ -1,0 +1,8 @@
+#!/bin/bash
+#  tocal w boxed date
+export lc=$((`tput lines` - 2))
+if test $# -gt 0; then
+    tcnlc3 "$1"
+else
+    tcnlc3
+fi
