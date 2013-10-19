@@ -6,12 +6,14 @@ tcols=`tput cols`
 hm=$(( ( (tcols - 75) / 2) - 1 ))
 {
     b2
-    hoirb
-    b
     mb
+    b
+    hoirb
     b
     tpr
     b
     tpk
+    b
+    dslh
 } | mio $hm
 b
