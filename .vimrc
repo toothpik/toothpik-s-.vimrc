@@ -98,19 +98,19 @@ augroup vimrcgrp
 augroup END
 "
 "  some scripts i don't need:
-"let g:loaded_netrw = 1
 let g:CSApprox_loaded = 1
-let g:loaded_2html_plugin = 1
 let g:html_use_css = 1
+let g:is_bash = 1
+let g:loaded_2html_plugin = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_gzip = 1
 let g:loaded_matchparen = 1
+let g:loaded_netrw = 1
 let g:loaded_rrhelper = 1
 let g:loaded_tarPlugin = 1
 let g:loaded_zipPlugin = 1
-"let g:no_mail_maps = 1
 let g:no_plugin_maps = 1
-let g:is_bash = 1
+"let g:no_mail_maps = 1
 " ----------------------------------------
 " --- special mappings and commands
 if !has("gui_running")
