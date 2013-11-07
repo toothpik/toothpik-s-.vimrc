@@ -186,8 +186,8 @@ inoremap <M-F5> <C-O>:set paste<CR>
 "  newer versions of netrw may be obtained at
 "  http://www.drchip.org/astronaut/vim/index.html#NETRW
 "  download netrw.vba.gz, move it to ~/.vim
-nnoremap <silent> <F6> :Explore<bar>1<CR>
-inoremap <silent> <F6> <ESC>:Explore<bar>1<CR>
+nnoremap <silent> <F6> :call MyExplore('')<CR>
+inoremap <silent> <F6> <ESC>:call MyExplore('')<CR>
 nnoremap <S-F6> :ls<CR>:b
 inoremap <S-F6> <ESC>:ls<CR>:b
 nnoremap <M-F6> :set nopaste<CR>
@@ -229,7 +229,7 @@ inoremap <silent> <C-F10> <ESC><C-W>w<C-E><C-W>wa
 " ----------------------------------------
 nnoremap <F11> <C-Y>
 inoremap <F11> <C-O><C-Y>
-nnoremap <silent> <S-F11> :Explore<CR>
+nnoremap <silent> <S-F11> :call MyExplore('')<CR>
 inoremap <silent> <S-F11> <ESC>:call MyExplore('')<CR>
 nnoremap <silent> <M-F11> :call MyExplore('t')<CR>
 inoremap <silent> <M-F11> <ESC>:call MyExplore('t')<CR>
