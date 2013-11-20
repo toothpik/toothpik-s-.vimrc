@@ -12,9 +12,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-if has('gui_running')
-    set   cursorline
-endif
+set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -114,7 +112,7 @@ let g:no_plugin_maps = 1
 " ----------------------------------------
 " --- special mappings and commands
 if !has("gui_running")
-    colo default
+    colo biogoot
 endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
