@@ -331,11 +331,11 @@ let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 nnoremap <Leader>b :ls<CR>:b
 nnoremap <silent><Leader>c :call CdCurBuf()<CR>
-nnoremap <silent><Leader>d :e %:h<CR>
+"nnoremap <Leader>d
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
 nnoremap <Leader>ee :source ~/.vimrc<CR>
-nnoremap <Leader>f :call F1_toggle_width("75")<CR>
+nnoremap <Leader>f :call F1_toggle_width("78")<CR>
 nnoremap <silent> <Leader>ff :call FirstBlankAtEnd()<CR>
 nnoremap <Leader>g :e ~/.gvimrc<CR>
 nnoremap <Leader>gg :source ~/.gvimrc<CR>
@@ -351,7 +351,7 @@ nnoremap <silent> <Leader>kk :call MovePointerUp()<CR>
 nnoremap <Leader>l :source ~/.vim/i_ctr.vim<CR>
 "nnoremap <Leader>m
 "nnoremap <Leader>n
-"nnoremap <silent> <Leader>o :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
+nnoremap <silent> <Leader>o :setl fdm=expr<bar>setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldlevel=0 foldcolumn=2<CR>
 nnoremap <silent> <Leader>oo :setlocal foldexpr=0 foldcolumn=0<CR>
 nnoremap <Leader>p :call Paste(0)<CR>
 nnoremap <Leader>P :call Paste(1)<CR>
@@ -360,7 +360,6 @@ nnoremap <silent> <Leader>r :silent set ruler!<CR>
 nnoremap <silent> <Leader>s :windo set scrollbind!<CR>
 nnoremap <silent> <Leader>ss :silent call ToggleScrollbar()<CR>
 nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
-nnoremap <silent> <Leader>tt :normal i<c-r>=strftime("%H:%M")<ESC><CR>
 nnoremap <silent> <Leader>u :call FileTime()<CR>
 nnoremap <Leader>uu :call Unhideme()<CR>
 nnoremap <Leader>v :source ~/.vim/plan.vim<CR>
