@@ -65,11 +65,23 @@ class MyParser(HTMLParser):
 parser = MyParser()
 parser.feed(wk)
 
-print parser.timestamp
+try:
+    print parser.timestamp
+except AttributeError:
+    print "no timestamp available"
 print
-print "Temperature:%6s°F" % parser.temp
-print "Humidity:%11s" % parser.humid
-print "Wind:%15s" % parser.wind
+try:
+    print "Temperature:%6s°F" % parser.temp
+except AttributeError:
+    print "no temperature available"
+try:
+    print "Humidity:%11s" % parser.humid
+except AttributeError:
+    print "no humidity available"
+try:
+    print "Wind:%15s" % parser.wind
+except AttributeError:
+    print "no wind available"
 
 for i in parser.fcst:
     print i
