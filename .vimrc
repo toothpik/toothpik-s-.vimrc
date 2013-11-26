@@ -239,8 +239,8 @@ vnoremap <silent> <F12> <C-C>:update<CR>
 "  do not try to map S-F12 -- vim never sees it
 " ----------------------------------------
 " --- insert mode abbreviations
-iabbrev <silent> bsk <c-r>=strftime("%Y-%b-%2d  %H:%M  %a")<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> bskk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>
+"                blog starved kiddies
+iabbrev <silent> bsk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>       
 iabbrev <silent> dd <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd1 <c-r>=repeat('-', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd2 <c-r>=repeat('-', 20)<CR><c-r>=Eatchar('\s')<cr>
@@ -255,12 +255,10 @@ iabbrev <silent> dd10 <c-r>=repeat('-', 100)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd11 <c-r>=repeat('-', 110)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddd <c-r>=strftime("%d %b %Y  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddd <c-r>=strftime("%Y-%m-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dddf <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddl <c-r>=Longdate()<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddn <c-r>=strftime("%Y-%b-%d %H:%M %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddof <c-r>=strftime("%B %d, %Y  %A")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddt  <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dded <c-r>=Mydatestamp()<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds2 <c-r>=strftime("%Y-%b-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds3 <c-r>=strftime("%Y-%b-%d  %A  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
