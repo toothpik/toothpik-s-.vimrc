@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #  bracket current date in tocal
-#  used by ~/bin/tcnlc2, which is used by tcc2, tcl2, and tcw2
+#  used by ~/bin/tcnlc2, which is used by 2, tc2, tcl2, and tcw2
 from datetime import date, timedelta
 from sys import stdin
 import re
@@ -10,6 +10,7 @@ tom = tod + day
 yr = tod.strftime("%Y")
 nyi = int(yr) + 1
 ny = "%d" % nyi
+doneNYE = False
 todf = tod.strftime("%b %e")
 tomf = tom.strftime("%b %e")
 y = re.compile("^ %s" % yr)
@@ -36,4 +37,11 @@ for line in stdin:
         else:
             print(line.rstrip())
     else:
-        print(line.rstrip())
+        #  why this doesn't bracket Dec 31 for me I can't see
+        #  at least I got tc6 working...
+        if todf == 'Dec 31' and not doneNYE:
+            print("  %s" % ("~" * (ll - 1)))
+            print(line.rstrip())
+            doneNYE = True
+        else:
+            print(line.rstrip())
