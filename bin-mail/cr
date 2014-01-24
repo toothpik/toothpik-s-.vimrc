@@ -5,7 +5,7 @@ b
 psf=$(( ( `tput cols` - 75 ) / 2 - 2))
 tsl=`tput lines`
 loo=`ccr | wc -l`
-dp=$(( (tsl - loo) / 2 - 5))
+dp=$(( (tsl - loo) / 3  - 5))
 if test $dp -gt 0; then
     b $dp
 fi
