@@ -6,6 +6,8 @@ nnoremap <Leader>j :e ~/bin/jtr<CR>
 nnoremap <Leader>sss :source ~/.vim/tocal.vim<CR>
 nnoremap <Leader>t :e ~/bin/ts<CR>
 
+let @l = '         laundry'
+
 set nowrap
 set hlsearch
 set nonumber
