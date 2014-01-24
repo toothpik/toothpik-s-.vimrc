@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#  fix "Today" in weather stream (reads stdin)
+#  fix "Today" in weather stream (reads stdin), used by ccw
 from re import compile
 from datetime import date
 from sys import stdin
