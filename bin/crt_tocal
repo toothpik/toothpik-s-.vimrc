@@ -35,4 +35,4 @@ while dt <= end:
     print("   %s" % dt.strftime("%b %e  %a"))
     dt += day
 
-print(" %s" % ('-' * 60))
+#print(" %s" % ('-' * 60))
