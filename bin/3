@@ -1,8 +1,11 @@
 #!/bin/bash
 #  new and improved cct
 clear
-b 3
-pfc=$(( ( (`tput cols` - 75) / 2)  ))
+b
+tc=`tput cols`
+pfc=$(( ( ( tc - 75) / 2)  ))
+date '+%A' | mio $(( pfc + 25 ))
+b
 cct | mio $pfc
 b
 testtodo=`todoo|wc -l`
@@ -10,3 +13,12 @@ if test $testtodo -gt 0; then
     todoo | mio
     b
 fi
+#  bonus stuff:
+dsh $tc
+#b
+#uofb | mio $(( pfc - 2 ))
+#b
+#dsh $tc
+b
+mpp | mio $(( pfc + 9 ))
+b
