@@ -38,7 +38,6 @@ set   number
 set   nrformats-=octal
 set   numberwidth=3
 set   printoptions=header:0,number:n,syntax:n
-set   regexpengine=1
 set norelativenumber
 set   ruler
 set   scrollopt=ver,hor,jump
@@ -139,8 +138,8 @@ vmap > >gv
 vmap < <gv
 nnoremap ; :
 nmap . .`[
-let g:netrw_banner = 0
-let g:netrw_liststyle = 1
+"let g:netrw_banner = 0
+"let g:netrw_liststyle = 1
 command! -range D <line1>,<line2>d | norm <C-o>
 " ----------------------------------------
 " --- ex commands
@@ -170,7 +169,8 @@ inoremap <M-F3> <ESC><M-F3>
 " ----------------------------------------
 nnoremap <F4> :call OpenWhat()<CR>
 inoremap <F4> <C-O>J
-nnoremap <S-F4> :call FixBlankLinesAtEnd('7')<CR>
+nnoremap <S-F4> :call OpenEndWhat()<CR>
+"nnoremap <S-F4> :call FixBlankLinesAtEnd('7')<CR>
 inoremap <S-F4> <ESC>:call FixBlankLinesAtEnd('7')<CR>
 " ----------------------------------------
 nnoremap <silent> <F5> :call Fmt('78')<CR>
@@ -323,6 +323,7 @@ iabbrev á →
 iabbrev â •
 iabbrev ã ✔
 iabbrev ø ✖
+iabbrev %% ⌘
 " ----------------------------------------
 " --- leader commands
 let mapleader = ','
@@ -331,15 +332,18 @@ nnoremap <Leader>b :ls<CR>:b
 nnoremap <silent><Leader>c :call CdCurBuf()<CR>
 "nnoremap <Leader>d
 nnoremap <Leader>dd :call ClearBuffers()<CR>
+nnoremap <Leader>dq :call EditTry('~/txt/alldateabbr')<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
 nnoremap <Leader>ee :source ~/.vimrc<CR>
 nnoremap <Leader>f :call F1_toggle_width("78")<CR>
 nnoremap <silent> <Leader>ff :call FirstBlankAtEnd()<CR>
+nnoremap <Leader>fff :call FixBlankLinesAtEnd('7')<CR>
 nnoremap <Leader>g :e ~/.gvimrc<CR>
 nnoremap <Leader>gg :source ~/.gvimrc<CR>
 nnoremap <Leader>h :source ~/.vim/reading_help.vim<CR>
 nnoremap <Leader>hh :call Hideme()<CR>
 nnoremap <Leader>hhh :call HelpgrepScrollers()<CR>
+nnoremap <Leader>hl :call ListwindowScrollers()<CR>
 nnoremap <Leader>i :call Maikallfiles()<CR>
 nnoremap <Leader>it :call MaikallfilesT()<CR>
 nnoremap <Leader>j :call FindPointer()<CR>
@@ -361,7 +365,7 @@ nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <silent> <Leader>u :call FileTime()<CR>
 nnoremap <Leader>uu :call Unhideme()<CR>
 nnoremap <Leader>v :source ~/.vim/plan.vim<CR>
-"nnoremap <Leader>w
+nnoremap <Leader>w :call F1_toggle_width("78")<CR>
 "nnoremap <Leader>x
 "nnoremap <Leader>y
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
@@ -570,11 +574,10 @@ function! LastNonBlank()
     endwhile
 endfunction
 " ----------------------------------------
-function! Ll()
-"  locate and go to the (first) longest line
-    let lines = map(getline(1, '$'), 'len(v:val)')
-    let gtl = index(lines, max(lines)) + 1
-    execute gtl
+function! ListwindowScrollers()
+    silent! nmap <F6> :lnext<CR>
+    silent! nmap <S-F6> :lprev<CR>
+    echo 'list window scrollers :ln and :lp added to F6 and S-F6'
 endfunction
 " ----------------------------------------
 function! LongBlogDate()
@@ -672,18 +675,6 @@ function! MovePointerUp()
     let @/ = s:save_l
 endfunction
 " ----------------------------------------
-function! Mydatestamp()
-    let td = strftime("%d")
-    if td < 10
-        let ym = strftime("%Y-%b")
-        let td = td + 0
-        let hm = strftime("%H:%M")
-        return ym . "-" . td . "  " . hm
-    else
-        return strftime("%Y-%b-%d %H:%M")
-    endif
-endfunction
-" ----------------------------------------
 function! MyExplore(s)
     if a:s == "t"
         call MyExploreT()
@@ -730,6 +721,20 @@ function! NumberToggle()
     endif
 endfunction
 " ----------------------------------------
+function! OpenEndWhat()
+    let words = split(getline('.'))
+    let lw = words[len(words)-1]
+    if lw =~ '^\~'
+        let lw = $HOME . substitute(lw, '^\~', "", "")
+    endif
+    if isdirectory(lw)
+        call CdMaik(lw)
+    else
+        execute 'e ' . lw
+    endif
+endfunction
+" ----------------------------------------
+"
 function! OpenWhat()
     let testme = expand("<cfile>")
     if testme =~ '^\~'
