@@ -56,16 +56,16 @@ function! CheckCompile()
     let va = split(@v, '\n')
     let @v = save_v
     if va[2] == 'Compiled by toothpik@home'
-        echo 'obtained correct compiledby           CHECK'
+        echo 'obtained correct compiledby            CHECK'
     else
         echo 'third line of version is ' . va[2]
         echo 'should be "Compiled by toothpik@home"'
     endif
-    if va[3] =~ '^Huge version with GTK2 GUI'
-        echo 'obtained proper build (Huge w GTK2)   CHECK'
+    if va[3] =~ '^Normal version with GTK2 GUI'
+        echo 'obtained proper build (Normal w GTK2)  CHECK'
     else
         echo 'build line reads ' . va[3]
-        echo 'should be "Huge version with GTK2 GUI'
+        echo 'should be "Normal version with GTK2 GUI'
     endif
     "  lord have mercy
     "  the linebreaks in the [+/-]feature section will be in different places
@@ -79,23 +79,23 @@ function! CheckCompile()
     let rp = 4
     while rp < hmr
         if va[rp] =~ '-arabic'
-            echo 'arabic not compiled in                CHECK'
+            echo 'arabic not compiled in                 CHECK'
             let got_arabic = 0
         endif
         if va[rp] =~ '-emacs_tags'
-            echo 'emacs_tags not compiled in            CHECK'
+            echo 'emacs_tags not compiled in             CHECK'
             let got_emacs_tags = 0
         endif
         if va[rp] =~ '-farsi'
-            echo 'farsi not compiled in                 CHECK'
+            echo 'farsi not compiled in                  CHECK'
             let got_farsi = 0
         endif
         if va[rp] =~ '-rightleft'
-            echo 'rightleft not compiled in             CHECK'
+            echo 'rightleft not compiled in              CHECK'
             let got_rightleft = 0
         endif
         if va[rp] =~ '+python'
-            echo 'python compiled in                    CHECK'
+            echo 'python compiled in                     CHECK'
             let got_python = 1
         endif
         let rp = rp + 1
