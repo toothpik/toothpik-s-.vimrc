@@ -3,7 +3,8 @@ set noautochdir
 set noautoindent
 set   autoread
 set   backspace=indent,eol,start
-set nobackup
+set   backup
+set   backupdir=~/.vim-tmp
 set   browsedir=buffer
 set nocindent
 set   clipboard=autoselect,exclude:cons
@@ -32,11 +33,13 @@ set   laststatus=0
 set nolazyredraw
 set   linebreak
 set   listchars=eol:$,extends:»,precedes:«
+set nomore
 set   mouse=ar
 set   mousemodel=popup_setpos
 set   number
 set   nrformats-=octal
 set   numberwidth=3
+set   patchmode=.clean
 set   printoptions=header:0,number:n,syntax:n
 set norelativenumber
 set   ruler
@@ -45,7 +48,7 @@ set   selection=exclusive
 set   selectmode+=key
 set noshiftround
 set   shiftwidth=4
-set   shortmess=aoOtT
+set   shortmess=aIoOtT
 let   &showbreak = "» "
 set   showcmd
 set   showmode
