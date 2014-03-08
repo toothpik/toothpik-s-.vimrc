@@ -3,7 +3,7 @@ set noautochdir
 set noautoindent
 set   autoread
 set   backspace=indent,eol,start
-set   backup
+set nobackup
 set   backupdir=~/.vim-tmp
 set   browsedir=buffer
 set nocindent
@@ -39,7 +39,6 @@ set   mousemodel=popup_setpos
 set   number
 set   nrformats-=octal
 set   numberwidth=3
-set   patchmode=.clean
 set   printoptions=header:0,number:n,syntax:n
 set norelativenumber
 set   ruler
@@ -331,7 +330,7 @@ iabbrev %% ⌘
 " --- leader commands
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
-nnoremap <Leader>b :ls<CR>:b
+"nnoremap <Leader>b
 nnoremap <silent><Leader>c :call CdCurBuf()<CR>
 "nnoremap <Leader>d
 nnoremap <Leader>dd :call ClearBuffers()<CR>
