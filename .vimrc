@@ -105,6 +105,8 @@ let g:loaded_getscriptPlugin = 1
 let g:loaded_gzip = 1
 let g:loaded_matchparen = 1
 let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+let g:loaded_vimballPlugin = 1
 let g:loaded_rrhelper = 1
 let g:loaded_tarPlugin = 1
 let g:loaded_zipPlugin = 1
@@ -118,6 +120,12 @@ endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
 nnoremap - dd
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  some day I'll figure out how to use the following without breaking
+"  scripts (~/.vim/weekly.vim and ~/.vim/lw.vim) that use normal n
+"nnoremap n nzz
+"nnoremap N Nzz
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <Down> gj
 inoremap <Down> <C-O>gj
 nnoremap <Up> gk
@@ -331,7 +339,7 @@ iabbrev %% ⌘
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 "nnoremap <Leader>b
-nnoremap <silent><Leader>c :call CdCurBuf()<CR>
+nnoremap <silent><Leader>c :call Acdmo()<CR>
 "nnoremap <Leader>d
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>dq :call EditTry('~/txt/alldateabbr')<CR>
