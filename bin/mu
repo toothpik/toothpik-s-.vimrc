@@ -4,19 +4,8 @@ dt=`date '+%m/%d'`
 pfc=$(( ( ( `tput cols` - 75) / 2) - 2 ))
 {
     if test $# -lt 1; then
-        echo "$dt     Today's Unclear"
+        echo "$dt     today's unclear"
+        echo "-------------------------"
     fi
     uclro $1 
 } | mio $(( $pfc - 5 ))
-#
-#  unless and until you can tell me why sumlwq.awk produces
-#  erroneous sums i refuse to allow it to mislead me
-#
-#uc=`uclro | sed 's/,//' | awk -f ~/sumlwq.awk`
-#bal=`lastx | awk -f ~/balamt.awk`
-#sum=`solve $uc + ${bal/,/}`
-#sumwz=`printf "%.2f" $sum`
-#sumwc=`echo $sumwz | awk -f ~/ciaa.awk`
-#ucwc=`printf "%.2f" $uc | awk -f ~/ciaa.awk`
-#printf "%57s\n" "=========" | mio $mf
-#printf "%57s %12s %10s\n" $ucwc $bal $sumwc | mio $mf
