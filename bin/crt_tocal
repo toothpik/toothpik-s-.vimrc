@@ -29,10 +29,8 @@ end = date(Y, 12, 31)
 day = timedelta(days=1)
 
 print(" %d" % Y)
-print(" %s" % ('-' * 60))
 
 while dt <= end:
     print("   %s" % dt.strftime("%b %e  %a"))
     dt += day
 
-#print(" %s" % ('-' * 60))
