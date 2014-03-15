@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #  bracket current date in tocal
-#  used by ~/bin/tcnlc2, which is used by 2, tc2, tcl2, and tcw2
+#  used by ~/bin/tcnlc2, which is used by tc2, tcl2, and tcw2
 from datetime import date, timedelta
 from sys import stdin
 import re
