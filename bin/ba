@@ -14,6 +14,7 @@ hm=$(( ( (tcols - 75) / 2) - 1 ))
     b
     tpk
     b
+    sensors
     dslh
 } | mio $hm
 b
