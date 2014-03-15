@@ -1,8 +1,9 @@
 #!/bin/bash
 #  clear & cat weather
-c
 if test $# -eq 0; then
     php ~/php/cw.php > ~/.rawweather
 fi
+c
 python ~/py/parseweather.py | head -5 | mio
+b
 python ~/py/parseweather.py | tail -n +6 | fixtoday | fmt | mio
