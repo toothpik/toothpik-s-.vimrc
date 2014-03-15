@@ -1,5 +1,5 @@
 #!/bin/bash
 #  cat the ct0 output through ~/tcl/ct0
-date '+         Countdown List as of      %Y-%b-%d'
+date '+         countdown list as of      %Y-%b-%d'
 echo
 ct0 | ctctr | awk -f ~/incend.awk
