@@ -83,5 +83,8 @@ try:
 except AttributeError:
     print "no wind available"
 
-for i in parser.fcst:
-    print i
+p = 0
+while p < len(parser.fcst):
+    print "%s:  %s" % (parser.fcst[p], parser.fcst[p+1])
+    p += 2
+    print
