@@ -7,7 +7,7 @@ set nobackup
 set   backupdir=~/.vim-tmp
 set   browsedir=buffer
 set nocindent
-set   clipboard=autoselect,exclude:cons
+set   clipboard=autoselect,exclude:cons,unnamedplus
 set   cmdheight=1
 set   comments-=fb:-
 set   confirm
@@ -131,13 +131,17 @@ inoremap <Down> <C-O>gj
 nnoremap <Up> gk
 inoremap <Up> <C-O>gk
 imap <C-^> <ESC>:sp #<CR>
-nmap <S-Insert> "+gP
-vmap <S-Insert> "-d"+P
-imap <S-Insert> <C-R>+
-cmap <S-Insert> <C-R>+
-imap <C-Insert> <C-O>"+y
-vmap <C-Insert> "+y
-vmap <S-Del> "+d
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  with the addition of unnamedplus to 'clipboard' I believe and hope the
+"  following will be rendered redundant
+"nmap <S-Insert> "+gP
+"vmap <S-Insert> "-d"+P
+"imap <S-Insert> <C-R>+
+"cmap <S-Insert> <C-R>+
+"imap <C-Insert> <C-O>"+y
+"vmap <C-Insert> "+y
+"vmap <S-Del> "+d
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 imap <C-Del> <C-O>daw
 nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzxzt' : 'zc')<cr>
 "  scroll left and right when 'nowrap':
