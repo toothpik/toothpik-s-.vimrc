@@ -1,0 +1,14 @@
+#!/bin/bash
+#  open most recent usbank*.png in gwenview
+#  http://mywiki.wooledge.org/BashFAQ/099
+#  the wiki says never use `ls -t | head -1` to get the newest anything
+#  and goes on to recomend this method:
+cd ~/docs/usbank || exit 1
+files=(usbank*.png)
+newest=${files[0]}
+for f in "${files[@]}"; do
+    if [[ $f -nt $newest ]]; then
+        newest=$f
+    fi
+done
+gwenview $newest 2>/dev/null &
