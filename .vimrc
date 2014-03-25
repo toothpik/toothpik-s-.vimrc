@@ -276,6 +276,7 @@ iabbrev <silent> dddt  <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds2 <c-r>=strftime("%Y-%b-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds3 <c-r>=strftime("%Y-%b-%d  %A  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dds4 <c-r>=strftime("%Y-%B-%d  %A")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddsd <c-r>=strftime("%b %_d")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddsdd <c-r>=strftime("%b %_d  %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddss <c-r>=strftime("%Y-%b-%d  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
@@ -350,7 +351,6 @@ nnoremap <Leader>dq :call EditTry('~/txt/alldateabbr')<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
 nnoremap <Leader>ee :source ~/.vimrc<CR>
 nnoremap <Leader>f :call F1_toggle_width("78")<CR>
-nnoremap <silent> <Leader>ff :call FirstBlankAtEnd()<CR>
 nnoremap <Leader>fff :call FixBlankLinesAtEnd('7')<CR>
 nnoremap <Leader>g :e ~/.gvimrc<CR>
 nnoremap <Leader>gg :source ~/.gvimrc<CR>
@@ -365,7 +365,7 @@ nnoremap <silent> <Leader>jj :call MovePointerDown()<CR>
 nnoremap <Leader>k :s/$/  <---/<CR>
 nnoremap <silent> <Leader>kk :call MovePointerUp()<CR>
 nnoremap <Leader>l :source ~/.vim/i_ctr.vim<CR>
-"nnoremap <Leader>m
+nnoremap <silent> <Leader>m :call FirstBlankAtEnd()<CR>
 "nnoremap <Leader>n
 nnoremap <silent> <Leader>o :setl fdm=expr<bar>setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldlevel=0 foldcolumn=2<CR>
 nnoremap <silent> <Leader>oo :setlocal foldexpr=0 foldcolumn=0<CR>
