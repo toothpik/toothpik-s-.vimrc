@@ -5,7 +5,7 @@ pfc=$(( ( ( `tput cols` - 75) / 2) - 2 ))
 {
     if test $# -lt 1; then
         echo "$dt     today's unclear"
-        echo "-------------------------"
+        dsh 71
     fi
     uclro $1 
 } | mio $(( $pfc - 5 ))
