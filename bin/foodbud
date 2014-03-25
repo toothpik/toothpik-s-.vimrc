@@ -1,0 +1,6 @@
+#!/bin/bash
+#  extract food budget amount from plan_core
+#  presumes the desired figure is the last [tab separated] arg on the last line
+awk 'BEGIN { FS = "\t" }
+    { sl = $NF }
+    END { print sl }' ~/txt/plan_core
