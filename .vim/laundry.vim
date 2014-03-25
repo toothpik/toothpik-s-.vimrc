@@ -1,10 +1,12 @@
 "  used by glaun for editing ~/txt/laundry.log
 
 nmap <buffer> <Leader>ev :e ~/.vim/laundry.vim<CR>
+nmap <buffer> <Leader>l :source ~/.vim/laundry.vim<CR>
 
 let mapleader = ','
 nnoremap <silent> <Leader>c :call AddNewLaundryEntry("colored")<CR>
 nnoremap <silent> <Leader>s :call AddNewLaundryEntry("sheets")<CR>
+nnoremap <silent> <Leader>t :call AddNewLaundryEntry("towels")<CR>
 nnoremap <silent> <Leader>w :call AddNewLaundryEntry("white")<CR>
 
 function! AddNewLaundryEntry(strtadd)
