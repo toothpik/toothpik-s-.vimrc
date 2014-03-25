@@ -9,12 +9,10 @@ tod = date.today().strftime("%A")
 s0 = "Today"
 s1 = "This Afternoon"
 s2 = "Late Afternoon"
-#s3 = "Tonight"
 
 l0 = compile(s0)
 l1 = compile(s1)
 l2 = compile(s2)
-#l3 = compile(s3)
 
 for line in stdin:
     l = line.rstrip()
@@ -24,8 +22,6 @@ for line in stdin:
         nl = tod + " afternoon " + l.lstrip(s1)
     elif l2.search(l):
         nl = tod + " afternoon " + l.lstrip(s2)
-#    elif l3.search(l):
-#        nl = tod + " night " + l.lstrip(s3)
     else:
         nl = l
     print(nl)
