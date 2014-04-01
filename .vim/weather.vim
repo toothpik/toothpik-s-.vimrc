@@ -19,8 +19,8 @@ map <silent> <Leader>pl :let @/ = '\(low\_saround\_s\)\@<=\d\+'<CR>
 function! Makemeweather()
     call Hideme()
     setlocal ignorecase
-    silent %d
     !php ~/php/cw.php > ~/.rawweather
+    silent %d
     silent 0read !python ~/py/parseweather.py | head -5
     silent read !python  ~/py/parseweather.py | tail -n +6 | fixtoday | fmt
     1
