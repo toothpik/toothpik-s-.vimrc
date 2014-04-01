@@ -13,7 +13,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-set   cursorline
+set nocursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -104,9 +104,9 @@ let g:loaded_2html_plugin = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_gzip = 1
 let g:loaded_matchparen = 1
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
-let g:loaded_vimballPlugin = 1
+"let g:loaded_netrw = 1
+"let g:loaded_netrwPlugin = 1
+"let g:loaded_vimballPlugin = 1
 let g:loaded_rrhelper = 1
 let g:loaded_tarPlugin = 1
 let g:loaded_zipPlugin = 1
@@ -152,8 +152,8 @@ vmap > >gv
 vmap < <gv
 nnoremap ; :
 nmap . .`[
-"let g:netrw_banner = 0
-"let g:netrw_liststyle = 1
+let g:netrw_banner = 0
+let g:netrw_liststyle = 1
 command! -range D <line1>,<line2>d | norm <C-o>
 " ----------------------------------------
 " --- ex commands
@@ -198,10 +198,14 @@ inoremap <M-F5> <C-O>:set paste<CR>
 "  newer versions of netrw may be obtained at
 "  http://www.drchip.org/astronaut/vim/index.html#NETRW
 "  download netrw.vba.gz, move it to ~/.vim
-nnoremap <silent> <F6> :call MyExplore('')<CR>
-inoremap <silent> <F6> <ESC>:call MyExplore('')<CR>
-nnoremap <S-F6> :ls<CR>:b
-inoremap <S-F6> <ESC>:ls<CR>:b
+"nnoremap <silent> <F6> :call MyExplore('')<CR>
+nnoremap <silent> <F6> :Explore<CR>
+"inoremap <silent> <F6> <ESC>:call MyExplore('')<CR>
+inoremap <silent> <F6> <ESC>:Explore<CR>
+"nnoremap <S-F6> :ls<CR>:b
+nnoremap <S-F6> :Rexplore<CR>
+"inoremap <S-F6> <ESC>:ls<CR>:b
+inoremap <S-F6> <ESC>:Rexplore<CR>
 nnoremap <M-F6> :set nopaste<CR>
 inoremap <M-F6> <nop>
 set pastetoggle=<M-F6>
@@ -253,6 +257,8 @@ vnoremap <silent> <F12> <C-C>:update<CR>
 "  do not try to map S-F12 -- vim never sees it
 " ----------------------------------------
 " --- insert mode abbreviations
+iabbrev <silent> ~~6 <c-r>=repeat('~', 60)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ~~7 <c-r>=repeat('~', 72)<CR><c-r>=Eatchar('\s')<cr>
 "                blog starved kiddies
 iabbrev <silent> bsk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>       
 iabbrev <silent> dd <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
