@@ -13,7 +13,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-set nocursorline
+set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -529,7 +529,7 @@ endfunction
 function! FixBlankLinesAtEnd(num)
     let s:bc = NumberBlankLinesAtEnd()
     if s:bc == a:num
-        echo 'this module already has ' . a:num . ' blank lines at the end'
+        echom expand('%') . ' already has ' . a:num . ' blank lines at the end'
         return
     endif
     let s:d7 = a:num - s:bc
@@ -841,7 +841,7 @@ endfunction
 function! ZeroBlankLinesAtEnd()
     let s:bc = NumberBlankLinesAtEnd()
     if s:bc == 0
-        echo 'this module already has 0 blank lines at the end'
+        echo expand('%') . ' already has 0 blank lines at the end'
         return
     endif
     let view = winsaveview()
