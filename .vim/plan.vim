@@ -130,6 +130,7 @@ endfunction
 
 function! Reconcile()
     let sv = winsaveview()
+    call BalCol()
     call GoFirstUnclear()
     let starthere = line(".")
     call GoLastClear()
