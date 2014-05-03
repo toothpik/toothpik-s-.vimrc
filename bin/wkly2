@@ -11,7 +11,7 @@ for line in stdin:
     lc += 1
     L = line.rstrip()
     if L.find(wkdy) > -1:
-        dl.append(L + "  <───")
+        dl.append(L + "  <---")
         fd = lc
     else:
         dl.append(L)
