@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#  add commas to numbers
+#  add commas to numbers - works on $1, not sysin
 local $_ = shift; 
 s{(?<!\d|\.)(\d{4,})} 
  {my $n = $1; 
