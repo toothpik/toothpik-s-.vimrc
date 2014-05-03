@@ -29,10 +29,10 @@ for line in stdin:
     if inyr:
         if t.search(line):
             ll = len(line.rstrip())
-            print("  %s" % ("~" * (ll - 1)))
-            print("%s  <────<<" % line.rstrip())
+            print("  %s" % ("-" * (ll - 1)))
+            print("%s  <----<<" % line.rstrip())
         elif m.search(line):
-            print("  %s" % ("~" * (ll - 1)))
+            print("  %s" % ("-" * (ll - 1)))
             print(line.rstrip())
         else:
             print(line.rstrip())
@@ -40,7 +40,7 @@ for line in stdin:
         #  why this doesn't bracket Dec 31 for me I can't see
         #  at least I got tc6 working...
         if todf == 'Dec 31' and not doneNYE:
-            print("  %s" % ("~" * (ll - 1)))
+            print("  %s" % ("-" * (ll - 1)))
             print(line.rstrip())
             doneNYE = True
         else:
