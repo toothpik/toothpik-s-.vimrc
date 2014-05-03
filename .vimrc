@@ -89,6 +89,8 @@ set   writebackup
 filetype plugin indent on
 syntax enable
 let readline_has_bash = 1
+"  the following prevents sh.vim from treating '.' as a keyword character
+let g:sh_noisk = 1
 " ----------------------------------------
 " --- autocommands & plugin mappings
 augroup vimrcgrp
