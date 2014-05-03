@@ -85,6 +85,10 @@ fi
 
 export TERM=xterm-256color
 
+#  2014-Apr-24  recommended from ~/.xsession-errors
+#export __GL_YIELD="USLEEP"
+#  we may come back to this, but for now it was no help
+
 #  for vidir:
 export VIDIR_EDITOR=vim
 #export VIDIR_EDITOR_ARGS='-c :set nolist | :set ft=vidir-ls'
