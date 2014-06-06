@@ -6,17 +6,17 @@ if has('gui_running')
 endif
 
 let mapleader = ','
-nnoremap <buffer> <Leader>a :call OpenLastYear()\|source ~/.vim/plan.vim<CR>
-nnoremap <buffer> <Leader>aa :call OpenNextYear()\|source ~/.vim/plan.vim<CR>
+nmap <buffer> <Leader>a :call OpenLastYear()\|source ~/.vim/plan.vim<CR>
 nmap <buffer> <Leader>b :call BalCol()<CR>
 nmap <buffer> <Leader>c :call GoLastClear()<CR>
-nmap <buffer> <Leader>cc :call ToggleColorColumn()<CR>
 nmap <buffer> <Leader>d :call EditTry("~/txt/plan_core")<CR>
 nmap <buffer> <Leader>dd :call EditTry("~/txt/plan_core_other")<CR>
 nmap <buffer> <Leader>ec :e ~/bin/plannew<CR>
+nmap <buffer> <Leader>ee :source ~/.vim/plan.vim<CR>
 nmap <buffer> <Leader>ev :e ~/.vim/plan.vim<CR>
 nmap <buffer> <Leader>f :call AdjustFoodBudget()<CR>
-nmap <buffer> <Leader>l :source ~/.vim/plan.vim<CR>
+nmap <buffer> <Leader>g :call OpenNextYear()\|source ~/.vim/plan.vim<CR>
+nmap <buffer> <Leader>h :call AdjustHalliganBudget()<CR>
 nmap <buffer> <Leader>lu :call system("lubk")<CR>
 nmap <buffer> <Leader>n :e ~/txt/plan_notes\|normal G<CR>
 nmap <buffer> <Leader>p :call SyncNextYear()<CR>
@@ -24,6 +24,7 @@ nmap <buffer> <Leader>q :call DisplayLeaders()<CR>
 nmap <buffer> <Leader>r :call Reconcile()<CR>
 nmap <buffer> <Leader>rr :call FixReconcileWLastYear()<CR>
 nmap <buffer> <Leader>s :call SyncWLastYear()<CR>
+nmap <buffer> <Leader>t :call ToggleColorColumn()<CR>
 nmap <buffer> <Leader>uu :call GoFirstUnclear()<CR>
 nmap <buffer> <Leader>u :e ~/txt/usbank<CR>
 nmap <buffer> <Leader>x :call GoLastX()<CR>
@@ -48,6 +49,16 @@ function! AdjustFoodBudget()
     call winrestview(sv)
 endfunction
 
+function! AdjustHalliganBudget()
+    let sv = winsaveview()
+    let start = line('.')
+    call search('\%>10c\%<41clawn mowing')
+    let end = line('.')
+    execute start . "," . end . "pyf ~/.vim/halligan.py"
+    call BalCol()
+    call winrestview(sv)
+endfunction
+
 function! BalCol()
     let sv = winsaveview()
 "    silent %!~/tcl/planbal
@@ -57,16 +68,15 @@ endfunction
 
 function! DisplayLeaders()
 echom 'a :call OpenLastYear()\|source ~/.vim/plan.vim'
-echom 'aa :call OpenNextYear()\|source ~/.vim/plan.vim'
 echom 'b :call BalCol()'
 echom 'c :call GoLastClear()'
-echom 'cc :call ToggleColorColumn()'
 echom 'd :call EditTry("~/txt/plan_core")'
 echom 'dd :call EditTry("~/txt/plan_core_other")'
 echom 'ec :e ~/bin/plannew'
+echom 'ee :source ~/.vim/plan.vim'
 echom 'ev :e ~/.vim/plan.vim'
 echom 'f :call AdjustFoodBudget()'
-echom 'l :source ~/.vim/plan.vim'
+echom 'g :call OpenNextYear()\|source ~/.vim/plan.vim'
 echom 'lu :call system("lubk")'
 echom 'n :e ~/txt/plan_notes\|normal G'
 echom 'p :call SyncNextYear()'
@@ -74,6 +84,7 @@ echom 'q :call DisplayLeaders()'
 echom 'r :call Reconcile()'
 echom 'rr :call FixReconcileWLastYear()'
 echom 's :call SyncWLastYear()'
+echom 't :call ToggleColorColumn()'
 echom 'uu :call GoFirstUnclear()'
 echom 'u :e ~/txt/usbank'
 echom 'x :call GoLastX()'
