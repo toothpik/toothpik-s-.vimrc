@@ -11,5 +11,5 @@ PR=$(($YR - 1))
 #  last balance from previous year
 lb1=`tail -2 ~/txt/plan_$PR | head -1 | cut -c61-71`
 printf "%13s %56s\n" "bbf" $lb1
-#  the plan with social security,     december taxes,          ADT,            vehicle regs,          UPS store,       auto flags,   and dashes
-~/tcl/plannew $YR | ~/py/planss $YR | ~/py/planother $YR | ~/perl/adt $YR | ~/perl/vehicleregs $YR | ~/perl/ups $YR | ~/perl/autos | ~/py/plandsh
+#  the plan with social security,     december taxes,        Halligan,         ADT,            vehicle regs,          UPS store,       auto flags,   and dashes
+~/tcl/plannew $YR | ~/py/planss $YR | ~/py/planother $YR | ~/py/lawnmow | ~/perl/adt $YR | ~/perl/vehicleregs $YR | ~/perl/ups $YR | ~/perl/autos | ~/py/plandsh
