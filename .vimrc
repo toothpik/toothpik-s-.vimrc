@@ -47,7 +47,7 @@ set   selection=exclusive
 set   selectmode+=key
 set noshiftround
 set   shiftwidth=4
-set   shortmess=aIoOtT
+set   shortmess=aIoOtTc
 let   &showbreak = "» "
 set   showcmd
 set   showmode
@@ -280,7 +280,7 @@ iabbrev <silent> dddd <c-r>=strftime("%Y-%m-%d  %H:%M")<cr><c-r>=Eatchar('\s')<c
 iabbrev <silent> dddl <c-r>=Longdate()<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddn <c-r>=strftime("%Y-%b-%d %H:%M %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddof <c-r>=strftime("%B %d, %Y  %A")<cr><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> dddt  <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dddt <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds2 <c-r>=strftime("%Y-%b-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds3 <c-r>=strftime("%Y-%b-%d  %A  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
