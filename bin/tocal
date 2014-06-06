@@ -1,3 +1,4 @@
 #!/bin/bash
 #  open tocal in gvim
+cd ~/txt
 g -c "source ~/.vim/tocal.vim" -c "call Fcd()" ~/txt/tocal
