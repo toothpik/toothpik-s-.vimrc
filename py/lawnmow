@@ -1,0 +1,36 @@
+#!/usr/bin/python3
+#  add lawn mowing budget to plan -- invoked by ~/bin/plannew
+#  as it stands, the plan is to start with one episode in April ($35),
+#  then 4 episodes every month ($140) until 2 episodes in October ($70)
+#  these are guesses, but better than having no budget entry for them
+#  at all
+from re import compile
+from sys import stdin
+
+april = compile(" _April")
+october = compile(" _October")
+food = compile("food & atm")
+
+going = False
+doingApril = False
+doingOctober = False
+
+for line in stdin:
+    L = line.rstrip()
+    if april.search(L):
+        doingApril = True
+        going = True
+    elif october.search(L):
+        doingOctober = True
+    if food.search(L) and going:
+        if doingApril:
+            print(" 4/22     lawn mowing                               35.00")
+            doingApril = False
+        elif doingOctober:
+            print("10/22     lawn mowing                               70.00")
+            going = False
+        else:
+            print("%s     lawn mowing                              140.00" % L[:5])
+    print(L)
+
+
