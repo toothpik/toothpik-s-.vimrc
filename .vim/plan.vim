@@ -38,13 +38,12 @@ let @s = "Sunfresh #107"
 " ------------------------------------------------------------
 function! AdjustFoodBudget()
     let sv = winsaveview()
-    call GoLastX()
-    call search('\%>10c\%<12c_', 'b')
-    let startmonth = line(".")
+    let curline = line(".")
     call search('\%>10c\%<41cfood & atm')
     let endmonth = line('.')
 "    execute 'silent ' . startmonth . "," . endmonth . "!~/tcl/planfood"
-    execute startmonth . "," . endmonth . "pyf ~/.vim/planfood.py"
+"    execute startmonth . "," . endmonth . "pyf ~/.vim/planfood.py"
+    execute 'silent ' . curline . "," . endmonth . "!~/py/planfood"
     call BalCol()
     call winrestview(sv)
 endfunction
@@ -54,7 +53,7 @@ function! AdjustHalliganBudget()
     let start = line('.')
     call search('\%>10c\%<41clawn mowing')
     let end = line('.')
-    execute start . "," . end . "pyf ~/.vim/halligan.py"
+    execute start . "," . end . "!~/py/halligan"
     call BalCol()
     call winrestview(sv)
 endfunction
@@ -62,7 +61,8 @@ endfunction
 function! BalCol()
     let sv = winsaveview()
 "    silent %!~/tcl/planbal
-    %pyf ~/.vim/planbal.py
+"    %pyf ~/.vim/planbal.py
+    %!~/py/planbal
     call winrestview(sv)
 endfunction
 
@@ -101,7 +101,8 @@ function! FixReconcileWLastYear()
     let prvyr = ty - 1
     call GoLastClear()
 "    execute ".!~/tcl/planfixrecon " . pyn
-    .pyf ~/.vim/planfixrecon.py
+"    .pyf ~/.vim/planfixrecon.py
+    execute ".!~/py/planfixrecon " . prvyr
 endfunction
 
 function! GoFirstUnclear()
@@ -129,7 +130,6 @@ function! OpenLastYear()
     let py = ty - 1               "  previous year
     let pyn = "plan_" . py        "  previous year's name
     call EditTry(pyn)
-    nmap <buffer> <Leader>l :source ~/.vim/plan.vim<CR>
 endfunction
 
 function! OpenNextYear()
@@ -150,7 +150,8 @@ function! Reconcile()
         let starthere = dohere
     endif
     "execute starthere . "," . dohere . "!~/tcl/planrecon"
-    execute starthere . "," . dohere . "pyf ~/.vim/prec.py"
+    "execute starthere . "," . dohere . "pyf ~/.vim/prec.py"
+    execute starthere . "," . dohere . "!~/py/planrecon"
     call winrestview(sv)
 endfunction
 
