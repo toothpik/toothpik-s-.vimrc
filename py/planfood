@@ -1,0 +1,36 @@
+#!/usr/bin/python3
+#  plan filter to reduce food & atm budget line
+#  assumes first line is the food and last line is the budget
+import locale
+from sys import stdin
+
+#  so we can insert commas in numbers:
+locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
+
+lines = stdin.readlines()
+
+#  food amount
+fa1 = lines[0][47:57].lstrip()
+fa2 = fa1.replace(",", "")
+fa3 = float(fa2)
+
+#  food budget
+fb1 = lines[len(lines) - 1][47:58].lstrip()
+fb2 = fb1.replace(",", "")
+fb3 = float(fb2)
+
+#  food budget after food [debited]
+fbaf = fb3 - fa3
+
+for i in range(len(lines)):
+    if i < len(lines) - 1:
+        print(lines[i].rstrip())
+    else:
+        if fbaf > 0.0:
+            #  we may never have a food budget over $999, but in case:
+            fbafwc = locale.format("%.2f", fbaf, grouping=True)
+            #  new food & atm line
+            nfal = lines[i][:48] + "%9s" % fbafwc
+            print(nfal)
+        else:
+            print("food & atm line should be deleted")
