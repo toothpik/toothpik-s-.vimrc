@@ -1,0 +1,43 @@
+#!/usr/bin/python3
+#  adjust errant reconciliation with previous year's uncleared transactions 
+#  assigned to ,rr in ~/.vim/plan.vim
+#  reads this year's recon line from stdin and last year's plan
+#  name from the command line
+#  2014-Jun-11  coded, not yet tested
+import locale
+from os import environ  
+from sys import argv, exit, stdin
+
+locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
+
+lines = stdin.readlines()
+
+#  year to check
+ytc = argv[1]
+prplan = environ["HOME"] + "/txt/plan_" + ytc
+
+try:
+    F = open(prplan, 'r')
+    L = F.readlines()
+    F.close()
+except IOError:
+    print("cannot open %s for reading" % prplan)
+    exit(1)
+
+#  amount to add
+ata = 0.0
+
+for l in L:
+    cd = l[45]
+    if cd == " ":
+        ta = l[47:57].lstrip().replace(",", "")
+        taf = float(ta)
+        ata += taf
+
+ltf = lines[0]                  #  line to fix
+atf = ltf[71:81]                #  amount to fix
+atf2 = atf.lstrip().replace(",", "")
+atff = float(atf2)
+na = atff + ata                 #  new amount
+nl = ltf[:70] + "%11s" % locale.format("%.2f", na, grouping=True) + ltf[81:]
+print(nl.rstrip())
