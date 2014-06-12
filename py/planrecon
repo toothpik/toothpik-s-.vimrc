@@ -1,0 +1,41 @@
+#!/usr/bin/python3
+#  python reconcile - for use by plan modules
+#  assigned to <Leader>r in ~/.vim/plan.vim
+from datetime import date
+import locale
+from sys import stdin
+
+locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
+
+lines = stdin.readlines()
+
+tm = date.today().strftime("%m")        #  today's month
+td = date.today().strftime("%d")        #  today's day
+if tm[0:1] == "0":
+    tm = tm[1:]
+if td[0:1] == 0:
+    td = td[1:]
+td = tm + "/" + td
+
+ra = 0.0                                #  reconciliation adjustment
+for i in range(len(lines)):
+    l = lines[i].rstrip()
+    cd = l[45]
+    if cd == " ":
+        ata = l[47:57]                  #  amount to add
+        ata2 = ata.lstrip()
+        ata3 = ata2.replace(",", "")
+        ataf = float(ata3)
+        ra += ataf
+    if i < len(lines) - 1:
+        print(l)
+    else:
+        sa = l[61:70]                   #  starting amount
+        sa2 = sa.lstrip()
+        sa3 = sa2.replace(",", "")
+        saf = float(sa3)
+        ba = saf + ra                   #  balance amount
+        bawc = locale.format("%.2f", ba, grouping=True)
+        #  new last line [of range]
+        nll = l[:70] + "%11s" % bawc + "%6s" % td
+        print(nll)
