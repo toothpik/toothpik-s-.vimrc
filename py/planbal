@@ -1,0 +1,45 @@
+#!/usr/bin/python3
+#  plan filter to re-create the balance column
+#  plan balance - mapped to ,b in ~/.vim/plan.vim
+import locale
+from sys import exit, stdin
+
+locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
+
+lines = stdin.readlines()
+
+#  first get starting balance amount from first line
+ba1 = lines[0][60:70].lstrip().replace(",", "")
+baf = float(ba1)
+
+def rebuild_line(line, ba):
+    le = len(line)
+    nbs = locale.format("%.2f", ba, grouping=True)
+    if le == 70:
+        nl = line[:60] + "%10s" % nbs
+    elif le < 70:
+        #  spaces to add
+        sta = " " * (60 - le)
+        nl = line + sta + "%10s" % nbs
+    else:
+        nl = line[:60] + "%10s" % nbs + line[70:]
+    return nl
+
+for i in range(0, len(lines)):
+    #  transaction amount
+    ta = lines[i][47:57].lstrip().replace(",", "")
+    if ta == "----------":
+        print(lines[i].rstrip())
+    elif ta == "":
+        nl = rebuild_line(lines[i].rstrip(), baf)
+        print(nl)
+    else:
+        try:
+            baf -= float(ta)
+        except ValueError:
+            print("line %d causing problems" % i + 1)
+            print("cannot convert <%s> to float" % ta)
+            print("full line <%s>" % lines[i].rstrip())
+            exit(1)
+        nl = rebuild_line(lines[i].rstrip(), baf)
+        print(nl)
