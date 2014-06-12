@@ -1,0 +1,39 @@
+#!/usr/bin/python3
+#  reduce lawn mowing budget by amount on current line
+#  called by ~/.vim/plan.vim
+#  assumes range it filters is from current line (a new Halligan
+#  entry) to the lawn mowing budget line
+#
+import locale
+from sys import stdin
+
+#  so we can insert commas in numbers:
+locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
+
+lines = stdin.readlines()
+
+#  lawn amount
+la1 = lines[0][47:57].lstrip()
+la2 = la1.replace(",", "")
+la3 = float(la2)
+
+#  budget amount
+ba1 = lines[len(lines) - 1][47:57].lstrip()
+ba2 = ba1.replace(",", "")
+ba3 = float(ba2)
+
+#  budget amount after deduction
+baad = ba3 - la3
+
+for i in range(len(lines)):
+    if i < len(lines) - 1:
+        print(lines[i].rstrip())
+    else:
+        if baad > 0.0:
+            #  we will hopefully never have a lawn budget over $999, but in case:
+            baadwc = locale.format("%.2f", baad, grouping=True)
+            #  make a new lawn budget line
+            nlal = lines[i][:48] + "%9s" % baadwc
+            print(nlal)
+        else:
+            print("lawn budget line should be deleted")
