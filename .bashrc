@@ -78,6 +78,7 @@ alias cdt='cd ~/toothpik-s-.vimrc'
 alias cdtt='cd ~/toothpik.github.com'
 alias cdvt='cd ~/.vim-tmp'
 alias l='ls -AgGl --group-directories-first'
+alias ssie='sudo /sbin/ifstatus eth0'
 
 if [ $UID -ne 0 ]; then
     alias pf='sudo pf'
