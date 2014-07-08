@@ -359,6 +359,7 @@ nnoremap <Leader>dq :call EditTry('~/txt/alldateabbr')<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
 nnoremap <Leader>ee :source ~/.vimrc<CR>
 nnoremap <Leader>f :call F1_toggle_width("78")<CR>
+nnoremap <Leader>ff :call Findme()<CR>
 nnoremap <Leader>fff :call FixBlankLinesAtEnd('7')<CR>
 nnoremap <Leader>g :e ~/.gvimrc<CR>
 nnoremap <Leader>gg :source ~/.gvimrc<CR>
@@ -373,8 +374,8 @@ nnoremap <silent> <Leader>jj :call MovePointerDown()<CR>
 nnoremap <Leader>k :s/$/  <---/<CR>
 nnoremap <silent> <Leader>kk :call MovePointerUp()<CR>
 nnoremap <Leader>l :source ~/.vim/i_ctr.vim<CR>
-nnoremap <silent> <Leader>m :call FirstBlankAtEnd()<CR>
-"nnoremap <Leader>n
+nnoremap <silent> <Leader>m :call MakeMeBig()<CR>
+nnoremap <silent> <Leader>n :call FirstBlankAtEnd()<CR>
 nnoremap <silent> <Leader>o :setl fdm=expr<bar>setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldlevel=0 foldcolumn=2<CR>
 nnoremap <silent> <Leader>oo :setlocal foldexpr=0 foldcolumn=0<CR>
 nnoremap <Leader>p :call Paste(0)<CR>
@@ -493,6 +494,13 @@ function! FileTime()
     echo s:isexe s:fnf strftime("%Y-%b-%d %H:%M", s:ft)
 endfunction
 " ----------------------------------------
+"  to reverse the effects of calling Hideme()
+function! Findme()
+    setlocal swapfile
+    setlocal buftype=
+    setlocal bufhidden=
+endfunction
+" ----------------------------------------
 function! FindPointer()
     let save_l = @/
     0
@@ -579,6 +587,16 @@ function! Hideme()
     setlocal bufhidden=hide
 endfunction
 " ----------------------------------------
+function! Incr()
+    let a = line('.') - line("'<")
+    let c = virtcol("'<")
+    if a > 0
+        execute 'normal! ' .c.'|'.a."\<C-a>"
+    endif
+    normal `<
+endfunction
+vnoremap <C-a> :call Incr()<CR>
+" ----------------------------------------
 function! InsertEmDash()
     return ' ― '
 endfunction
@@ -649,6 +667,11 @@ function! MaikallfilesT()
     silent execute 'r!ls -algGt'
     silent g/^total/d
     normal gg
+endfunction
+" ----------------------------------------
+function! MakeMeBig()
+    set lines=58
+    set columns=119
 endfunction
 " ----------------------------------------
 function! MovePointerDown()
