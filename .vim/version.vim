@@ -74,7 +74,7 @@ function! CheckCompile()
     let got_emacs_tags = 1
     let got_farsi = 1
     let got_rightleft = 1
-    let got_python = 0
+"    let got_python = 0
     let hmr = len(va)
     let rp = 4
     while rp < hmr
@@ -94,10 +94,10 @@ function! CheckCompile()
             echo 'rightleft not compiled in              CHECK'
             let got_rightleft = 0
         endif
-        if va[rp] =~ '+python'
-            echo 'python compiled in                     CHECK'
-            let got_python = 1
-        endif
+"        if va[rp] =~ '+python'
+"            echo 'python compiled in                     CHECK'
+"            let got_python = 1
+"        endif
         let rp = rp + 1
     endwhile
     if got_arabic
@@ -112,7 +112,7 @@ function! CheckCompile()
     if got_rightleft
         echo 'rightleft was included, not good'
     endif
-    if ! got_python
-        echo 'python was not included, not good'
-    endif
+"    if ! got_python
+"        echo 'python was not included, not good'
+"    endif
 endfunction
