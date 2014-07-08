@@ -13,4 +13,3 @@ set nonumber
 source ~/.vim/fcd.vim
 source ~/.vim/wpp.vim
 
-badd ~/bin/jtr
