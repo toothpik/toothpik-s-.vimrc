@@ -6,28 +6,28 @@ if has('gui_running')
 endif
 
 let mapleader = ','
-nmap <buffer> <Leader>a :call OpenLastYear()\|source ~/.vim/plan.vim<CR>
-nmap <buffer> <Leader>b :call BalCol()<CR>
-nmap <buffer> <Leader>c :call GoLastClear()<CR>
-nmap <buffer> <Leader>d :call EditTry("~/txt/plan_core")<CR>
-nmap <buffer> <Leader>dd :call EditTry("~/txt/plan_core_other")<CR>
-nmap <buffer> <Leader>ec :e ~/bin/plannew<CR>
-nmap <buffer> <Leader>ee :source ~/.vim/plan.vim<CR>
-nmap <buffer> <Leader>ev :e ~/.vim/plan.vim<CR>
-nmap <buffer> <Leader>f :call AdjustFoodBudget()<CR>
-nmap <buffer> <Leader>g :call OpenNextYear()\|source ~/.vim/plan.vim<CR>
-nmap <buffer> <Leader>h :call AdjustHalliganBudget()<CR>
-nmap <buffer> <Leader>lu :call system("lubk")<CR>
-nmap <buffer> <Leader>n :e ~/txt/plan_notes\|normal G<CR>
-nmap <buffer> <Leader>p :call SyncNextYear()<CR>
-nmap <buffer> <Leader>q :call DisplayLeaders()<CR>
-nmap <buffer> <Leader>r :call Reconcile()<CR>
-nmap <buffer> <Leader>rr :call FixReconcileWLastYear()<CR>
-nmap <buffer> <Leader>s :call SyncWLastYear()<CR>
-nmap <buffer> <Leader>t :call ToggleColorColumn()<CR>
-nmap <buffer> <Leader>uu :call GoFirstUnclear()<CR>
-nmap <buffer> <Leader>u :e ~/txt/usbank<CR>
-nmap <buffer> <Leader>x :call GoLastX()<CR>
+nmap <silent> <buffer> <Leader>a :call OpenLastYear()\|source ~/.vim/plan.vim<CR>
+nmap <silent> <buffer> <Leader>b :call BalCol()<CR>
+nmap <silent> <buffer> <Leader>c :call GoLastClear()<CR>
+nmap <silent> <buffer> <Leader>d :call EditTry("~/txt/plan_core")<CR>
+nmap <silent> <buffer> <Leader>dd :call EditTry("~/txt/plan_core_other")<CR>
+nmap <silent> <buffer> <Leader>ec :e ~/bin/plannew<CR>
+nmap <silent> <buffer> <Leader>ee :source ~/.vim/plan.vim<CR>
+nmap <silent> <buffer> <Leader>ev :e ~/.vim/plan.vim<CR>
+nmap <silent> <buffer> <Leader>f :call AdjustFoodBudget()<CR>
+nmap <silent> <buffer> <Leader>g :call OpenNextYear()\|source ~/.vim/plan.vim<CR>
+nmap <silent> <buffer> <Leader>h :call AdjustHalliganBudget()<CR>
+nmap <silent> <buffer> <Leader>lu :call system("lubk")<CR>
+nmap <silent> <buffer> <Leader>n :e ~/txt/plan_notes\|normal G<CR>
+nmap <silent> <buffer> <Leader>p :call SyncNextYear()<CR>
+nmap <silent> <buffer> <Leader>q :call DisplayLeaders()<CR>
+nmap <silent> <buffer> <Leader>r :silent call Reconcile()<CR>
+nmap <silent> <buffer> <Leader>rr :call FixReconcileWLastYear()<CR>
+nmap <silent> <buffer> <Leader>s :call SyncWLastYear()<CR>
+nmap <silent> <buffer> <Leader>t :call ToggleColorColumn()<CR>
+nmap <silent> <buffer> <Leader>uu :call GoFirstUnclear()<CR>
+nmap <silent> <buffer> <Leader>u :e ~/txt/usbank<CR>
+nmap <silent> <buffer> <Leader>x :call GoLastX()<CR>
 " ------------------------------------------------------------
 iabbr <buffer> dd <c-r>=Fivedate()<CR><c-r>=Eatchar('\s')<CR>
 " ------------------------------------------------------------
@@ -44,7 +44,7 @@ function! AdjustFoodBudget()
 "    execute 'silent ' . startmonth . "," . endmonth . "!~/tcl/planfood"
 "    execute startmonth . "," . endmonth . "pyf ~/.vim/planfood.py"
     execute 'silent ' . curline . "," . endmonth . "!~/py/planfood"
-    call BalCol()
+    silent call BalCol()
     call winrestview(sv)
 endfunction
 
@@ -54,7 +54,7 @@ function! AdjustHalliganBudget()
     call search('\%>10c\%<41clawn mowing')
     let end = line('.')
     execute start . "," . end . "!~/py/halligan"
-    call BalCol()
+    silent call BalCol()
     call winrestview(sv)
 endfunction
 
@@ -141,7 +141,7 @@ endfunction
 
 function! Reconcile()
     let sv = winsaveview()
-    call BalCol()
+    silent call BalCol()
     call GoFirstUnclear()
     let starthere = line(".")
     call GoLastClear()
@@ -151,7 +151,7 @@ function! Reconcile()
     endif
     "execute starthere . "," . dohere . "!~/tcl/planrecon"
     "execute starthere . "," . dohere . "pyf ~/.vim/prec.py"
-    execute starthere . "," . dohere . "!~/py/planrecon"
+    silent execute starthere . "," . dohere . "!~/py/planrecon"
     call winrestview(sv)
 endfunction
 
