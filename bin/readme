@@ -4,16 +4,16 @@ function lexe() {
     for f in "$2"*
     do
         if [ -h "$f" ]; then
-            wl=`file $f`
+            wl=$(file "$f")
             echo "$wl"
         else
             if [ -f "$f" -a -x "$f" ]; then
                 if [[ "${f}" == *.pyc ]]; then
                     printf "%-11s  is a pyc\n" "$f"
                 else
-                    lang=`head -1 "$f" | awk 'BEGIN {FS = "/"} { print $NF }' | awk '{print $1}'`
-                    sl=`2ndline $f`
-                    printf "%-11s [%-7s] %s\n" "$f" "$lang" "${sl#\#  }"
+                    lang=$(head -1 "$f" | awk 'BEGIN {FS = "/"} { print $NF }' | awk '{print $1}')
+                    sl=$(2ndline "$f")
+                    printf "%-13s [%-7s] %s\n" "$f" "$lang" "${sl#\#  }"
                 fi
             fi
         fi
@@ -21,10 +21,10 @@ function lexe() {
 }
 if test $# -lt 1
 then
-    lexe
-elif test $1 == 'v'
+    lexe "$@"
+elif test "$1" == 'v'
 then
-    lexe | vhs -S ~/.vim/readme.vim
+    lexe "$@" | vhs -S ~/.vim/readme.vim
 else
-    lexe | ghs -S ~/.vim/readme.vim
+    lexe "$@" | ghs -S ~/.vim/readme.vim
 fi
