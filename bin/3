@@ -1,23 +1,12 @@
 #!/bin/bash
 #  new and improved cct
-clear
-b 5
 tc=`tput cols`
 pfc=$(( ( ( tc - 75) / 2)  ))
-cct | mio $pfc
-b
-testtodo=`todoo|wc -l`
-if test $testtodo -gt 0; then
-    todoo | mio
+{
     b
-fi
-#  bonus stuff:
-#dsh $tc
-#b
-#uofb | mio $(( pfc - 2 ))
-#b
-#dsh $tc
-#b
-#echo 'moon' | mio $(( pfc + 9 ))
-#mpp | mio $(( pfc + 9 ))
-#b
+    cct | mio $pfc
+    b
+    dsh 80 | mio
+    b
+    rick | mio 18
+} | less
