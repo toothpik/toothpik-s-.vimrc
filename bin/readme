@@ -13,7 +13,7 @@ function lexe() {
                 else
                     lang=$(head -1 "$f" | awk 'BEGIN {FS = "/"} { print $NF }' | awk '{print $1}')
                     sl=$(2ndline "$f")
-                    printf "%-13s [%-7s] %s\n" "$f" "$lang" "${sl#\#  }"
+                    printf "%-14s [%-7s] %s\n" "$f" "$lang" "${sl#\#  }"
                 fi
             fi
         fi
