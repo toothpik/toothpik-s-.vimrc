@@ -13,7 +13,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-set   cursorline
+set nocursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -87,7 +87,7 @@ set   writebackup
 " ----------------------------------------
 "  --- filetype & syntax 
 filetype plugin indent on
-syntax enable
+syntax on
 let readline_has_bash = 1
 "  the following prevents sh.vim from treating '.' as a keyword character
 let g:sh_noisk = 1
@@ -106,8 +106,8 @@ let g:loaded_2html_plugin = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_gzip = 1
 let g:loaded_matchparen = 1
-"let g:loaded_netrw = 1
-"let g:loaded_netrwPlugin = 1
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
 "let g:loaded_vimballPlugin = 1
 let g:loaded_rrhelper = 1
 let g:loaded_tarPlugin = 1
@@ -197,17 +197,10 @@ inoremap <S-F5> <ESC>:call ZeroBlankLinesAtEnd()<CR>
 nnoremap <M-F5> :set paste<CR>
 inoremap <M-F5> <C-O>:set paste<CR>
 " ----------------------------------------
-"  newer versions of netrw may be obtained at
-"  http://www.drchip.org/astronaut/vim/index.html#NETRW
-"  download netrw.vba.gz, move it to ~/.vim
-"nnoremap <silent> <F6> :call MyExplore('')<CR>
-nnoremap <silent> <F6> :Explore<CR>
-"inoremap <silent> <F6> <ESC>:call MyExplore('')<CR>
-inoremap <silent> <F6> <ESC>:Explore<CR>
-"nnoremap <S-F6> :ls<CR>:b
-nnoremap <S-F6> :Rexplore<CR>
-"inoremap <S-F6> <ESC>:ls<CR>:b
-inoremap <S-F6> <ESC>:Rexplore<CR>
+nnoremap <silent> <F6> :call MyExplore('')<CR>
+inoremap <silent> <F6> <ESC>:call MyExplore('')<CR>
+nnoremap <S-F6> :ls<CR>:b
+inoremap <S-F6> <ESC>:ls<CR>:b
 nnoremap <M-F6> :set nopaste<CR>
 inoremap <M-F6> <nop>
 set pastetoggle=<M-F6>
@@ -630,9 +623,8 @@ function! LongBlogDate()
 endfunction
 " ----------------------------------------
 function! Longdate()
-    let d1 = strftime("%A, %e %B %Y, %l:%M%P")
-    let d2 = substitute(d1, "  ", " ", 'g')
-    return d2
+    let d1 = strftime("%Y %B %e  %l:%M%P  %A")
+    return d1
 endfunction
 " ----------------------------------------
 "  make allfiles
