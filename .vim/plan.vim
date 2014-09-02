@@ -3,9 +3,11 @@
 
 if has('gui_running')
     winsize 99 53
+    setlocal cursorline
 endif
 
 let mapleader = ','
+"  WHEN ADDING MAPS, ADD THEM TO DisplayLeaders() TOO
 nmap <silent> <buffer> <Leader>a :call OpenLastYear()\|source ~/.vim/plan.vim<CR>
 nmap <silent> <buffer> <Leader>b :call BalCol()<CR>
 nmap <silent> <buffer> <Leader>c :call GoLastClear()<CR>
@@ -77,6 +79,7 @@ echom 'ee :source ~/.vim/plan.vim'
 echom 'ev :e ~/.vim/plan.vim'
 echom 'f :call AdjustFoodBudget()'
 echom 'g :call OpenNextYear()\|source ~/.vim/plan.vim'
+echom 'h :call AdjustHalliganBudget()'
 echom 'lu :call system("lubk")'
 echom 'n :e ~/txt/plan_notes\|normal G'
 echom 'p :call SyncNextYear()'
