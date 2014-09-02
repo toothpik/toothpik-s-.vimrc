@@ -93,6 +93,10 @@ let readline_has_bash = 1
 let g:sh_noisk = 1
 " ----------------------------------------
 " --- autocommands & plugin mappings
+augroup StartOfLine
+autocmd StartOfLine BufRead * normal 0
+augroup END
+"
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
@@ -117,7 +121,8 @@ let g:no_plugin_maps = 1
 " ----------------------------------------
 " --- special mappings and commands
 if !has("gui_running")
-    colo biogoot
+    "colo biogoot
+    colo default
 endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
@@ -133,16 +138,6 @@ inoremap <Down> <C-O>gj
 nnoremap <Up> gk
 inoremap <Up> <C-O>gk
 imap <C-^> <ESC>:sp #<CR>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  with the addition of unnamedplus to 'clipboard' I believe and hope the
-"  following will be rendered redundant
-"nmap <S-Insert> "+gP
-"vmap <S-Insert> "-d"+P
-"imap <S-Insert> <C-R>+
-"cmap <S-Insert> <C-R>+
-"imap <C-Insert> <C-O>"+y
-"vmap <C-Insert> "+y
-"vmap <S-Del> "+d
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 imap <C-Del> <C-O>daw
 nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzxzt' : 'zc')<cr>
@@ -264,6 +259,7 @@ iabbrev <silent> dd4 <c-r>=repeat('-', 40)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd5 <c-r>=repeat('-', 50)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd6 <c-r>=repeat('-', 60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd7 <c-r>=repeat('-', 70)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dd72 <c-r>=repeat('-', 72)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd8 <c-r>=repeat('-', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd9 <c-r>=repeat('-', 90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd10 <c-r>=repeat('-', 100)<CR><c-r>=Eatchar('\s')<cr>
