@@ -17,10 +17,11 @@ L = F.read()
 F.close()
 LL = L.splitlines()
 lL = len(LL)
-gw = gc = gs = False    #  got white?  etc.
+gw = gc = gs = gt = False    #  got white?  etc.
 white = compile('white')
 colored = compile('colored')
 sheets = compile('sheets')
+towels = compile('towels')
 today = date.today()
 
 #  calculate date difference
@@ -55,6 +56,9 @@ while(lp > -1):
     if not gs and sheets.search(tl):
         cdd(tl, "sheets")
         gs = True
-    if gw and gc and gs:
+    if not gt and towels.search(tl):
+        cdd(tl, "towels")
+        gt = True
+    if gw and gc and gs and gt:
         break
     lp = lp - 1
