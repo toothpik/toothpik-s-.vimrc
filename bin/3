@@ -1,12 +1,17 @@
 #!/bin/bash
 #  new and improved cct
+c
+
+#  line count
+lc=`tput lines`
+#  list count
+lstc=`cct | wc -l`
+#  available blanks
+ab=$(( lc - lstc ))
+#  top blanks
+tc=$(( ab / 5 ))
+b $tc
+
 tc=`tput cols`
 pfc=$(( ( ( tc - 75) / 2)  ))
-{
-    b
-    cct | mio $pfc
-    b
-    dsh 80 | mio
-    b
-    rick | mio 18
-} | less
+cct | mio $pfc
