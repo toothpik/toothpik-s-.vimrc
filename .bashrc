@@ -98,7 +98,7 @@ export VIDIR_EDITOR=vim
 export COLORFGBG="default;default"
 
 #  dangerous path extension of %PWD
-function dp () {
+dp () {
     if [[ $PATH = $PWD:* ]]
     then
         echo "PATH already has $PWD"
@@ -108,7 +108,7 @@ function dp () {
     fi
 }
 #  remove dangerous path -- whew!
-function rdp () {
+rdp () {
     if [[ $PATH = $PWD:* ]]
     then
         export PATH=${PATH#$PWD:}
@@ -117,15 +117,15 @@ function rdp () {
         echo "PATH doesn't have $PWD at the front"
     fi
 }
-function vb () {
+vb () {
     v ~/.bashrc
 }
-function sb () {
+sb () {
     . ~/.bashrc
 }
 
 
-function extract()      # Handy Extract Program.
+extract()      # Handy Extract Program.
 {
     if [ -f $1 ] ; then
         case $1 in
@@ -147,5 +147,5 @@ function extract()      # Handy Extract Program.
     fi
 }
 
-function vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
-function gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -c 'set columns=117' -; }
+vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
+gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -c 'set columns=117' -; }
