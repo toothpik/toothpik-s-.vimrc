@@ -5,3 +5,4 @@ b 13
 psf=$(( ( (`tput cols` - 75) / 2) - 2))
 hlsb|mio $(($psf + 3))
 b 4
+lfe
