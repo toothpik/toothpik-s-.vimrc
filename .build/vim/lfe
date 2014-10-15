@@ -1,0 +1,10 @@
+#!/bin/bash
+#  latest version [of vim received as email patch]
+echo -n "the latest version of vim received as an email patch is "
+grep -q '^ Subject: Patch 7.4.' ~/bin-mail/procmail.log
+if test $? -eq 0; then
+    tl=$(grep '^ Subject: Patch 7.4' ~/bin-mail/procmail.log | tail -1 | sed 's/ Subject: Patch //')
+    echo $tl
+else
+    echo "not available"
+fi
