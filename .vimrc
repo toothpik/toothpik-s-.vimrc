@@ -130,7 +130,7 @@ if !has("gui_running")
 endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
-nnoremap - dd
+"nnoremap - dd
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  some day I'll figure out how to use the following without breaking
 "  scripts (~/.vim/weekly.vim and ~/.vim/lw.vim) that use normal n
