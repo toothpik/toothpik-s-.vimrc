@@ -2,6 +2,7 @@
 #  fix "Today" in weather stream (reads stdin), used by ccw
 #  also fixes "Labor Day" which is always a Monday
 #  ditto "Columbus Day"
+#  also fixes Thanksgiving, which is always a Thursday
 from re import compile
 from datetime import date
 from sys import stdin
@@ -13,12 +14,14 @@ s1 = "This Afternoon"
 s2 = "Late Afternoon"
 s3 = "Labor Day"
 s4 = "Columbus Day"
+s5 = "Thanksgiving"
 
 l0 = compile(s0)
 l1 = compile(s1)
 l2 = compile(s2)
 l3 = compile(s3)
 l4 = compile(s4)
+l5 = compile(s5)
 
 for line in stdin:
     l = line.rstrip()
@@ -32,6 +35,8 @@ for line in stdin:
         nl = 'Monday' + l.lstrip(s3)
     elif l4.search(l):
         nl = 'Monday' + l.lstrip(s4)
+    elif l5.search(l):
+        nl = 'Thursday' + l.lstrip(s5)
     else:
         nl = l
     print(nl)
