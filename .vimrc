@@ -13,11 +13,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish
 set nocursorcolumn
-if has('gui_running')
-    set cursorline
-else
-    set nocursorline
-endif
+set nocursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -90,6 +86,7 @@ set nowrapscan
 set   writebackup
 " ----------------------------------------
 "  --- filetype & syntax 
+"  filetype must always preceed syntax statements:
 filetype plugin indent on
 syntax on
 let readline_has_bash = 1
@@ -97,9 +94,10 @@ let readline_has_bash = 1
 let g:sh_noisk = 1
 " ----------------------------------------
 " --- autocommands & plugin mappings
-augroup StartOfLine
-autocmd StartOfLine BufRead * normal 0
-augroup END
+"augroup StartOfLine
+"    au!
+"    au StartOfLine BufRead * normal 0
+"augroup END
 "
 augroup vimrcgrp
     au!
@@ -130,19 +128,18 @@ if !has("gui_running")
 endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
-"nnoremap - dd
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap - dd
+" ----------------------------------------
 "  some day I'll figure out how to use the following without breaking
 "  scripts (~/.vim/weekly.vim and ~/.vim/lw.vim) that use normal n
 "nnoremap n nzz
 "nnoremap N Nzz
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ----------------------------------------
 nnoremap <Down> gj
 inoremap <Down> <C-O>gj
 nnoremap <Up> gk
 inoremap <Up> <C-O>gk
-imap <C-^> <ESC>:sp #<CR>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ----------------------------------------
 imap <C-Del> <C-O>daw
 nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzxzt' : 'zc')<cr>
 "  scroll left and right when 'nowrap':
