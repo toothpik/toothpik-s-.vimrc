@@ -1,17 +1,25 @@
 #!/bin/bash
 #  new and improved cct
 c
+b
 
-#  line count
-lc=`tput lines`
-#  list count
-lstc=`cct | wc -l`
-#  available blanks
-ab=$(( lc - lstc ))
-#  top blanks
-tc=$(( ab / 5 ))
-b $tc
-
+if [ $# -gt 0 ]
+then 
+    cm1p2
+    b 2
+fi
 tc=`tput cols`
 pfc=$(( ( ( tc - 75) / 2)  ))
 cct | mio $pfc
+
+b 2
+cat ~/txt/weekly | awk -f ~/fcday.awk | mio $pfc
+
+b 2
+sll | mio $pfc
+
+b 2
+nfs | mio $pfc
+
+b 2
+dslh | mio $pfc
