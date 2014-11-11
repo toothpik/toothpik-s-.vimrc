@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+#  fix veterans day - filter for weather
+from datetime import date
+from re import compile
+from sys import stdin
+
+s0 = "Independence Day"
+J4 = compile(s0)
+
+s1 = "Veterans Day"
+VD = compile(s1)
+
+s2 = "Christmas"
+XM = compile(s2)
+
+def fixit(instr, ss, mo, da):  
+    nl2a = date.today()
+    nl2b = date(nl2a.year, mo, da)
+    nl2 = nl2b.strftime("%A")
+    nl3 = nl2 + instr.lstrip(ss)
+    return nl3
+
+for line in stdin:
+    if J4.search(line):
+        newline = fixit(line, s0, 7, 4)
+    elif VD.search(line):
+        newline = fixit(line, s1, 11, 11)
+    elif XM.search(line):
+        newline = fixit(line, s2, 12, 25)
+    else:
+        newline = line
+    print(newline.rstrip())
+
