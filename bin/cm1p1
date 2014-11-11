@@ -53,4 +53,4 @@ if lm2 < lg:
         m2.append(" "*22)
 #
 for c in range(lg):
-    print("   %22s  %-22s %25s" % (m0[c], m1[c], m2[c]))
+    print("  %22s  %-22s %25s" % (m0[c], m1[c], m2[c]))
