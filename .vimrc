@@ -94,11 +94,6 @@ let readline_has_bash = 1
 let g:sh_noisk = 1
 " ----------------------------------------
 " --- autocommands & plugin mappings
-"augroup StartOfLine
-"    au!
-"    au StartOfLine BufRead * normal 0
-"augroup END
-"
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
@@ -122,23 +117,20 @@ let g:no_plugin_maps = 1
 "let g:no_mail_maps = 1
 " ----------------------------------------
 " --- special mappings and commands
-if !has("gui_running")
+"if !has("gui_running")
     "colo biogoot
-    colo default
-endif
+    "colo default
+    colo morning
+"endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
 nnoremap - dd
 " ----------------------------------------
 "  some day I'll figure out how to use the following without breaking
 "  scripts (~/.vim/weekly.vim and ~/.vim/lw.vim) that use normal n
-"nnoremap n nzz
-"nnoremap N Nzz
-" ----------------------------------------
-nnoremap <Down> gj
-inoremap <Down> <C-O>gj
-nnoremap <Up> gk
-inoremap <Up> <C-O>gk
+nnoremap n nzz
+nnoremap N Nzz
+"  easy -- stop using weekly vim and the other
 " ----------------------------------------
 imap <C-Del> <C-O>daw
 nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzxzt' : 'zc')<cr>
@@ -305,6 +297,7 @@ iabbrev <silent> ll7 <c-r>=repeat('_', 70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ll8 <c-r>=repeat('_', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ll9 <c-r>=repeat('_', 90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ll10 <c-r>=repeat('_', 100)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> nbg <c-r>=strftime("%A  %Y-%b-%d  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul1 <c-r>=Scaleme(10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul10 <c-r>=Scaleme(100)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul11 <c-r>=Scaleme(110)<CR><c-r>=Eatchar('\s')<cr>
@@ -373,6 +366,7 @@ nnoremap <Leader>P :call Paste(1)<CR>
 nnoremap <Leader>q :call EditTry("~/.vim/leaders")<CR>
 nnoremap <silent> <Leader>r :silent set ruler!<CR>
 nnoremap <silent> <Leader>s :windo set scrollbind!<CR>
+nnoremap <silent> <Leader>sm :source ~/.vim/smr.vim<CR>
 nnoremap <silent> <Leader>ss :silent call ToggleScrollbar()<CR>
 nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <silent> <Leader>u :call FileTime()<CR>
