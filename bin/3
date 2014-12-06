@@ -3,7 +3,7 @@
 c
 b
 
-if [ $# -gt 0 ]
+if [ $# -eq 0 ]
 then 
     cm1p2
     b 2
