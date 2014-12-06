@@ -14,7 +14,7 @@ s1 = "This Afternoon"
 s2 = "Late Afternoon"
 s3 = "Labor Day"
 s4 = "Columbus Day"
-s5 = "Thanksgiving"
+s5 = "Thanksgiving Day"
 
 l0 = compile(s0)
 l1 = compile(s1)
