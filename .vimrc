@@ -109,7 +109,9 @@ let g:loaded_gzip = 1
 let g:loaded_matchparen = 1
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
-"let g:loaded_vimballPlugin = 1
+"let g:netrw_banner = 0
+"let g:netrw_liststyle = 1
+let g:loaded_vimballPlugin = 1
 let g:loaded_rrhelper = 1
 let g:loaded_tarPlugin = 1
 let g:loaded_zipPlugin = 1
@@ -117,21 +119,12 @@ let g:no_plugin_maps = 1
 "let g:no_mail_maps = 1
 " ----------------------------------------
 " --- special mappings and commands
-"if !has("gui_running")
-    "colo biogoot
-    "colo default
-    colo morning
-"endif
+colo morning2
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
 nnoremap - dd
-" ----------------------------------------
-"  some day I'll figure out how to use the following without breaking
-"  scripts (~/.vim/weekly.vim and ~/.vim/lw.vim) that use normal n
 nnoremap n nzz
 nnoremap N Nzz
-"  easy -- stop using weekly vim and the other
-" ----------------------------------------
 imap <C-Del> <C-O>daw
 nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzxzt' : 'zc')<cr>
 "  scroll left and right when 'nowrap':
@@ -142,8 +135,6 @@ vmap > >gv
 vmap < <gv
 nnoremap ; :
 nmap . .`[
-let g:netrw_banner = 0
-let g:netrw_liststyle = 1
 command! -range D <line1>,<line2>d | norm <C-o>
 " ----------------------------------------
 " --- ex commands
