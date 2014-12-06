@@ -5,7 +5,9 @@ if test $# -eq 0; then
     php ~/php/cw.php > ~/.rawweather
 fi
 c
-ta=$(( `tput lines` - 7 ))
+b
+cm1p2
+b
 python ~/py/parseweather.py | head -5 | mio
 printf "\n"
-python ~/py/parseweather.py | tail -n +6 | fixtoday | fvd | fmt | mio | head -$ta
+python ~/py/parseweather.py | tail -n +6 | fixtoday | fvd | fmt | mio 
