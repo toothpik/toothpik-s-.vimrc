@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#  fix veterans day - filter for weather
+#  fix veterans day - filter for weather - used by ccw
 from datetime import date
 from re import compile
 from sys import stdin
@@ -10,7 +10,7 @@ J4 = compile(s0)
 s1 = "Veterans Day"
 VD = compile(s1)
 
-s2 = "Christmas"
+s2 = "Christmas Day"
 XM = compile(s2)
 
 def fixit(instr, ss, mo, da):  
