@@ -1,5 +1,5 @@
 " --- options 
-set noautochdir
+set   autochdir
 set   autoindent
 set   autoread
 set   backspace=indent,eol,start
@@ -186,8 +186,8 @@ set pastetoggle=<M-F6>
 " ----------------------------------------
 nnoremap <silent> <F7> :set spell!<CR>
 inoremap <silent> <F7> <ESC>:set spell!<CR>
-nnoremap <silent> <S-F7> :call CdCurBuf()<CR>
-inoremap <silent> <S-F7> <C-O>:call CdCurBuf()<CR>
+nnoremap <silent> <S-F7> :call Acdmo()<CR>
+inoremap <silent> <S-F7> <C-O>:call Acdmo()<CR>
 " ----------------------------------------
 nnoremap <silent> <F8> :m+<CR>
 inoremap <silent> <F8> <ESC>:m+<CR>gi
@@ -326,7 +326,7 @@ iabbrev %% ⌘
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 "nnoremap <Leader>b
-nnoremap <silent><Leader>c :call Acdmo()<CR>
+nnoremap <silent><Leader>c :call CdCurBuf()<CR>
 "nnoremap <Leader>d
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>dq :call EditTry('~/txt/alldateabbr')<CR>
@@ -361,7 +361,6 @@ nnoremap <silent> <Leader>sm :source ~/.vim/smr.vim<CR>
 nnoremap <silent> <Leader>ss :silent call ToggleScrollbar()<CR>
 nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <silent> <Leader>u :call FileTime()<CR>
-nnoremap <Leader>uu :call Unhideme()<CR>
 nnoremap <Leader>v :source ~/.vim/plan.vim<CR>
 nnoremap <Leader>w :call F1_toggle_width("78")<CR>
 "nnoremap <Leader>x
@@ -829,12 +828,6 @@ function! ToggleScrollbar()
     else
         set guioptions+=r
     endif
-endfunction
-" ----------------------------------------
-function! Unhideme()
-    setlocal swapfile
-    setlocal buftype=""
-    setlocal bufhidden=""
 endfunction
 " ----------------------------------------
 function! ZeroBlankLinesAtEnd()
