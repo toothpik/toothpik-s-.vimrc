@@ -13,6 +13,19 @@ VD = compile(s1)
 s2 = "Christmas Day"
 XM = compile(s2)
 
+s3 = "New Year's Day"
+NY = compile(s3)
+
+def fixNYD(instr, ss):
+    #  New Year's Day is always Jan 1, but can be either next year or today
+    testm = date.today().strftime("%b")
+    if testm == 'Dec':
+        nxtyr = int(date.today().strftime("%Y")) + 1
+        nyd = date(nxtyr, 1, 1).strftime("%A")
+    else:
+        nyd = date.today().strftime("%A")
+    return nyd + instr.lstrip(ss)
+
 def fixit(instr, ss, mo, da):  
     nl2a = date.today()
     nl2b = date(nl2a.year, mo, da)
@@ -27,6 +40,8 @@ for line in stdin:
         newline = fixit(line, s1, 11, 11)
     elif XM.search(line):
         newline = fixit(line, s2, 12, 25)
+    elif NY.search(line):
+        newline = fixNYD(line, s3)
     else:
         newline = line
     print(newline.rstrip())
