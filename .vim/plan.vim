@@ -162,6 +162,9 @@ function! SyncWLastYear()
     let ty = expand("%")[5:8]     "  this year
     let py = ty - 1               "  previous year
     let pyn = "plan_" . py        "  previous year's name
+"  FIXME:  the following $NF returns the date on a reconciliation
+"          entry if that line has a reconciliation -- need to use
+"          cut or something similar to get the last balance
     let cmd = "tail -2 " . pyn . " | head -1 | awk '{ print $NF }'"
     let lyeb = system(cmd)[:-2]   "  last year's ending balance
     let lolyeb = strlen(lyeb)     "  length of lyeb
