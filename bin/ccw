@@ -8,6 +8,11 @@ c
 b
 cm1p2
 b
+if ! test -s ~/.rawweather
+then
+    echo 'no rawweather available'
+    exit 1
+fi
 python ~/py/parseweather.py | head -5 | mio
 printf "\n"
 python ~/py/parseweather.py | tail -n +6 | fixtoday | fvd | fmt | mio 
