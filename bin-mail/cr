@@ -1,14 +1,10 @@
 #!/bin/bash
 #  ccr fancified (lists today's mail folders)
+psf=$(( ( `tput cols` - 75 ) / 2 - 2))
 clear
 b
-psf=$(( ( `tput cols` - 75 ) / 2 - 2))
-tsl=`tput lines`
-loo=`ccr | wc -l`
-dp=$(( (tsl - loo) / 3  - 5))
-if test $dp -gt 0; then
-    b $dp
-fi
+cm1p2
+b 2
 ccr | mio $(( psf + 18 ))
 b
 epl | mio $(( psf + 18 ))
