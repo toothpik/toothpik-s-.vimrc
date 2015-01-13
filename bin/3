@@ -3,11 +3,11 @@
 c
 b
 
-if [ $# -eq 0 ]
-then 
-    cm1p2
-    b 2
-fi
+#if [ $# -eq 0 ]
+#then 
+#    cm1p2
+#    b 2
+#fi
 tc=`tput cols`
 pfc=$(( ( ( tc - 75) / 2)  ))
 cct | mio $pfc
@@ -23,3 +23,6 @@ nfs | mio $pfc
 
 b 2
 dslh | mio $pfc
+
+b 2
+tv2 | mio $(( pfc - 10 ))
