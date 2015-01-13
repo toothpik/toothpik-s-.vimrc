@@ -33,6 +33,7 @@ set   laststatus=0
 set nolazyredraw
 set   linebreak
 set   listchars=eol:$,extends:»,precedes:«
+set noloadplugins
 set nomore
 set   mouse=ar
 set   mousemodel=popup_setpos
@@ -118,7 +119,7 @@ let g:loaded_zipPlugin = 1
 let g:no_plugin_maps = 1
 "let g:no_mail_maps = 1
 " ----------------------------------------
-" --- special mappings and commands
+" --- special mappings
 colo morning2
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
@@ -135,13 +136,13 @@ vmap > >gv
 vmap < <gv
 nnoremap ; :
 nmap . .`[
-command! -range D <line1>,<line2>d | norm <C-o>
 " ----------------------------------------
 " --- ex commands
 command! BD b # | bd #
+command! -range D <line1>,<line2>d | norm <C-o>
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
 command! -nargs=+ H execute 'silent help <args>' | only
+command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
 command! Xbit call SetExecutableBit()
 " ----------------------------------------
 " --- F-key mappings
@@ -256,6 +257,7 @@ iabbrev <silent> dddt <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds4 <c-r>=strftime("%Y-%B-%d  %A")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddss <c-r>=strftime("%Y-%b-%d  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ddt  <c-r>=strftime("%Y %b %d  %a  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee1 <c-r>=repeat('=', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee2 <c-r>=repeat('=', 20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee3 <c-r>=repeat('=', 30)<CR><c-r>=Eatchar('\s')<cr>
@@ -416,7 +418,23 @@ function! CountBlankLinesAtEnd()
     echo printf("%s  has  %d  blank line%s at the end", s:tn, s:bc, s:ps)
 endfunction
 " ----------------------------------------
-"  from :h iabbreviation
+"  DelFromAllfiles should be called to delete the file on current
+"  line in an .allfiles module
+function! DelFromAllfiles()
+    let words = split(getline('.'))
+    let lw = words[len(words)-1]
+    if lw =~ '^\~'
+        let lw = $HOME . substitute(lw, '^\~', "", "")
+    endif
+    if isdirectory(lw)
+        echomsg 'you dont want to be deleting directories w DelFromAllfiles ' . lw
+    else
+        execute 'silent !rm ' . lw
+        silent d
+    endif
+endfunction
+" ----------------------------------------
+"  from :help iabbreviation
 function! Eatchar(pat)
     let c = nr2char(getchar(0))
     return (c =~ a:pat) ? '' : c
@@ -607,6 +625,11 @@ function! Maikallfiles()
     if l:tst_name != ".allfiles"
         call EditTry(".allfiles")
     endif
+"  the reason I stopped with this is I don't like the idea that if I use
+"  vf to find, then edit a file, F8 will be defined as DelFromAllfiles in
+"  that edit session
+"  I wanted it on F8 because that's what mc uses
+"    nnoremap <silent> <F8> :call DelFromAllfiles()<CR>
     call Hideme()
     silent %d
     0r!pwd
@@ -626,6 +649,7 @@ function! MaikallfilesT()
             edit .allfiles
         endif
     endif
+"    nnoremap <silent> <F8> :call DelFromAllfiles()<CR>
     call Hideme()
     silent %d
     0r!pwd
