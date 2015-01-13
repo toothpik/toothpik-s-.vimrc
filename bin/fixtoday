@@ -3,6 +3,7 @@
 #  also fixes "Labor Day" which is always a Monday
 #  ditto "Columbus Day"
 #  also fixes Thanksgiving, which is always a Thursday
+#  and now M.L.King Day, always the 3rd Monday of Jan
 from re import compile
 from datetime import date
 from sys import stdin
@@ -15,6 +16,7 @@ s2 = "Late Afternoon"
 s3 = "Labor Day"
 s4 = "Columbus Day"
 s5 = "Thanksgiving Day"
+s6 = "M.L.King Day"
 
 l0 = compile(s0)
 l1 = compile(s1)
@@ -22,21 +24,24 @@ l2 = compile(s2)
 l3 = compile(s3)
 l4 = compile(s4)
 l5 = compile(s5)
+l6 = compile(s6)
 
 for line in stdin:
     l = line.rstrip()
     if l0.search(l):
         nl = tod + l.lstrip(s0)
     elif l1.search(l):
-        nl = tod + " afternoon " + l.lstrip(s1)
+        nl = tod + " afternoon" + l.lstrip(s1)
     elif l2.search(l):
-        nl = tod + " afternoon " + l.lstrip(s2)
+        nl = tod + " afternoon" + l.lstrip(s2)
     elif l3.search(l):
         nl = 'Monday' + l.lstrip(s3)
     elif l4.search(l):
         nl = 'Monday' + l.lstrip(s4)
     elif l5.search(l):
         nl = 'Thursday' + l.lstrip(s5)
+    elif l6.search(l):
+        nl = 'Monday' + l.lstrip(s6)
     else:
         nl = l
     print(nl)
