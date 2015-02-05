@@ -2,8 +2,8 @@
 #  battery life on steroids
 clear
 b 
-cm1p2
-b
+# cm1p2
+#b
 tcols=`tput cols`
 hm=$(( ( (tcols - 75) / 2) - 1 ))
 {
