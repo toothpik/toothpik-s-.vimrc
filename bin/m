@@ -2,8 +2,8 @@
 #  print current plan data
 c
 b
-cm1p2
-b
+#cm1p2
+#b
 limit=$((`tput lines` - 2))
 hmc=$(( ( ( (`tput cols`) - 87) / 2 ) - 1 ))
 wm=m`date '+%y'`            #  which m
