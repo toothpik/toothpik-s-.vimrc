@@ -6,8 +6,8 @@ if test $# -eq 0; then
 fi
 c
 b
-cm1p2
-b
+#cm1p2
+#b
 if ! test -s ~/.rawweather
 then
     echo 'no rawweather available'
