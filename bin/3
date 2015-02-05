@@ -1,5 +1,5 @@
 #!/bin/bash
-#  new and improved cct
+#  new and improved cct (clear and countdowns)
 c
 b
 
@@ -13,12 +13,15 @@ pfc=$(( ( ( tc - 75) / 2)  ))
 cct | mio $pfc
 
 b 2
+#  weeklies
 cat ~/txt/weekly | awk -f ~/fcday.awk | mio $pfc
 
 b 2
+#  show laundry list
 sll | mio $pfc
 
 b 2
+#  next fiscal start
 nfs | mio $pfc
 
 b 2
