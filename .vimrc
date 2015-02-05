@@ -155,7 +155,7 @@ inoremap <S-F1> <C-O>:call F1_toggle_width("78")<CR>
 nnoremap <F2> o
 inoremap <F2> <C-O>o
 nnoremap <S-F2> O
-inoremap <S-F2> <C-O>O
+inoremap <S-F2> <ESC>O
 " ----------------------------------------
 nnoremap <silent> <F3> :bdelete<CR>
 inoremap <F3> <ESC>:bdelete<CR>
