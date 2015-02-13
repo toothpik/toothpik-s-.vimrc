@@ -3,7 +3,6 @@
 #  assigned to ,rr in ~/.vim/plan.vim
 #  reads this year's recon line from stdin and last year's plan
 #  name from the command line
-#  2014-Jun-11  coded, not yet tested
 import locale
 from os import environ  
 from sys import argv, exit, stdin
