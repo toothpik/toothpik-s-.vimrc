@@ -1,5 +1,6 @@
 #!/usr/bin/tclsh
-#  text plan reconcile fixer
+#  text plan reconcile fixer, used by ~/.vim/plan.vim
+#                             or not -- it's commented out today (2015-Feb-05)  
 #  for fixing a reconciliation that is off due to unclear transactions
 #  in the previous year's plan -- for use in fiscal january
 #  currently mapped to ,rr
