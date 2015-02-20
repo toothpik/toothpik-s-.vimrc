@@ -69,6 +69,10 @@ while ($_ = <DAT>) {
     if (/^   Mar 17/) {
         $_ = &adhol("St. Patrick's Day");
     }
+    #  help to avoid pranks?
+    if (/^   Apr  1/) {
+        $_ = &adhol("April Fool's Day");
+    }
     #  Easter is in here somewhere
     if (/^   $easter/) {
         $_ = &adhol("Easter");
