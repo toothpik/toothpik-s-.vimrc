@@ -6,4 +6,5 @@
 #      sudo cpan i /Date-Easter/
 #  should install it for you if you've recently rebuilt the box and
 #  don't have it yet
+#              birthdays    holidays       DST
 crt_tocal $1 | adbirtt $1 | adholtt $1 | addsttt
