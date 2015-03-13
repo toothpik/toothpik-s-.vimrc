@@ -29,13 +29,13 @@ class MyParser(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         for a in attrs:
-            if a[0] == "class" and a[1] == "current-conditions-timestamp":
+            if a[0] == "class" and a[1] == "current_conditions_detail":
                 self.ts = True
             if a[0] == "class" and a[1] == "myforecast-current-lrg":
                 self.tmp = True
             if a[0] == "class" and a[1] == "current-conditions-detail":
                 self.hum = True
-            if a[0] == "class" and a[1] == "point-forecast-7-day":
+            if a[0] == "class" and a[1] == "detailed-forecast-body":
                 self.grab = True
 
     def handle_endtag(self, tag):
