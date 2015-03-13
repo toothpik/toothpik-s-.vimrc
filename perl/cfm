@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#  current fiscal month -- for use by lfy
+#  current fiscal month -- for use by ~/bin/lfy
 open(DAT, '-');
 while ($fms = <DAT>) {
     chop($fms);
