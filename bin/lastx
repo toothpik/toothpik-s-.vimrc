@@ -1,4 +1,4 @@
 #!/bin/bash
-#  last clear transaction in plan
+#  last x-transaction in plan
 wm=m`date '+%y'`            #  which m
 $wm | awk -f ~/lastx.awk
