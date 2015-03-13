@@ -127,11 +127,11 @@ while ($_ = <DAT>) {
             $_ = &adhol("Columbus Day");
         }
     }
-    #
+    #  Halloween
     if (/^   Oct 31/) {
         $_ = &adhol("Halloween");
     }
-    #
+    #  Veteran's
     if (/^   Nov 11/) {
         $_ = &adhol("Veteran's Day");
     }
@@ -143,11 +143,11 @@ while ($_ = <DAT>) {
             $_ = &adhol("Thanksgiving");
         }
     }
-    #
+    #  Christmas
     if (/^   Dec 25/) {
         $_ = &adhol("Christmas");
     }
-    #
+    #  New Year's Eve
     if (/^   Dec 31/) {
         $_ = &adhol("New Year's Eve");
     }
