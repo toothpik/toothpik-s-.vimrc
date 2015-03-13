@@ -1,31 +1,43 @@
 #!/bin/bash
 #  new and improved cct (clear and countdowns)
-c
-b
+#  #########################################################
+#  #########################################################
+#  ####                                                 ####
+#  ####  when making changes here make them to 3nc too  ####
+#  ####                                                 ####
+#  ####  last update  2015-Feb-26                       ####
+#  ####                                                 ####
+#  #########################################################
+#  #########################################################
 
-#if [ $# -eq 0 ]
-#then 
-#    cm1p2
-#    b 2
-#fi
 tc=`tput cols`
 pfc=$(( ( ( tc - 75) / 2)  ))
+
+c
+b
+#  countdown list
 cct | mio $pfc
 
-b 2
+b
 #  weeklies
-cat ~/txt/weekly | awk -f ~/fcday.awk | mio $pfc
+cat ~/txt/weekly | wkly2 | sed 's/---/───/' | mio $pfc
 
-b 2
+b
 #  show laundry list
 sll | mio $pfc
 
-b 2
+b
+#  schedule
+sched | mio $pfc
+
+b
 #  next fiscal start
 nfs | mio $pfc
 
-b 2
+b
+#  days since last haircut
 dslh | mio $pfc
 
-b 2
-tv2 | mio $(( pfc - 10 ))
+b
+#  next moon phase
+nmp | mio $pfc
