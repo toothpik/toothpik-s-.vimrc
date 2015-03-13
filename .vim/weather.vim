@@ -22,6 +22,6 @@ function! Makemeweather()
     !php ~/php/cw.php > ~/.rawweather
     silent %d
     silent 0read !python ~/py/parseweather.py | head -5
-    silent read !python  ~/py/parseweather.py | tail -n +6 | fixtoday | fmt
+    silent read !python  ~/py/parseweather.py | tail -n +6 | fixtoday | fvd | fmt
     1
 endfunction
