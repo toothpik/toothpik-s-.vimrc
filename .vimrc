@@ -11,7 +11,7 @@ set   clipboard=autoselect,exclude:cons,unnamedplus
 set   cmdheight=1
 set   comments-=fb:-
 set   confirm
-set   cryptmethod=blowfish
+set   cryptmethod=blowfish2
 set nocursorcolumn
 set nocursorline
 set nodigraph
@@ -33,7 +33,7 @@ set   laststatus=0
 set nolazyredraw
 set   linebreak
 set   listchars=eol:$,extends:»,precedes:«
-set noloadplugins
+set   loadplugins
 set nomore
 set   mouse=ar
 set   mousemodel=popup_setpos
@@ -120,7 +120,9 @@ let g:no_plugin_maps = 1
 "let g:no_mail_maps = 1
 " ----------------------------------------
 " --- special mappings
-colo morning2
+if !has('gui_running')
+    colo default
+endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
 nnoremap - dd
@@ -321,7 +323,7 @@ iabbrev %% ⌘
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 "nnoremap <Leader>b
-nnoremap <silent><Leader>c :call CdCurBuf()<CR>
+"nnoremap <silent><Leader>c
 "nnoremap <Leader>d
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>dq :call EditTry('~/txt/alldateabbr')<CR>
@@ -350,7 +352,7 @@ nnoremap <silent> <Leader>oo :setlocal foldexpr=0 foldcolumn=0<CR>
 nnoremap <Leader>p :call Paste(0)<CR>
 nnoremap <Leader>P :call Paste(1)<CR>
 nnoremap <Leader>q :call EditTry("~/.vim/leaders")<CR>
-nnoremap <silent> <Leader>r :silent set ruler!<CR>
+nnoremap <silent> <Leader>r :silent call ToggleRuler()<CR>
 nnoremap <silent> <Leader>s :windo set scrollbind!<CR>
 nnoremap <silent> <Leader>sm :source ~/.vim/smr.vim<CR>
 nnoremap <silent> <Leader>ss :silent call ToggleScrollbar()<CR>
@@ -563,7 +565,7 @@ endfunction
 function! HelpgrepScrollers()
     silent! nmap <F6> :cnext<CR>
     silent! nmap <S-F6> :cprev<CR>
-    echo 'helpgrep scrollers :cn and :cp added to F6 and S-F6'
+    echo 'helpgrep scrollers :cn and :cp mapped to F6 and S-F6'
 endfunction
 " ----------------------------------------
 function! Hideme()
@@ -836,6 +838,16 @@ function! ToggleExpandtab()
         echo "expandtab"
         setlocal expandtab
         setlocal softtabstop=4
+    endif
+endfunction
+" ----------------------------------------
+function! ToggleRuler()
+    if &ruler
+        set noruler
+        redraw!
+    else
+        set ruler
+        redraw!
     endif
 endfunction
 " ----------------------------------------
