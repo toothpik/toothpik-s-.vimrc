@@ -656,7 +656,7 @@ function! MaikallfilesT()
     silent %d
     0r!pwd
     normal o
-    silent execute 'r!ls -algGt'
+    silent execute 'r!ls -at'
     silent g/^total/d
     normal gg
 endfunction
