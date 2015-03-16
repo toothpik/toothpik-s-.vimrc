@@ -20,7 +20,8 @@ cct | mio $pfc
 
 b
 #  weeklies
-cat ~/txt/weekly | wkly2 | sed 's/---/───/' | mio $pfc
+#cat ~/txt/weekly | wkly2 | sed 's/---/───/' | mio $pfc
+cat ~/txt/weekly | awk -f ~/fcday.awk  | mio $pfc
 
 b
 #  show laundry list
