@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8
+#  the above coding line works only when it's on line #2
+#  necessary to handle the ° in temperature
 #  parse weather module created by ccw
-#  this module uses encoding:  utf-8
 from HTMLParser import HTMLParser
 from os import environ
 from sys import exit
