@@ -34,6 +34,13 @@ except IOError:
    exit (1)
 
 wa = saveLine.split()
+#  ---------------------------------------
+#print "here we go (zero based)"
+#i = 0
+#while i < len(wa):
+#    print "%d) %s" % (i, wa[i])
+#    i += 1
+#  ---------------------------------------
 ls = wa[7]     # last sleep
 ss = wa[11]    # sleep seconds
 ampm = wa[8]   # AM or PM
