@@ -42,6 +42,21 @@ hour to make it look right, then print from there
 
 (honestly there must be a better way)
 
+------------------------------------------------------------
+2015-Mar-18 14:04
+
+when you start going to a new store for food, places where that debit
+transaction need to be added are:
+
+    ~/bin/mft
+
+I had thought ~/.vim/plan.vim or ~/py/planfood would need a tweak when I
+went to the Walmart Food Market for the first time but so far mft is the
+only place I've found that needs it
+
+
+
+
 
 
 
