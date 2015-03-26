@@ -37,6 +37,7 @@ let @a = "atm - gladstone"
 let @f = "festival"
 let @h = "Halligan Lawn Services"
 let @s = "Sunfresh #107"
+let @w = "Walmart Food Market"
 " ------------------------------------------------------------
 function! AdjustFoodBudget()
     let sv = winsaveview()
