@@ -3,7 +3,7 @@
 #  assigned to <Leader>r in ~/.vim/plan.vim
 from datetime import date
 import locale
-from sys import stdin
+from sys import exit, stdin
 
 locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
 
@@ -25,7 +25,10 @@ for i in range(len(lines)):
         ata = l[47:57]                  #  amount to add
         ata2 = ata.lstrip()
         ata3 = ata2.replace(",", "")
-        ataf = float(ata3)
+        try:
+            ataf = float(ata3)
+        except ValueError:
+            print("non-numeric in line: %s" % l)
         ra += ataf
     if i < len(lines) - 1:
         print(l)
@@ -33,7 +36,11 @@ for i in range(len(lines)):
         sa = l[61:70]                   #  starting amount
         sa2 = sa.lstrip()
         sa3 = sa2.replace(",", "")
-        saf = float(sa3)
+        try:
+            saf = float(sa3)
+        except ValueError:
+            print("non-numeric in line: %s" % l)
+            exit(1)
         ba = saf + ra                   #  balance amount
         bawc = locale.format("%.2f", ba, grouping=True)
         #  new last line [of range]
