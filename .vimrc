@@ -1,4 +1,4 @@
-" --- options 
+" --- options  {{{1
 set   autochdir
 set   autoindent
 set   autoread
@@ -13,7 +13,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish2
 set nocursorcolumn
-set nocursorline
+set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -49,7 +49,7 @@ set   selectmode+=key
 set noshiftround
 set   shiftwidth=4
 set   shortmess=aIoOtTc
-let   &showbreak = "» "
+let   &showbreak = "▶ "
 set   showcmd
 set   showmode
 set noshowmatch
@@ -86,7 +86,7 @@ set   wrap
 set nowrapscan
 set   writebackup
 " ----------------------------------------
-"  --- filetype & syntax 
+"  --- filetype & syntax  {{{1
 "  filetype must always preceed syntax statements:
 filetype plugin indent on
 syntax on
@@ -94,7 +94,7 @@ let readline_has_bash = 1
 "  the following prevents sh.vim from treating '.' as a keyword character
 let g:sh_noisk = 1
 " ----------------------------------------
-" --- autocommands & plugin mappings
+" --- autocommands & plugin mappings  {{{1
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
@@ -112,16 +112,16 @@ let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 "let g:netrw_banner = 0
 "let g:netrw_liststyle = 1
-let g:loaded_vimballPlugin = 1
+"let g:loaded_vimballPlugin = 1
 let g:loaded_rrhelper = 1
 let g:loaded_tarPlugin = 1
 let g:loaded_zipPlugin = 1
 let g:no_plugin_maps = 1
 "let g:no_mail_maps = 1
 " ----------------------------------------
-" --- special mappings
+" --- special mappings  {{{1
 if !has('gui_running')
-    colo default
+    colo biogoot
 endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
@@ -139,7 +139,7 @@ vmap < <gv
 nnoremap ; :
 nmap . .`[
 " ----------------------------------------
-" --- ex commands
+" --- ex commands  {{{1
 command! BD b # | bd #
 command! -range D <line1>,<line2>d | norm <C-o>
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
@@ -147,7 +147,7 @@ command! -nargs=+ H execute 'silent help <args>' | only
 command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
 command! Xbit call SetExecutableBit()
 " ----------------------------------------
-" --- F-key mappings
+" --- F-key mappings  {{{1
 " ----------------------------------------
 nnoremap <F1> :call F1_formatter("78")<CR>
 inoremap <F1> <C-O>:call F1_formatter("78")<CR>
@@ -233,7 +233,7 @@ inoremap <silent> <F12> <ESC>:update<CR>
 vnoremap <silent> <F12> <C-C>:update<CR>
 "  do not try to map S-F12 -- vim never sees it
 " ----------------------------------------
-" --- insert mode abbreviations
+" --- insert mode abbreviations  {{{1
 iabbrev <silent> ~~6 <c-r>=repeat('~', 60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ~~7 <c-r>=repeat('~', 72)<CR><c-r>=Eatchar('\s')<cr>
 "                blog starved kiddies
@@ -304,7 +304,7 @@ iabbrev <silent> rul9 <c-r>=Scaleme(90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ttt <c-r>=strftime("%H:%M:%S")<CR><c-r>=Eatchar('\s')<cr>
 " ----------------------------------------
-"  fun with UTF-8
+"  --- fun with UTF-8  {{{1
 "  alt-, double left chevron
 "  alt-. double right chevron
 "  alt-a arrow
@@ -319,7 +319,7 @@ iabbrev ã ✔
 iabbrev ø ✖
 iabbrev %% ⌘
 " ----------------------------------------
-" --- leader commands
+" --- leader commands  {{{1
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 "nnoremap <Leader>b
@@ -365,7 +365,7 @@ nnoremap <Leader>w :call F1_toggle_width("78")<CR>
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
 nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
 " ----------------------------------------
-" --- functions
+" --- functions  {{{1
 function! Acdmo()
     read! ~/py/currmo 38
     let im = strftime("%H:%M")
@@ -871,3 +871,4 @@ function! ZeroBlankLinesAtEnd()
     call winrestview(view)
 endfunction
 " ----------------------------------------
+"  vim:foldmethod=marker
