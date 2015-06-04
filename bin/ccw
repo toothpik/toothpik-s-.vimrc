@@ -4,6 +4,7 @@
 if test $# -eq 0; then
     php ~/php/cw.php > ~/.rawweather
 fi
+exit
 c
 b
 if ! test -s ~/.rawweather
