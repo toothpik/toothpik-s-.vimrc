@@ -1,4 +1,4 @@
-"  used by glaun for editing ~/txt/laundry.log
+"  used by glaun [& vlaun] for editing ~/txt/laundry.log
 
 nmap <buffer> <Leader>ev :e ~/.vim/laundry.vim<CR>
 nmap <buffer> <Leader>l :source ~/.vim/laundry.vim<CR>
