@@ -13,7 +13,11 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish2
 set nocursorcolumn
-set   cursorline
+if has('gui_running')
+    set   cursorline
+else
+    set nocursorline
+endif
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -32,7 +36,9 @@ set   keywordprg=:help
 set   laststatus=0
 set nolazyredraw
 set   linebreak
-set   listchars=eol:$,extends:»,precedes:«
+" ctrl-v u 25b6  ▶
+" ctrl-v u 25c0  ◀
+set   listchars=eol:$,extends:▶,precedes:◀
 set   loadplugins
 set nomore
 set   mouse=ar
@@ -121,7 +127,8 @@ let g:no_plugin_maps = 1
 " ----------------------------------------
 " --- special mappings  {{{1
 if !has('gui_running')
-    colo biogoot
+    "colo biogoot
+    colo default
 endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
@@ -347,6 +354,7 @@ nnoremap <silent> <Leader>kk :call MovePointerUp()<CR>
 nnoremap <Leader>l :source ~/.vim/i_ctr.vim<CR>
 nnoremap <silent> <Leader>m :call MakeMeBig()<CR>
 nnoremap <silent> <Leader>n :call FirstBlankAtEnd()<CR>
+nnoremap <silent> <Leader>nj :source ~/.vim/nj.vim<CR>
 nnoremap <silent> <Leader>o :setl fdm=expr<bar>setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldlevel=0 foldcolumn=2<CR>
 nnoremap <silent> <Leader>oo :setlocal foldexpr=0 foldcolumn=0<CR>
 nnoremap <Leader>p :call Paste(0)<CR>
