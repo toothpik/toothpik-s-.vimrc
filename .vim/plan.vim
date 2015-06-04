@@ -3,7 +3,6 @@
 
 if has('gui_running')
     winsize 99 53
-    setlocal cursorline
 endif
 
 let mapleader = ','
