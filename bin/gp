@@ -6,4 +6,4 @@ if [ $# -eq 0 ]; then
 else
     Y=$1
 fi
-g -c 'source ~/.vim/plan.vim' -c 'call GoLastX()' -c 'mark h' ~/txt/plan_${Y} 
+g -c 'source ~/.vim/plan.vim' -c 'call GoLastX()' -c 'mark h' -geometry 95x45 ~/txt/plan_${Y} 
