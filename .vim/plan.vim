@@ -1,8 +1,11 @@
 "  setup for edit of plans - used by gp and vp to name a few
 "  ~/txt/plan_readme and ~/bin/minst describe creation of new plans
 
+"  the following dimensions must be kept in sync with the -geometry
+"  option in ~/bin/gp or the KDE gods will frown on you
 if has('gui_running')
-    winsize 99 53
+    set lines=42
+    set columns=94
 endif
 
 let mapleader = ','
