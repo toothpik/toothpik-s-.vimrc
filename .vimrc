@@ -1,5 +1,12 @@
+"  --- filetype & syntax  {{{1
+"  filetype must always preceed syntax statements:
+filetype plugin indent on
+syntax on
+let g:readline_has_bash = 1
+"  the following prevents sh.vim from treating '.' as a keyword character
+let g:sh_noisk = 1
 " --- options  {{{1
-set   autochdir
+set noautochdir
 set   autoindent
 set   autoread
 set   backspace=indent,eol,start
@@ -36,9 +43,7 @@ set   keywordprg=:help
 set   laststatus=0
 set nolazyredraw
 set   linebreak
-" ctrl-v u 25b6  ▶
-" ctrl-v u 25c0  ◀
-set   listchars=eol:$,extends:▶,precedes:◀
+set   listchars=eol:$,extends:»,precedes:«
 set   loadplugins
 set nomore
 set   mouse=ar
@@ -55,7 +60,7 @@ set   selectmode+=key
 set noshiftround
 set   shiftwidth=4
 set   shortmess=aIoOtTc
-let   &showbreak = "▶ "
+let   &showbreak = "» "
 set   showcmd
 set   showmode
 set noshowmatch
@@ -92,14 +97,6 @@ set   wrap
 set nowrapscan
 set   writebackup
 " ----------------------------------------
-"  --- filetype & syntax  {{{1
-"  filetype must always preceed syntax statements:
-filetype plugin indent on
-syntax on
-let readline_has_bash = 1
-"  the following prevents sh.vim from treating '.' as a keyword character
-let g:sh_noisk = 1
-" ----------------------------------------
 " --- autocommands & plugin mappings  {{{1
 augroup vimrcgrp
     au!
@@ -133,8 +130,10 @@ endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
 nnoremap - dd
-nnoremap n nzz
-nnoremap N Nzz
+"  the following mappings for n and N are nice, usually, but cause
+"  difficulty in scripts like weekly
+"nnoremap n nzz
+"nnoremap N Nzz
 imap <C-Del> <C-O>daw
 nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzxzt' : 'zc')<cr>
 "  scroll left and right when 'nowrap':
