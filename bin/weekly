@@ -10,5 +10,5 @@ for s in `vim --serverlist`; do
     esac
 done
 if test $ar -eq 0; then
-    g --servername WKLY -S ~/.vim/weekly.vim -c ':call WeekMe()' -c 'set hlsearch'
+    g -geometry 35x9 --servername WKLY -S ~/.vim/weekly.vim -c ':call WeekMe()' -c 'set hlsearch'
 fi
