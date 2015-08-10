@@ -1,14 +1,7 @@
 #!/bin/bash
 #  u - hg pull
-echo 'you will want to tail -f the update.log'
-echo 'in case there are queries from mercurial'
-read -p 'ok to proceed? (y/n) ' answer
-if [ $answer != 'y' ]; then
-    exit 0
-fi
+#  you will want to tail -f the update.log in case there are queries from mercurial
 cd ~/.build/vim/vim
 dds >> ../update.log
 hg pull 2>&1 >> ../update.log
-#echo "about to update" >> ../update.log
-#hg update 2>&1 >> ../update.log
 dsh >> ../update.log
