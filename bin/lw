@@ -10,5 +10,6 @@ for s in `vim --serverlist`; do
     esac
 done
 if test $ar -eq 0; then
-    g --servername LAU2 -S ~/.vim/lw.vim -c 'call LWme()' -c 'set hlsearch'
+    lc=$(( `sll | wc -l` + 2 ))
+    g -geometry 35x$lc --servername LAU2 -S ~/.vim/lw.vim -c 'call LWme()' -c 'set hlsearch'
 fi
