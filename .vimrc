@@ -3,6 +3,7 @@
 filetype plugin indent on
 syntax on
 let g:readline_has_bash = 1
+let g:is_bash = 1
 "  the following prevents sh.vim from treating '.' as a keyword character
 let g:sh_noisk = 1
 " --- options  {{{1
@@ -44,7 +45,7 @@ set   laststatus=0
 set nolazyredraw
 set   linebreak
 set   listchars=eol:$,extends:»,precedes:«
-set   loadplugins
+set noloadplugins
 set nomore
 set   mouse=ar
 set   mousemodel=popup_setpos
@@ -106,7 +107,6 @@ augroup END
 "  some scripts i don't need:
 let g:CSApprox_loaded = 1
 let g:html_use_css = 1
-let g:is_bash = 1
 let g:loaded_2html_plugin = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_gzip = 1
@@ -244,6 +244,7 @@ iabbrev <silent> ~~6 <c-r>=repeat('~', 60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ~~7 <c-r>=repeat('~', 72)<CR><c-r>=Eatchar('\s')<cr>
 "                blog starved kiddies
 iabbrev <silent> bsk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> d <c-r>=strftime("%b %e")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd1 <c-r>=repeat('-', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd2 <c-r>=repeat('-', 20)<CR><c-r>=Eatchar('\s')<cr>
@@ -328,7 +329,7 @@ iabbrev %% ⌘
 " --- leader commands  {{{1
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
-"nnoremap <Leader>b
+nnoremap <Leader>b :cd %:h<CR>
 "nnoremap <silent><Leader>c
 "nnoremap <Leader>d
 nnoremap <Leader>dd :call ClearBuffers()<CR>
@@ -663,7 +664,7 @@ function! MaikallfilesT()
     silent %d
     0r!pwd
     normal o
-    silent execute 'r!ls -at'
+    silent execute 'r!ls -algGt'
     silent g/^total/d
     normal gg
 endfunction
