@@ -1,14 +1,9 @@
 #!/bin/bash
 #  myconfigure whacks the old config.cash so it always works
-cd ~/.build/vim/vim
-rm -f src/auto/config.cache
+cd ~/.build/vim/vim || exit 1
 date '+%Y-%b-%d %H:%M' >> ../configure.log
-#  with python:
-#./configure --with-features=normal --with-compiledby=toothpik@home --enable-pythoninterp=dynamic --enable-gui=gtk2 2>&1 | tee -a ../configure.log
-#
-#  with perl:
-#./configure --with-features=normal --with-compiledby=toothpik@home --enable-perlinterp --enable-gui=gtk2 2>&1 | tee -a ../configure.log
-#
-#  with no extra interpreters:
+rm -vf src/auto/config.cache | tee -a ../configure.log
+#  with python:  --enable-pythoninterp=dynamic
+#  with perl:    --enable-perlinterp
 ./configure --with-features=normal --with-compiledby=toothpik@home --enable-gui=gtk2 2>&1 | tee -a ../configure.log
 dsh 60 >> ../configure.log
