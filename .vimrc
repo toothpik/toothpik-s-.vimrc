@@ -244,7 +244,6 @@ iabbrev <silent> ~~6 <c-r>=repeat('~', 60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ~~7 <c-r>=repeat('~', 72)<CR><c-r>=Eatchar('\s')<cr>
 "                blog starved kiddies
 iabbrev <silent> bsk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>
-iabbrev <silent> d <c-r>=strftime("%b %e")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd1 <c-r>=repeat('-', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd2 <c-r>=repeat('-', 20)<CR><c-r>=Eatchar('\s')<cr>
