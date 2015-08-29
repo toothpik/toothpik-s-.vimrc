@@ -1,6 +1,6 @@
 #!/bin/bash
 #  make vim
 cd ~/.build/vim/vim
-dds >> ../make.log
+date '+%Y-%b-%d %H:%M' >> ../make.log
 make 2>&1 | tee -a ../make.log
 dsh >> ../make.log
