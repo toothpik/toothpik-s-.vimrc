@@ -1,0 +1,26 @@
+#!/bin/bash
+#  start from scratch
+cd ~/.build/vim
+echo ''
+echo '   <<< START FROM SCRATCH INSTRUCTIONS >>>'
+echo ''
+echo 'clone the github repoisitory with'
+echo ''
+echo '    cd ~/.build/vim'
+echo '    git clone https://github.com/vim/vim.git'
+echo ''
+echo 'edit vim/src/feature.h to disable rightleft and farsi and arabic and emacs_tags'
+echo 'save it'
+echo ''
+echo 'on the vim path:'
+echo ''
+echo '    git add src/feature.h'
+echo '    git commit -m 'removed rightleft and farsi and arabic and emacs_tags''
+echo ''
+echo 'then on the ~/.build/vim path'
+echo ''
+echo '    myconfig'
+echo '    m'
+echo '    sudo i'
+echo '    vvl'
+
