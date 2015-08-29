@@ -1,0 +1,18 @@
+#!/bin/bash
+#  instructions [for keeping vim current with git]
+echo ""
+echo "  navigate to ~/.build/vim and perform a dp"
+echo ""
+echo "  navigate to vim and perform"
+echo ""
+echo "      git pull"
+echo ""
+echo "  navigate back to ~/.build/vim and perform"
+echo ""
+echo "      m"
+echo "      sudo i"
+echo "      vvl"
+echo ""
+echo "  sfs lists all steps for a start from scratch"
+echo ""
+echo ""
