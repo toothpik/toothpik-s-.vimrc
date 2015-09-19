@@ -26,15 +26,12 @@ b 2
 #  weeklies
 #cat ~/txt/weekly | wkly2 | sed 's/---/───/' | mio $pfc
 
-echo 'countdown to stephan colbert' | mio $pfc
-ctdn 2015-Sep-08 | sed 's/Sep  8  Tue/Sep  8  Tue  22:30  Late Show  CBS/' | mio $pfc
-
 #b 2
 ##  schedule
 #  much less useful in the summer months
 #  ESPECIALLY when the A/C is on the fritz
 #sched | mio $pfc
 
-b 2
-#  days since last haircut
-dslh | mio $pfc
+#b 2
+##  days since last haircut
+#dslh | mio $pfc
