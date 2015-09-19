@@ -2,8 +2,6 @@
 #  ccr fancified (lists today's mail folders)
 psf=$(( ( `tput cols` - 75 ) / 2 - 2))
 clear
-#b
-#cm1p2
 b 2
 ccr | mio $(( psf + 18 ))
 b
