@@ -3,16 +3,21 @@
 echo ""
 echo "  navigate to ~/.build/vim and perform a dp"
 echo ""
-echo "  navigate to vim and perform"
+echo "  navigate to vim (cd76) and perform"
 echo ""
 echo "      git pull"
 echo ""
-echo "  navigate back to ~/.build/vim and perform"
+echo "  navigate back to ~/.build/vim (cd7) and perform"
 echo ""
 echo "      m"
 echo "      sudo i"
-echo "      vvl"
+echo "      vvl (where ,c will add a new timestamp/ver)"
 echo ""
 echo "  sfs lists all steps for a start from scratch"
 echo ""
+echo '  to test a new build:'
+echo '    - navigate to ~/.build/vim/vim/src (cd77)'
+echo '    - rm testdir/*.out'
+echo '    - make test (and go make a cup of coffee)'
+echo ''
 echo ""
