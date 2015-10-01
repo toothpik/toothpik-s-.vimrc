@@ -6,6 +6,7 @@ let g:readline_has_bash = 1
 let g:is_bash = 1
 "  the following prevents sh.vim from treating '.' as a keyword character
 let g:sh_noisk = 1
+" ----------------------------------------
 " --- options  {{{1
 set noautochdir
 set   autoindent
@@ -266,6 +267,7 @@ iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds4 <c-r>=strftime("%Y-%B-%d  %A")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddss <c-r>=strftime("%Y-%b-%d  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddt  <c-r>=strftime("%Y %b %d  %a  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ddtt <c-r>=strftime("%Y %b %d  %a  %l:%M %p")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee1 <c-r>=repeat('=', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee2 <c-r>=repeat('=', 20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee3 <c-r>=repeat('=', 30)<CR><c-r>=Eatchar('\s')<cr>
