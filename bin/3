@@ -24,14 +24,12 @@ tv2 | mio $pfc
 
 b 2
 #  weeklies
-#cat ~/txt/weekly | wkly2 | sed 's/---/───/' | mio $pfc
+cat ~/txt/weekly | wkly2 | sed 's/---/───/' | mio $pfc
 
-#b 2
-##  schedule
-#  much less useful in the summer months
-#  ESPECIALLY when the A/C is on the fritz
-#sched | mio $pfc
+b 2
+#  schedule
+sched | mio $pfc
 
-#b 2
-##  days since last haircut
-#dslh | mio $pfc
+b 2
+#  days since last haircut
+dslh | mio $pfc
