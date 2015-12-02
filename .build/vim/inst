@@ -1,11 +1,19 @@
 #!/bin/bash
 #  instructions [for keeping vim current with git]
 echo ""
-echo "  navigate to ~/.build/vim and perform a dp"
+echo "  navigate to ~/.build/vim (cd7) and perform a dp"
 echo ""
 echo "  navigate to vim (cd76) and perform"
 echo ""
 echo "      git pull"
+echo ""
+echo "  if pull horks due to changes to the runtime/doc/tags module"
+echo "  simply perform a"
+echo ""
+echo "      git checkout runtime/doc/tags"
+echo ""
+echo "  and then git pull will succeed (the checkout throws away your"
+echo "  changes to the file -- hey -- it gets recreated anyway so no worry)"
 echo ""
 echo "  navigate back to ~/.build/vim (cd7) and perform"
 echo ""
@@ -15,9 +23,9 @@ echo "      vvl (where ,c will add a new timestamp/ver)"
 echo ""
 echo "  sfs lists all steps for a start from scratch"
 echo ""
-echo '  to test a new build:'
-echo '    - navigate to ~/.build/vim/vim/src (cd77)'
-echo '    - rm testdir/*.out'
-echo '    - make test (and go make a cup of coffee)'
-echo ''
+echo "  to test a new build:"
+echo "    - best to start a separate xterm"
+echo "    - navigate to ~/.build/vim/vim/src (cd77)"
+echo "    - rm testdir/*.out"
+echo "    - make test (and go make a cup of coffee)"
 echo ""
