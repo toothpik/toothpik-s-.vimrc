@@ -3,9 +3,7 @@
 cd ~/txt
 if test $# -eq 0; then
     Y=`date '+%Y'`
-    Y2=$(( Y + 1 ))
 else
     Y=$1
-    Y2=$(( Y + 1 ))
 fi
-v -S ~/.vim/plan.vim -c 'call GoLastX()' -c 'mark h' ~/txt/plan_${Y} ~/txt/plan_${Y2}
+v -c 'source ~/.vim/plan.vim' -c 'call GoLastX()' -c 'mark h' ~/txt/plan_${Y}
