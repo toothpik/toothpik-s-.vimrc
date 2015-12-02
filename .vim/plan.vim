@@ -13,7 +13,7 @@ let mapleader = ','
 nmap <silent> <buffer> <Leader>a :call OpenLastYear()\|source ~/.vim/plan.vim<CR>
 nmap <silent> <buffer> <Leader>b :call BalCol()<CR>
 nmap <silent> <buffer> <Leader>c :call GoLastClear()<CR>
-nmap <silent> <buffer> <Leader>d :call EditTry("~/txt/plan_core")<CR>
+nmap <silent> <buffer> <Leader>d :call EditTry("~/txt/plan_core")\|set noexpandtab<CR>
 nmap <silent> <buffer> <Leader>dd :call EditTry("~/txt/plan_core_other")<CR>
 nmap <silent> <buffer> <Leader>ec :e ~/bin/plannew<CR>
 nmap <silent> <buffer> <Leader>ee :source ~/.vim/plan.vim<CR>
