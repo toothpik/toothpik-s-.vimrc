@@ -10,7 +10,7 @@ hm=$(( ( (tcols - 75) / 2) - 1 ))
     b2
     mb
     b
-    hoirb
+    hoieb
     b
 } | mio $hm
 b
