@@ -77,7 +77,7 @@ set nostartofline
 set   swapfile
 set   swapsync=
 set   t_vb=
-set   tabstop=8
+set   tabstop=4
 set   textwidth=0
 if has('gui_running')
     set title
@@ -131,10 +131,6 @@ endif
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>
 nnoremap - dd
-"  the following mappings for n and N are nice, usually, but cause
-"  difficulty in scripts like weekly
-"nnoremap n nzz
-"nnoremap N Nzz
 imap <C-Del> <C-O>daw
 nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzxzt' : 'zc')<cr>
 "  scroll left and right when 'nowrap':
@@ -150,7 +146,7 @@ nmap . .`[
 command! BD b # | bd #
 command! -range D <line1>,<line2>d | norm <C-o>
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-command! -nargs=+ H execute 'silent help <args>' | only
+command! -nargs=+ H execute "silent help <args>" | only
 command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
 command! Xbit call SetExecutableBit()
 " ----------------------------------------
@@ -583,6 +579,7 @@ function! Hideme()
     setlocal bufhidden=hide
 endfunction
 " ----------------------------------------
+"  wish I remembered where I got this:
 function! Incr()
     let a = line('.') - line("'<")
     let c = virtcol("'<")
