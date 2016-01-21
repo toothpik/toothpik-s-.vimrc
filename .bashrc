@@ -150,5 +150,23 @@ extract()      # Handy Extract Program.
     fi
 }
 
+ruler() {
+    local cols=${COLUMNS:-$(tput cols)}
+    local i n tmp
+    if (( ${#_ruler_line1} < cols )); then
+        n=$(( ${#_ruler_line1} / 10 ))
+        for ((i=n+1; i*10 <= cols; i++)); do
+            printf -v tmp %10d "$i"
+            _ruler_line1+=$tmp
+        done
+    fi
+    while (( ${#_ruler_line2} < cols )); do
+        _ruler_line2+=1234567890
+    done
+    echo "${_ruler_line1:0:cols}"
+    echo "${_ruler_line2:0:cols}"
+#    cat "$@"
+}
+
 vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
 gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -c 'set columns=117' -; }
