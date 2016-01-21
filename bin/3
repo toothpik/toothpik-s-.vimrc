@@ -5,7 +5,7 @@
 #  ####                                                 ####
 #  ####  when making changes here make them to 3nc too  ####
 #  ####                                                 ####
-#  ####  last update  2015-Feb-26                       ####
+#  ####  last update  2015-Dec-17                       ####
 #  ####                                                 ####
 #  #########################################################
 #  #########################################################
@@ -22,13 +22,18 @@ b 2
 #  upcomings
 tv2 | mio $pfc
 
+#b 2
+##  weeklies
+#cat ~/txt/weekly | wkly2 | sed 's/---/───/' | mio $pfc
+
 b 2
-#  weeklies
-cat ~/txt/weekly | wkly2 | sed 's/---/───/' | mio $pfc
+#  moon stats
+nmp | mio $pfc
 
 b 2
 #  schedule
-sched | mio $pfc
+sched 18 | mio $pfc
+#cat ~/txt/sched-2016-jan-05 | mio $pfc
 
 b 2
 #  days since last haircut
