@@ -372,14 +372,17 @@ nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
 " ----------------------------------------
 " --- functions  {{{1
 function! Acdmo()
-    read! ~/py/currmo 38
-    let im = strftime("%H:%M")
-    call append(line("."), "")
-    call append(line("."), im)
-    call append(line("."), "")
-    normal 3j
+"    read! ~/py/currmo 38
+"    let im = strftime("%H:%M")
+"    call append(line("."), "")
+"    call append(line("."), im)
+"    call append(line("."), "")
+    py acdmo()
+"   normal 10j
     startinsert
 endfunction
+"  the following will make sure you're building vim with python
+pyf ~/.vim/acdmo.py
 " ----------------------------------------
 function! CdCurBuf()
     let cwd = getcwd()
