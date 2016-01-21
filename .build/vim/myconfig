@@ -5,5 +5,5 @@ date '+%Y-%b-%d %H:%M' >> ../configure.log
 rm -vf src/auto/config.cache | tee -a ../configure.log
 #  with python:  --enable-pythoninterp=dynamic
 #  with perl:    --enable-perlinterp
-./configure --with-features=normal --with-compiledby=toothpik@home --enable-gui=gtk2 2>&1 | tee -a ../configure.log
+./configure --enable-perlinterp=dynamic --enable-pythoninterp=dynamic --with-features=huge --with-compiledby=toothpik@home --enable-gui=gtk2 2>&1 | tee -a ../configure.log
 dsh 60 >> ../configure.log
