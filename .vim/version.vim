@@ -61,8 +61,8 @@ function! CheckCompile()
         echo 'third line of version is ' . va[2]
         echo 'should be "Compiled by toothpik@home"'
     endif
-    if va[3] =~ '^Huge version with GTK2 GUI'
-        echo 'obtained proper build (Huge w GTK2)    CHECK'
+    if va[3] =~ '^Big version with GTK2 GUI'
+        echo 'obtained proper build (Big w GTK2)    CHECK'
     else
         echo 'build line reads ' . va[3]
         echo 'should be "Normal version with GTK2 GUI'
