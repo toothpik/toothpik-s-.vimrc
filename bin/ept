@@ -1,5 +1,8 @@
 #!/usr/bin/perl
-#  examine previous transactions - designed for gas and electric
+#  examine previous transactions - designed for gas and electric but works on anything
+#####################################################################
+#  WARNING:  BREAK THIS SCRIPT AND I WILL COME BACK AND HAUNT YOU  ##
+#####################################################################
 $na = @ARGV;
 if ($na == 0) {
     $t = 'Power & Light';
@@ -8,9 +11,30 @@ if ($na == 0) {
 } else {
     $t = "$ARGV[0]";
 }
+
 $h = $ENV{'HOME'};
 $bcnt = 0;
-for ($y = 2004; $y < 2017; $y++) {
+$ycnt = 0;
+$h1 = "   ";
+$s1 = "%2d)";
+$s2 = "   ";
+$e1 = "   ";
+$p1 = "   printf \"\$s1\n\", \$m";
+$p2 = "printf \"\$s2\n\"";
+
+#  the following for() determines the width of the output
+#  can start as early as 2004 - go as late as the latest plan
+for ($y = 2004; $y < 2018; $y++) {
+
+    ++$ycnt;
+
+    $h1 = $h1 . "    $y";
+    $s1 = $s1 . "  %6.2f";
+    $s2 = $s2 . " %7.2f";
+    $e1 = $e1 . "  ======";
+    $p1 = $p1 . ", \$table{\"$y-\" . \"\$m\"}";
+    $p2 = $p2 . ", \$table{\"$y-tot\"}";
+
     $F = "$h/txt/plan_$y";
     $sof = open(PLN, "<$F");
     if (!$sof) {
@@ -20,11 +44,13 @@ for ($y = 2004; $y < 2017; $y++) {
     $cnt = 0;
     while ($_ = <PLN>) {
         chop;
+        if (/^-----------/) {
+            ++$cnt;
+        }
         if (/$t/) {
             $tr = substr($_, 47, 10);
             $tr =~ s/ //g;
             $tot += $tr;
-            ++$cnt;
             $table{"$y". "-" . "$cnt"} = $tr;
         }
     }
@@ -34,10 +60,13 @@ for ($y = 2004; $y < 2017; $y++) {
     }
     $table{"$y" . "-tot"} = $tot;
 }
-printf "%47s\n", $t;
-print "       2004    2005    2006    2007    2008    2009    2010    2011    2012    2013    2014    2015    2016\n";
-for ($m = 1; $m < $bcnt + 1; $m++) {
-    printf "%2d)  %6.2f  %6.2f  %6.2f  %6.2f  %6.2f  %6.2f  %6.2f  %6.2f  %6.2f  %6.2f  %6.2f  %6.2f  %6.2f\n", $m, $table{"2004-" . "$m"}, $table{"2005-" . "$m"}, $table{"2006-" . "$m"}, $table{"2007-" . "$m"}, $table{"2008-" . "$m"}, $table{"2009-"."$m"}, $table{"2010-"."$m"}, $table{"2011-"."$m"}, $table{"2012-"."$m"}, $table{"2013-"."$m"}, $table{"2014-"."$m"}, $table{"2015-"."$m"}, $table{"2016-"."$m"};
+
+$ma = 7 + 4 * $ycnt;
+$p3 = "printf \"%${ma}s\n\", \$t";
+eval("$p3");
+print "$h1\n";
+for ($m = 1; $m < $bcnt; $m++) {
+    eval("$p1");
 }
-print "     ======  ======  ======  ======  ======  ======  ======  ======  ======  ======  ======  ======  ======\n";
-printf "    %7.2f %7.2f %7.2f %7.2f %7.2f %7.2f %7.2f %7.2f %7.2f %7.2f %7.2f %7.2f %7.2f\n", $table{"2004-tot"}, $table{"2005-tot"}, $table{"2006-tot"}, $table{"2007-tot"}, $table{"2008-tot"}, $table{"2009-tot"}, $table{"2010-tot"}, $table{"2011-tot"}, $table{"2012-tot"}, $table{"2013-tot"}, $table{"2014-tot"}, $table{"2015-tot"}, $table{"2016-tot"};
+print "$e1\n";
+eval("$p2");
