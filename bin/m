@@ -3,7 +3,7 @@
 c
 b
 limit=$((`tput lines` - 2))
-hmc=$(( ( ( (`tput cols`) - 87) / 2 ) - 1 ))
+hmc=$(( ( ( (`tput cols`) - 87) / 2 ) - 5 ))
 wm=m`date '+%y'`            #  which m
 hm=`$wm | awk -f ~/funclear.awk`
 tm1=`date '+%m'`            #  this month
