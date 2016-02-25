@@ -24,7 +24,7 @@ $p2 = "printf \"\$s2\n\"";
 
 #  the following for() determines the width of the output
 #  can start as early as 2004 - go as late as the latest plan
-for ($y = 2004; $y < 2018; $y++) {
+for ($y = 2006; $y < 2018; $y++) {
 
     ++$ycnt;
 
