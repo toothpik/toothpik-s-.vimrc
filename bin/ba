@@ -1,9 +1,7 @@
 #!/bin/bash
 #  battery life on steroids
 clear
-b 
-# cm1p2
-#b
+b 2 
 tcols=`tput cols`
 hm=$(( ( (tcols - 75) / 2) - 1 ))
 {
