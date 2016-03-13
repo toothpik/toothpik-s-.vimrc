@@ -2,4 +2,4 @@
 #  invoke tc4 with current day positioned properly
 #  first get calendar current row
 ccr=`cm1p1v | nl -ba | fgrep '(' | awk '{print $1}'`
-tc4 $((ccr + 1))
+tc4 $((ccr + 2))
