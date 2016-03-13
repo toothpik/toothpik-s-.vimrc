@@ -24,7 +24,7 @@ function! LWme()
     let ll = system('sll | wc -l')
     let ll2 = ll + 2
     execute 'set lines=' . ll2
-    winpos 1562 214
+    winpos 1562 227
     silent %d
     silent r!sll
     normal gg
