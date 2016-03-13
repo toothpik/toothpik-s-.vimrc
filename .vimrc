@@ -22,11 +22,7 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish2
 set nocursorcolumn
-if has('gui_running')
-    set   cursorline
-else
-    set nocursorline
-endif
+set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
@@ -310,6 +306,7 @@ iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ttt <c-r>=strftime("%H:%M:%S")<CR><c-r>=Eatchar('\s')<cr>
 " ----------------------------------------
 "  --- fun with UTF-8  {{{1
+"  (these work in gvim, terminal vim not so much)
 "  alt-, double left chevron
 "  alt-. double right chevron
 "  alt-a arrow
@@ -324,12 +321,12 @@ iabbrev ã ✔
 iabbrev ø ✖
 iabbrev %% ⌘
 " ----------------------------------------
-" --- leader commands  {{{1
+" --- <Leader> commands  {{{1
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 nnoremap <Leader>b :cd %:h<CR>
-"nnoremap <silent><Leader>c
-"nnoremap <Leader>d
+nnoremap <silent><Leader>c :normal a✔<ESC>
+"nnoremap <Leader>d 
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>dq :call EditTry('~/txt/alldateabbr')<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
@@ -378,12 +375,11 @@ function! Acdmo()
 "    call append(line("."), "")
 "    call append(line("."), im)
 "    call append(line("."), "")
-    py acdmo()
-"   normal 10j
-    startinsert
+    py3 acdmo()
+    normal o
 endfunction
-"  the following will make sure you're building vim with python
-pyf ~/.vim/acdmo.py
+"  the following will make sure you're building vim with python3
+py3file ~/.vim/acdmo.py
 " ----------------------------------------
 function! CdCurBuf()
     let cwd = getcwd()
@@ -828,7 +824,14 @@ function! SetExecutableBit()
     if &modified
         write
     endif
-    call system("chmod 754 " . expand('%'))
+"    call system("chmod 754 " . expand('%'))
+    execute "cd " . expand('%:h')
+    execute "let s:t = setfperm('" . expand('%') . "', 'rwxr-xr-x')"
+    if s:t 
+        echo "execute bit set [to 755] for " . expand('%')
+    else
+        echo "execute bit setting failed for " . expand('%')
+    endif
 endfunction
 " ----------------------------------------
 function! StripTrailingWhitespace()
