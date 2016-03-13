@@ -61,58 +61,65 @@ function! CheckCompile()
         echo 'third line of version is ' . va[2]
         echo 'should be "Compiled by toothpik@home"'
     endif
-    if va[3] =~ '^Big version with GTK2 GUI'
-        echo 'obtained proper build (Big w GTK2)    CHECK'
+    if va[3] =~ '^Big version with GTK3 GUI'
+        echo 'obtained proper build (Big w GTK3)     CHECK'
     else
         echo 'build line reads ' . va[3]
-        echo 'should be "Normal version with GTK2 GUI'
+        echo 'should be "Big version with GTK3 GUI'
     endif
-    "  lord have mercy
+
     "  the linebreaks in the [+/-]feature section will be in different places
     "  depending on the size of the window when 'version' is performed
+    let got_python3 = 0
     let got_arabic = 1
     let got_emacs_tags = 1
     let got_farsi = 1
     let got_rightleft = 1
-"    let got_python = 0
     let hmr = len(va)
     let rp = 4
     while rp < hmr
+        if va[rp] =~ '+python3/dyn'
+            let got_python3 = 1
+        endif
         if va[rp] =~ '-arabic'
-            echo 'arabic not compiled in                 CHECK'
             let got_arabic = 0
         endif
         if va[rp] =~ '-emacs_tags'
-            echo 'emacs_tags not compiled in             CHECK'
             let got_emacs_tags = 0
         endif
         if va[rp] =~ '-farsi'
-            echo 'farsi not compiled in                  CHECK'
             let got_farsi = 0
         endif
         if va[rp] =~ '-rightleft'
-            echo 'rightleft not compiled in              CHECK'
             let got_rightleft = 0
         endif
-"        if va[rp] =~ '+python'
-"            echo 'python compiled in                     CHECK'
-"            let got_python = 1
-"        endif
         let rp = rp + 1
     endwhile
+
+    if got_python3
+        echo 'python3/dyn compiled in                CHECK'
+    else
+        echo 'python3 was not included, not good'
+    endif
     if got_arabic
         echo 'arabic was included, not good'
+    else
+        echo 'arabic not compiled in                 CHECK'
     endif
     if got_emacs_tags
         echo 'emacs_tags was included, not good'
+    else
+        echo 'emacs_tags not compiled in             CHECK'
     endif
     if got_farsi
         echo 'farsi was included, not good'
+    else
+        echo 'farsi not compiled in                  CHECK'
     endif
     if got_rightleft
         echo 'rightleft was included, not good'
+    else
+        echo 'rightleft not compiled in              CHECK'
     endif
-"    if ! got_python
-"        echo 'python was not included, not good'
-"    endif
+
 endfunction
