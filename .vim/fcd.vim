@@ -9,7 +9,7 @@ function! Fcd()
     let dl = line(".")
     let gh = dl - ccr - 2
     exe gh
-    normal zt
+"    normal zt
     'h
     normal 0
     let @/ = strftime("%b %_d  %a")
