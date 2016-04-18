@@ -61,16 +61,16 @@ function! CheckCompile()
         echo 'third line of version is ' . va[2]
         echo 'should be "Compiled by toothpik@home"'
     endif
-    if va[3] =~ '^Big version with GTK3 GUI'
-        echo 'obtained proper build (Big w GTK3)     CHECK'
+    if va[3] =~ '^Big version with GTK2 GUI'
+        echo 'obtained proper build (Big w GTK2)     CHECK'
     else
         echo 'build line reads ' . va[3]
-        echo 'should be "Big version with GTK3 GUI'
+        echo 'should be "Big version with GTK2 GUI'
     endif
 
     "  the linebreaks in the [+/-]feature section will be in different places
     "  depending on the size of the window when 'version' is performed
-    let got_python3 = 0
+    let got_python = 0
     let got_arabic = 1
     let got_emacs_tags = 1
     let got_farsi = 1
@@ -78,8 +78,8 @@ function! CheckCompile()
     let hmr = len(va)
     let rp = 4
     while rp < hmr
-        if va[rp] =~ '+python3/dyn'
-            let got_python3 = 1
+        if va[rp] =~ '+python/dyn'
+            let got_python = 1
         endif
         if va[rp] =~ '-arabic'
             let got_arabic = 0
@@ -96,10 +96,10 @@ function! CheckCompile()
         let rp = rp + 1
     endwhile
 
-    if got_python3
-        echo 'python3/dyn compiled in                CHECK'
+    if got_python
+        echo 'python/dyn compiled in                 CHECK'
     else
-        echo 'python3 was not included, not good'
+        echo 'python was not included, not good'
     endif
     if got_arabic
         echo 'arabic was included, not good'
