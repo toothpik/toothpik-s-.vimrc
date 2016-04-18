@@ -4,10 +4,11 @@ from calendar import setfirstweekday, month
 from string import strip, replace
 from time import strftime, localtime
 import sys
+#  obtain length of spaces
 if len(sys.argv) > 1:
     los = int(sys.argv[1])
 else:
-    los = 0
+    los = 48
 spaces = " " * los
 a_yr = int(strftime("%Y", localtime()))
 a_mo = int(strftime("%m", localtime()))
