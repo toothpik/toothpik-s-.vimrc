@@ -18,9 +18,9 @@ nmap <silent> <buffer> <Leader>dd :call EditTry("~/txt/plan_core_other")<CR>
 nmap <silent> <buffer> <Leader>ec :e ~/bin/plannew<CR>
 nmap <silent> <buffer> <Leader>ee :source ~/.vim/plan.vim<CR>
 nmap <silent> <buffer> <Leader>ev :e ~/.vim/plan.vim<CR>
-nmap <silent> <buffer> <Leader>f :call AdjustFoodBudget()<CR>
 silent! unmap ,ff
 silent! unmap ,fff
+nmap <silent> <buffer> <Leader>f :call AdjustFoodBudget()<CR>
 nmap <silent> <buffer> <Leader>g :call OpenNextYear()\|source ~/.vim/plan.vim<CR>
 nmap <silent> <buffer> <Leader>h :call AdjustHalliganBudget()<CR>
 nmap <silent> <buffer> <Leader>lu :call system("lubk")<CR>
