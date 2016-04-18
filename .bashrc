@@ -48,7 +48,6 @@ export PS1='$(date "+%a %H:%M") \w> '
 #  export PS1='$PWD> '
 #  export PS1='\w$ '
 
-alias ....='cd ../../..'
 alias cd2='cd ~/bin'
 alias cd33='cd ~/txt/ranger'
 alias cd34='cd ~/txt/retire'
@@ -81,10 +80,6 @@ alias cdt='cd ~/toothpik-s-.vimrc'
 alias cdtt='cd ~/toothpik.github.com'
 alias cdvt='cd ~/.vim-tmp'
 alias ssie='sudo /sbin/ifstatus eth0'
-
-if [ $UID -ne 0 ]; then
-    alias pf='sudo pf'
-fi
 
 export TERM=xterm-256color
 
@@ -148,24 +143,6 @@ extract()      # Handy Extract Program.
     else
         echo "'$1' is not a valid file"
     fi
-}
-
-ruler() {
-    local cols=${COLUMNS:-$(tput cols)}
-    local i n tmp
-    if (( ${#_ruler_line1} < cols )); then
-        n=$(( ${#_ruler_line1} / 10 ))
-        for ((i=n+1; i*10 <= cols; i++)); do
-            printf -v tmp %10d "$i"
-            _ruler_line1+=$tmp
-        done
-    fi
-    while (( ${#_ruler_line2} < cols )); do
-        _ruler_line2+=1234567890
-    done
-    echo "${_ruler_line1:0:cols}"
-    echo "${_ruler_line2:0:cols}"
-#    cat "$@"
 }
 
 vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
