@@ -1,4 +1,4 @@
-"  --- filetype & syntax  {{{1
+"  --- filetype & syntax   {{{1
 "  filetype must always preceed syntax statements:
 filetype plugin indent on
 syntax on
@@ -7,7 +7,7 @@ let g:is_bash = 1
 "  the following prevents sh.vim from treating '.' as a keyword character
 let g:sh_noisk = 1
 " ----------------------------------------
-" --- options  {{{1
+" --- options    {{{1
 set noautochdir
 set   autoindent
 set   autoread
@@ -57,7 +57,7 @@ set   selection=exclusive
 set   selectmode+=key
 set noshiftround
 set   shiftwidth=4
-set   shortmess=aIoOtTc
+set   shortmess=aIoOtTcF
 let   &showbreak = "» "
 set   showcmd
 set   showmode
@@ -95,7 +95,7 @@ set   wrap
 set nowrapscan
 set   writebackup
 " ----------------------------------------
-" --- autocommands & plugin mappings  {{{1
+" --- autocommands & plugin mappings     {{{1
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
@@ -120,7 +120,7 @@ augroup END
 "let g:no_plugin_maps = 1
 "let g:no_mail_maps = 1
 " ----------------------------------------
-" --- special mappings  {{{1
+" --- special mappings     {{{1
 if !has('gui_running')
     "colo biogoot
     colo default
@@ -138,8 +138,9 @@ vmap > >gv
 vmap < <gv
 nnoremap ; :
 nmap . .`[
+nmap g/ /\%#=P
 " ----------------------------------------
-" --- ex commands  {{{1
+" --- ex commands     {{{1
 command! BD b # | bd #
 command! -range D <line1>,<line2>d | norm <C-o>
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
@@ -147,7 +148,7 @@ command! -nargs=+ H execute "silent help <args>" | only
 command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
 command! Xbit call SetExecutableBit()
 " ----------------------------------------
-" --- F-key mappings  {{{1
+" --- F-key mappings     {{{1
 " ----------------------------------------
 nnoremap <F1> :call F1_formatter("78")<CR>
 inoremap <F1> <C-O>:call F1_formatter("78")<CR>
@@ -233,11 +234,14 @@ inoremap <silent> <F12> <ESC>:update<CR>
 vnoremap <silent> <F12> <C-C>:update<CR>
 "  do not try to map S-F12 -- vim never sees it
 " ----------------------------------------
-" --- insert mode abbreviations  {{{1
+" --- insert mode abbreviations     {{{1
+iabbrev <silent> ~~4 <c-r>=repeat('~', 40)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ~~5 <c-r>=repeat('~', 50)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ~~6 <c-r>=repeat('~', 60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ~~7 <c-r>=repeat('~', 72)<CR><c-r>=Eatchar('\s')<cr>
 "                blog starved kiddies
 iabbrev <silent> bsk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> d1 <c-r>=strftime("%b %e")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd1 <c-r>=repeat('-', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd2 <c-r>=repeat('-', 20)<CR><c-r>=Eatchar('\s')<cr>
@@ -305,7 +309,7 @@ iabbrev <silent> rul9 <c-r>=Scaleme(90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ttt <c-r>=strftime("%H:%M:%S")<CR><c-r>=Eatchar('\s')<cr>
 " ----------------------------------------
-"  --- fun with UTF-8  {{{1
+"  --- fun with UTF-8     {{{1
 "  (these work in gvim, terminal vim not so much)
 "  alt-, double left chevron
 "  alt-. double right chevron
@@ -321,7 +325,7 @@ iabbrev ã ✔
 iabbrev ø ✖
 iabbrev %% ⌘
 " ----------------------------------------
-" --- <Leader> commands  {{{1
+" --- <Leader> commands     {{{1
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 nnoremap <Leader>b :cd %:h<CR>
@@ -368,18 +372,21 @@ nnoremap <Leader>w :call F1_toggle_width("78")<CR>
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
 nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
 " ----------------------------------------
-" --- functions  {{{1
+" --- functions     {{{1
 function! Acdmo()
-"    read! ~/py/currmo 38
-"    let im = strftime("%H:%M")
-"    call append(line("."), "")
-"    call append(line("."), im)
-"    call append(line("."), "")
-    py3 acdmo()
+    read! ~/py/currmo 48
+    let im = strftime("%H:%M")
+    call append(line("."), "")
+    call append(line("."), im)
+    call append(line("."), "")
+    normal 3j
     normal o
+    startinsert
+"    py acdmo()
+"    normal o
 endfunction
-"  the following will make sure you're building vim with python3
-py3file ~/.vim/acdmo.py
+"  the following will work only if you're building vim with python
+"pyfile ~/.vim/acdmo.py
 " ----------------------------------------
 function! CdCurBuf()
     let cwd = getcwd()
