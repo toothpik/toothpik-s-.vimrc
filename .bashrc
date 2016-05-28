@@ -146,4 +146,4 @@ extract()      # Handy Extract Program.
 }
 
 vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
-gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -c 'set columns=117' -; }
+gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
