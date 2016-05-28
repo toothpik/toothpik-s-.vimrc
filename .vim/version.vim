@@ -70,7 +70,7 @@ function! CheckCompile()
 
     "  the linebreaks in the [+/-]feature section will be in different places
     "  depending on the size of the window when 'version' is performed
-    let got_python = 0
+    let got_perl = 0
     let got_arabic = 1
     let got_emacs_tags = 1
     let got_farsi = 1
@@ -78,8 +78,8 @@ function! CheckCompile()
     let hmr = len(va)
     let rp = 4
     while rp < hmr
-        if va[rp] =~ '+python/dyn'
-            let got_python = 1
+        if va[rp] =~ '+perl'
+            let got_perl = 1
         endif
         if va[rp] =~ '-arabic'
             let got_arabic = 0
@@ -96,10 +96,10 @@ function! CheckCompile()
         let rp = rp + 1
     endwhile
 
-    if got_python
-        echo 'python/dyn compiled in                 CHECK'
+    if got_perl
+        echo 'perl compiled in                       CHECK'
     else
-        echo 'python was not included, not good'
+        echo 'perl was not included, not good'
     endif
     if got_arabic
         echo 'arabic was included, not good'
