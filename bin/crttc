@@ -1,5 +1,5 @@
 #!/bin/bash
-#  create new year for tocal -- writes to stdout
+#  create new year for tocal -- writes to stdout -- $1 = year to make
 #  save it to the end of the real tocal when you're happy with it
 #  adholtt makes use of the Date::Easter perl module
 #  the command
@@ -8,7 +8,7 @@
 #  don't have it yet
 #
 #  make too many years into the future and you will have a lot of corrections
-#  to make if you trade motorcycles
+#  to make if you trade vehicles
 #
 #              birthdays    holidays       DST
 crt_tocal $1 | adbirtt $1 | adholtt $1 | addsttt
