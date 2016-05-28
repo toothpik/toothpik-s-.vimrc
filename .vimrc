@@ -8,7 +8,7 @@ let g:is_bash = 1
 let g:sh_noisk = 1
 " ----------------------------------------
 " --- options    {{{1
-set noautochdir
+set   autochdir
 set   autoindent
 set   autoread
 set   backspace=indent,eol,start
@@ -29,6 +29,7 @@ set   display=lastline
 set noerrorbells
 set   expandtab
 set   formatoptions+=j
+set   termguicolors
 set   guioptions-=L
 set   guioptions-=m
 set   guioptions-=r
@@ -121,12 +122,13 @@ augroup END
 "let g:no_mail_maps = 1
 " ----------------------------------------
 " --- special mappings     {{{1
-if !has('gui_running')
-    "colo biogoot
-    colo default
-endif
-nnoremap <TAB> :bnext<CR>
-nnoremap <S-TAB> :bprev<CR>
+"if !has('gui_running')
+"  looky what guicolors can do!
+colo biogoo
+"    colo default
+"endif
+nnoremap <silent> <TAB> :bnext<CR>
+nnoremap <silent> <S-TAB> :bprev<CR>
 nnoremap - dd
 imap <C-Del> <C-O>daw
 nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzxzt' : 'zc')<cr>
@@ -139,6 +141,8 @@ vmap < <gv
 nnoremap ; :
 nmap . .`[
 nmap g/ /\%#=P
+let &t_8f = '[38;2;%lu;%lu;%lum'
+let &t_8b = '[48;2;%lu;%lu;%lum'
 " ----------------------------------------
 " --- ex commands     {{{1
 command! BD b # | bd #
@@ -148,7 +152,7 @@ command! -nargs=+ H execute "silent help <args>" | only
 command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
 command! Xbit call SetExecutableBit()
 " ----------------------------------------
-" --- F-key mappings     {{{1
+" --- F-key mappings     {{{1 
 " ----------------------------------------
 nnoremap <F1> :call F1_formatter("78")<CR>
 inoremap <F1> <C-O>:call F1_formatter("78")<CR>
@@ -166,9 +170,9 @@ nnoremap <S-F3> :qall<CR>
 inoremap <S-F3> <ESC>:qall<CR>
 inoremap <M-F3> <ESC><M-F3>
 " ----------------------------------------
-nnoremap <F4> :call OpenWhat()<CR>
+nnoremap <F4> :call OpenWhat()<CR>:normal <CR>
 inoremap <F4> <C-O>J
-nnoremap <S-F4> :call OpenEndWhat()<CR>
+nnoremap <S-F4> :call OpenEndWhat()<CR>:normal <CR>
 "nnoremap <S-F4> :call FixBlankLinesAtEnd('7')<CR>
 inoremap <S-F4> <ESC>:call FixBlankLinesAtEnd('7')<CR>
 " ----------------------------------------
@@ -182,8 +186,8 @@ inoremap <M-F5> <C-O>:set paste<CR>
 " ----------------------------------------
 nnoremap <silent> <F6> :call MyExplore('')<CR>
 inoremap <silent> <F6> <ESC>:call MyExplore('')<CR>
-nnoremap <S-F6> :ls<CR>:b
-inoremap <S-F6> <ESC>:ls<CR>:b
+nnoremap <S-F6> :call PerlAcdmo()<CR>
+inoremap <S-F6> <ESC>:call PerlAcdmo()<CR>
 nnoremap <M-F6> :set nopaste<CR>
 inoremap <M-F6> <nop>
 set pastetoggle=<M-F6>
@@ -265,6 +269,7 @@ iabbrev <silent> dds4 <c-r>=strftime("%Y-%B-%d  %A")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddss <c-r>=strftime("%Y-%b-%d  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddt  <c-r>=strftime("%Y %b %d  %a  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddtt <c-r>=strftime("%Y %b %d  %a  %l:%M %p")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> dws <c-r>=strftime("%Y %b %d")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee1 <c-r>=repeat('=', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee2 <c-r>=repeat('=', 20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee3 <c-r>=repeat('=', 30)<CR><c-r>=Eatchar('\s')<cr>
@@ -330,7 +335,7 @@ let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 nnoremap <Leader>b :cd %:h<CR>
 nnoremap <silent><Leader>c :normal a✔<ESC>
-"nnoremap <Leader>d 
+nnoremap <Leader>d :call Fmt('78')<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>dq :call EditTry('~/txt/alldateabbr')<CR>
 nnoremap <Leader>e :e ~/.vimrc<CR>
@@ -575,6 +580,7 @@ function! Fmt(w)
 endfunction
 " ----------------------------------------
 function! HelpgrepScrollers()
+"  most recently mapped to ,hhh
     silent! nmap <F6> :cnext<CR>
     silent! nmap <S-F6> :cprev<CR>
     echo 'helpgrep scrollers :cn and :cp mapped to F6 and S-F6'
@@ -640,11 +646,6 @@ function! Maikallfiles()
     if l:tst_name != ".allfiles"
         call EditTry(".allfiles")
     endif
-"  the reason I stopped with this is I don't like the idea that if I use
-"  vf to find, then edit a file, F8 will be defined as DelFromAllfiles in
-"  that edit session
-"  I wanted it on F8 because that's what mc uses
-"    nnoremap <silent> <F8> :call DelFromAllfiles()<CR>
     call Hideme()
     silent %d
     0r!pwd
@@ -664,7 +665,6 @@ function! MaikallfilesT()
             edit .allfiles
         endif
     endif
-"    nnoremap <silent> <F8> :call DelFromAllfiles()<CR>
     call Hideme()
     silent %d
     0r!pwd
@@ -760,14 +760,12 @@ function! NumberToggle()
     if &number
         setlocal nonumber
         setlocal relativenumber
+    elseif &relativenumber
+        setlocal nonumber
+        setlocal norelativenumber
     else
-        if &relativenumber
-            setlocal nonumber
-            setlocal norelativenumber
-        else
-            setlocal number
-            setlocal norelativenumber
-        endif
+        setlocal number
+        setlocal norelativenumber
     endif
 endfunction
 " ----------------------------------------
@@ -806,6 +804,44 @@ function! Paste(paste_before)
         normal! "qp
     endif
     let @q = save_q
+endfunction
+" ----------------------------------------
+function! PerlAcdmo()
+    let da1 = strftime("%e")
+    let da2 = strpart(da1, 0, 1)
+    if da2 == " "
+        let d = strpart(da1, 1)
+        let sp = 3
+    else
+        let d = da1
+        let sp = 4
+    endif
+    let da = " " . d . " "
+    let dawp = "(" . d . ")"
+    read! ~/perl/mpcal
+    perl << EOF
+        ($success, $da) = VIM::Eval('da');
+        ($success, $dawp) = VIM::Eval('dawp');
+        ($success, $sp) = VIM::Eval('sp');
+        $buf = $curwin->Buffer();
+        @pos = $curwin->Cursor();
+        $s = $pos[0] - 4;
+        for ( $i = $s; $i < $s + 5; $i++ ) {
+            $x = $buf->Get($i);
+            $p = index ( $x, $da );
+            if ( $p > -1 ) {
+                $y = substr($x, 0, $p) . $dawp . substr($x, $p + $sp);
+                $buf->Set($i, $y);
+            }
+        }
+EOF
+    let im = strftime("%H:%M")
+    call append(line("."), "")
+    call append(line("."), im)
+    call append(line("."), "")
+    normal 3j
+    normal o
+    startinsert
 endfunction
 " ----------------------------------------
 function! Scaleme(w)
