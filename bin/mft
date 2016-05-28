@@ -42,7 +42,9 @@ for {set i 0} {$i < [expr {$plc - 1}]} {incr i} {
     if {[string first "Sunfresh" $td] == 0 ||
         [string first "atm -" $td] == 0 ||
         [string first "festival" $td] == 0 ||
-        [string first "Walmart Food" $td] == 0} {
+        [string first "Walmart Food" $td] == 0 ||
+        [string first "Walmart Neighborhood" $td] == 0 ||
+        [string first "Wm Supercenter" $td] == 0 } {
         set tvals [string trimleft [string range $l 47 56]]
         set tvnc [string map {, ""} $tvals]
         set t [expr {$t + [scan $tvnc %f]}]
