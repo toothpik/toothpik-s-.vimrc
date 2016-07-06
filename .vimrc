@@ -26,6 +26,7 @@ set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display=lastline
+set noequalalways
 set noerrorbells
 set   expandtab
 set   formatoptions+=j
@@ -243,6 +244,8 @@ iabbrev <silent> ~~4 <c-r>=repeat('~', 40)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ~~5 <c-r>=repeat('~', 50)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ~~6 <c-r>=repeat('~', 60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ~~7 <c-r>=repeat('~', 72)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ~~8 <c-r>=repeat('~', 80)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ~~9 <c-r>=repeat('~', 90)<CR><c-r>=Eatchar('\s')<cr>
 "                blog starved kiddies
 iabbrev <silent> bsk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> d1 <c-r>=strftime("%b %e")<cr><c-r>=Eatchar('\s')<cr>
@@ -264,6 +267,7 @@ iabbrev <silent> dddl <c-r>=Longdate()<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddn <c-r>=strftime("%Y-%b-%d %H:%M %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddof <c-r>=strftime("%B %d, %Y  %A")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddt <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ddf <c-r>=strftime("%Y-%m-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds4 <c-r>=strftime("%Y-%B-%d  %A")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddss <c-r>=strftime("%Y-%b-%d  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
@@ -372,7 +376,7 @@ nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <silent> <Leader>u :call FileTime()<CR>
 nnoremap <Leader>v :source ~/.vim/plan.vim<CR>
 nnoremap <Leader>w :call F1_toggle_width("78")<CR>
-"nnoremap <Leader>x
+nnoremap <Leader>x :ls<CR>
 "nnoremap <Leader>y
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
 nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
@@ -554,6 +558,7 @@ function! FixBlankLinesAtEnd(num)
             let s:d7 -= 1
         endwhile
     else
+        echom 'removing ' s:d7
         let s:d7 = s:d7 * -1
         let view = winsaveview()
         call FirstBlankAtEnd()
@@ -669,7 +674,7 @@ function! MaikallfilesT()
     silent %d
     0r!pwd
     normal o
-    silent execute 'r!ls -algGt'
+    silent r!ls -algGt
     silent g/^total/d
     normal gg
 endfunction
@@ -730,7 +735,9 @@ function! MyExplore(s)
         call MyExploreT()
         return
     endif
-    call CdCurBuf()
+"    we are already running with autochdir, so the following is
+"    redundant
+"    call CdCurBuf()
     let wh = ' ' . escape(expand("%:t"), '.\') . '$'
     call Maikallfiles()
     call search(wh)
@@ -825,7 +832,7 @@ function! PerlAcdmo()
         ($success, $sp) = VIM::Eval('sp');
         $buf = $curwin->Buffer();
         @pos = $curwin->Cursor();
-        $s = $pos[0] - 4;
+        $s = $pos[0] - 5;
         for ( $i = $s; $i < $s + 5; $i++ ) {
             $x = $buf->Get($i);
             $p = index ( $x, $da );
