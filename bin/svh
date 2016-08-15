@@ -1,11 +1,11 @@
 #!/bin/bash
-#  show version [here]
+#  show version here
 c
 b
 vim --version | mio
 b
 w=$(( `tput cols` - 10 ))
-dsh -c~ $w | mio 5
+dsh $w | mio 5
 b
 ~/bin-mail/lv
 b
