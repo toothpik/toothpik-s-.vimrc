@@ -11,9 +11,9 @@ lines = stdin.readlines()
 
 tm = date.today().strftime("%m")        #  today's month
 td = date.today().strftime("%d")        #  today's day
-if tm[0:1] == "0":
+if tm[0] == "0":
     tm = tm[1:]
-if td[0:1] == 0:
+if td[0] == "0":
     td = td[1:]
 td = tm + "/" + td
 
