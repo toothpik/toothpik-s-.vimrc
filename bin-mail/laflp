@@ -64,4 +64,4 @@ else:
         hour += 1
         if (hour > 23):
             hour -= 24
-    print '     next fetch  %02d:%02d:%s' % (hour, nmin, hms[2])
+    print 'next fetch  %02d:%02d:%s' % (hour, nmin, hms[2])
