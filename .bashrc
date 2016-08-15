@@ -79,6 +79,7 @@ alias cdr='cd /usr/local/share/vim/vim74'
 alias cdt='cd ~/toothpik-s-.vimrc'
 alias cdtt='cd ~/toothpik.github.com'
 alias cdvt='cd ~/.vim-tmp'
+alias pf='sudo /usr/sbin/postfix'
 alias ssie='sudo /sbin/ifstatus eth0'
 
 export TERM=xterm-256color
