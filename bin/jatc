@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#  just add the count [to date]
+#  just add the [day] count [to date]
 from datetime import date, timedelta
 from time import strptime
 from sys import argv, exit
