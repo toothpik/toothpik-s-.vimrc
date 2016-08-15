@@ -6,6 +6,13 @@ nmap <silent> <Leader>d :call CheckCompile()<CR>
 nmap <silent> <Leader>ev :call EditTry("~/.vim/version.vim")<CR>
 nmap <silent> <Leader>l :source ~/.vim/version.vim<CR>
 
+"  note to the wary:
+"
+"  if finding/fixing bugs here, they probably also need to be fixed in
+"  ~/.vimrc, in the InsertCurrentVersionString() function -- I know,
+"  code duplication, so sue me
+"
+
 function! StampWithVer() 
     let save_v = @v
     redir @v
@@ -49,12 +56,8 @@ endfunction
 function! CheckCompile()
 "  this function fails when there is no patch level line, ie for the day or so
 "  7.4 is current before 7.4.0001 comes out
-    let save_v = @v
-    redir @v
-    silent! version
-    redir END
-    let va = split(@v, '\n')
-    let @v = save_v
+    let va = split(execute("silent! version"), "\n")
+
     if va[2] == 'Compiled by toothpik@home'
         echo 'obtained correct compiledby            CHECK'
     else
