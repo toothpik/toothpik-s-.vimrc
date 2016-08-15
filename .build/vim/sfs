@@ -21,7 +21,7 @@ echo ''
 echo '  edit vim/src/feature.h to disable rightleft, farsi, arabic and emacs_tags'
 echo '  save it'
 echo ''
-echo '  on the vim path:'
+echo '  on the ~/.build/vim/vim path:'
 echo ''
 echo '      git add src/feature.h'
 echo "      git commit -m 'removed rightleft and farsi and arabic and emacs_tags'"
