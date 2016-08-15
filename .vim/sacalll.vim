@@ -32,7 +32,7 @@ function! MakeMeVertical()
     let bl = line('$') + 1
     execute "set lines=" . bl
     set columns=22
-    winpos -4 26
+"   winpos -4 26
     normal gg
     silent file cal
 
