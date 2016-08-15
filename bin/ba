@@ -1,7 +1,9 @@
 #!/bin/bash
 #  battery life on steroids
 clear
-b 2 
+b 
+cm1p2
+b
 tcols=`tput cols`
 hm=$(( ( (tcols - 75) / 2) - 1 ))
 {
@@ -11,4 +13,3 @@ hm=$(( ( (tcols - 75) / 2) - 1 ))
     hoieb
     b
 } | mio $hm
-b
