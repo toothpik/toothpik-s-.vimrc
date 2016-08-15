@@ -37,11 +37,12 @@ nmap <silent> <buffer> <Leader>x :call GoLastX()<CR>
 " ------------------------------------------------------------
 iabbr <buffer> dd <c-r>=Fivedate()<CR><c-r>=Eatchar('\s')<CR>
 " ------------------------------------------------------------
+"  anything added here needs to be supported in ~/bin/mft also
 let @a = "atm - gladstone"
 let @f = "festival foods"
 let @h = "Halligan Lawn Services"
 let @s = "Sunfresh #107"
-let @w = "Wm Supercenter"
+let @w = "Walmart Neighborhood Market"
 " ------------------------------------------------------------
 function! AdjustFoodBudget()
     let sv = winsaveview()
