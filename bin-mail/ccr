@@ -7,6 +7,6 @@ date '+            now  %H:%M:%S'
 echo
 ls -lt ~/Mail | grep -v "^total" | grep -F "$tod" | grep -v '2012\|2013\|2014' | awk -f ccr.awk
 echo
-laflp
+laflp | mio 5
 echo
 dsh 31 | mio 4
