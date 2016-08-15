@@ -1,12 +1,15 @@
 #!/bin/bash
 #  myconfigure whacks the old config.cash so it always works
-cd ~/.build/vim/vim || exit 1
+cd /home/scott/.build/vim/vim || exit 1
 date '+%Y-%b-%d %H:%M' >> ../configure.log
 rm -vf src/auto/config.cache | tee -a ../configure.log
+./configure --with-features=big --with-compiledby=toothpik@home --enable-perlinterp --enable-gui=gtk2 2>&1 | tee -a ../configure.log
 #  with python:  --enable-pythoninterp=dynamic
 #  with perl:    --enable-perlinterp
 #./configure --enable-perlinterp=dynamic --enable-pythoninterp=dynamic --enable-python3interp=dynamic --with-features=huge --with-compiledby=toothpik@home --enable-gui=gtk2 2>&1 | tee -a ../configure.log
 #./configure --with-features=big --with-compiledby=toothpik@home --enable-gui=gtk2 --enable-python3interp=dynamic 2>&1 | tee -a ../configure.log
 #./configure --with-features=big --with-compiledby=toothpik@home --enable-gui=gtk2 --enable-pythoninterp=dynamic 2>&1 | tee -a ../configure.log
-./configure --with-features=big --with-compiledby=toothpik@home --enable-perlinterp --enable-gui=gtk2 2>&1 | tee -a ../configure.log
-dsh 60 >> ../configure.log
+#./configure --with-features=big --with-compiledby=toothpik@home --enable-perlinterp --enable-gui=gtk3 2>&1 | tee -a ../configure.log
+#./configure --with-features=big --with-compiledby=toothpik@home --enable-perlinterp --enable-gui=athena 2>&1 | tee -a ../configure.log
+#./configure --with-features=big --with-compiledby=toothpik@home --enable-perlinterp --enable-gui=motif 2>&1 | tee -a ../configure.log
+dsh 40 >> ../configure.log
