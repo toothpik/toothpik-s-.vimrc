@@ -22,11 +22,16 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish2
 set nocursorcolumn
-set   cursorline
+if has('gui_running')
+    set   cursorline
+else    
+    set nocursorline
+endif
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
-set   display=lastline
+set   display+=lastline
 set noequalalways
+set   equalprg="fmt"
 set noerrorbells
 set   expandtab
 set   formatoptions+=j
@@ -123,13 +128,13 @@ augroup END
 "let g:no_mail_maps = 1
 " ----------------------------------------
 " --- special mappings     {{{1
-"if !has('gui_running')
-"  looky what guicolors can do!
-colo biogoo
-"    colo default
-"endif
-nnoremap <silent> <TAB> :bnext<CR>
-nnoremap <silent> <S-TAB> :bprev<CR>
+if has('gui_running')
+    colo biogoo
+else
+    colo default
+endif
+nnoremap <silent> <TAB> :bnext<CR><C-G>
+nnoremap <silent> <S-TAB> :bprev<CR><C-G>
 nnoremap - dd
 imap <C-Del> <C-O>daw
 nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzxzt' : 'zc')<cr>
@@ -290,6 +295,7 @@ iabbrev <silent> ibp #!/usr/bin/python3<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibpp #!/usr/bin/perl<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibs #!/bin/bash<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibt #!/usr/bin/tclsh<c-r>=Eatchar('\s')<cr>
+iabbrev <silent> icvs <c-r>=InsertCurrentVersionString()<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ll1 <c-r>=repeat('_', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ll2 <c-r>=repeat('_', 20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ll3 <c-r>=repeat('_', 30)<CR><c-r>=Eatchar('\s')<cr>
@@ -337,17 +343,17 @@ iabbrev %% ⌘
 " --- <Leader> commands     {{{1
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
-nnoremap <Leader>b :cd %:h<CR>
+"nnoremap <Leader>b 
 nnoremap <silent><Leader>c :normal a✔<ESC>
 nnoremap <Leader>d :call Fmt('78')<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>dq :call EditTry('~/txt/alldateabbr')<CR>
-nnoremap <Leader>e :e ~/.vimrc<CR>
+nnoremap <Leader>e :call EditTry('~/.vimrc')<CR>
 nnoremap <Leader>ee :source ~/.vimrc<CR>
 nnoremap <Leader>f :call F1_toggle_width("78")<CR>
 nnoremap <Leader>ff :call Findme()<CR>
 nnoremap <Leader>fff :call FixBlankLinesAtEnd('7')<CR>
-nnoremap <Leader>g :e ~/.gvimrc<CR>
+nnoremap <Leader>g :call EditTry('~/.gvimrc')<CR>
 nnoremap <Leader>gg :source ~/.gvimrc<CR>
 nnoremap <Leader>h :source ~/.vim/reading_help.vim<CR>
 nnoremap <Leader>hh :call Hideme()<CR>
@@ -360,9 +366,8 @@ nnoremap <silent> <Leader>jj :call MovePointerDown()<CR>
 nnoremap <Leader>k :s/$/  <---/<CR>
 nnoremap <silent> <Leader>kk :call MovePointerUp()<CR>
 nnoremap <Leader>l :source ~/.vim/i_ctr.vim<CR>
-nnoremap <silent> <Leader>m :call MakeMeBig()<CR>
+"nnoremap <silent> <Leader>m 
 nnoremap <silent> <Leader>n :call FirstBlankAtEnd()<CR>
-nnoremap <silent> <Leader>nj :source ~/.vim/nj.vim<CR>
 nnoremap <silent> <Leader>o :setl fdm=expr<bar>setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldlevel=0 foldcolumn=2<CR>
 nnoremap <silent> <Leader>oo :setlocal foldexpr=0 foldcolumn=0<CR>
 nnoremap <Leader>p :call Paste(0)<CR>
@@ -377,9 +382,10 @@ nnoremap <silent> <Leader>u :call FileTime()<CR>
 nnoremap <Leader>v :source ~/.vim/plan.vim<CR>
 nnoremap <Leader>w :call F1_toggle_width("78")<CR>
 nnoremap <Leader>x :ls<CR>
-"nnoremap <Leader>y
+nnoremap <silent> <Leader>y :set cursorline!<CR>
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
 nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
+nnoremap <silent> <Leader>zzz :call PerlAcdmo()<CR>
 " ----------------------------------------
 " --- functions     {{{1
 function! Acdmo()
@@ -581,7 +587,6 @@ function! Fmt(w)
     endif
     execute start . ',' . end . '!fmt -w ' . a:w
     normal }
-    normal j
 endfunction
 " ----------------------------------------
 function! HelpgrepScrollers()
@@ -608,8 +613,32 @@ function! Incr()
 endfunction
 vnoremap <C-a> :call Incr()<CR>
 " ----------------------------------------
-function! InsertEmDash()
-    return ' ― '
+function! InsertCurrentVersionString()
+"    with kind regards to ~/.vim/version.vim
+"    call StampWithVer() but this does too much
+    let save_v = @v
+    redir @v
+    silent! version
+    redir END
+    let va = split(@v, '\n')
+    let @v = save_v
+    let p1 = stridx(va[0], 'Vi IMproved')
+    "  major version
+    let v1 = va[0][p1 + 12 : p1 + 15]
+    let v2 = substitute(v1, "\ $", "", "")
+    "   v2  gets a '7.4a'
+    "   2016-Jul-31  v2 gets '7.4'
+    "  minor version
+    let v3 = split(va[1], '-')[1]
+    let lv3 = len(v3)
+    if lv3 == 1
+        let v4 = '00' . v3
+    elseif lv3 == 2
+        let v4 = '0' . v3
+    else
+        let v4 = v3
+    endif
+    return '[' . v2 . '.' . v4 . ']'
 endfunction
 " ----------------------------------------
 function! LastNonBlank()
@@ -832,8 +861,8 @@ function! PerlAcdmo()
         ($success, $sp) = VIM::Eval('sp');
         $buf = $curwin->Buffer();
         @pos = $curwin->Cursor();
-        $s = $pos[0] - 5;
-        for ( $i = $s; $i < $s + 5; $i++ ) {
+        $s = $pos[0] - 6;
+        for ( $i = $s; $i < $s + 7; $i++ ) {
             $x = $buf->Get($i);
             $p = index ( $x, $da );
             if ( $p > -1 ) {
@@ -842,9 +871,8 @@ function! PerlAcdmo()
             }
         }
 EOF
-    let im = strftime("%H:%M")
     call append(line("."), "")
-    call append(line("."), im)
+    call append(line("."), strftime("%H:%M"))
     call append(line("."), "")
     normal 3j
     normal o
