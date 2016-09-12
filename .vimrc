@@ -128,11 +128,11 @@ augroup END
 "let g:no_mail_maps = 1
 " ----------------------------------------
 " --- special mappings     {{{1
-if has('gui_running')
-    colo biogoo
-else
+"if has('gui_running')
+"    colo biogoo
+"else
     colo default
-endif
+"endif
 nnoremap <silent> <TAB> :bnext<CR><C-G>
 nnoremap <silent> <S-TAB> :bprev<CR><C-G>
 nnoremap - dd
@@ -178,8 +178,8 @@ inoremap <M-F3> <ESC><M-F3>
 " ----------------------------------------
 nnoremap <F4> :call OpenWhat()<CR>:normal <CR>
 inoremap <F4> <C-O>J
-nnoremap <S-F4> :call OpenEndWhat()<CR>:normal <CR>
-"nnoremap <S-F4> :call FixBlankLinesAtEnd('7')<CR>
+"nnoremap <S-F4> :call OpenEndWhat()<CR>:normal <CR>
+nnoremap <S-F4> :call FixBlankLinesAtEnd('7')<CR>
 inoremap <S-F4> <ESC>:call FixBlankLinesAtEnd('7')<CR>
 " ----------------------------------------
 nnoremap <silent> <F5> :call Fmt('78')<CR>
@@ -564,7 +564,7 @@ function! FixBlankLinesAtEnd(num)
             let s:d7 -= 1
         endwhile
     else
-        echom 'removing ' s:d7
+        echom 'removing ' s:d7[1:]
         let s:d7 = s:d7 * -1
         let view = winsaveview()
         call FirstBlankAtEnd()
@@ -793,12 +793,16 @@ function! NumberBlankLinesAtEnd()
 endfunction
 " ----------------------------------------
 function! NumberToggle()
-    if &number
-        setlocal nonumber
+"  num/norelnum -> num/relnum
+    if &number && !&relativenumber
         setlocal relativenumber
-    elseif &relativenumber
+"  num/relnum -> nonum/relnum
+    elseif &number && &relativenumber
         setlocal nonumber
+"  nonum/relnum -> nonum/norelnum
+    elseif !&number && &relativenumber
         setlocal norelativenumber
+"  nonum/norelnum -> num/norelnum
     else
         setlocal number
         setlocal norelativenumber
