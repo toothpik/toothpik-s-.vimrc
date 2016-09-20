@@ -128,11 +128,9 @@ augroup END
 "let g:no_mail_maps = 1
 " ----------------------------------------
 " --- special mappings     {{{1
-"if has('gui_running')
-"    colo biogoo
-"else
-    colo default
-"endif
+if !has('gui_running')
+    colo morning
+endif
 nnoremap <silent> <TAB> :bnext<CR><C-G>
 nnoremap <silent> <S-TAB> :bprev<CR><C-G>
 nnoremap - dd
@@ -239,9 +237,9 @@ nnoremap <silent> <M-F11> :call MyExplore('t')<CR>
 inoremap <silent> <M-F11> <ESC>:call MyExplore('t')<CR>
 nnoremap <silent> <C-F11> <C-W>w<C-Y><C-W>w
 " ----------------------------------------
-nnoremap <silent> <F12> :update<CR>
-inoremap <silent> <F12> <ESC>:update<CR>
-vnoremap <silent> <F12> <C-C>:update<CR>
+nnoremap <silent> <F12> :silent update<CR>
+inoremap <silent> <F12> <ESC>:silent update<CR>
+vnoremap <silent> <F12> <C-C>:silent update<CR>
 "  do not try to map S-F12 -- vim never sees it
 " ----------------------------------------
 " --- insert mode abbreviations     {{{1
@@ -847,6 +845,7 @@ function! Paste(paste_before)
 endfunction
 " ----------------------------------------
 function! PerlAcdmo()
+    "  first get the day of month into d with no leading zero
     let da1 = strftime("%e")
     let da2 = strpart(da1, 0, 1)
     if da2 == " "
@@ -856,8 +855,10 @@ function! PerlAcdmo()
         let d = da1
         let sp = 4
     endif
+    "  build a day surrounded by spaces and a replacement day with parenthesis
     let da = " " . d . " "
     let dawp = "(" . d . ")"
+
     read! ~/perl/mpcal
     perl << EOF
         ($success, $da) = VIM::Eval('da');
