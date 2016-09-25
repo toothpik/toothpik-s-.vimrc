@@ -1,4 +1,4 @@
-"  --- filetype & syntax   {{{1
+"  --- filetype & syntax {{{1
 "  filetype must always preceed syntax statements:
 filetype plugin indent on
 syntax on
@@ -6,8 +6,8 @@ let g:readline_has_bash = 1
 let g:is_bash = 1
 "  the following prevents sh.vim from treating '.' as a keyword character
 let g:sh_noisk = 1
-" ----------------------------------------
-" --- options    {{{1
+
+" --- options {{{1
 set   autochdir
 set   autoindent
 set   autoread
@@ -101,8 +101,8 @@ set   winminheight=0
 set   wrap
 set nowrapscan
 set   writebackup
-" ----------------------------------------
-" --- autocommands & plugin mappings     {{{1
+
+" --- autocommands & plugin mappings {{{1
 augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
@@ -126,8 +126,8 @@ augroup END
 "let g:loaded_zipPlugin = 1
 "let g:no_plugin_maps = 1
 "let g:no_mail_maps = 1
-" ----------------------------------------
-" --- special mappings     {{{1
+
+" --- special mappings {{{1
 if !has('gui_running')
     colo morning
 endif
@@ -147,16 +147,16 @@ nmap . .`[
 nmap g/ /\%#=P
 let &t_8f = '[38;2;%lu;%lu;%lum'
 let &t_8b = '[48;2;%lu;%lu;%lum'
-" ----------------------------------------
-" --- ex commands     {{{1
+
+" --- ex commands {{{1
 command! BD b # | bd #
 command! -range D <line1>,<line2>d | norm <C-o>
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 command! -nargs=+ H execute "silent help <args>" | only
 command! -nargs=+ Myhelp execute 'silent lhelpgrep <args>' | lopen 12
 command! Xbit call SetExecutableBit()
-" ----------------------------------------
-" --- F-key mappings     {{{1 
+
+" --- F-key mappings {{{1
 " ----------------------------------------
 nnoremap <F1> :call F1_formatter("78")<CR>
 inoremap <F1> <C-O>:call F1_formatter("78")<CR>
@@ -190,8 +190,8 @@ inoremap <M-F5> <C-O>:set paste<CR>
 " ----------------------------------------
 nnoremap <silent> <F6> :call MyExplore('')<CR>
 inoremap <silent> <F6> <ESC>:call MyExplore('')<CR>
-nnoremap <S-F6> :call PerlAcdmo()<CR>
-inoremap <S-F6> <ESC>:call PerlAcdmo()<CR>
+nnoremap <silent> <S-F6> :call NewPerlAcdmo()<CR>
+inoremap <silent> <S-F6> <ESC>:call NewPerlAcdmo()<CR>
 nnoremap <M-F6> :set nopaste<CR>
 inoremap <M-F6> <nop>
 set pastetoggle=<M-F6>
@@ -237,12 +237,12 @@ nnoremap <silent> <M-F11> :call MyExplore('t')<CR>
 inoremap <silent> <M-F11> <ESC>:call MyExplore('t')<CR>
 nnoremap <silent> <C-F11> <C-W>w<C-Y><C-W>w
 " ----------------------------------------
-nnoremap <silent> <F12> :silent update<CR>
-inoremap <silent> <F12> <ESC>:silent update<CR>
-vnoremap <silent> <F12> <C-C>:silent update<CR>
+nnoremap <silent> <F12> :update<CR>
+inoremap <silent> <F12> <ESC>:update<CR>
+vnoremap <silent> <F12> <C-C>:update<CR>
 "  do not try to map S-F12 -- vim never sees it
-" ----------------------------------------
-" --- insert mode abbreviations     {{{1
+
+" --- insert mode abbreviations {{{1
 iabbrev <silent> ~~4 <c-r>=repeat('~', 40)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ~~5 <c-r>=repeat('~', 50)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ~~6 <c-r>=repeat('~', 60)<CR><c-r>=Eatchar('\s')<cr>
@@ -271,6 +271,7 @@ iabbrev <silent> dddn <c-r>=strftime("%Y-%b-%d %H:%M %a")<cr><c-r>=Eatchar('\s')
 iabbrev <silent> dddof <c-r>=strftime("%B %d, %Y  %A")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddt <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddf <c-r>=strftime("%Y-%m-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ddl <c-r>=strftime("%b %e %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds4 <c-r>=strftime("%Y-%B-%d  %A")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddss <c-r>=strftime("%Y-%b-%d  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
@@ -321,8 +322,8 @@ iabbrev <silent> rul8 <c-r>=Scaleme(80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul9 <c-r>=Scaleme(90)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ttt <c-r>=strftime("%H:%M:%S")<CR><c-r>=Eatchar('\s')<cr>
-" ----------------------------------------
-"  --- fun with UTF-8     {{{1
+
+"  --- fun with UTF-8 {{{1
 "  (these work in gvim, terminal vim not so much)
 "  alt-, double left chevron
 "  alt-. double right chevron
@@ -337,8 +338,8 @@ iabbrev â •
 iabbrev ã ✔
 iabbrev ø ✖
 iabbrev %% ⌘
-" ----------------------------------------
-" --- <Leader> commands     {{{1
+
+" --- <Leader> commands {{{1
 let mapleader = ','
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 "nnoremap <Leader>b 
@@ -383,9 +384,9 @@ nnoremap <Leader>x :ls<CR>
 nnoremap <silent> <Leader>y :set cursorline!<CR>
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
 nnoremap <Leader>zz :edit ~/.vim/html_lets<CR>
-nnoremap <silent> <Leader>zzz :call PerlAcdmo()<CR>
-" ----------------------------------------
-" --- functions     {{{1
+nnoremap <silent> <Leader>zzz :call NewPerlAcdmo()<CR>
+
+" --- functions {{{1
 function! Acdmo()
     read! ~/py/currmo 48
     let im = strftime("%H:%M")
@@ -842,6 +843,24 @@ function! Paste(paste_before)
         normal! "qp
     endif
     let @q = save_q
+endfunction
+" ----------------------------------------
+function! NewPerlAcdmo()
+"  and yes, it still runs perl, just not the imbedded kind
+    
+"   save old line
+    let sol = line(".")
+
+    silent read! ~/perl/mpcal
+
+"   get new line
+    let gnl = line(".")
+    execute sol + 3 . "," . gnl . "!~/perl/acdmo"
+    call append(gnl, "")
+    call append(gnl + 1, strftime("%H:%M"))
+    call append(gnl + 2, "")
+    call cursor(gnl + 3, 1)
+    startinsert
 endfunction
 " ----------------------------------------
 function! PerlAcdmo()
