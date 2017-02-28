@@ -1,1 +1,1 @@
-/_February/,/^-----/!d
+/_February/,/^-----/p
