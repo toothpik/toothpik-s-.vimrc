@@ -1,3 +1,4 @@
 #!/bin/bash
 #  stand alone calendar (longer) minus one plus one month, horizontal
-g --servername TCAL -S ~/.vim/mmatc.vim
+lc=$(( $( cm1p1 | wc -l ) + 2 ))
+g -geometry 74x${lc} --servername TCAL -S ~/.vim/mmatc.vim 2>/dev/null
