@@ -6,13 +6,12 @@ from sys import argv, exit
 
 def usage():
     print("          Just Add the Count")
-    print("jatc requires a count on the command line")
-    print("and an optional from-date (format YYYY-MM-DD or YYYY-mmm-d)")
-    print("in order to print the sum of the count and date")
-    print("(uses current date if no date is supplied)")
+    print("jatc requires a count on the command line (allowed to be negative)")
+    print("and an optional from-date (format YYYY-MM-DD or YYYY-mmm-d) in order")
+    print("to print the sum of the count and date -- uses current date if no date is supplied")
 
 if len(argv) < 2:
-    print("zero arguments supplied on the command line")
+    print("ERROR:  zero arguments supplied")
     usage()
     exit(1)
 
