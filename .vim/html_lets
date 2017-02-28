@@ -5,7 +5,8 @@ let @c = '<!-- -->'
 let @g = '&gt;'
 let @h = 'https://github.com/toothpik/toothpik-s-.vimrc/blob/master/'
 let @l = '&lt;'
-let @p = '<pre></pre>'
+let @p = '<pre>
+</pre>'
 let @q = '&quot;'
 let @s = '&nbsp;'
 
