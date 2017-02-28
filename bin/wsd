@@ -2,6 +2,10 @@
 #  bring the "workspace" down
 for s in `vim --serverlist`; do
     case $s in 
+        LWIN) vim --servername LWIN --remote-send ':quit<CR>'
+              ;;
+        RBD) vim --servername RBD --remote-send ':quit<CR>'
+             ;;
         WKLY) vim --servername WKLY --remote-send ':quit<CR>'
               ;;
         TCAL) if test $# -eq 0; then
