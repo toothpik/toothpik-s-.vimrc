@@ -1,5 +1,5 @@
 #!/bin/bash
-#  filter that starts after realsuff and ends before endrealstuff
+#  filter that starts after realstuff and ends before endrealstuff
 awk '/^endrealstuff/ { i = 0 }
 i
 /^realstuff/ { i = 1 }' $@
