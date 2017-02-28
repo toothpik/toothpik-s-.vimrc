@@ -1,11 +1,11 @@
 #!/bin/bash
 #  show version here
 c
-b
-vim --version | mio
-b
-w=$(( `tput cols` - 10 ))
-dsh $w | mio 5
-b
-~/bin-mail/lv
-b
+#b
+vim --version | cut -c1-$(tput cols)
+#b
+#w=$(( `tput cols` - 10 ))
+#dsh $w | mio 5
+#b  hopechest:
+#~/bin-mail/lv
+#b
