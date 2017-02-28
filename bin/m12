@@ -4,5 +4,5 @@ if (($# == 0))
 then
     cat ~/txt/plan_2012
 else
-    sed -f ~/plan$1.sed ~/txt/plan_2012
+    sed -n -f ~/plan$1.sed ~/txt/plan_2012
 fi
