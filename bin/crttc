@@ -8,7 +8,7 @@
 #  don't have it yet
 #
 #  make too many years into the future and you will have a lot of corrections
-#  to make if you trade vehicles
+#  to make if you trade vehicles or someone dies...
 #
 #              birthdays    holidays       DST
 crt_tocal $1 | adbirtt $1 | adholtt $1 | addsttt
