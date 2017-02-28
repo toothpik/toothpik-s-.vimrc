@@ -1,8 +1,7 @@
 #!/bin/bash
 #  print current plan data
 c
-b
-limit=$((`tput lines` - 2))
+limit=$((`tput lines` - 1))
 hmc=$(msindent)
 wm=m`date '+%y'`            #  which m
 hm=`$wm | awk -f ~/funclear.awk`
@@ -18,11 +17,11 @@ function pmtmt() {
         {
             $pym 12
             $wm 1
-        } | tail -$limit | mio $hmc
+        } | grep -v -- '-------' | tail -$limit | mio $hmc
     else
         for m in $pm $tm; do
             $wm $m
-        done | tail -$limit | mio $hmc
+        done | grep -v -- '-------' | tail -$limit | mio $hmc
     fi
 }
 #  this month/next month/head
@@ -30,13 +29,13 @@ function tmnmh () {
     if [ $nm -lt 13 ]; then
         for m in $tm $nm; do
             $wm $m
-        done | head -$limit | mio $hmc
+        done | grep -v -- '-------' | head -$limit | mio $hmc
     else
         nym=m$((`date '+%y'` + 1))
         {
             $wm 12
             $nym 1
-        } | head -$limit | mio $hmc
+        } | grep -v -- '-------' | head -$limit | mio $hmc
     fi
 }
 #  this month/next month/tail
@@ -44,13 +43,13 @@ function tmnmt () {
     if [ $nm -lt 13 ]; then
         for m in $tm $nm; do
             $wm $m
-        done | tail -$limit | mio $hmc
+        done | grep -v -- '-------' | tail -$limit | mio $hmc
     else
         nym=m$((`date '+%y'` + 1))
         {
             $wm 12
             $nym 1
-        } | tail -$limit | mio $hmc
+        } | grep -v -- '-------' | tail -$limit | mio $hmc
     fi
 }
 
