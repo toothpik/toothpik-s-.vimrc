@@ -11,5 +11,5 @@ for s in `vim --serverlist`; do
 done
 if test $ar -eq 0; then
     lc=$(( `cm1p1v|wc -l` + 1 ))
-    g -geometry 22x$lc --servername TCAL -S ~/.vim/sacalll.vim -c 'call MakeMeVertical()' -c 'set hlsearch'
+    g -geometry 22x$lc --servername TCAL -S ~/.vim/sacalll.vim -c 'call MakeMeVertical()' -c 'set hlsearch' 2>/dev/null
 fi
