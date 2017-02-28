@@ -1,8 +1,8 @@
 #!/bin/bash
 #  start konsole
 if [ $# -lt 1 ]; then
-    tit="1)  %D"
+    tit="(1)"
 else
     tit="$@"
 fi
-konsole -p tabtitle="$tit" 
+konsole --profile toothpik -p tabtitle="$tit" 
