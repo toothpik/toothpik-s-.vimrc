@@ -1,15 +1,11 @@
 #!/bin/bash
 #  battery life on steroids
 clear
-b 
-cm1p2
-b
-tcols=`tput cols`
-hm=$(( ( (tcols - 75) / 2) - 1 ))
-{
-    b2
-    mb
-    b
-    hoieb
-    b
-} | mio $hm
+b 3
+ma=$(( ( `tput cols` - 91 ) / 2 ))
+t=$(date '+%A')
+d=$(date '+%Y-%b-%d')
+printf "%36s%18s\n" $t $d | mio $ma
+b 2
+readbatt | mio $ma
+yc
