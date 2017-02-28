@@ -41,8 +41,8 @@ export LC_COLLATE=POSIX
 #  export PS1='\[\e[6;31m\][$(mytime)] \w $\[\e[m\] '
 #  export PS1='\[\e[6;31m\]\w $\[\e[m\] '
 #  export PS1='\[\e[6;31m\]$\[\e[m\] '
-export PS1='$(date "+%a %H:%M") \w> '
-#  export PS1='[$(date "+%a %H:%M")] \w $ '
+#  export PS1='$(date "+%a %H:%M") \w> '
+export PS1='[$(date "+%a %H:%M")] \w> '
 #  export PS1='$ '
 #  export PS1='\w> '
 #  export PS1='$PWD> '
@@ -66,7 +66,7 @@ alias cda='cd ~/awk'
 alias cdb='cd ~/bin-mail'
 alias cdc='cd ~/calc'
 alias cdcp='cd ~/calc/primes'
-alias cdd='cd /usr/local/share/vim/vim74/doc'
+alias cdd='cd /usr/local/share/vim/vim80/doc'
 alias cde='cd ~/txt/escape'
 alias cdf='cd ~/txt/f'
 alias cdg2='cd $(~/txt/f/gcsd)'
@@ -75,7 +75,7 @@ alias cdk='cd ~/txt/roadking'
 alias cdm='cd ~/Mail'
 alias cdp='cd ~/perl'
 alias cdpp='cd ~/perl/primes'
-alias cdr='cd /usr/local/share/vim/vim74'
+alias cdr='cd /usr/local/share/vim/vim80'
 alias cdt='cd ~/toothpik-s-.vimrc'
 alias cdtt='cd ~/toothpik.github.com'
 alias cdvt='cd ~/.vim-tmp'
@@ -102,8 +102,8 @@ dp () {
     then
         echo "PATH already has $PWD"
     else
-        export PATH=${PWD}:$PATH
-        export PS1='$(date "+%a %H:%M") \w: '
+        export PATH=${PWD}:${PATH}
+        export PS1='[$(date "+%a %H:%M")] \w: '
     fi
 }
 #  remove dangerous path -- whew!
@@ -111,7 +111,7 @@ rdp () {
     if [[ $PATH = $PWD:* ]]
     then
         export PATH=${PATH#$PWD:}
-        export PS1='$(date "+%a %H:%M") \w> '
+        export PS1='[$(date "+%a %H:%M")] \w> '
     else
         echo "PATH doesn't have $PWD at the front"
     fi
@@ -147,4 +147,4 @@ extract()      # Handy Extract Program.
 }
 
 vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
-gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
+gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -geometry 120x35 -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
