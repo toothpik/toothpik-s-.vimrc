@@ -4,5 +4,5 @@ dt=$(date '+%b-%d')
 echo "       laundry as of  $dt"
 echo
 laundryt
-dsh 29 | mio 4
+#dsh 29 | mio 4
 laundry | mio 3
