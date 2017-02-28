@@ -11,7 +11,6 @@ nmap <silent> <Leader>l :source ~/.vim/version.vim<CR>
 "  if finding/fixing bugs here, they probably also need to be fixed in
 "  ~/.vimrc, in the InsertCurrentVersionString() function -- I know,
 "  code duplication, so sue me
-"
 
 function! StampWithVer() 
     let save_v = @v
@@ -42,8 +41,10 @@ function! StampWithVer()
     let v3 = split(va[1], '-')[1]
     let lv3 = len(v3)
     if lv3 == 1
-        let v4 = '00' . v3
+        let v4 = '000' . v3
     elseif lv3 == 2
+        let v4 = '00' . v3
+    elseif lv3 == 3
         let v4 = '0' . v3
     else
         let v4 = v3
@@ -74,6 +75,9 @@ function! CheckCompile()
     "  the linebreaks in the [+/-]feature section will be in different places
     "  depending on the size of the window when 'version' is performed
     let got_perl = 0
+    let got_python = 0
+    let got_python3 = 0
+    let got_tcl = 0
     let got_arabic = 1
     let got_emacs_tags = 1
     let got_farsi = 1
@@ -83,6 +87,15 @@ function! CheckCompile()
     while rp < hmr
         if va[rp] =~ '+perl'
             let got_perl = 1
+        endif
+        if va[rp] =~ '+python3'
+            let got_python3 = 1
+        endif
+        if va[rp] =~ '+python\>'
+            let got_python = 1
+        endif
+        if va[rp] =~ '+tcl'
+            let got_tcl = 1
         endif
         if va[rp] =~ '-arabic'
             let got_arabic = 0
@@ -100,29 +113,51 @@ function! CheckCompile()
     endwhile
 
     if got_perl
-        echo 'perl compiled in                       CHECK'
+        echo 'perl compiled in, not good  <---<<'
     else
-        echo 'perl was not included, not good'
+        echo 'perl not included                      CHECK'
     endif
+
+    if got_python
+        echo 'python compiled in, not good  <---<<'
+    else
+        echo 'python not included                    CHECK'
+    endif
+
+    if got_python3
+        echo 'python3 compiled in, not good  <---<<'
+    else
+        echo 'python3 not included                   CHECK'
+    endif
+
+    if got_tcl
+        echo 'tcl compiled in, not good  <---<<'
+    else
+        echo 'tcl not included                       CHECK'
+    endif
+
     if got_arabic
-        echo 'arabic was included, not good'
+        echo 'arabic included, not good'
     else
-        echo 'arabic not compiled in                 CHECK'
+        echo 'arabic not included                    CHECK'
     endif
+
     if got_emacs_tags
-        echo 'emacs_tags was included, not good'
+        echo 'emacs_tags included, not good'
     else
-        echo 'emacs_tags not compiled in             CHECK'
+        echo 'emacs_tags not included                CHECK'
     endif
+
     if got_farsi
-        echo 'farsi was included, not good'
+        echo 'farsi included, not good'
     else
-        echo 'farsi not compiled in                  CHECK'
+        echo 'farsi not included                     CHECK'
     endif
+
     if got_rightleft
-        echo 'rightleft was included, not good'
+        echo 'rightleft included, not good'
     else
-        echo 'rightleft not compiled in              CHECK'
+        echo 'rightleft not included                 CHECK'
     endif
 
 endfunction
