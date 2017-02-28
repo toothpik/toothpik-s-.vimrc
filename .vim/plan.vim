@@ -1,12 +1,10 @@
 "  setup for edit of plans - used by gp and vp to name a few
 "  ~/txt/plan_readme and ~/bin/minst describe creation of new plans
 
-"  the following dimensions must be kept in sync with the -geometry
-"  option in ~/bin/gp or the KDE gods will frown on you
-if has('gui_running')
-    set lines=42
-    set columns=94
-endif
+augroup plangrp
+    au!
+    au BufEnter plan_* call GoLastX()
+augroup END
 
 let mapleader = ','
 "  WHEN ADDING MAPS, ADD THEM TO DisplayLeaders() TOO
@@ -21,26 +19,30 @@ nmap <silent> <buffer> <Leader>ev :e ~/.vim/plan.vim<CR>
 silent! unmap ,ff
 silent! unmap ,fff
 nmap <silent> <buffer> <Leader>f :call AdjustFoodBudget()<CR>
+silent! unmap ,gg
 nmap <silent> <buffer> <Leader>g :call OpenNextYear()\|source ~/.vim/plan.vim<CR>
 nmap <silent> <buffer> <Leader>h :call AdjustHalliganBudget()<CR>
 nmap <silent> <buffer> <Leader>lu :call system("lubk")<CR>
-nmap <silent> <buffer> <Leader>n :e ~/txt/plan_notes\|normal G<CR>
 nmap <silent> <buffer> <Leader>p :call SyncNextYear()<CR>
 nmap <silent> <buffer> <Leader>q :call DisplayLeaders()<CR>
 nmap <silent> <buffer> <Leader>r :silent call Reconcile()<CR>
 nmap <silent> <buffer> <Leader>rr :call FixReconcileWLastYear()<CR>
+silent! unmap ,ss
 nmap <silent> <buffer> <Leader>s :call SyncWLastYear()<CR>
 nmap <silent> <buffer> <Leader>t :call ToggleColorColumn()<CR>
 nmap <silent> <buffer> <Leader>uu :call GoFirstUnclear()<CR>
 nmap <silent> <buffer> <Leader>u :e ~/txt/usbank<CR>
+nmap <silent> <buffer> <Leader>w :e ~/txt/plan_notes\|normal G<CR>
 nmap <silent> <buffer> <Leader>x :call GoLastX()<CR>
 " ------------------------------------------------------------
 iabbr <buffer> dd <c-r>=Fivedate()<CR><c-r>=Eatchar('\s')<CR>
 " ------------------------------------------------------------
 "  anything added here needs to be supported in ~/bin/mft also
 let @a = "atm - gladstone"
+let @c = "atm - clay county"
 let @f = "festival foods"
 let @h = "Halligan Lawn Services"
+let @p = "Price Chopper #11"
 let @s = "Sunfresh #107"
 let @w = "Walmart Neighborhood Market"
 " ------------------------------------------------------------
@@ -68,8 +70,6 @@ endfunction
 
 function! BalCol()
     let sv = winsaveview()
-"    silent %!~/tcl/planbal
-"    %pyf ~/.vim/planbal.py
     %!~/py/planbal
     call winrestview(sv)
 endfunction
@@ -87,7 +87,6 @@ echom 'f :call AdjustFoodBudget()'
 echom 'g :call OpenNextYear()\|source ~/.vim/plan.vim'
 echom 'h :call AdjustHalliganBudget()'
 echom 'lu :call system("lubk")'
-echom 'n :e ~/txt/plan_notes\|normal G'
 echom 'p :call SyncNextYear()'
 echom 'q :call DisplayLeaders()'
 echom 'r :call Reconcile()'
@@ -96,6 +95,7 @@ echom 's :call SyncWLastYear()'
 echom 't :call ToggleColorColumn()'
 echom 'uu :call GoFirstUnclear()'
 echom 'u :e ~/txt/usbank'
+echom 'w :e ~/txt/plan_notes\|normal G'
 echom 'x :call GoLastX()'
 endfunction
 
@@ -109,8 +109,6 @@ function! FixReconcileWLastYear()
     let ty = expand("%")[-4:]
     let prvyr = ty - 1
     call GoLastClear()
-"    execute ".!~/tcl/planfixrecon " . pyn
-"    .pyf ~/.vim/planfixrecon.py
     execute ".!~/py/planfixrecon " . prvyr
 endfunction
 
@@ -128,9 +126,15 @@ function! GoLastClear()
 endfunction
 
 function! GoLastX()
-    normal G
+    $
+    let botl = line('.')
     call search("\\%>59c\\%<61cx", 'b')
-    normal zz
+    let newl = line('.')
+    if newl != botl
+        normal zz
+    else
+        1
+    endif
     normal 0
 endfunction
 
