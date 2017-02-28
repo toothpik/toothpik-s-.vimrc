@@ -9,4 +9,3 @@ set hlsearch
 set nonumber
 
 source ~/.vim/fcd.vim
-
