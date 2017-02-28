@@ -17,6 +17,10 @@ fi
 diff ~/.vimrc $lb
 echo 'creating backup:'
 cp -fv ~/.vimrc ~/.vim/backups/.vimrc_$(date '+%Y%m%d')
+exit
+
+
+
 echo 'uploading to web site'
 cd ~/toothpik-s-.vimrc
 cp -f ~/.vimrc .
