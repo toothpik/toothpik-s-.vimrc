@@ -2,7 +2,10 @@
 #  look at fetchmail log, predict next fetch time
 from os import environ
 from string import find, split, strip
+from time import strftime
+
 flog = ""
+dt = strftime("%Y-%b-%d")
 fmailrc = environ.get('HOME') + '/.fetchmailrc'
 
 try:
@@ -22,7 +25,7 @@ saveLine = "fetchmail not running as a daemon - no sleeping in the log"
 
 try:
    f=open(flog, 'r')
-   while 1:
+   while True:
       S=f.readline()
       if S == "":
         f.close()
@@ -34,13 +37,6 @@ except IOError:
    exit (1)
 
 wa = saveLine.split()
-#  ---------------------------------------
-#print "here we go (zero based)"
-#i = 0
-#while i < len(wa):
-#    print "%d) %s" % (i, wa[i])
-#    i += 1
-#  ---------------------------------------
 ls = wa[7]     # last sleep
 ss = wa[11]    # sleep seconds
 ampm = wa[8]   # AM or PM
@@ -64,4 +60,4 @@ else:
         hour += 1
         if (hour > 23):
             hour -= 24
-    print 'next fetch  %02d:%02d:%s' % (hour, nmin, hms[2])
+    print 'next fetch  %s %02d:%02d:%s' % (dt, hour, nmin, hms[2])
