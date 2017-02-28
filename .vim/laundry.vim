@@ -5,11 +5,15 @@ nmap <buffer> <Leader>l :source ~/.vim/laundry.vim<CR>
 
 let mapleader = ','
 nnoremap <silent> <Leader>c :call AddNewLaundryEntry("colored")<CR>
-unmap <Leader>sm
 unmap <Leader>ss
 nnoremap <silent> <Leader>s :call AddNewLaundryEntry("sheets")<CR>
 nnoremap <silent> <Leader>t :call AddNewLaundryEntry("towels")<CR>
 nnoremap <silent> <Leader>w :call AddNewLaundryEntry("white")<CR>
+
+augroup laundrygrp
+    au!
+    au BufEnter laundry.log $
+augroup END
 
 function! AddNewLaundryEntry(strtadd)
     let ds = strftime("    %b %e  %a  ")
@@ -26,3 +30,4 @@ function! AddNewLaundryEntry(strtadd)
         normal G
     endif
 endfunction
+
