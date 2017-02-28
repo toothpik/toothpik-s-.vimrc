@@ -1,1 +1,1 @@
-/_December/,/^-----/!d
+/_December/,/^-----/p
