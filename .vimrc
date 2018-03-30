@@ -22,20 +22,17 @@ set   comments-=fb:-
 set   confirm
 set   cryptmethod=blowfish2
 set nocursorcolumn
-if has('gui_running')
-    set   cursorline
-else    
-    set nocursorline
-endif
+set   cursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display+=lastline
 set noequalalways
-set   equalprg="fmt"
+set   equalprg="fmt --width=78"
 set noerrorbells
 set   expandtab
 set   formatoptions+=j
 set   termguicolors
+set   guicursor+=a:blinkon0
 set   guioptions-=L
 set   guioptions-=m
 set   guioptions-=r
@@ -80,7 +77,7 @@ set nostartofline
 set   swapfile
 set   swapsync=
 set   t_vb=
-set   tabstop=4
+set   tabstop=8
 set   textwidth=0
 if has('gui_running')
     set title
@@ -107,30 +104,19 @@ augroup vimrcgrp
     au!
     au BufWrite * if &ft == '' | filetype detect | endif
 augroup END
-"
-"  some scripts i don't need:
-"  none of which get loaded with 'noloadplugins'
-"let g:CSApprox_loaded = 1
-"let g:html_use_css = 1
-"let g:loaded_2html_plugin = 1
-"let g:loaded_getscriptPlugin = 1
-"let g:loaded_gzip = 1
-"let g:loaded_matchparen = 1
-"let g:loaded_netrw = 1
-"let g:loaded_netrwPlugin = 1
-"let g:netrw_banner = 0
-"let g:netrw_liststyle = 1
-"let g:loaded_vimballPlugin = 1
-"let g:loaded_rrhelper = 1
-"let g:loaded_tarPlugin = 1
-"let g:loaded_zipPlugin = 1
-"let g:no_plugin_maps = 1
-"let g:no_mail_maps = 1
 
-" --- special mappings {{{1
-if !has('gui_running')
-    colo morning
-endif
+" --- special mappings & colors {{{1
+"if has('gui_running')
+"    colo pyte
+"    colo default
+"    colo baycomb
+"    colo morning
+"    colo almost-default
+"else
+"  biogoo is one of the few that shows spelling errors in terminal vim
+"    colo biogoo
+    colo default
+"endif
 nnoremap <silent> <TAB> :bnext<CR><C-G>
 nnoremap <silent> <S-TAB> :bprev<CR><C-G>
 nnoremap - dd
@@ -144,7 +130,8 @@ vmap > >gv
 vmap < <gv
 nnoremap ; :
 nmap . .`[
-nmap g/ /\%#=P
+"  I'll put the following back in as soon as I figure out what it does...maybe
+"nmap g/ /\%#=P
 let &t_8f = '[38;2;%lu;%lu;%lum'
 let &t_8b = '[48;2;%lu;%lu;%lum'
 
@@ -176,15 +163,17 @@ inoremap <M-F3> <ESC><M-F3>
 " ----------------------------------------
 nnoremap <F4> :call OpenWhat()<CR>:normal <CR>
 inoremap <F4> <C-O>J
-"nnoremap <S-F4> :call OpenEndWhat()<CR>:normal <CR>
-nnoremap <S-F4> :call FixBlankLinesAtEnd('7')<CR>
+nnoremap <S-F4> :call OpenEndWhat()<CR>:normal <CR>
+"nnoremap <S-F4> :call FixBlankLinesAtEnd('7')<CR>
 inoremap <S-F4> <ESC>:call FixBlankLinesAtEnd('7')<CR>
 " ----------------------------------------
 nnoremap <silent> <F5> :call Fmt('78')<CR>
 inoremap <silent> <F5> <C-O>:call Fmt('78')<CR>
 cmap <F5> <c-r>=strftime("%Y%m%d")<CR>
-nnoremap <S-F5> :call ZeroBlankLinesAtEnd()<CR>
-inoremap <S-F5> <ESC>:call ZeroBlankLinesAtEnd()<CR>
+"nnoremap <S-F5> :call ZeroBlankLinesAtEnd()<CR>
+nnoremap <S-F5> :call NewPythonAcdmo()<CR>
+"inoremap <S-F5> <ESC>:call ZeroBlankLinesAtEnd()<CR>
+inoremap <S-F5> <ESC>:call NewPythonAcdmo()<CR>
 nnoremap <M-F5> :set paste<CR>
 inoremap <M-F5> <C-O>:set paste<CR>
 " ----------------------------------------
@@ -196,8 +185,8 @@ nnoremap <M-F6> :set nopaste<CR>
 inoremap <M-F6> <nop>
 set pastetoggle=<M-F6>
 " ----------------------------------------
-nnoremap <silent> <F7> :set spell!<CR>
-inoremap <silent> <F7> <ESC>:set spell!<CR>
+nnoremap <silent> <F7> :call ToggleSpell()<CR>
+inoremap <silent> <F7> <ESC>:call ToggleSpell()<CR>
 nnoremap <silent> <S-F7> :call Acdmo()<CR>
 inoremap <silent> <S-F7> <C-O>:call Acdmo()<CR>
 " ----------------------------------------
@@ -252,6 +241,7 @@ iabbrev <silent> ~~9 <c-r>=repeat('~', 90)<CR><c-r>=Eatchar('\s')<cr>
 "                blog starved kiddies
 iabbrev <silent> bsk <c-r>=LongBlogDate()<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> d1 <c-r>=strftime("%b %e")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> d2 <c-r>=strftime("%b %e  %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd <c-r>=strftime("%Y-%b-%d")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd1 <c-r>=repeat('-', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dd2 <c-r>=repeat('-', 20)<CR><c-r>=Eatchar('\s')<cr>
@@ -272,6 +262,7 @@ iabbrev <silent> dddof <c-r>=strftime("%B %d, %Y  %A")<cr><c-r>=Eatchar('\s')<cr
 iabbrev <silent> dddt <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddf <c-r>=strftime("%Y-%m-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddl <c-r>=strftime("%b %e %a")<cr><c-r>=Eatchar('\s')<cr>
+"iabbrev <silent> dl <c-r>=strftime("%Y %B %d  %A  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds4 <c-r>=strftime("%Y-%B-%d  %A")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddss <c-r>=strftime("%Y-%b-%d  %H:%M  %a")<cr><c-r>=Eatchar('\s')<cr>
@@ -287,6 +278,8 @@ iabbrev <silent> ee6 <c-r>=repeat('=', 60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee7 <c-r>=repeat('=', 70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee8 <c-r>=repeat('=', 80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ee9 <c-r>=repeat('=', 90)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> fd1 <c-r>=strftime("%Y %b %e")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> fd2 <c-r>=strftime("%Y %b %e  %a")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> iba #!/bin/awk -f<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibe #!/usr/bin/expect<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibl #!/usr/local/bin/lua<c-r>=Eatchar('\s')<cr>
@@ -294,7 +287,8 @@ iabbrev <silent> ibp #!/usr/bin/python3<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibpp #!/usr/bin/perl<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibs #!/bin/bash<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ibt #!/usr/bin/tclsh<c-r>=Eatchar('\s')<cr>
-iabbrev <silent> icvs <c-r>=InsertCurrentVersionString()<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> icvs <c-r>=CurrentVersionString()<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> kkk ✔<c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ll1 <c-r>=repeat('_', 10)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ll2 <c-r>=repeat('_', 20)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ll3 <c-r>=repeat('_', 30)<CR><c-r>=Eatchar('\s')<cr>
@@ -320,29 +314,37 @@ iabbrev <silent> rul6 <c-r>=Scaleme(60)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul7 <c-r>=Scaleme(70)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul8 <c-r>=Scaleme(80)<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> rul9 <c-r>=Scaleme(90)<CR><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> sdd <c-r>=strftime("%b %e  %a")<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> tt <c-r>=strftime("%H:%M")<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ttt <c-r>=strftime("%H:%M:%S")<CR><c-r>=Eatchar('\s')<cr>
 
 "  --- fun with UTF-8 {{{1
 "  (these work in gvim, terminal vim not so much)
+"  (best to learn the digraph codes for the ones you like)
 "  alt-, double left chevron
-"  alt-. double right chevron
-"  alt-a arrow
-"  alt-b bullet
-"  alt-c check mark
-"  alt-x fat raised x
 iabbrev ¬ «
+"  alt-. double right chevron
 iabbrev ® »
+"  alt-a arrow right
 iabbrev á →
+"  alt-b bullet
 iabbrev â •
+"  alt-c check mark
 iabbrev ã ✔
+"  alt-x fat raised x
 iabbrev ø ✖
-iabbrev %% ⌘
+let @c = '✔'
 
 " --- <Leader> commands {{{1
 let mapleader = ','
+nnoremap <Leader>7 :call FixBlankLinesAtEnd('7')<CR>
+nnoremap <Leader>8 :set textwidth=78<CR>
+nnoremap <Leader>0 :call ZeroBlankLinesAtEnd()<CR>
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
-"nnoremap <Leader>b 
+nnoremap <Leader>b :call FirstBlankAtEnd()<CR>
+"nnoremap <Leader>bb :call AIPerlAcdmo()<CR>
+"nnoremap <Leader>bbb :call AppendAnyLine()<CR>
+"nnoremap <Leader>be :call EditTry('~/.vim/ai-acdmo.vim')<CR>
 nnoremap <silent><Leader>c :normal a✔<ESC>
 nnoremap <Leader>d :call Fmt('78')<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
@@ -351,7 +353,6 @@ nnoremap <Leader>e :call EditTry('~/.vimrc')<CR>
 nnoremap <Leader>ee :source ~/.vimrc<CR>
 nnoremap <Leader>f :call F1_toggle_width("78")<CR>
 nnoremap <Leader>ff :call Findme()<CR>
-nnoremap <Leader>fff :call FixBlankLinesAtEnd('7')<CR>
 nnoremap <Leader>g :call EditTry('~/.gvimrc')<CR>
 nnoremap <Leader>gg :source ~/.gvimrc<CR>
 nnoremap <Leader>h :source ~/.vim/reading_help.vim<CR>
@@ -364,9 +365,10 @@ nnoremap <Leader>j :call FindPointer()<CR>
 nnoremap <silent> <Leader>jj :call MovePointerDown()<CR>
 nnoremap <Leader>k :s/$/  <---/<CR>
 nnoremap <silent> <Leader>kk :call MovePointerUp()<CR>
-nnoremap <Leader>l :source ~/.vim/i_ctr.vim<CR>
+"nnoremap <Leader>l
 "nnoremap <silent> <Leader>m 
-nnoremap <silent> <Leader>n :call FirstBlankAtEnd()<CR>
+"nnoremap <silent> <Leader>n :normal nzz<CR>
+"  i can't take credit for the following, and I forgot who wrote it
 nnoremap <silent> <Leader>o :setl fdm=expr<bar>setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldlevel=0 foldcolumn=2<CR>
 nnoremap <silent> <Leader>oo :setlocal foldexpr=0 foldcolumn=0<CR>
 nnoremap <Leader>p :call Paste(0)<CR>
@@ -374,12 +376,12 @@ nnoremap <Leader>P :call Paste(1)<CR>
 nnoremap <Leader>q :call EditTry("~/.vim/leaders")<CR>
 nnoremap <silent> <Leader>r :silent call ToggleRuler()<CR>
 nnoremap <silent> <Leader>s :windo set scrollbind!<CR>
-nnoremap <silent> <Leader>sm :source ~/.vim/smr.vim<CR>
 nnoremap <silent> <Leader>ss :silent call ToggleScrollbar()<CR>
+nnoremap <silent> <Leader>sss :call SumMe()<CR>
 nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <silent> <Leader>u :call FileTime()<CR>
 nnoremap <Leader>v :source ~/.vim/plan.vim<CR>
-nnoremap <Leader>w :call F1_toggle_width("78")<CR>
+"nnoremap <Leader>w -- used in ~/.vim/plan.vim
 nnoremap <Leader>x :ls<CR>
 nnoremap <silent> <Leader>y :set cursorline!<CR>
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
@@ -388,7 +390,7 @@ nnoremap <silent> <Leader>zzz :call NewPerlAcdmo()<CR>
 
 " --- functions {{{1
 function! Acdmo()
-    read! ~/py/currmo 48
+    read! ~/py/currmo 53
     let im = strftime("%H:%M")
     call append(line("."), "")
     call append(line("."), im)
@@ -396,11 +398,7 @@ function! Acdmo()
     normal 3j
     normal o
     startinsert
-"    py acdmo()
-"    normal o
 endfunction
-"  the following will work only if you're building vim with python
-"pyfile ~/.vim/acdmo.py
 " ----------------------------------------
 function! CdCurBuf()
     let cwd = getcwd()
@@ -446,23 +444,7 @@ function! CountBlankLinesAtEnd()
     echo printf("%s  has  %d  blank line%s at the end", s:tn, s:bc, s:ps)
 endfunction
 " ----------------------------------------
-"  DelFromAllfiles should be called to delete the file on current
-"  line in an .allfiles module
-function! DelFromAllfiles()
-    let words = split(getline('.'))
-    let lw = words[len(words)-1]
-    if lw =~ '^\~'
-        let lw = $HOME . substitute(lw, '^\~', "", "")
-    endif
-    if isdirectory(lw)
-        echomsg 'you dont want to be deleting directories w DelFromAllfiles ' . lw
-    else
-        execute 'silent !rm ' . lw
-        silent d
-    endif
-endfunction
-" ----------------------------------------
-"  from :help iabbreviation
+"  from :help abbreviations
 function! Eatchar(pat)
     let c = nr2char(getchar(0))
     return (c =~ a:pat) ? '' : c
@@ -507,13 +489,6 @@ function! FileTime()
     echo s:isexe s:fnf strftime("%Y-%b-%d %H:%M", s:ft)
 endfunction
 " ----------------------------------------
-"  to reverse the effects of calling Hideme()
-function! Findme()
-    setlocal swapfile
-    setlocal buftype=
-    setlocal bufhidden=
-endfunction
-" ----------------------------------------
 function! FindPointer()
     let save_l = @/
     0
@@ -541,6 +516,13 @@ function! FindSunDate()
     endtry
 endfunction
 " ----------------------------------------
+"  to reverse the effects of calling Hideme()
+function! Findme()
+    setlocal swapfile
+    setlocal buftype=
+    setlocal bufhidden=
+endfunction
+" ----------------------------------------
 function! FirstBlankAtEnd()
     let go = NumberBlankLinesAtEnd() - 1
     normal G
@@ -552,24 +534,21 @@ endfunction
 function! FixBlankLinesAtEnd(num)
     let s:bc = NumberBlankLinesAtEnd()
     if s:bc == a:num
-        echom expand('%') . ' already has ' . a:num . ' blank lines at the end'
-        return
-    endif
-    let s:d7 = a:num - s:bc
-    if s:d7 > 0
-        echo 'adding' s:d7
-        while s:d7 > 0
-            call append(line('$'), "")
-            let s:d7 -= 1
-        endwhile
+        echom 'no change'
     else
-        echom 'removing ' s:d7[1:]
-        let s:d7 = s:d7 * -1
-        let view = winsaveview()
-        call FirstBlankAtEnd()
-        execute 'normal ' . s:d7 . 'dd'
-        call winrestview(view)
+        let s:d7 = a:num - s:bc
+        if s:d7 > 0
+            while s:d7 > 0
+                call append(line('$'), "")
+                let s:d7 -= 1
+            endwhile
+        else
+            let s:d7 = s:d7 * -1
+            call FirstBlankAtEnd()
+            execute 'normal ' . s:d7 . 'dd'
+        endif
     endif
+    call FirstBlankAtEnd()
 endfunction
 " ----------------------------------------
 function! Fmt(w)
@@ -596,6 +575,8 @@ function! HelpgrepScrollers()
 endfunction
 " ----------------------------------------
 function! Hideme()
+"  most recently mapped to ,hh
+"  pairs well with Findme(), mapped to ,ff
     setlocal noswapfile
     setlocal buftype=nofile
     setlocal bufhidden=hide
@@ -612,9 +593,9 @@ function! Incr()
 endfunction
 vnoremap <C-a> :call Incr()<CR>
 " ----------------------------------------
-function! InsertCurrentVersionString()
+function! CurrentVersionString()
 "    with kind regards to ~/.vim/version.vim
-"    call StampWithVer() but this does too much
+"    would call StampWithVer() but it does too much
     let save_v = @v
     redir @v
     silent! version
@@ -625,14 +606,14 @@ function! InsertCurrentVersionString()
     "  major version
     let v1 = va[0][p1 + 12 : p1 + 15]
     let v2 = substitute(v1, "\ $", "", "")
-    "   v2  gets a '7.4a'
-    "   2016-Jul-31  v2 gets '7.4'
     "  minor version
     let v3 = split(va[1], '-')[1]
     let lv3 = len(v3)
     if lv3 == 1
-        let v4 = '00' . v3
+        let v4 = '000' . v3
     elseif lv3 == 2
+        let v4 = '00' . v3
+    elseif lv3 == 3
         let v4 = '0' . v3
     else
         let v4 = v3
@@ -664,7 +645,6 @@ function! LongBlogDate()
     let d1s = substitute(d1, "  ", " ", "")
     let d2 = strftime("%A")
     let d3 = strftime("%l:%M%P %Z")
-"    let d3s = substitute(d3, " ", "", "^")
     return d1s . "  " . d2 . "  " . d3
 endfunction
 " ----------------------------------------
@@ -705,11 +685,6 @@ function! MaikallfilesT()
     silent r!ls -algGt
     silent g/^total/d
     normal gg
-endfunction
-" ----------------------------------------
-function! MakeMeBig()
-    set lines=58
-    set columns=119
 endfunction
 " ----------------------------------------
 function! MovePointerDown()
@@ -776,6 +751,66 @@ function! MyExploreT()
     call MaikallfilesT()
 endfunction
 " ----------------------------------------
+function! NewPerlAcdmo()
+"  insert current month calendar w today circled followed by a timestamp
+    "  save old line
+    let sol = line(".")
+
+    silent read! ~/perl/mpcal 54
+
+    "  get new line
+    let gnl = line(".")
+
+    execute sol + 3 . "," . gnl . "!~/perl/acdmo"
+
+    call append(gnl, "")
+    let f1 = strftime("%H:%M")
+    let f2 = CurrentVersionString()
+    call append(gnl + 1, f1 . "  " . f2)
+    call append(gnl + 2, "")
+    call cursor(gnl + 4, 1)
+    startinsert
+endfunction
+" ----------------------------------------
+function! NewPythonAcdmo()
+"  insert current month calendar, a timestamp, and the current vim version
+    let s:v = CurrentVersionString()
+python3 << EOF
+from calendar import setfirstweekday, month
+from time import strftime
+import vim
+v = vim.eval("s:v")
+spaces = " " * 53
+setfirstweekday(6)
+tod = strftime("%d")
+if tod[0] == "0":
+    toda = " " + tod[1] + " "
+else:
+    toda = " " + tod + " "
+cw = vim.current.window
+ln = cw.cursor[0]
+for l in month(int(strftime("%Y")), int(strftime("%m"))).splitlines():
+    ts = " " + l + " "
+    if toda in ts:
+        s = "%s%-22s" % (spaces , ts.replace(toda, "(" + toda.strip() + ")" ))
+    else:
+        s = "%s%-22s" % (spaces, ts)
+    vim.command("call append(%d, \"%s\")" % (ln, s))
+    ln += 1
+vim.command("call append(%d, \"\")" % ln)
+ln += 1
+t = strftime("%H:%M")
+vim.command("call append(%d, \"%s  %s\")" % (ln, t, v))
+ln += 1
+vim.command("call append(%d, \"\")" % ln)
+ln += 1
+vim.command("call append(%d, \"\")" % ln)
+ln += 1
+vim.command("%d" % ln)
+vim.command("startinsert")
+EOF
+endfunction
+" ----------------------------------------
 function! NumberBlankLinesAtEnd()
     let s:bc = 0                              "  blank count
     let s:lp = line("$")                      "  line pointer
@@ -821,7 +856,6 @@ function! OpenEndWhat()
     endif
 endfunction
 " ----------------------------------------
-"
 function! OpenWhat()
     let testme = expand("<cfile>")
     if testme =~ '^\~'
@@ -835,72 +869,14 @@ function! OpenWhat()
 endfunction
 " ----------------------------------------
 function! Paste(paste_before)
-    let save_q = @q
-    let @q = system("xclip -o")
+"    let save_q = @q
+"    let @q = system("xclip -o")
     if a:paste_before
-        normal! "qP
+        normal! "+P
     else
-        normal! "qp
+        normal! "+p
     endif
-    let @q = save_q
-endfunction
-" ----------------------------------------
-function! NewPerlAcdmo()
-"  and yes, it still runs perl, just not the imbedded kind
-    
-"   save old line
-    let sol = line(".")
-
-    silent read! ~/perl/mpcal
-
-"   get new line
-    let gnl = line(".")
-    execute sol + 3 . "," . gnl . "!~/perl/acdmo"
-    call append(gnl, "")
-    call append(gnl + 1, strftime("%H:%M"))
-    call append(gnl + 2, "")
-    call cursor(gnl + 3, 1)
-    startinsert
-endfunction
-" ----------------------------------------
-function! PerlAcdmo()
-    "  first get the day of month into d with no leading zero
-    let da1 = strftime("%e")
-    let da2 = strpart(da1, 0, 1)
-    if da2 == " "
-        let d = strpart(da1, 1)
-        let sp = 3
-    else
-        let d = da1
-        let sp = 4
-    endif
-    "  build a day surrounded by spaces and a replacement day with parenthesis
-    let da = " " . d . " "
-    let dawp = "(" . d . ")"
-
-    read! ~/perl/mpcal
-    perl << EOF
-        ($success, $da) = VIM::Eval('da');
-        ($success, $dawp) = VIM::Eval('dawp');
-        ($success, $sp) = VIM::Eval('sp');
-        $buf = $curwin->Buffer();
-        @pos = $curwin->Cursor();
-        $s = $pos[0] - 6;
-        for ( $i = $s; $i < $s + 7; $i++ ) {
-            $x = $buf->Get($i);
-            $p = index ( $x, $da );
-            if ( $p > -1 ) {
-                $y = substr($x, 0, $p) . $dawp . substr($x, $p + $sp);
-                $buf->Set($i, $y);
-            }
-        }
-EOF
-    call append(line("."), "")
-    call append(line("."), strftime("%H:%M"))
-    call append(line("."), "")
-    normal 3j
-    normal o
-    startinsert
+"    let @q = save_q
 endfunction
 " ----------------------------------------
 function! Scaleme(w)
@@ -944,6 +920,33 @@ function! StripTrailingWhitespace()
     let @/ = l:svd_sch
 endfunction
 " ----------------------------------------
+function! SumMe()
+    let ll = line('$')                                "  last line
+    let sum = 0
+    let p = getpos('.')
+    let l = p[1]                                      "  line
+    let c = p[2]                                      "  column
+
+    while (1)
+        let tl = getline(l)                           "  test line
+        if '=' == tl[c-1]                             "  end of list?
+            break                                     "  if yes it's time to quit
+        endif
+        let tl1 = tl[:c-1]                            "  line truncated
+        let si = strridx(tl1, " ") + 1                "  space index
+        let tn1 = tl1[si:]                            "  test number
+        let tn2 = substitute(tn1, ',', '', 'g')       "  remove commas
+        let tn3 = str2float(tn2)                      "  create number
+        let sum += tn3                                "  add to sum
+        let l += 1                                    "  prepare to iterate
+        if l > ll
+            break
+        endif
+    endwhile
+
+    echom printf ("the sum is %.2f", sum)
+endfunction
+" ----------------------------------------
 function! ToggleExpandtab()
     if &expandtab
         echo "noexpandtab"
@@ -971,6 +974,16 @@ function! ToggleScrollbar()
         set guioptions-=r
     else
         set guioptions+=r
+    endif
+endfunction
+" ----------------------------------------
+function! ToggleSpell()
+    if &spell
+        setl nospell
+        echomsg 'spell off'
+    else
+        setl spell
+        echomsg 'spell on'
     endif
 endfunction
 " ----------------------------------------
