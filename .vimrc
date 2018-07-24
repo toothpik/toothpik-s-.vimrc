@@ -1,4 +1,8 @@
 "  --- filetype & syntax {{{1
+"  +-----------------------------------------------------------------------
+"  | 2018-Jun-17  today bram reassured us the existance of a ~/.vimrc means
+"  | nocompatible will be set -- contrary to some rumors this has not changed |
+"  +-----------------------------------------------------------------------
 "  filetype must always preceed syntax statements:
 filetype plugin indent on
 syntax on
@@ -20,9 +24,11 @@ set   clipboard=autoselect,exclude:cons,unnamedplus
 set   cmdheight=1
 set   comments-=fb:-
 set   confirm
-set   cryptmethod=blowfish2
+if v:version >= 705
+    set   cryptmethod=blowfish2
+endif
 set nocursorcolumn
-set   cursorline
+set nocursorline
 set nodigraph
 set   directory=~/.vim-tmp//,~/tmp//,/var/tmp//,/tmp//
 set   display+=lastline
@@ -31,7 +37,9 @@ set   equalprg="fmt --width=78"
 set noerrorbells
 set   expandtab
 set   formatoptions+=j
-set   termguicolors
+if v:version >= 705
+    set   termguicolors
+endif
 set   guicursor+=a:blinkon0
 set   guioptions-=L
 set   guioptions-=m
@@ -61,7 +69,10 @@ set   selection=exclusive
 set   selectmode+=key
 set noshiftround
 set   shiftwidth=4
-set   shortmess=aIoOtTcF
+set   shortmess=aIoOtTc
+if v:version >= 705
+    set shortmess+=F
+endif
 let   &showbreak = "» "
 set   showcmd
 set   showmode
@@ -132,8 +143,10 @@ nnoremap ; :
 nmap . .`[
 "  I'll put the following back in as soon as I figure out what it does...maybe
 "nmap g/ /\%#=P
-let &t_8f = '[38;2;%lu;%lu;%lum'
-let &t_8b = '[48;2;%lu;%lu;%lum'
+if v:version >= 705
+    let &t_8f = '[38;2;%lu;%lu;%lum'
+    let &t_8b = '[48;2;%lu;%lu;%lum'
+endif
 
 " --- ex commands {{{1
 command! BD b # | bd #
@@ -167,11 +180,10 @@ nnoremap <S-F4> :call OpenEndWhat()<CR>:normal <CR>
 "nnoremap <S-F4> :call FixBlankLinesAtEnd('7')<CR>
 inoremap <S-F4> <ESC>:call FixBlankLinesAtEnd('7')<CR>
 " ----------------------------------------
-nnoremap <silent> <F5> :call Fmt('78')<CR>
+nnoremap <silent> <F5> :noh<CR>
 inoremap <silent> <F5> <C-O>:call Fmt('78')<CR>
 cmap <F5> <c-r>=strftime("%Y%m%d")<CR>
-"nnoremap <S-F5> :call ZeroBlankLinesAtEnd()<CR>
-nnoremap <S-F5> :call NewPythonAcdmo()<CR>
+nnoremap <S-F5> :call ZeroBlankLinesAtEnd()<CR>
 "inoremap <S-F5> <ESC>:call ZeroBlankLinesAtEnd()<CR>
 inoremap <S-F5> <ESC>:call NewPythonAcdmo()<CR>
 nnoremap <M-F5> :set paste<CR>
@@ -179,8 +191,10 @@ inoremap <M-F5> <C-O>:set paste<CR>
 " ----------------------------------------
 nnoremap <silent> <F6> :call MyExplore('')<CR>
 inoremap <silent> <F6> <ESC>:call MyExplore('')<CR>
-nnoremap <silent> <S-F6> :call NewPerlAcdmo()<CR>
-inoremap <silent> <S-F6> <ESC>:call NewPerlAcdmo()<CR>
+nnoremap <silent> <S-F6> :call NewPythonAcdmo()<CR>
+"nnoremap <silent> <S-F6> :call NewPerlAcdmo()<CR>
+"inoremap <silent> <S-F6> <ESC>:call NewPerlAcdmo()<CR>
+inoremap <silent> <S-F6> <ESC>:call NewPythonAcdmo()<CR>
 nnoremap <M-F6> :set nopaste<CR>
 inoremap <M-F6> <nop>
 set pastetoggle=<M-F6>
@@ -261,6 +275,7 @@ iabbrev <silent> dddn <c-r>=strftime("%Y-%b-%d %H:%M %a")<cr><c-r>=Eatchar('\s')
 iabbrev <silent> dddof <c-r>=strftime("%B %d, %Y  %A")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dddt <c-r>=strftime("%m/%d/%Y")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddf <c-r>=strftime("%Y-%m-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
+iabbrev <silent> ddi <c-r>=strftime("%Y-%b-%d %H:%M  ")<CR><c-r>=CurrentVersionString()<CR><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> ddl <c-r>=strftime("%b %e %a")<cr><c-r>=Eatchar('\s')<cr>
 "iabbrev <silent> dl <c-r>=strftime("%Y %B %d  %A  %H:%M")<cr><c-r>=Eatchar('\s')<cr>
 iabbrev <silent> dds <c-r>=strftime("%Y-%b-%d %H:%M")<cr><c-r>=Eatchar('\s')<cr>
@@ -342,19 +357,16 @@ nnoremap <Leader>8 :set textwidth=78<CR>
 nnoremap <Leader>0 :call ZeroBlankLinesAtEnd()<CR>
 nnoremap <Leader>a :call StripTrailingWhitespace()<CR>
 nnoremap <Leader>b :call FirstBlankAtEnd()<CR>
-"nnoremap <Leader>bb :call AIPerlAcdmo()<CR>
-"nnoremap <Leader>bbb :call AppendAnyLine()<CR>
-"nnoremap <Leader>be :call EditTry('~/.vim/ai-acdmo.vim')<CR>
 nnoremap <silent><Leader>c :normal a✔<ESC>
-nnoremap <Leader>d :call Fmt('78')<CR>
+nnoremap <Leader>d :call DeletePointer()<CR>
 nnoremap <Leader>dd :call ClearBuffers()<CR>
 nnoremap <Leader>dq :call EditTry('~/txt/alldateabbr')<CR>
 nnoremap <Leader>e :call EditTry('~/.vimrc')<CR>
-nnoremap <Leader>ee :source ~/.vimrc<CR>
+nnoremap <Leader>es :source ~/.vimrc<CR>
 nnoremap <Leader>f :call F1_toggle_width("78")<CR>
 nnoremap <Leader>ff :call Findme()<CR>
 nnoremap <Leader>g :call EditTry('~/.gvimrc')<CR>
-nnoremap <Leader>gg :source ~/.gvimrc<CR>
+nnoremap <Leader>gs :source ~/.gvimrc<CR>
 nnoremap <Leader>h :source ~/.vim/reading_help.vim<CR>
 nnoremap <Leader>hh :call Hideme()<CR>
 nnoremap <Leader>hhh :call HelpgrepScrollers()<CR>
@@ -381,7 +393,7 @@ nnoremap <silent> <Leader>sss :call SumMe()<CR>
 nnoremap <silent> <Leader>t :call ToggleExpandtab()<CR>
 nnoremap <silent> <Leader>u :call FileTime()<CR>
 nnoremap <Leader>v :source ~/.vim/plan.vim<CR>
-"nnoremap <Leader>w -- used in ~/.vim/plan.vim
+"nnoremap <Leader>w
 nnoremap <Leader>x :ls<CR>
 nnoremap <silent> <Leader>y :set cursorline!<CR>
 nnoremap <Leader>z :source ~/.vim/html_lets<CR>
@@ -444,7 +456,56 @@ function! CountBlankLinesAtEnd()
     echo printf("%s  has  %d  blank line%s at the end", s:tn, s:bc, s:ps)
 endfunction
 " ----------------------------------------
-"  from :help abbreviations
+function! CurrentVersionString()
+"    with kind regards to ~/.vim/version.vim
+"    would call StampWithVer() but it does too much
+    let save_v = @v
+    redir @v
+    silent! version
+    redir END
+    let va = split(@v, '\n')
+    let @v = save_v
+    let p1 = stridx(va[0], 'Vi IMproved')
+    "  major version
+    let v1 = va[0][p1 + 12 : p1 + 15]
+    let v2 = substitute(v1, "\ $", "", "")
+    "  minor version
+    if va[1] =~ "^Included patches"
+        let v3 = split(va[1], '-')
+        let lv3 = len(v3)
+        let v4 = v3[lv3-1]
+        let lv4 = len(v4)
+        if lv4 == 1
+            let v5 = '000' . v4
+        elseif lv4 == 2
+            let v5 = '00' . v4
+        elseif lv4 ==3
+            let v5 = '0' . v4
+        else
+            let v5 = v4
+        endif
+    else
+        let v4 = ''
+    endif
+    return '[' . v2 . '.' . v5 . ']'
+endfunction
+" ----------------------------------------
+function! DeletePointer()
+    let save_l = @/
+    0
+    normal gg
+    let @/ = '  <---$'
+    try
+        silent normal n
+        s/  <---$//
+    catch
+        echo 'no pointer found'
+        normal 
+    endtry
+    let @/ = save_l
+endfunction
+" ----------------------------------------
+"  from :help abbreviations (line 957 in map.txt)
 function! Eatchar(pat)
     let c = nr2char(getchar(0))
     return (c =~ a:pat) ? '' : c
@@ -593,34 +654,6 @@ function! Incr()
 endfunction
 vnoremap <C-a> :call Incr()<CR>
 " ----------------------------------------
-function! CurrentVersionString()
-"    with kind regards to ~/.vim/version.vim
-"    would call StampWithVer() but it does too much
-    let save_v = @v
-    redir @v
-    silent! version
-    redir END
-    let va = split(@v, '\n')
-    let @v = save_v
-    let p1 = stridx(va[0], 'Vi IMproved')
-    "  major version
-    let v1 = va[0][p1 + 12 : p1 + 15]
-    let v2 = substitute(v1, "\ $", "", "")
-    "  minor version
-    let v3 = split(va[1], '-')[1]
-    let lv3 = len(v3)
-    if lv3 == 1
-        let v4 = '000' . v3
-    elseif lv3 == 2
-        let v4 = '00' . v3
-    elseif lv3 == 3
-        let v4 = '0' . v3
-    else
-        let v4 = v3
-    endif
-    return '[' . v2 . '.' . v4 . ']'
-endfunction
-" ----------------------------------------
 function! LastNonBlank()
     normal G
     let s:lp = line("$")
@@ -691,6 +724,7 @@ function! MovePointerDown()
     let s:save_l = @/
     let @/ = "  <---$"
     normal 0
+    normal gg
     let s:did_new = 0
     try
         silent normal n
@@ -704,16 +738,15 @@ function! MovePointerDown()
         endtry
     endtry
     normal j
-    if len(getline('.')) > 0
-        s/$/  <---/
-    endif
+    s/$/  <---/
     let @/ = s:save_l
 endfunction
-"
+" ----------------------------------------
 function! MovePointerUp()
     let s:save_l = @/
     let @/ = "  <---$"
     normal 0
+    normal gg
     let s:did_new = 0
     try
         silent normal n
@@ -727,9 +760,7 @@ function! MovePointerUp()
         endtry
     endtry
     normal k
-    if len(getline('.')) > 0
-        s/$/  <---/
-    endif
+    s/$/  <---/
     let @/ = s:save_l
 endfunction
 " ----------------------------------------
@@ -774,6 +805,7 @@ endfunction
 " ----------------------------------------
 function! NewPythonAcdmo()
 "  insert current month calendar, a timestamp, and the current vim version
+"  requires a vim built with python3
     let s:v = CurrentVersionString()
 python3 << EOF
 from calendar import setfirstweekday, month
@@ -819,8 +851,8 @@ function! NumberBlankLinesAtEnd()
         if (s:tl > 0)
             let s:lp = 0
         else
-            let s:bc = s:bc + 1
-            let s:lp = s:lp - 1
+            let s:bc += 1
+            let s:lp -= 1
         endif
     endwhile
     return s:bc
@@ -945,6 +977,18 @@ function! SumMe()
     endwhile
 
     echom printf ("the sum is %.2f", sum)
+endfunction
+" ----------------------------------------
+function! TestAllThree()
+    call append(line("."), "internal python3:")
+    normal 2j
+    call NewPythonAcdmo()
+    call append(line("."), "external python2:")
+    normal 2j
+    call Acdmo()
+    call append(line("."), "external perl:")
+    normal 2j
+    silent! call NewPerlAcdmo()
 endfunction
 " ----------------------------------------
 function! ToggleExpandtab()
