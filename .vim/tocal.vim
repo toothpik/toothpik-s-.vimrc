@@ -6,6 +6,5 @@ nnoremap <Leader>sss :source ~/.vim/tocal.vim<CR>
 
 set nowrap
 set hlsearch
-set nonumber
 
 source ~/.vim/fcd.vim
