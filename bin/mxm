@@ -1,5 +1,7 @@
 #!/bin/bash
 #  make "x" more, start naming at $2
+#  and under 42.3 how does this need tweaking?
+#  konsole's version is 17.04.2
 case $# in
     0)  hm=9            #  how many
         sn=2            #  starting number
