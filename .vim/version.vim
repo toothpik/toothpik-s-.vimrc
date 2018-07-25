@@ -3,6 +3,7 @@
 let localleader = ','
 nmap <silent> <Leader>c :call StampWithVer()<CR>
 nmap <silent> <Leader>d :call CheckCompile()<CR>
+nmap <silent> <Leader>eb :call EditTry("~/bin/gvl")<CR>
 nmap <silent> <Leader>ev :call EditTry("~/.vim/version.vim")<CR>
 nmap <silent> <Leader>l :source ~/.vim/version.vim<CR>
 
@@ -38,18 +39,39 @@ function! StampWithVer()
     let t1 = va[0][p2 + 21 : p2 + 25]
     "   t1  gets a '20:28'
     "  minor version
-    let v3 = split(va[1], '-')[1]
-    let lv3 = len(v3)
-    if lv3 == 1
-        let v4 = '000' . v3
-    elseif lv3 == 2
-        let v4 = '00' . v3
-    elseif lv3 == 3
-        let v4 = '0' . v3
+"   try
+"       let v3 = split(va[1], '-')[1]
+"       let lv3 = len(v3)
+"       if lv3 == 1
+"           let v4 = '000' . v3
+"       elseif lv3 == 2
+"           let v4 = '00' . v3
+"       elseif lv3 == 3
+"           let v4 = '0' . v3
+"       else
+"           let v4 = v3
+"       endif
+"   catch 
+"       let v4 = ''
+"   endtry
+    if va[1] =~ "^Included patches"
+        let v3 = split(va[1], '-')
+        let lv3 = len(v3)
+        let v4 = v3[lv3-1]
+        let lv4 = len(v4)
+        if lv4 == 1
+            let v5 = '000' . v4
+        elseif lv4 == 2
+            let v5 = '00' . v4
+        elseif lv4 == 3
+            let v5 = '0' . v4
+        else
+            let v5 = v4
+        endif
     else
-        let v4 = v3
+        let v4 = ''
     endif
-    let fs = y1 . '-' . m1 . '-' . d1 . ' ' . t1 . '  ' . v2 . '.' . v4
+    let fs = y1 . '-' . m1 . '-' . d1 . ' ' . t1 . '  ' . v2 . '.' . v5
     let ta = append(line('$'), fs)
     normal G
 endfunction
@@ -65,8 +87,8 @@ function! CheckCompile()
         echo 'third line of version is ' . va[2]
         echo 'should be "Compiled by toothpik@home"'
     endif
-    if va[3] =~ '^Big version with GTK2 GUI'
-        echo 'obtained proper build (Big w GTK2)     CHECK'
+    if va[3] =~ '^Big version with GTK3 GUI'
+        echo 'obtained proper build (Big w GTK3)     CHECK'
     else
         echo 'build line reads ' . va[3]
         echo 'should be "Big version with GTK2 GUI'
@@ -113,49 +135,50 @@ function! CheckCompile()
     endwhile
 
     if got_perl
-        echo 'perl compiled in, not good  <---<<'
+        echo 'perl compiled in                               <---<<'
     else
         echo 'perl not included                      CHECK'
     endif
 
     if got_python
-        echo 'python compiled in, not good  <---<<'
+        echo 'python compiled in                             <---<<'
     else
         echo 'python not included                    CHECK'
     endif
 
     if got_python3
-        echo 'python3 compiled in, not good  <---<<'
+"        #        echo 'python3 compiled in                            <---<<'
+        echo "python3 included                       CHECK"
     else
-        echo 'python3 not included                   CHECK'
+        echo 'python3 not included                                   <---<<'
     endif
 
     if got_tcl
-        echo 'tcl compiled in, not good  <---<<'
+        echo 'tcl compiled in                                <---<<'
     else
         echo 'tcl not included                       CHECK'
     endif
 
     if got_arabic
-        echo 'arabic included, not good'
+        echo 'arabic included                                <---<<'
     else
         echo 'arabic not included                    CHECK'
     endif
 
     if got_emacs_tags
-        echo 'emacs_tags included, not good'
+        echo 'emacs_tags included                            <---<<'
     else
         echo 'emacs_tags not included                CHECK'
     endif
 
     if got_farsi
-        echo 'farsi included, not good'
+        echo 'farsi included                                 <---<<'
     else
         echo 'farsi not included                     CHECK'
     endif
 
     if got_rightleft
-        echo 'rightleft included, not good'
+        echo 'rightleft included                             <---<<'
     else
         echo 'rightleft not included                 CHECK'
     endif
