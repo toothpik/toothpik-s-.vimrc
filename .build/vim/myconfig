@@ -3,7 +3,10 @@
 cd /home/toothpik/.build/vim/vim || exit 1
 date '+%Y-%b-%d %H:%M' >> ../configure.log
 rm -vf src/auto/config.cache | tee -a ../configure.log
-./configure --with-features=big --with-compiledby=toothpik@home  --enable-gui=gtk2 2>&1 | tee -a ../configure.log
+#  I keep changing my mind -- now I want python3 built in 
+./configure --with-features=big --with-compiledby=toothpik@home --enable-fail-if-missing --enable-python3interp --enable-gui=gtk3 --enable-terminal 2>&1 | tee -a ../configure.log
+#./configure --with-features=big --with-compiledby=toothpik@home --enable-perlinterp --enable-gui=gtk2 --enable-terminal 2>&1 | tee -a ../configure.log
+#./configure --with-features=big --with-compiledby=toothpik@home  --enable-gui=gtk2 2>&1 | tee -a ../configure.log
 #  with python:  --enable-pythoninterp=dynamic
 #  with perl:    --enable-perlinterp or --enable-perlinterp=dynamic
 #./configure --enable-perlinterp=dynamic --enable-pythoninterp=dynamic --enable-python3interp=dynamic --with-features=huge --with-compiledby=toothpik@home --enable-gui=gtk2 2>&1 | tee -a ../configure.log
