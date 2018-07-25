@@ -1,7 +1,16 @@
 #!/usr/bin/perl
 #  last fiscal year
-#  or, more accurately, most recent year's worth 
-#  of fiscally completed months
+#  or, more accurately, most recent year's worth of fiscally completed months
+##############################################################################
+#
+#  you may find yourself needing DateTime to be installed in the here and now
+#  which might most effectively be accomplished with
+#
+#      sudo cpan -i DateTime
+#
+#  or do I insult your knowledge by telling you that
+#
+##############################################################################
 use DateTime;
 $ty = DateTime->now(time_zone => 'America/Chicago')->strftime("%y");
 $mmdd = DateTime->now(time_zone => 'America/Chicago')->strftime("%m%d");
