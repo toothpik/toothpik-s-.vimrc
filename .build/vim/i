@@ -1,5 +1,5 @@
 #!/bin/bash
-#  install [vim]
+#  install [vim] [run as root]
 PATH=~/bin:$PATH
 cd /home/toothpik/.build/vim/vim
 date '+%Y-%b-%d %H:%M' >> ../install.log
