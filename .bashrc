@@ -48,6 +48,7 @@ export PS1='[$(date "+%a %H:%M")] \w> '
 #  export PS1='$PWD> '
 #  export PS1='\w$ '
 
+
 alias cd2='cd ~/bin'
 alias cd33='cd ~/txt/ranger'
 alias cd34='cd ~/txt/retire'
@@ -66,7 +67,7 @@ alias cda='cd ~/awk'
 alias cdb='cd ~/bin-mail'
 alias cdc='cd ~/calc'
 alias cdcp='cd ~/calc/primes'
-alias cdd='cd /usr/local/share/vim/vim80/doc'
+alias cdd='cd /usr/local/share/vim/vim81/doc'
 alias cde='cd ~/txt/escape'
 alias cdf='cd ~/txt/f'
 alias cdg2='cd $(~/txt/f/gcsd)'
@@ -75,7 +76,7 @@ alias cdk='cd ~/txt/roadking'
 alias cdm='cd ~/Mail'
 alias cdp='cd ~/perl'
 alias cdpp='cd ~/perl/primes'
-alias cdr='cd /usr/local/share/vim/vim80'
+alias cdr='cd /usr/local/share/vim/vim81'
 alias cdt='cd ~/toothpik-s-.vimrc'
 alias cdtt='cd ~/toothpik.github.com'
 alias cdvt='cd ~/.vim-tmp'
@@ -101,6 +102,7 @@ dp () {
     if [[ $PATH = $PWD:* ]]
     then
         echo "PATH already has $PWD"
+        export PS1='[$(date "+%a %H:%M")] \w: '
     else
         export PATH=${PWD}:${PATH}
         export PS1='[$(date "+%a %H:%M")] \w: '
@@ -114,6 +116,7 @@ rdp () {
         export PS1='[$(date "+%a %H:%M")] \w> '
     else
         echo "PATH doesn't have $PWD at the front"
+        export PS1='[$(date "+%a %H:%M")] \w> '
     fi
 }
 vb () {
@@ -147,4 +150,4 @@ extract()      # Handy Extract Program.
 }
 
 vman() { man "$@" 2>&1 | col -bx | iconv -c | vim -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
-gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -geometry 120x35 -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
+gman() { man "$@" 2>&1 | col -bx | iconv -c | gvim -geometry 85x42 -c 'set ft=man nomod nolist nonu nornu' -c 'call Hideme()' -; }
