@@ -1,0 +1,51 @@
+#!/usr/bin/perl
+#  today in the year
+#  filter a year calendar through this script to get today circled, as
+#  yearws | ~/perl/tyear (which is what dtyear does)
+@monthnames = qw ( January February March April May June July August September October November December );
+($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
+$mth = $monthnames[$mon];
+$sd = sprintf " %d ", $mday;
+$w = 0;
+open(DAT, '-');
+while ($l = <DAT>) {
+    chop($l);
+    if ($l =~ /$mth/) {
+        $w = index($l, $mth);
+        if ($w < 10) {
+            $strsr = 0;
+            $endsr = 22;
+        } elsif ($w < 37) {
+            $strsr = 25;
+            $endsr = 47;
+        } else {
+            $strsr = 51;
+            $endsr = 73;
+        }
+    }
+    if ($w > 0) {
+        $t = substr($l, $strsr, $endsr - $strsr + 1);
+        if ($t =~ /$sd/) {
+            if ($w < 10) {
+                $l1 = substr($l, 0, 22);
+                $l1 =~ s/$sd/($mday)/;
+                $l2 = substr($l, 22);
+                $l = $l1 . $l2;
+            } elsif ($w < 37) {
+                $l1 = substr($l, 0, 22);
+                $l2 = substr($l, 22, 27);
+                $l2 =~ s/$sd/($mday)/;
+                $l3 = substr($l, 49);
+                $l = $l1 . $l2 . $l3;
+            } else {
+                $l1 = substr($l, 0, 48);
+                $l2 = substr($l, 48);
+                $l2 =~ s/$sd/($mday)/;
+                $l = $l1 . $l2;
+            }
+            $w = 0;
+        }
+    }
+    print "$l\n";
+}
+close(DAT);
