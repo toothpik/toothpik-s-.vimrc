@@ -6,6 +6,7 @@ nmap <buffer> <Leader>l :source ~/.vim/laundry.vim<CR>
 let mapleader = ','
 nnoremap <silent> <Leader>c :call AddNewLaundryEntry("colored")<CR>
 unmap <Leader>ss
+unmap <Leader>sss
 nnoremap <silent> <Leader>s :call AddNewLaundryEntry("sheets")<CR>
 nnoremap <silent> <Leader>t :call AddNewLaundryEntry("towels")<CR>
 nnoremap <silent> <Leader>w :call AddNewLaundryEntry("white")<CR>
