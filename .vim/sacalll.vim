@@ -1,4 +1,4 @@
-"  stand alone calendar (longer) minus 1 plus 1
+"  stand alone vertical calendar minus 1 plus 1
 "  triggered by ~/bin/sv
 "  a way to have a (longer still) current calendar on any desktop 
 "  without worrying about different sessions editing the same file
@@ -32,7 +32,6 @@ function! MakeMeVertical()
     let bl = line('$') + 1
     execute "set lines=" . bl
     set columns=22
-"   winpos -4 26
     normal gg
     silent file cal
 
