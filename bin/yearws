@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+#  print three column year [with spaces] to stdout
+from calendar import setfirstweekday, calendar, SUNDAY
+from sys import argv
+from time import localtime, strftime
+
+def print_three_col_year(a_year):
+    setfirstweekday(SUNDAY)
+    print("")
+    L = calendar(a_year)
+    for l in L.split('\n'):
+        print(" " + l + " ")
+    print("")
+
+if __name__ == "__main__":
+   
+    if len(argv) > 1:
+        print_three_col_year(int(argv[1]))
+    else:
+        print_three_col_year(int(strftime("%Y", localtime())))
