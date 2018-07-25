@@ -1,4 +1,3 @@
 #!/bin/bash
 #  get me going (editing my index.html in gvim)
-cd ~/toothpik.github.com
-g -S ~/.vim/gmg.vim index.html
+g -S ~/.vim/gmg.vim -c 'buffer 2'
