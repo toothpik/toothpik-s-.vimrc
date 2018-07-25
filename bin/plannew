@@ -10,11 +10,7 @@ fi
 PR=$(($YR - 1))
 #  last balance from previous year
 lb1=`tail -2 ~/txt/plan_$PR | head -1 | cut -c61-71`
-printf "%13s %56s\n" "bbf" $lb1
-#  the plan with    social security,    december taxes,      Halligan,         ADT,            vehicle regs,          UPS store,       auto flags,   and dashes
-~/tcl/plannew $YR | ~/py/planss $YR | ~/py/planother $YR | ~/py/lawnmow | ~/perl/adt $YR | ~/perl/vehicleregs $YR | ~/perl/ups $YR | ~/perl/autos | ~/py/plandsh
-#
-#  ~/py/planother, labeled december taxes, also inserts payments for AAA
-#  and Harley Owner's Group -- should probably be re-labeled yearlies
-#  (and renamed?)
-#
+printf "%13s %46s %9s\n" "bbf" "x" $lb1
+#  the plan with    social security,      yearlies          Halligan,         ADT,            vehicle regs,          UPS store,       auto flags,   and dashes
+~/tcl/plannew $YR | ~/py/planss $YR | ~/py/yearlies $YR | ~/py/lawnmow | ~/perl/adt $YR | ~/perl/vehicleregs $YR | ~/perl/ups $YR | ~/perl/autos | ~/py/plandsh
+echo "don't forget to add the new year to ept"
