@@ -1,0 +1,3 @@
+#!/bin/bash
+#  drive tyear - current year w today circled to stdout
+yearws | ~/perl/tyear
