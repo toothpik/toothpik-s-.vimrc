@@ -1,11 +1,7 @@
 #!/bin/bash
 #  show version here
-c
-#b
-vim --version | cut -c1-$(tput cols)
-#b
-#w=$(( `tput cols` - 10 ))
-#dsh $w | mio 5
-#b  hopechest:
-#~/bin-mail/lv
-#b
+vim --version | cut -c1-$(( $(tput cols) - 1 )) | hsf
+#c
+#vim --version | awk '!/^Compilation/ && !/Linking/'
+#vim --version | grep '^Compilation' | fmt -w $(( $(tput cols) - 2 ))
+#vim --version | grep '^Linking' | fmt -w $(( $(tput cols) - 2 ))
