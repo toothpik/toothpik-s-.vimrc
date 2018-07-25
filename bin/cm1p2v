@@ -1,0 +1,69 @@
+#!/usr/bin/python3
+#  current month minus one plus two, vertically
+from calendar import setfirstweekday, month
+from time import strftime, localtime
+a_yr = int(strftime("%Y", localtime()))
+a_mo = int(strftime("%m", localtime()))
+setfirstweekday(6)
+tod = strftime("%d",localtime())
+if tod[0] == "0":
+    toda = " " + tod[1] + " "
+else:
+    toda = " " + tod + " "
+#
+pm = a_mo - 1
+if pm < 1:
+    pm = 12
+    py = a_yr - 1
+else:
+    py = a_yr
+#
+nm = a_mo + 1
+if nm > 12:
+    nm = 1
+    ny = a_yr + 1
+else:
+    ny = a_yr
+#
+nm2 = a_mo + 2
+if nm2 > 12:
+    nm2 = nm2 - 12
+    ny2 = a_yr + 1
+else:
+    ny2 = a_yr
+#
+m0 = []
+for l0 in month(py, pm).splitlines():
+    m0.append(" %-21s" % l0)
+#
+m1 = []
+for l in month(a_yr, a_mo).splitlines():
+    ts = " " + l + " "
+    if toda in ts:
+        m1.append("%-22s" % (ts.replace(toda, "(" + (toda.strip()) + ")")))
+    else:
+        m1.append("%-22s" % ts)
+#
+m2 = []
+for l2 in month(ny, nm).splitlines():
+    m2.append(" %-21s" %  l2)
+#
+m3 = []
+for l3 in month(ny2, nm2).splitlines():
+    m3.append(" %-21s" % l3)
+#
+lm0 = len(m0)
+lm1 = len(m1)
+lm2 = len(m2)
+lm3 = len(m3)
+for c in range(lm0):
+    print("%s" % m0[c])
+print()
+for c in range(lm1):
+    print("%s" % m1[c])
+print()
+for c in range(lm2):
+    print("%s" % m2[c])
+print()
+for c in range(lm3):
+    print("%s" % m3[c])
