@@ -1,20 +1,19 @@
 "  setup for edit of plans - used by gp and vp to name a few
 "  ~/txt/plan_readme and ~/bin/minst describe creation of new plans
 
-augroup plangrp
-    au!
-    au BufEnter plan_* call GoLastX()
-augroup END
+setl varsofttabstop=10,31,10
 
 let mapleader = ','
 "  WHEN ADDING MAPS, ADD THEM TO DisplayLeaders() TOO
+"  the following remap of Tab is not yet ready for prime time
+imap <silent> <buffer> <Tab> <C-O>:call Mytab()<CR>
 nmap <silent> <buffer> <Leader>a :call OpenLastYear()\|source ~/.vim/plan.vim<CR>
 nmap <silent> <buffer> <Leader>b :call BalCol()<CR>
 nmap <silent> <buffer> <Leader>c :call GoLastClear()<CR>
 nmap <silent> <buffer> <Leader>d :call EditTry("~/txt/plan_core")\|set noexpandtab<CR>
 nmap <silent> <buffer> <Leader>dd :call EditTry("~/txt/plan_core_other")<CR>
 nmap <silent> <buffer> <Leader>ec :e ~/bin/plannew<CR>
-nmap <silent> <buffer> <Leader>ee :source ~/.vim/plan.vim<CR>
+nmap <silent> <buffer> <Leader>es :source ~/.vim/plan.vim<CR>
 nmap <silent> <buffer> <Leader>ev :e ~/.vim/plan.vim<CR>
 silent! unmap ,ff
 silent! unmap ,fff
@@ -22,17 +21,20 @@ nmap <silent> <buffer> <Leader>f :call AdjustFoodBudget()<CR>
 silent! unmap ,gg
 nmap <silent> <buffer> <Leader>g :call OpenNextYear()\|source ~/.vim/plan.vim<CR>
 nmap <silent> <buffer> <Leader>h :call AdjustHalliganBudget()<CR>
+nmap <silent> <buffer> <Leader>l :call EditTry("~/txt/plan_log")<CR>
 nmap <silent> <buffer> <Leader>lu :call system("lubk")<CR>
+nmap <silent> <buffer> <Leader>n :e ~/txt/plan_notes\|normal G<CR>
 nmap <silent> <buffer> <Leader>p :call SyncNextYear()<CR>
 nmap <silent> <buffer> <Leader>q :call DisplayLeaders()<CR>
 nmap <silent> <buffer> <Leader>r :silent call Reconcile()<CR>
 nmap <silent> <buffer> <Leader>rr :call FixReconcileWLastYear()<CR>
 silent! unmap ,ss
 nmap <silent> <buffer> <Leader>s :call SyncWLastYear()<CR>
+silent! unmap <Leader>tt
 nmap <silent> <buffer> <Leader>t :call ToggleColorColumn()<CR>
-nmap <silent> <buffer> <Leader>uu :call GoFirstUnclear()<CR>
 nmap <silent> <buffer> <Leader>u :e ~/txt/usbank<CR>
-nmap <silent> <buffer> <Leader>w :e ~/txt/plan_notes\|normal G<CR>
+nmap <silent> <buffer> <Leader>uu :call FixUsbankLog()<CR>
+nmap <silent> <buffer> <Leader>uuu :call GoFirstUnclear()<CR>
 nmap <silent> <buffer> <Leader>x :call GoLastX()<CR>
 " ------------------------------------------------------------
 iabbr <buffer> dd <c-r>=Fivedate()<CR><c-r>=Eatchar('\s')<CR>
@@ -43,7 +45,8 @@ let @c = "atm - clay county"
 let @f = "festival foods"
 let @h = "Halligan Lawn Services"
 let @p = "Price Chopper #11"
-let @s = "Sunfresh #107"
+let @s = "Sunfresh 4357"
+let @v = "HyVee"
 let @w = "Walmart Neighborhood Market"
 " ------------------------------------------------------------
 function! AdjustFoodBudget()
@@ -81,21 +84,23 @@ echom 'c :call GoLastClear()'
 echom 'd :call EditTry("~/txt/plan_core")'
 echom 'dd :call EditTry("~/txt/plan_core_other")'
 echom 'ec :e ~/bin/plannew'
-echom 'ee :source ~/.vim/plan.vim'
+echom 'es :source ~/.vim/plan.vim'
 echom 'ev :e ~/.vim/plan.vim'
 echom 'f :call AdjustFoodBudget()'
 echom 'g :call OpenNextYear()\|source ~/.vim/plan.vim'
 echom 'h :call AdjustHalliganBudget()'
+echom 'l :call EditTry("~/txt/plan_log")'
 echom 'lu :call system("lubk")'
+echom 'n :e ~/txt/plan_notes\|normal G'
 echom 'p :call SyncNextYear()'
 echom 'q :call DisplayLeaders()'
 echom 'r :call Reconcile()'
 echom 'rr :call FixReconcileWLastYear()'
 echom 's :call SyncWLastYear()'
 echom 't :call ToggleColorColumn()'
-echom 'uu :call GoFirstUnclear()'
 echom 'u :e ~/txt/usbank'
-echom 'w :e ~/txt/plan_notes\|normal G'
+echom 'uu :call FixUsbankLog()'
+echom 'uuu :call GoFirstUnclear()'
 echom 'x :call GoLastX()'
 endfunction
 
@@ -110,6 +115,13 @@ function! FixReconcileWLastYear()
     let prvyr = ty - 1
     call GoLastClear()
     execute ".!~/py/planfixrecon " . prvyr
+endfunction
+
+function! FixUsbankLog()
+    normal mt
+    call search('^---')
+    normal mb
+    't,'b!~/.vim/usbankadj
 endfunction
 
 function! GoFirstUnclear()
@@ -136,6 +148,28 @@ function! GoLastX()
         1
     endif
     normal 0
+endfunction
+
+function! Mytab()
+    let poslist = getpos('.')
+    let cc = poslist[2]                    "  current column
+    let el = getline('.')                  "  existing line
+    if cc < 11
+        let aa = 11 - cc                   "  add amount
+    elseif cc < 42
+        let aa = 42 - cc
+    elseif cc < 45
+        let aa = 45 - cc
+    elseif cc < 53
+        let aa = 53 - cc
+    elseif cc < 60
+        let aa = 60 - cc
+    else
+        let aa = 4
+    endif
+    let strtoadd = repeat(' ', aa)
+    call setline('.', el . strtoadd)
+    call cursor(poslist[1], cc + aa)
 endfunction
 
 function! OpenLastYear()
