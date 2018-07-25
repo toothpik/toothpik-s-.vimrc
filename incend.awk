@@ -26,7 +26,7 @@
 #
 #  never mind -- strtonum fixed it
 
-BEGIN { savelf = -100 }
+BEGIN { savelf = -250 }
 /^        / { print; next }
 {
     lf1 = $NF
