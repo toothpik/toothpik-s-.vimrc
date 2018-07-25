@@ -3,6 +3,9 @@
 if test $# -eq 0; then
     echo
 else
+    if [[ $1 < 0 ]]; then
+        exit
+    fi
     for ((i=0; i<$1; i++)) ; do
         echo
     done
