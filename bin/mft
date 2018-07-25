@@ -42,6 +42,7 @@ for {set i 0} {$i < [expr {$plc - 1}]} {incr i} {
     if {[string first "Sunfresh" $td] == 0 ||
         [string first "atm -" $td] == 0 ||
         [string first "festival" $td] == 0 ||
+        [string first "HyVee" $td] == 0 ||
         [string first "Price Chopper" $td] == 0 ||
         [string first "Walmart Food" $td] == 0 ||
         [string first "Walmart Neighborhood" $td] == 0 ||
