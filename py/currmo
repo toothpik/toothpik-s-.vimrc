@@ -1,5 +1,6 @@
 #!/usr/bin/python
-#  current month, with current day circled, to stdout
+#  current month, with current day circled, to stdout; indent $1 or 48
+#  this script is directly referenced in ~/.vimrc so do not toy with it
 from calendar import setfirstweekday, month
 from string import strip, replace
 from time import strftime, localtime
