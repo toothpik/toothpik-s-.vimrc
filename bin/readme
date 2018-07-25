@@ -8,9 +8,7 @@ function lexe() {
             echo "$wl"
         else
             if [ -f "$f" -a -x "$f" ]; then
-                if [[ "${f}" == *.pyc ]]; then
-                    printf "%-11s  is a pyc\n" "$f"
-                else
+                if [[ "${f}" != *.pyc ]]; then
                     lang=$(head -1 "$f" | awk 'BEGIN {FS = "/"} { print $NF }' | awk '{print $1}')
                     sl=$(2ndline "$f")
                     printf "%-14s [%-7s] %s\n" "$f" "$lang" "${sl#\#  }"
