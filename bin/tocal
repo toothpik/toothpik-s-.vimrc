@@ -1,4 +1,4 @@
 #!/bin/bash
 #  open tocal in gvim
 cd ~/txt
-g -geometry 105x45 -c "source ~/.vim/tocal.vim" -c "call Fcd()" ~/txt/tocal 2>/dev/null
+g -geometry 105x45 -c "source ~/.vim/tocal.vim" -c "call Fcd()" ~/txt/tocal
