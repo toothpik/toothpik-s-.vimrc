@@ -1,11 +1,13 @@
 #!/bin/bash
 #  battery life on steroids
-clear
-b 3
-ma=$(( ( `tput cols` - 91 ) / 2 ))
-t=$(date '+%A')
-d=$(date '+%Y-%b-%d')
-printf "%36s%18s\n" $t $d | mio $ma
-b 2
-readbatt | mio $ma
-yc
+{
+    b
+    ma=$(( ( `tput cols` - 91 ) / 2 ))
+    t=$(date '+%A')
+    d=$(date '+%Y-%b-%d')
+    printf "%36s%18s\n" $t $d | mio $ma
+    b
+    readbatt | mio $ma
+    mb
+    yc
+} | vhs -S ~/.vim/readbatt.vim
