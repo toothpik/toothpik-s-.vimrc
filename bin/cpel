@@ -1,4 +1,5 @@
 #!/bin/bash
 #  first screenful of recently edited files
-lc=$((`tput lines` - 1))
-ls -AgGtl --color=always $@ 2>&1 | grep -v '^total ' | head -$lc
+lc=$((`tput lines` - 2))
+b
+ls -AgGtl --color=always $@ 2>&1 | awk -e '!/^total /' | head -$lc
